@@ -42,6 +42,20 @@
     .chip-stat b{display:block;font-size:1.35rem;line-height:1.1}
     .chip-stat span{font-size:.72rem;font-weight:700;opacity:.92;text-transform:uppercase;letter-spacing:.03em}
 
+    /* ---- Daily goal + progress ---- */
+    .goalwrap{margin-top:.8rem}
+    .goalrow{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-weight:800;font-size:.9rem}
+    .goalrow .gedit{background:rgba(255,255,255,.2);border:0;color:#fff;font-weight:800;border-radius:999px;padding:6px 12px;min-height:34px;cursor:pointer}
+    .goalbar{height:16px;border-radius:999px;background:rgba(255,255,255,.25);overflow:hidden}
+    .goalfill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#bff3e6,#37b9a0);transition:width .5s ease}
+    .goalfill.met{background:linear-gradient(90deg,#ffe08a,#ffc857)}
+    .goalmsg{text-align:center;font-weight:800;font-size:.82rem;margin-top:6px;min-height:1em}
+    .goaledit{display:flex;gap:8px;align-items:center;margin-top:8px;background:rgba(255,255,255,.15);padding:8px;border-radius:14px}
+    .goaledit input{flex:1;min-height:46px;border:0;border-radius:10px;padding:10px;color:var(--ink)}
+    .goaledit .gsave{background:var(--teal);color:#fff;border:0;border-radius:10px;font-weight:800;min-height:46px;padding:0 16px;cursor:pointer}
+    .goaledit .gcancel{background:rgba(255,255,255,.25);color:#fff;border:0;border-radius:10px;font-weight:800;min-height:46px;padding:0 14px;cursor:pointer}
+    [hidden]{display:none!important}
+
     /* ---- Tabs ---- */
     .tabs{position:sticky;top:0;z-index:25;display:flex;background:var(--card);box-shadow:var(--shadow)}
     .tabs button{flex:1;border:0;background:none;padding:14px 0;font-weight:800;color:var(--muted);position:relative;min-height:52px;cursor:pointer}
@@ -124,6 +138,20 @@
       <div class="chip-stat"><b id="todayOz">–</b><span>fl oz today</span></div>
       <div class="chip-stat"><b id="todayCount">–</b><span>entries today</span></div>
     </div>
+
+    <div class="goalwrap">
+      <div class="goalrow">
+        <span id="goalLabel">🎯 Goal: – oz/day</span>
+        <button type="button" class="gedit" id="goalEditBtn">✏️ Edit goal</button>
+      </div>
+      <div class="goalbar"><div class="goalfill" id="goalFill"></div></div>
+      <div class="goalmsg" id="goalMsg"></div>
+      <div class="goaledit" id="goalEditBox" hidden>
+        <input type="number" id="goalInput" min="1" step="1" inputmode="numeric" placeholder="oz per day" />
+        <button type="button" class="gsave" id="goalSaveBtn">Save</button>
+        <button type="button" class="gcancel" id="goalCancelBtn">✕</button>
+      </div>
+    </div>
   </div>
 
   <div class="tabs">
@@ -188,6 +216,46 @@
     const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     const $ = (id) => document.getElementById(id);
     let intakeType = "water";
+    let dailyGoal = 32;
+    let todayTotalOz = 0;
+
+    async function loadGoal(){
+      const { data, error } = await db.from("app_settings").select("daily_goal_oz").eq("id",1).maybeSingle();
+      if(!error && data && data.daily_goal_oz!=null){ dailyGoal = Number(data.daily_goal_oz); }
+      renderProgress();
+    }
+
+    function renderProgress(){
+      const goal = dailyGoal > 0 ? dailyGoal : 0;
+      const oz = todayTotalOz;
+      $("goalLabel").textContent = `🎯 Goal: ${goal} oz/day`;
+      const pct = goal > 0 ? Math.min(100, Math.round((oz/goal)*100)) : 0;
+      const fill = $("goalFill");
+      fill.style.width = pct + "%";
+      const met = goal > 0 && oz >= goal;
+      fill.classList.toggle("met", met);
+      if(goal <= 0){ $("goalMsg").textContent = "Set a daily goal to track progress."; }
+      else if(met){ $("goalMsg").textContent = `🎉 Goal met! ${Math.round(oz*10)/10} of ${goal} oz`; }
+      else { $("goalMsg").textContent = `${Math.round(oz*10)/10} of ${goal} oz · ${pct}% · ${Math.round((goal-oz)*10)/10} oz to go`; }
+    }
+
+    // Goal editing
+    $("goalEditBtn").addEventListener("click", ()=>{
+      $("goalInput").value = dailyGoal;
+      $("goalEditBox").hidden = false;
+      $("goalInput").focus();
+    });
+    $("goalCancelBtn").addEventListener("click", ()=>{ $("goalEditBox").hidden = true; });
+    $("goalSaveBtn").addEventListener("click", async ()=>{
+      const v = Number($("goalInput").value);
+      if(!v || v <= 0){ $("goalInput").focus(); return; }
+      $("goalSaveBtn").disabled = true; $("goalSaveBtn").textContent = "…";
+      const { error } = await db.from("app_settings")
+        .upsert({ id:1, daily_goal_oz:v, updated_at:new Date().toISOString() });
+      $("goalSaveBtn").disabled = false; $("goalSaveBtn").textContent = "Save";
+      if(!error){ dailyGoal = v; $("goalEditBox").hidden = true; renderProgress(); }
+      else { $("goalMsg").textContent = "Couldn't save goal: " + error.message; }
+    });
 
     function nowLocal(){
       const d = new Date(); const off = d.getTimezoneOffset();
@@ -256,8 +324,10 @@
       }
       const today = data.filter(r=>isToday(r.occurred_at));
       const oz = today.reduce((s,r)=> s + (Number(r.amount_oz)||0), 0);
+      todayTotalOz = oz;
       $("todayOz").textContent = Math.round(oz*10)/10;
       $("todayCount").textContent = today.length;
+      renderProgress();
     }
 
     $("entryForm").addEventListener("submit", async (e)=>{
@@ -286,8 +356,9 @@
     });
 
     $("refreshBtn").addEventListener("click", load);
+    loadGoal();
     load();
-    setInterval(()=>{ if($("viewHistory").classList.contains("active")) load(); }, 30000);
+    setInterval(()=>{ loadGoal(); if($("viewHistory").classList.contains("active")) load(); }, 30000);
   </script>
 </body>
 </html>
