@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hydration &amp; Food Log</title>
+  <meta name="description" content="A simple shared log for tracking fluids and food intake." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#eaf6ff; --card:#fff; --ink:#1f3242; --muted:#5d7080;
+      --blue:#2f80b8; --blue2:#4aa3df; --teal:#37b9a0; --line:#e2edf4;
+      --shadow:0 10px 30px rgba(47,128,184,.12);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:"Nunito",-apple-system,BlinkMacSystemFont,sans-serif;background:linear-gradient(180deg,#eaf6ff,#f5fbff);color:var(--ink);line-height:1.5;padding:0 0 4rem}
+    .wrap{max-width:760px;margin:0 auto;padding:0 1rem}
+    header{text-align:center;padding:2.2rem 1rem 1.2rem}
+    header h1{font-size:1.7rem;font-weight:800}
+    header h1 .drop{font-size:1.6rem}
+    header p{color:var(--muted);margin-top:.3rem;font-weight:600}
+    .summary{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin:1rem 0 1.4rem}
+    .stat{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:.9rem 1.2rem;text-align:center;min-width:140px}
+    .stat b{display:block;font-size:1.6rem;color:var(--blue)}
+    .stat span{font-size:.82rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+    .card{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:1.4rem;margin-bottom:1.4rem}
+    .card h2{font-size:1.15rem;margin-bottom:1rem}
+    label{display:block;font-weight:700;font-size:.9rem;margin:.7rem 0 .3rem}
+    input,select,textarea{width:100%;font:inherit;padding:.7rem .8rem;border:2px solid var(--line);border-radius:12px;background:#fbfdff;color:var(--ink)}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue2)}
+    textarea{resize:vertical;min-height:54px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+    .seg{display:flex;gap:.5rem;margin-top:.3rem}
+    .seg button{flex:1;padding:.6rem;border:2px solid var(--line);background:#fbfdff;border-radius:12px;font-weight:700;cursor:pointer;color:var(--muted)}
+    .seg button.active{background:var(--blue);border-color:var(--blue);color:#fff}
+    .save{margin-top:1.1rem;width:100%;padding:.9rem;border:0;border-radius:14px;background:var(--teal);color:#fff;font-weight:800;font-size:1.05rem;cursor:pointer;box-shadow:0 8px 18px rgba(55,185,160,.35)}
+    .save:active{transform:translateY(1px)}
+    .save:disabled{opacity:.6;cursor:default}
+    .msg{text-align:center;font-weight:700;margin-top:.7rem;min-height:1.2em}
+    .msg.ok{color:var(--teal)} .msg.err{color:#e0506b}
+    .log-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+    .refresh{background:none;border:0;color:var(--blue);font-weight:800;cursor:pointer;font-size:.95rem}
+    .entry{border-top:1px solid var(--line);padding:.85rem 0;display:flex;gap:.8rem;align-items:flex-start}
+    .entry:first-of-type{border-top:0}
+    .ico{font-size:1.5rem;line-height:1.6rem}
+    .entry .main{flex:1;min-width:0}
+    .entry .amt{font-weight:800;color:var(--blue);white-space:nowrap}
+    .entry .when{font-size:.82rem;color:var(--muted);font-weight:700}
+    .entry .desc{font-weight:600}
+    .entry .by{font-size:.78rem;color:var(--muted)}
+    .empty{text-align:center;color:var(--muted);padding:1.5rem;font-weight:600}
+    footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:1.5rem;font-weight:600}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1><span class="drop">💧</span> Hydration &amp; Food Log</h1>
+      <p>Anyone with this link can add an entry and see the full history.</p>
+    </header>
+
+    <div class="summary">
+      <div class="stat"><b id="todayOz">–</b><span>fl oz today</span></div>
+      <div class="stat"><b id="todayCount">–</b><span>entries today</span></div>
+    </div>
+
+    <!-- ADD ENTRY -->
+    <div class="card">
+      <h2>➕ Add an entry</h2>
+      <form id="entryForm">
+        <label>What was given?</label>
+        <div class="seg" id="typeSeg">
+          <button type="button" data-type="water" class="active">💧 Water / Fluid</button>
+          <button type="button" data-type="food">🍎 Food</button>
+          <button type="button" data-type="other">📝 Other</button>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="when">Date &amp; time</label>
+            <input type="datetime-local" id="when" required />
+          </div>
+          <div>
+            <label for="amount" id="amountLabel">Amount (fl oz)</label>
+            <input type="number" id="amount" step="0.1" min="0" inputmode="decimal" placeholder="e.g. 4" />
+          </div>
+        </div>
+
+        <label for="description">Description</label>
+        <input type="text" id="description" placeholder="e.g. Pedialyte, apple slices, ice chips" />
+
+        <label for="loggedBy">Your name (optional)</label>
+        <input type="text" id="loggedBy" placeholder="e.g. Mom, Dad, Grandma" />
+
+        <button type="submit" class="save" id="saveBtn">Save entry</button>
+        <div class="msg" id="msg"></div>
+      </form>
+    </div>
+
+    <!-- LOG -->
+    <div class="card">
+      <div class="log-head">
+        <h2>📋 History</h2>
+        <button class="refresh" id="refreshBtn" type="button">↻ Refresh</button>
+      </div>
+      <div id="log"><div class="empty">Loading…</div></div>
+    </div>
+
+    <footer>
+      Saved to a shared database · works on any phone or computer.
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script>
+    const SUPABASE_URL = "https://utupgcayrwocavdmhyle.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_dfuSJkpp1yZy5yg4tlKsGw_ync0kLXy";
+    const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const $ = (id) => document.getElementById(id);
+    let intakeType = "water";
+
+    // Default datetime to now (local)
+    function nowLocal(){
+      const d = new Date();
+      const off = d.getTimezoneOffset();
+      return new Date(d.getTime() - off*60000).toISOString().slice(0,16);
+    }
+    $("when").value = nowLocal();
+
+    // Type segmented control
+    $("typeSeg").addEventListener("click", (e)=>{
+      const b = e.target.closest("button"); if(!b) return;
+      intakeType = b.dataset.type;
+      [...$("typeSeg").children].forEach(x=>x.classList.toggle("active", x===b));
+      $("amountLabel").textContent = intakeType==="food" ? "Amount (optional)" : "Amount (fl oz)";
+      $("amount").placeholder = intakeType==="food" ? "e.g. 5 (oz, optional)" : "e.g. 4";
+    });
+
+    const ICON = { water:"💧", food:"🍎", other:"📝" };
+
+    function fmtWhen(iso){
+      const d = new Date(iso);
+      return d.toLocaleString([], {month:"short", day:"numeric", hour:"numeric", minute:"2-digit"});
+    }
+    function isToday(iso){
+      const d = new Date(iso), n = new Date();
+      return d.getFullYear()===n.getFullYear() && d.getMonth()===n.getMonth() && d.getDate()===n.getDate();
+    }
+
+    async function load(){
+      $("log").innerHTML = '<div class="empty">Loading…</div>';
+      const { data, error } = await db.from("hydration_log")
+        .select("*").order("occurred_at", { ascending:false }).limit(500);
+      if(error){ $("log").innerHTML = '<div class="empty">Could not load entries. '+error.message+'</div>'; return; }
+      if(!data.length){ $("log").innerHTML = '<div class="empty">No entries yet — add the first one above. 💛</div>'; }
+      else {
+        $("log").innerHTML = data.map(r=>{
+          const amt = r.amount_oz!=null ? `${r.amount_oz} oz` : (r.amount_text||"");
+          const by = r.logged_by ? `· ${r.logged_by}` : "";
+          return `<div class="entry">
+            <div class="ico">${ICON[r.intake_type]||"📝"}</div>
+            <div class="main">
+              <div class="desc">${escapeHtml(r.description||r.intake_type)}</div>
+              <div class="when">${fmtWhen(r.occurred_at)} ${by}</div>
+            </div>
+            <div class="amt">${amt}</div>
+          </div>`;
+        }).join("");
+      }
+      // today summary
+      const today = data.filter(r=>isToday(r.occurred_at));
+      const oz = today.reduce((s,r)=> s + (Number(r.amount_oz)||0), 0);
+      $("todayOz").textContent = Math.round(oz*10)/10;
+      $("todayCount").textContent = today.length;
+    }
+
+    function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+    $("entryForm").addEventListener("submit", async (e)=>{
+      e.preventDefault();
+      const msg = $("msg"); msg.className="msg"; msg.textContent="";
+      const whenVal = $("when").value;
+      if(!whenVal){ msg.className="msg err"; msg.textContent="Please pick a date & time."; return; }
+      const amountNum = $("amount").value!=="" ? Number($("amount").value) : null;
+      const row = {
+        occurred_at: new Date(whenVal).toISOString(),
+        intake_type: intakeType,
+        description: $("description").value.trim() || null,
+        amount_oz: intakeType==="food" ? null : amountNum,
+        amount_text: intakeType==="food" && $("amount").value!=="" ? $("amount").value + " oz" : null,
+        logged_by: $("loggedBy").value.trim() || null
+      };
+      $("saveBtn").disabled = true; $("saveBtn").textContent = "Saving…";
+      const { error } = await db.from("hydration_log").insert(row);
+      $("saveBtn").disabled = false; $("saveBtn").textContent = "Save entry";
+      if(error){ msg.className="msg err"; msg.textContent="Error: "+error.message; return; }
+      msg.className="msg ok"; msg.textContent="Saved! ✓";
+      $("description").value=""; $("amount").value=""; $("when").value = nowLocal();
+      load();
+      setTimeout(()=>{ msg.textContent=""; }, 2500);
+    });
+
+    $("refreshBtn").addEventListener("click", load);
+    load();
+    // auto-refresh every 30s so multiple people stay in sync
+    setInterval(load, 30000);
+  </script>
+</body>
+</html>
