@@ -127,8 +127,32 @@
     .entry .desc{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     .entry .when{font-size:.82rem;color:var(--muted);font-weight:700}
     .entry .amt{font-weight:800;color:var(--blue);white-space:nowrap;font-size:1.05rem}
+    .entry .acts{display:flex;gap:6px;flex-shrink:0}
+    .entry .acts button{border:0;background:#f0f6fb;border-radius:12px;width:40px;height:40px;font-size:1.05rem;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
+    .entry .acts button:active{background:#dceaf5}
+    .entry .acts .del:active{background:#fbdfe4}
     .empty{text-align:center;color:var(--muted);padding:28px 14px;font-weight:700}
     footer{text-align:center;color:var(--muted);font-size:.78rem;padding:10px 16px 0;font-weight:700}
+
+    /* ---- Edit modal ---- */
+    .modal{position:fixed;inset:0;z-index:60;display:flex;align-items:flex-end;justify-content:center;
+      background:rgba(31,50,66,.45);padding:0}
+    .modal[hidden]{display:none!important}
+    .sheet{background:var(--card);width:100%;max-width:560px;border-radius:22px 22px 0 0;
+      box-shadow:0 -8px 30px rgba(47,128,184,.25);padding:18px 16px calc(18px + var(--safe-b));
+      max-height:92vh;overflow-y:auto;animation:slideup .25s ease}
+    @keyframes slideup{from{transform:translateY(100%)}to{transform:none}}
+    .sheet h2{font-size:1.1rem;margin-bottom:4px}
+    .sheet .modal-actions{display:flex;gap:8px;margin-top:18px}
+    .sheet .modal-actions button{flex:1;border:0;border-radius:14px;font-weight:800;min-height:54px;cursor:pointer;font-size:1.05rem}
+    .sheet .m-save{background:var(--teal);color:#fff;box-shadow:0 6px 16px rgba(55,185,160,.35)}
+    .sheet .m-save:active{transform:translateY(1px)}
+    .sheet .m-save:disabled{opacity:.6}
+    .sheet .m-cancel{background:#eef4f9;color:var(--muted);flex:0 0 96px}
+    .sheet .m-delete{background:#fdeef1;color:#e0506b;width:100%;border:0;border-radius:14px;font-weight:800;
+      min-height:50px;margin-top:10px;cursor:pointer}
+    .sheet .m-delete:active{background:#f9dbe1}
+    .modal-msg{text-align:center;font-weight:800;margin-top:10px;min-height:1.2em;color:#e0506b}
   </style>
 </head>
 <body>
@@ -209,6 +233,41 @@
     <button type="submit" form="entryForm" class="save" id="saveBtn">Save entry ✓</button>
   </div>
 
+  <!-- EDIT MODAL -->
+  <div class="modal" id="editModal" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="editTitle">
+      <h2 id="editTitle">✏️ Edit entry</h2>
+      <input type="hidden" id="editId" />
+
+      <label>What was given?</label>
+      <div class="types" id="editTypeSeg">
+        <button type="button" data-type="water"><span class="e">💧</span>Water</button>
+        <button type="button" data-type="food"><span class="e">🍎</span>Food</button>
+        <button type="button" data-type="other"><span class="e">📝</span>Other</button>
+      </div>
+
+      <label for="editAmount" id="editAmountLabel">Amount (fl oz)</label>
+      <input type="number" id="editAmount" step="0.1" min="0" inputmode="decimal" placeholder="e.g. 4" />
+
+      <label for="editDescription">Description</label>
+      <input type="text" id="editDescription" placeholder="e.g. Pedialyte, ice chips, apple" autocomplete="off" />
+
+      <label for="editWhen">When</label>
+      <input type="datetime-local" id="editWhen" />
+
+      <label for="editLoggedBy">Logged by (optional)</label>
+      <input type="text" id="editLoggedBy" placeholder="e.g. Mom, Dad, Grandma" autocomplete="name" />
+
+      <div class="modal-msg" id="editMsg"></div>
+
+      <div class="modal-actions">
+        <button type="button" class="m-cancel" id="editCancelBtn">Cancel</button>
+        <button type="button" class="m-save" id="editSaveBtn">Save changes ✓</button>
+      </div>
+      <button type="button" class="m-delete" id="editDeleteBtn">🗑 Delete this entry</button>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
   <script>
     const SUPABASE_URL = "https://utupgcayrwocavdmhyle.supabase.co";
@@ -218,6 +277,8 @@
     let intakeType = "water";
     let dailyGoal = 32;
     let todayTotalOz = 0;
+    let editType = "water";
+    const entriesById = {};
 
     async function loadGoal(){
       const { data, error } = await db.from("app_settings").select("daily_goal_oz").eq("id",1).maybeSingle();
@@ -305,8 +366,10 @@
       if(error){ $("log").innerHTML = '<div class="empty">Could not load. '+escapeHtml(error.message)+'</div>'; return; }
       if(!data.length){ $("log").innerHTML = '<div class="empty">No entries yet — add the first one. 💛</div>'; }
       else {
+        for(const k in entriesById) delete entriesById[k];
         let html="", curDay=null;
         for(const r of data){
+          entriesById[r.id] = r;
           const dk = isToday(r.occurred_at) ? "Today" : dayKey(r.occurred_at);
           if(dk!==curDay){ curDay=dk; html += `<div class="day-label">${dk}</div>`; }
           const amt = r.amount_oz!=null ? `${r.amount_oz} oz` : (r.amount_text||"");
@@ -318,6 +381,10 @@
               <div class="when">${fmtTime(r.occurred_at)}${by}</div>
             </div>
             <div class="amt">${escapeHtml(amt)}</div>
+            <div class="acts">
+              <button type="button" class="edit" data-id="${r.id}" aria-label="Edit entry">✏️</button>
+              <button type="button" class="del" data-id="${r.id}" aria-label="Delete entry">🗑</button>
+            </div>
           </div>`;
         }
         $("log").innerHTML = html;
@@ -353,6 +420,108 @@
       if(navigator.vibrate) navigator.vibrate(30);
       load();
       setTimeout(()=>{ msg.textContent=""; }, 3000);
+    });
+
+    // ---- Edit / delete from history ----
+    function toLocalInput(iso){
+      const d = new Date(iso); const off = d.getTimezoneOffset();
+      return new Date(d.getTime() - off*60000).toISOString().slice(0,16);
+    }
+    function setEditType(t){
+      editType = t;
+      [...$("editTypeSeg").children].forEach(x=>x.classList.toggle("active", x.dataset.type===t));
+      $("editAmountLabel").textContent = t==="food" ? "Amount (optional)" : "Amount (fl oz)";
+    }
+    function openEdit(id){
+      const r = entriesById[id];
+      if(!r) return;
+      $("editMsg").textContent = "";
+      $("editId").value = r.id;
+      setEditType(r.intake_type || "other");
+      // amount: numeric column, or parse leading number out of amount_text (e.g. "4 oz")
+      let amt = r.amount_oz!=null ? r.amount_oz : (r.amount_text!=null ? parseFloat(r.amount_text) : "");
+      $("editAmount").value = (amt===""||Number.isNaN(amt)) ? "" : amt;
+      $("editDescription").value = r.description || "";
+      $("editWhen").value = toLocalInput(r.occurred_at);
+      $("editLoggedBy").value = r.logged_by || "";
+      $("editModal").hidden = false;
+      document.body.style.overflow = "hidden";
+    }
+    function closeEdit(){
+      $("editModal").hidden = true;
+      document.body.style.overflow = "";
+    }
+
+    // delegate clicks on history entries
+    $("log").addEventListener("click", (e)=>{
+      const btn = e.target.closest("button.edit, button.del");
+      if(!btn) return;
+      const id = btn.dataset.id;
+      if(btn.classList.contains("edit")){ openEdit(id); return; }
+      // delete
+      const r = entriesById[id];
+      const what = r && r.description ? `"${r.description}"` : "this entry";
+      if(!confirm(`Delete ${what}? This can't be undone.`)) return;
+      deleteEntry(id, btn);
+    });
+
+    async function deleteEntry(id, btn){
+      if(btn){ btn.disabled = true; btn.textContent = "…"; }
+      const { error } = await db.from("hydration_log").delete().eq("id", id);
+      if(error){
+        if(btn){ btn.disabled = false; btn.textContent = "🗑"; }
+        alert("Couldn't delete: " + error.message);
+        return;
+      }
+      if(navigator.vibrate) navigator.vibrate(30);
+      delete entriesById[id];
+      load();
+    }
+
+    $("editTypeSeg").addEventListener("click", (e)=>{
+      const b = e.target.closest("button"); if(!b) return;
+      setEditType(b.dataset.type);
+    });
+    $("editCancelBtn").addEventListener("click", closeEdit);
+    $("editModal").addEventListener("click", (e)=>{ if(e.target===$("editModal")) closeEdit(); });
+
+    $("editDeleteBtn").addEventListener("click", ()=>{
+      const id = $("editId").value;
+      const r = entriesById[id];
+      const what = r && r.description ? `"${r.description}"` : "this entry";
+      if(!confirm(`Delete ${what}? This can't be undone.`)) return;
+      $("editDeleteBtn").disabled = true; $("editDeleteBtn").textContent = "Deleting…";
+      db.from("hydration_log").delete().eq("id", id).then(({error})=>{
+        $("editDeleteBtn").disabled = false; $("editDeleteBtn").textContent = "🗑 Delete this entry";
+        if(error){ $("editMsg").textContent = "Couldn't delete: " + error.message; return; }
+        if(navigator.vibrate) navigator.vibrate(30);
+        delete entriesById[id];
+        closeEdit();
+        load();
+      });
+    });
+
+    $("editSaveBtn").addEventListener("click", async ()=>{
+      const id = $("editId").value;
+      $("editMsg").textContent = "";
+      const whenVal = $("editWhen").value;
+      if(!whenVal){ $("editMsg").textContent = "Please pick a date & time."; return; }
+      const amountNum = $("editAmount").value!=="" ? Number($("editAmount").value) : null;
+      const updates = {
+        occurred_at: new Date(whenVal).toISOString(),
+        intake_type: editType,
+        description: $("editDescription").value.trim() || null,
+        amount_oz: editType==="food" ? null : amountNum,
+        amount_text: editType==="food" && $("editAmount").value!=="" ? $("editAmount").value + " oz" : null,
+        logged_by: $("editLoggedBy").value.trim() || null
+      };
+      $("editSaveBtn").disabled = true; $("editSaveBtn").textContent = "Saving…";
+      const { error } = await db.from("hydration_log").update(updates).eq("id", id);
+      $("editSaveBtn").disabled = false; $("editSaveBtn").textContent = "Save changes ✓";
+      if(error){ $("editMsg").textContent = "Couldn't save: " + error.message; return; }
+      if(navigator.vibrate) navigator.vibrate(30);
+      closeEdit();
+      load();
     });
 
     $("refreshBtn").addEventListener("click", load);
