@@ -1,0 +1,565 @@
+/* ===========================================================
+   CCAT Prep — Application logic
+   =========================================================== */
+(function(){
+  'use strict';
+
+  const CATS = {
+    verbal:  { name:'Verbal',          color:'var(--verbal)',  icon:'📖' },
+    math:    { name:'Math & Logic',    color:'var(--math)',    icon:'🔢' },
+    spatial: { name:'Spatial & Abstract', color:'var(--spatial)', icon:'🧩' },
+  };
+  // Real CCAT proportions (≈ verbal/math/spatial are roughly even across 50)
+  const FULL_TEST_SIZE = 50;
+  const FULL_TEST_TIME = 15 * 60; // seconds
+
+  const $  = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+
+  /* ---------- storage ---------- */
+  const Store = {
+    key:'ccat-prep-v1',
+    load(){ try { return JSON.parse(localStorage.getItem(this.key)) || {history:[]}; } catch { return {history:[]}; } },
+    save(d){ localStorage.setItem(this.key, JSON.stringify(d)); },
+    addResult(r){ const d=this.load(); d.history.push(r); if(d.history.length>100) d.history=d.history.slice(-100); this.save(d); },
+    stats(){
+      const d=this.load(); const h=d.history;
+      const full = h.filter(x=>x.mode==='full');
+      const best = full.length ? Math.max(...full.map(x=>x.correct)) : 0;
+      const avg  = full.length ? Math.round(full.reduce((a,x)=>a+x.correct,0)/full.length) : 0;
+      const totalQ = h.reduce((a,x)=>a+x.total,0);
+      return { tests:full.length, best, avg, totalQ, history:h };
+    },
+    theme(){ return this.load().theme || 'dark'; },
+    setTheme(t){ const d=this.load(); d.theme=t; this.save(d); },
+  };
+
+  /* ---------- utilities ---------- */
+  function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+  function fmtTime(s){ const m=Math.floor(s/60), ss=s%60; return m+':'+String(ss).padStart(2,'0'); }
+  function flash(msg){ const f=document.createElement('div'); f.className='flash'; f.textContent=msg; document.body.appendChild(f); setTimeout(()=>f.remove(),1900); }
+
+  // Pick a balanced set of static questions across categories
+  function pickBalanced(n){
+    const byCat = { verbal:[], math:[], spatial:[] };
+    QUESTIONS.forEach(q=>byCat[q.category] && byCat[q.category].push(q));
+    Object.keys(byCat).forEach(k=>byCat[k]=shuffle(byCat[k]));
+    const out=[]; const cats=['verbal','math','spatial']; let i=0;
+    while(out.length<n){
+      const c=cats[i%3]; i++;
+      if(byCat[c].length){ out.push(byCat[c].shift()); }
+      else if(byCat.verbal.length+byCat.math.length+byCat.spatial.length===0) break;
+    }
+    return shuffle(out);
+  }
+  function pickCategory(cat, n){ return shuffle(QUESTIONS.filter(q=>q.category===cat)).slice(0,n); }
+
+  /* ---------- Quiz engine ---------- */
+  const Quiz = {
+    state:null,
+    timerId:null,
+
+    start(opts){
+      // opts: {mode, label, questions, timeLimit(sec)|null, drill:bool}
+      this.state = {
+        mode:opts.mode, label:opts.label,
+        questions:opts.questions, drill:!!opts.drill,
+        idx:0, answers:[], remaining:opts.timeLimit||0,
+        timed:!!opts.timeLimit, startTs:Date.now(), generator:opts.generator||null,
+      };
+      Views.show('quiz');
+      if(this.state.timed) this._startTimer();
+      this.render();
+    },
+
+    _startTimer(){
+      clearInterval(this.timerId);
+      this.timerId=setInterval(()=>{
+        this.state.remaining--;
+        this._renderTimer();
+        if(this.state.remaining<=0){ clearInterval(this.timerId); this.finish(); }
+      },1000);
+    },
+    _renderTimer(){
+      const t=$('#timer'); if(!t)return;
+      t.querySelector('.t').textContent=fmtTime(Math.max(0,this.state.remaining));
+      t.classList.toggle('warn', this.state.remaining<=120 && this.state.remaining>30);
+      t.classList.toggle('danger', this.state.remaining<=30);
+    },
+
+    cur(){ return this.state.questions[this.state.idx]; },
+
+    render(){
+      const s=this.state, q=this.cur();
+      const total=s.drill ? '∞' : s.questions.length;
+      const cat=CATS[q.category];
+      const answered=s.answers[s.idx];
+      const optionsHtml=q.options.map((opt,i)=>{
+        const ov = q.svgOptions ? q.svgOptions[i] : '';
+        return `<button class="answer" data-i="${i}" ${answered!=null?'disabled':''}>
+            <span class="key">${'ABCD'[i]}</span>
+            ${ov?`<span class="osvg-wrap">${ov}</span>`:''}
+            <span class="atext">${opt}</span>
+          </button>`;
+      }).join('');
+
+      const progPct = s.drill ? 0 : ((s.idx)/s.questions.length*100);
+      $('#view-quiz').innerHTML=`
+        <div class="quiz-head">
+          ${s.timed?`<div class="timer" id="timer"><span>⏱</span><span class="t">${fmtTime(s.remaining)}</span></div>`:''}
+          <div class="qcount">Question <b>${s.idx+1}</b> / ${total}</div>
+          <span class="cat-tag ${q.category}">${cat.icon} ${cat.name}</span>
+        </div>
+        ${s.drill?'':`<div class="progress-track"><div class="progress-fill" style="width:${progPct}%"></div></div>`}
+        <div class="qcard">
+          <div class="qtype">${q.type||''}</div>
+          <div class="qtext">${q.q}</div>
+          ${q.svg?q.svg:''}
+          <div class="answers">${optionsHtml}</div>
+          <div id="explain-slot"></div>
+        </div>
+        <div class="quiz-foot">
+          <button class="btn ghost" id="btn-quit">✕ End</button>
+          <div class="spacer"></div>
+          ${answered!=null ? `<button class="btn primary" id="btn-next">${this._isLast()?'See results':'Next →'}</button>`
+                           : (s.timed?'':`<button class="btn ghost" id="btn-skip">Skip →</button>`)}
+        </div>`;
+
+      $$('.answer').forEach(b=>b.addEventListener('click',()=>this.answer(+b.dataset.i)));
+      const next=$('#btn-next'); if(next) next.addEventListener('click',()=>this.next());
+      const skip=$('#btn-skip'); if(skip) skip.addEventListener('click',()=>{ this.state.answers[s.idx]=-1; this.next(); });
+      $('#btn-quit').addEventListener('click',()=>{ if(confirm('End this session?')) this.finish(); });
+      if(answered!=null) this._showFeedback(answered,true);
+    },
+
+    _isLast(){ return !this.state.drill && this.state.idx>=this.state.questions.length-1; },
+
+    answer(i){
+      const s=this.state;
+      if(s.answers[s.idx]!=null) return;
+      s.answers[s.idx]=i;
+      // In timed full-test mode, the real CCAT gives no feedback — just advance UI state.
+      if(s.timed){ this._lockChoices(i); setTimeout(()=>this.next(),140); return; }
+      this._showFeedback(i,false);
+      this.render(); // re-render to show Next + disabled state
+    },
+
+    _lockChoices(sel){
+      $$('.answer').forEach(b=>{ b.disabled=true; if(+b.dataset.i===sel) b.classList.add('sel'); });
+    },
+
+    _showFeedback(sel){
+      const q=this.cur();
+      $$('.answer').forEach(b=>{
+        const i=+b.dataset.i; b.disabled=true;
+        if(i===q.answer) b.classList.add('correct');
+        else if(i===sel) b.classList.add('wrong');
+      });
+      const ok = sel===q.answer;
+      const slot=$('#explain-slot');
+      if(slot){
+        slot.innerHTML=`<div class="explain">
+          <span class="verdict ${ok?'ok':'no'}">${ok?'✓ Correct':(sel===-1?'⤳ Skipped':'✕ Not quite')}</span>
+          <b>Answer: ${'ABCD'[q.answer]}.</b> ${q.explanation}
+        </div>`;
+      }
+    },
+
+    next(){
+      const s=this.state;
+      if(s.drill){
+        s.idx++;
+        s.questions.push(s.generator());
+        if(s.answers[s.idx-1]==null) s.answers[s.idx-1]=-1;
+        this.render(); return;
+      }
+      if(this._isLast()){ this.finish(); return; }
+      s.idx++; this.render();
+    },
+
+    finish(){
+      clearInterval(this.timerId);
+      const s=this.state;
+      // grade
+      let correct=0; const detail=[];
+      s.questions.forEach((q,i)=>{
+        const a=s.answers[i];
+        const isC = a===q.answer;
+        if(isC) correct++;
+        if(a!=null) detail.push({q, a, correct:isC});
+      });
+      const answered=s.answers.filter(a=>a!=null).length;
+      const total=s.drill?answered:s.questions.length;
+      // category breakdown
+      const cats={verbal:{c:0,t:0},math:{c:0,t:0},spatial:{c:0,t:0}};
+      s.questions.forEach((q,i)=>{ if(s.drill && s.answers[i]==null) return; cats[q.category].t++; if(s.answers[i]===q.answer) cats[q.category].c++; });
+      const result={
+        mode:s.mode, label:s.label, correct, total, answered,
+        cats, detail, timeUsed:s.timed?(FULL_TEST_TIME-s.remaining):Math.round((Date.now()-s.startTs)/1000),
+        date:new Date().toISOString(),
+      };
+      if(s.mode==='full') Store.addResult({mode:'full',label:s.label,correct,total,date:result.date,cats});
+      else Store.addResult({mode:s.mode,label:s.label,correct,total:answered,date:result.date,cats});
+      Results.render(result);
+      Views.show('results');
+    },
+  };
+
+  /* ---------- Results view ---------- */
+  const Results = {
+    render(r){
+      const pct = r.total? Math.round(r.correct/r.total*100):0;
+      const isFull = r.mode==='full';
+      // Percentile estimate based on CCAT norms (raw score out of 50 → approx percentile)
+      const percentile = isFull ? estPercentile(r.correct) : null;
+      const verdict = pct>=80?'Outstanding! 🏆':pct>=65?'Great work! 🎉':pct>=50?'Solid effort 👍':pct>=35?'Keep practicing 💪':'Room to grow 🌱';
+      const ringColor = pct>=65?'var(--good)':pct>=45?'var(--warn)':'var(--bad)';
+      const circ=2*Math.PI*78;
+      const off=circ*(1-pct/100);
+
+      const bd = Object.entries(r.cats).map(([k,v])=>{
+        if(!v.t) return '';
+        const p=Math.round(v.c/v.t*100);
+        return `<div class="bd-row">
+          <span class="lbl">${CATS[k].icon} ${CATS[k].name}</span>
+          <span class="bd-bar"><i style="width:${p}%;background:${CATS[k].color}"></i></span>
+          <span class="num">${v.c}/${v.t}</span></div>`;
+      }).join('');
+
+      $('#view-results').innerHTML=`
+        <div class="result-hero">
+          <div class="score-ring">
+            <svg width="180" height="180" viewBox="0 0 180 180">
+              <circle cx="90" cy="90" r="78" fill="none" stroke="var(--line)" stroke-width="14"/>
+              <circle cx="90" cy="90" r="78" fill="none" stroke="${ringColor}" stroke-width="14"
+                stroke-linecap="round" stroke-dasharray="${circ}" stroke-dashoffset="${off}"/>
+            </svg>
+            <div class="pct"><span class="big">${pct}%</span><span class="small">${r.correct}/${r.total} correct</span></div>
+          </div>
+          <div class="verdict-line">${verdict}</div>
+          <div class="result-sub">
+            ${r.label}${isFull?` · You answered ${r.answered} of ${FULL_TEST_SIZE} in time`:''}
+            ${percentile!=null?` · Est. <b>${percentile}th</b> percentile`:''}
+            · Time: ${fmtTime(r.timeUsed)}
+          </div>
+        </div>
+        <div class="breakdown">${bd}</div>
+        ${isFull?`<div class="card" style="margin-top:18px">
+          <b>What this means:</b> <span style="color:var(--muted)">The real CCAT has 50 questions in 15 minutes — most people answer ~24 correctly and very few finish. A raw score of ${r.correct} would place you around the <b>${percentile}th percentile</b> versus the general population.</span>
+        </div>`:''}
+        <div class="btn-row" style="margin-top:22px;justify-content:center">
+          <button class="btn primary lg" id="r-review">Review answers</button>
+          <button class="btn lg" id="r-again">Try again</button>
+          <button class="btn ghost lg" id="r-home">Home</button>
+        </div>`;
+      $('#r-review').addEventListener('click',()=>Review.render(r));
+      $('#r-again').addEventListener('click',()=>{ Views.show('home'); });
+      $('#r-home').addEventListener('click',()=>{ Home.render(); Views.show('home'); });
+      this._last=r;
+    },
+  };
+
+  /* ---------- Review view ---------- */
+  const Review = {
+    render(r){
+      const items=r.detail.map((d,n)=>{
+        const q=d.q;
+        const youText = d.a===-1?'(skipped)':q.options[d.a];
+        return `<div class="review-item">
+          <div class="rq"><span class="badge ${d.correct?'ok':(d.a===-1?'skip':'no')}">${d.correct?'✓':(d.a===-1?'–':'✕')}</span>
+            <span>${n+1}. ${q.q}</span></div>
+          ${q.svg?q.svg:''}
+          ${d.correct?'':`<div class="ra you-wrong">Your answer: <b>${youText}</b></div>`}
+          <div class="ra right">Correct answer: <b>${q.options[q.answer]}</b></div>
+          <div class="ra">${q.explanation}</div>
+        </div>`;
+      }).join('') || '<p style="color:var(--muted)">No questions were answered.</p>';
+      $('#view-review').innerHTML=`
+        <div class="section-title">Answer Review<span class="sub">${r.correct} correct of ${r.total} answered</span></div>
+        ${items}
+        <div class="btn-row" style="justify-content:center;margin-top:20px">
+          <button class="btn primary" id="rv-home">← Back to Home</button>
+        </div>`;
+      $('#rv-home').addEventListener('click',()=>{ Home.render(); Views.show('home'); });
+      Views.show('review');
+    },
+  };
+
+  /* ---------- Home ---------- */
+  const Home = {
+    render(){
+      const s=Store.stats();
+      $('#view-home').innerHTML=`
+        <div class="hero">
+          <h1>Master the <span class="grad">CCAT</span></h1>
+          <p>The Criteria Cognitive Aptitude Test is a <b>50-question, 15-minute</b> test of problem-solving, critical thinking, and learning ability. Train with realistic questions across all three areas — verbal, math &amp; logic, and spatial reasoning — then take full timed simulations to track your progress.</p>
+          <div class="pills">
+            <span class="pill"><b>50</b> questions</span>
+            <span class="pill"><b>15</b> minutes</span>
+            <span class="pill"><b>3</b> skill areas</span>
+            <span class="pill">Avg score ≈ <b>24</b></span>
+          </div>
+        </div>
+
+        <div class="grid cols-4">
+          <div class="stat"><b>${s.tests}</b><span>Sims taken</span></div>
+          <div class="stat"><b>${s.best||'—'}</b><span>Best score</span></div>
+          <div class="stat"><b>${s.avg||'—'}</b><span>Avg score</span></div>
+          <div class="stat"><b>${s.totalQ}</b><span>Q practiced</span></div>
+        </div>
+
+        <div class="section-title">Practice Modes<span class="sub">Pick how you want to train today</span></div>
+        <div class="grid cols-3">
+          <div class="card mode-card" data-go="full">
+            <div class="ic blue">⏱️</div><h3>Full Simulation</h3>
+            <p>50 questions, 15-minute timer, no feedback until the end — exactly like the real CCAT.</p>
+            <div class="go">Start the test →</div>
+          </div>
+          <div class="card mode-card" data-go="category">
+            <div class="ic green">🎯</div><h3>Practice by Topic</h3>
+            <p>Focus on verbal, math &amp; logic, or spatial reasoning with instant explanations.</p>
+            <div class="go">Choose a topic →</div>
+          </div>
+          <div class="card mode-card" data-go="drill">
+            <div class="ic purple">♾️</div><h3>Endless Drill</h3>
+            <p>Unlimited auto-generated number-series, arithmetic and percentage problems.</p>
+            <div class="go">Start drilling →</div>
+          </div>
+          <div class="card mode-card" data-go="quick">
+            <div class="ic orange">⚡</div><h3>Quick 10</h3>
+            <p>A fast, mixed 10-question timed warm-up (3 minutes) to test yourself.</p>
+            <div class="go">Quick test →</div>
+          </div>
+          <div class="card mode-card" data-go="study">
+            <div class="ic pink">📚</div><h3>Study Guide</h3>
+            <p>Strategies, formulas, question-type breakdowns, and the percentile chart.</p>
+            <div class="go">Read the guide →</div>
+          </div>
+          <div class="card mode-card" data-go="progress">
+            <div class="ic blue">📈</div><h3>My Progress</h3>
+            <p>See your score history and category strengths over time.</p>
+            <div class="go">View progress →</div>
+          </div>
+        </div>`;
+      $$('.mode-card').forEach(c=>c.addEventListener('click',()=>Router.go(c.dataset.go)));
+    },
+  };
+
+  /* ---------- Setup screens ---------- */
+  const Setup = {
+    category(){
+      let cat='verbal', count=10, timed=false;
+      const draw=()=>{ $('#view-category').innerHTML=`
+        <div class="section-title">Practice by Topic<span class="sub">Untimed by default · explanations after every question</span></div>
+        <div class="card">
+          <div class="opt-group"><h4>Choose a topic</h4><div class="choices" id="c-cat">
+            ${Object.entries(CATS).map(([k,v])=>`<button class="choice ${cat===k?'sel':''}" data-v="${k}">${v.icon} ${v.name}</button>`).join('')}
+          </div></div>
+          <div class="opt-group"><h4>Number of questions</h4><div class="choices" id="c-count">
+            ${[5,10,15,'All'].map(n=>`<button class="choice ${String(count)===String(n)?'sel':''}" data-v="${n}">${n}</button>`).join('')}
+          </div></div>
+          <div class="opt-group"><h4>Timer</h4><div class="choices" id="c-timed">
+            <button class="choice ${!timed?'sel':''}" data-v="off">Untimed (learn)</button>
+            <button class="choice ${timed?'sel':''}" data-v="on">Timed (~18s/Q)</button>
+          </div></div>
+          <div class="btn-row">
+            <button class="btn primary lg" id="c-start">Start practice →</button>
+            <button class="btn ghost lg" id="c-back">← Home</button>
+          </div>
+        </div>`;
+        $$('#c-cat .choice').forEach(b=>b.onclick=()=>{cat=b.dataset.v;draw();});
+        $$('#c-count .choice').forEach(b=>b.onclick=()=>{count=b.dataset.v==='All'?'All':+b.dataset.v;draw();});
+        $$('#c-timed .choice').forEach(b=>b.onclick=()=>{timed=b.dataset.v==='on';draw();});
+        $('#c-back').onclick=()=>Router.go('home');
+        $('#c-start').onclick=()=>{
+          const pool=QUESTIONS.filter(q=>q.category===cat);
+          const n=count==='All'?pool.length:Math.min(count,pool.length);
+          const qs=pickCategory(cat,n);
+          Quiz.start({ mode:'category', label:`${CATS[cat].name} practice`, questions:qs,
+            timeLimit: timed? n*18 : null });
+        };
+      };
+      draw(); Views.show('category');
+    },
+
+    drill(){
+      // generate first question, keep generating
+      const gen=()=>Generators.random();
+      Quiz.start({ mode:'drill', label:'Endless drill', drill:true,
+        questions:[gen()], generator:gen, timeLimit:null });
+    },
+  };
+
+  /* ---------- Progress ---------- */
+  const Progress = {
+    render(){
+      const s=Store.stats();
+      const full=s.history.filter(h=>h.mode==='full');
+      let chart='<p style="color:var(--muted)">Take a full simulation to start tracking your scores here.</p>';
+      if(full.length){
+        const max=FULL_TEST_SIZE;
+        const bars=full.slice(-12).map(h=>{
+          const ht=Math.max(4,Math.round(h.correct/max*120));
+          const d=new Date(h.date); const lbl=(d.getMonth()+1)+'/'+d.getDate();
+          return `<div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex:1">
+            <div style="font-size:.78rem;font-weight:800">${h.correct}</div>
+            <div style="width:70%;max-width:34px;height:${ht}px;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--brand),var(--brand2))"></div>
+            <div style="font-size:.7rem;color:var(--muted)">${lbl}</div></div>`;
+        }).join('');
+        chart=`<div class="card"><div style="display:flex;align-items:flex-end;gap:8px;height:160px;padding:10px 4px">${bars}</div>
+          <div style="text-align:center;color:var(--muted);font-size:.82rem;margin-top:8px">Raw score (correct / 50) — last ${Math.min(12,full.length)} simulations</div></div>`;
+      }
+      // aggregate category accuracy
+      const agg={verbal:{c:0,t:0},math:{c:0,t:0},spatial:{c:0,t:0}};
+      s.history.forEach(h=>{ if(h.cats) Object.entries(h.cats).forEach(([k,v])=>{agg[k].c+=v.c;agg[k].t+=v.t;}); });
+      const catBars=Object.entries(agg).map(([k,v])=>{
+        const p=v.t?Math.round(v.c/v.t*100):0;
+        return `<div class="bd-row"><span class="lbl">${CATS[k].icon} ${CATS[k].name}</span>
+          <span class="bd-bar"><i style="width:${p}%;background:${CATS[k].color}"></i></span>
+          <span class="num">${p}%</span></div>`;
+      }).join('');
+
+      $('#view-progress').innerHTML=`
+        <div class="section-title">My Progress<span class="sub">Stored privately in your browser</span></div>
+        <div class="grid cols-4">
+          <div class="stat"><b>${s.tests}</b><span>Sims taken</span></div>
+          <div class="stat"><b>${s.best||'—'}</b><span>Best /50</span></div>
+          <div class="stat"><b>${s.avg||'—'}</b><span>Avg /50</span></div>
+          <div class="stat"><b>${s.totalQ}</b><span>Q practiced</span></div>
+        </div>
+        <div class="section-title">Score history</div>
+        ${chart}
+        <div class="section-title">Accuracy by area</div>
+        <div class="breakdown">${catBars}</div>
+        <div class="btn-row" style="margin-top:20px">
+          <button class="btn primary" id="p-full">Take a full simulation →</button>
+          <button class="btn ghost" id="p-reset">Reset all data</button>
+        </div>`;
+      $('#p-full').onclick=()=>Router.go('full');
+      $('#p-reset').onclick=()=>{ if(confirm('Erase all your saved progress?')){ Store.save({history:[],theme:Store.theme()}); Progress.render(); flash('Progress cleared'); } };
+      Views.show('progress');
+    },
+  };
+
+  /* ---------- Study guide ---------- */
+  const Guide = {
+    render(){
+      $('#view-study').innerHTML=`
+        <div class="section-title">CCAT Study Guide<span class="sub">Everything you need to walk in prepared</span></div>
+        <div class="card guide">
+          <h3>📋 What is the CCAT?</h3>
+          <p>The <b>Criteria Cognitive Aptitude Test</b> measures your ability to solve problems, digest information, and think critically. It is widely used in hiring. Key facts:</p>
+          <ul>
+            <li><b>50 questions</b> in <b>15 minutes</b> — that's about <b>18 seconds per question</b>.</li>
+            <li>Questions get <b>progressively harder</b>. There is <b>no penalty for wrong answers</b>, so never leave a blank.</li>
+            <li><b>Fewer than 1%</b> of people finish all 50. The average raw score is around <b>24</b>.</li>
+            <li>Three areas are mixed throughout: Verbal, Math &amp; Logic, and Spatial Reasoning.</li>
+          </ul>
+
+          <h3>📖 Verbal Ability</h3>
+          <ul>
+            <li><b>Analogies:</b> identify the relationship in the first pair, then apply it. (worker : tool, part : whole, cause : effect, degree, opposite).</li>
+            <li><b>Synonyms / Antonyms:</b> build vocabulary; watch for the trap option that's a synonym when an antonym is asked.</li>
+            <li><b>Sentence completion:</b> read for signal words — <i>although, because, despite, therefore</i> — that flip or confirm meaning.</li>
+            <li><b>Odd-one-out:</b> find the shared category, then the outlier.</li>
+          </ul>
+
+          <h3>🔢 Math & Logic</h3>
+          <p>Memorize these so you don't burn time deriving them:</p>
+          <div class="formula">Percent of a number:  X% of N = (X/100) × N</div>
+          <div class="formula">Percent change:  (new − old) ÷ old × 100</div>
+          <div class="formula">Speed = Distance ÷ Time   ·   Distance = Speed × Time</div>
+          <div class="formula">Work:  total = workers × time (worker-days)</div>
+          <div class="formula">Average = sum of values ÷ count</div>
+          <ul>
+            <li><b>Number series:</b> check for +/−, ×/÷, growing differences, squares, or Fibonacci-style sums.</li>
+            <li><b>Logic:</b> "all/some/none" syllogisms — diagram them; ordering puzzles — write the chain (A &gt; B &gt; C).</li>
+          </ul>
+
+          <h3>🧩 Spatial & Abstract</h3>
+          <ul>
+            <li><b>Shape/figure series:</b> track one feature at a time — count of sides, rotation, shading, position.</li>
+            <li><b>Rotation &amp; mirrors:</b> imagine turning the figure 90°/180°; mirror = left-right flip.</li>
+            <li><b>Attention to detail:</b> compare strings character-by-character; the difference is usually a single swapped digit/letter or case.</li>
+            <li><b>Matrices:</b> read changes across rows AND down columns.</li>
+          </ul>
+
+          <h3>🎯 Test-day strategy</h3>
+          <ul>
+            <li><b>Triage fast:</b> if a question isn't clicking in ~20 seconds, guess and move on. One hard question isn't worth three easy ones.</li>
+            <li><b>Never leave blanks</b> — wrong answers don't hurt you, so guess everything you can't reach.</li>
+            <li>Keep a steady pace: at the halfway time mark (7:30) you want to be near question 25.</li>
+            <li>Eliminate obviously-wrong options to improve guess odds.</li>
+          </ul>
+
+          <h3>📊 Score percentile chart</h3>
+          <p>Approximate percentile vs. the general adult population (your target also depends on the role):</p>
+          <table class="table">
+            <tr><th>Raw score (/50)</th><th>≈ Percentile</th><th>Interpretation</th></tr>
+            <tr><td><b>42+</b></td><td>99th</td><td>Exceptional</td></tr>
+            <tr><td><b>36</b></td><td>~95th</td><td>Very strong</td></tr>
+            <tr><td><b>31</b></td><td>~85th</td><td>Strong</td></tr>
+            <tr><td><b>27</b></td><td>~70th</td><td>Above average</td></tr>
+            <tr><td><b>24</b></td><td>~50th</td><td>Average</td></tr>
+            <tr><td><b>20</b></td><td>~35th</td><td>Below average</td></tr>
+            <tr><td><b>15</b></td><td>~15th</td><td>Needs work</td></tr>
+          </table>
+          <p style="font-size:.82rem">Percentiles are estimates for self-study and may differ from official Criteria Corp norms.</p>
+
+          <div class="btn-row" style="margin-top:16px">
+            <button class="btn primary" id="g-full">Take a full simulation →</button>
+            <button class="btn ghost" id="g-home">← Home</button>
+          </div>
+        </div>`;
+      $('#g-full').onclick=()=>Router.go('full');
+      $('#g-home').onclick=()=>Router.go('home');
+      Views.show('study');
+    },
+  };
+
+  function estPercentile(raw){
+    // piecewise-linear estimate from the chart above
+    const pts=[[0,1],[15,15],[20,35],[24,50],[27,70],[31,85],[36,95],[42,99],[50,99]];
+    for(let i=0;i<pts.length-1;i++){
+      const [x0,y0]=pts[i],[x1,y1]=pts[i+1];
+      if(raw>=x0&&raw<=x1){ return Math.round(y0+(y1-y0)*(raw-x0)/(x1-x0)); }
+    }
+    return raw>=50?99:1;
+  }
+
+  /* ---------- Views / Router ---------- */
+  const Views={
+    list:['home','category','quiz','results','review','study','progress'],
+    show(v){ this.list.forEach(x=>$('#view-'+x).classList.toggle('hidden', x!==v)); window.scrollTo({top:0,behavior:'smooth'}); this._cur=v; setActiveNav(v); },
+  };
+  const Router={
+    go(where){
+      switch(where){
+        case 'home': Home.render(); Views.show('home'); break;
+        case 'full': Quiz.start({mode:'full',label:'Full CCAT simulation',questions:pickBalanced(FULL_TEST_SIZE),timeLimit:FULL_TEST_TIME}); break;
+        case 'quick': Quiz.start({mode:'quick',label:'Quick 10 warm-up',questions:pickBalanced(10),timeLimit:180}); break;
+        case 'category': Setup.category(); break;
+        case 'drill': Setup.drill(); break;
+        case 'study': Guide.render(); break;
+        case 'progress': Progress.render(); break;
+      }
+    }
+  };
+  function setActiveNav(v){
+    const map={home:'home',study:'study',progress:'progress'};
+    $$('.nav button[data-nav]').forEach(b=>b.classList.toggle('active', b.dataset.nav===map[v]));
+  }
+
+  /* ---------- theme ---------- */
+  function applyTheme(t){ document.documentElement.classList.toggle('light', t==='light'); $('#theme-btn').textContent = t==='light'?'🌙':'☀️'; }
+
+  /* ---------- boot ---------- */
+  function boot(){
+    applyTheme(Store.theme());
+    $('#theme-btn').addEventListener('click',()=>{ const t=document.documentElement.classList.contains('light')?'dark':'light'; Store.setTheme(t); applyTheme(t); });
+    $$('.nav button[data-nav]').forEach(b=>b.addEventListener('click',()=>Router.go(b.dataset.nav)));
+    $('#brand-home').addEventListener('click',()=>Router.go('home'));
+    Home.render(); Views.show('home');
+  }
+  document.addEventListener('DOMContentLoaded',boot);
+})();
