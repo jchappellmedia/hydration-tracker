@@ -158,10 +158,13 @@
       const ok = sel===q.answer;
       const slot=$('#explain-slot');
       if(slot){
-        slot.innerHTML=`<div class="explain">
-          <span class="verdict ${ok?'ok':'no'}">${ok?'✓ Correct':(sel===-1?'⤳ Skipped':'✕ Not quite')}</span>
-          <b>Answer: ${'ABCD'[q.answer]}.</b> ${q.explanation}
-        </div>`;
+        const cl='ABCD'[q.answer];
+        let h=`<div class="explain"><span class="verdict ${ok?'ok':'no'}">${ok?'✓ Correct':(sel===-1?'⤳ Skipped — here is the answer':'✕ Not quite')}</span>`;
+        if(!ok && sel!==-1 && sel!=null){
+          h+=`<div class="why wrong"><b>Why “${q.options[sel]}” is wrong:</b> ${cap(wrongReason(q,sel))}.</div>`;
+        }
+        h+=`<div class="why right"><b>✓ Correct answer — ${cl}. “${q.options[q.answer]}”.</b> ${q.explanation}</div></div>`;
+        slot.innerHTML=h;
       }
     },
 
@@ -269,7 +272,8 @@
           <div class="rq"><span class="badge ${d.correct?'ok':(d.a===-1?'skip':'no')}">${d.correct?'✓':(d.a===-1?'–':'✕')}</span>
             <span>${n+1}. ${q.q}</span></div>
           ${q.svg?q.svg:''}
-          ${d.correct?'':`<div class="ra you-wrong">Your answer: <b>${youText}</b></div>`}
+          ${(!d.correct && d.a!==-1)?`<div class="ra you-wrong">Your answer: <b>${youText}</b> — ${wrongReason(q,d.a)}.</div>`:''}
+          ${d.a===-1?`<div class="ra you-wrong">You skipped this one.</div>`:''}
           <div class="ra right">Correct answer: <b>${q.options[q.answer]}</b></div>
           <div class="ra">${q.explanation}</div>
         </div>`;
@@ -321,8 +325,8 @@
             <div class="go">Choose a topic →</div>
           </div>
           <div class="card mode-card" data-go="drill">
-            <div class="ic purple">♾️</div><h3>Endless Drill</h3>
-            <p>Unlimited auto-generated number-series, arithmetic and percentage problems.</p>
+            <div class="ic purple">♾️</div><h3>Untimed Drills</h3>
+            <p>No clock. Unlimited number-series, arithmetic &amp; percentage problems with a full why-it's-right / why-you-were-wrong breakdown after each answer.</p>
             <div class="go">Start drilling →</div>
           </div>
           <div class="card mode-card" data-go="quick">
@@ -383,10 +387,46 @@
     },
 
     drill(){
-      // generate first question, keep generating
-      const gen=()=>Generators.random();
-      Quiz.start({ mode:'drill', label:'Endless drill', drill:true,
-        questions:[gen()], generator:gen, timeLimit:null });
+      const TOPICS={ mixed:'Mixed math', series:'Number series', arith:'Arithmetic', pct:'Percentages' };
+      const genFor=(t)=> t==='series'?Generators.numberSeries()
+                       : t==='arith' ?Generators.arithmetic()
+                       : t==='pct'   ?Generators.percentage()
+                       : Generators.random();
+      let topic='mixed', length='endless';
+      const draw=()=>{ $('#view-drill').innerHTML=`
+        <div class="section-title">Untimed Practice Drills
+          <span class="sub">No clock, no pressure — every question shows the full breakdown right after you answer</span></div>
+        <div class="card">
+          <div class="opt-group"><h4>Topic</h4><div class="choices" id="d-topic">
+            ${Object.entries(TOPICS).map(([k,v])=>`<button class="choice ${topic===k?'sel':''}" data-v="${k}">${v}</button>`).join('')}
+          </div></div>
+          <div class="opt-group"><h4>How many questions?</h4><div class="choices" id="d-len">
+            ${[['10','10'],['25','25'],['endless','Endless ♾️']].map(([v,l])=>`<button class="choice ${length===v?'sel':''}" data-v="${v}">${l}</button>`).join('')}
+          </div></div>
+          <div class="opt-group"><h4>Mode</h4>
+            <div class="pill" style="display:inline-block">⏱ Untimed · explanations after every answer</div>
+          </div>
+          <div class="btn-row">
+            <button class="btn primary lg" id="d-start">Start drilling →</button>
+            <button class="btn ghost lg" id="d-back">← Home</button>
+          </div>
+        </div>`;
+        $$('#d-topic .choice').forEach(b=>b.onclick=()=>{topic=b.dataset.v;draw();});
+        $$('#d-len .choice').forEach(b=>b.onclick=()=>{length=b.dataset.v;draw();});
+        $('#d-back').onclick=()=>Router.go('home');
+        $('#d-start').onclick=()=>{
+          const gen=()=>genFor(topic);
+          if(length==='endless'){
+            Quiz.start({ mode:'drill', label:`Untimed drill · ${TOPICS[topic]}`, drill:true,
+              questions:[gen()], generator:gen, timeLimit:null });
+          } else {
+            const n=+length;
+            Quiz.start({ mode:'drill', label:`Untimed drill · ${TOPICS[topic]} (${n})`, drill:false,
+              questions:Array.from({length:n}, gen), timeLimit:null });
+          }
+        };
+      };
+      draw(); Views.show('drill');
     },
   };
 
@@ -517,6 +557,39 @@
     },
   };
 
+  // Per-type fallback reasons explaining why a chosen distractor is wrong.
+  const WRONG_REASONS = {
+    'analogy':'it doesn’t preserve the same relationship shown in the first pair',
+    'synonym':'it doesn’t share the meaning of the target word',
+    'antonym':'it isn’t the opposite of the target word',
+    'sentence completion':'it doesn’t fit the sentence’s logic and signal words (like “although”, “because”, “despite”)',
+    'odd one out':'it actually belongs with the rest of the group, so it isn’t the outlier',
+    'word relationship':'it doesn’t match the relationship shown in the example pair',
+    'number series':'it doesn’t continue the pattern in the sequence',
+    'letter series':'it doesn’t follow the letter pattern in the sequence',
+    'symbol series':'it doesn’t continue the rotational/visual pattern',
+    'shape series':'it doesn’t follow the progression of the figures',
+    'percentage':'the percentage works out to a different value',
+    'ratio':'it doesn’t keep the quantities in the required ratio',
+    'fraction':'the fraction of the amount comes out differently',
+    'average':'it doesn’t produce the required total or average',
+    'arithmetic':'the calculation gives a different result',
+    'word problem':'the steps of the problem don’t lead to this value',
+    'logic':'it doesn’t logically follow from the statements given',
+    'attention to detail':'a careful character-by-character check rules it out',
+    'rotation':'rotating the figure as described doesn’t produce this',
+    'cube folding':'the cube’s face relationships don’t support this',
+    'matrix':'it doesn’t satisfy both the row and column rules',
+    'number grid':'it doesn’t follow the same rule used in the other rows',
+    'pattern':'it breaks the established pattern',
+  };
+  function wrongReason(q, sel){
+    if(q.why && q.why[sel]) return q.why[sel];
+    if(q.wrongHint) return q.wrongHint;
+    return WRONG_REASONS[(q.type||'').toLowerCase()] || 'it doesn’t satisfy the rule this question is testing';
+  }
+  function cap(s){ return s ? s.charAt(0).toUpperCase()+s.slice(1) : s; }
+
   function estPercentile(raw){
     // piecewise-linear estimate from the chart above
     const pts=[[0,1],[15,15],[20,35],[24,50],[27,70],[31,85],[36,95],[42,99],[50,99]];
@@ -529,7 +602,7 @@
 
   /* ---------- Views / Router ---------- */
   const Views={
-    list:['home','category','quiz','results','review','study','progress'],
+    list:['home','category','drill','quiz','results','review','study','progress'],
     show(v){ this.list.forEach(x=>$('#view-'+x).classList.toggle('hidden', x!==v)); window.scrollTo({top:0,behavior:'smooth'}); this._cur=v; setActiveNav(v); },
   };
   const Router={

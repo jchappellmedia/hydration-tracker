@@ -176,6 +176,10 @@ main{max-width:1040px;margin:0 auto;padding:26px 20px 80px}
 .explain .verdict{font-weight:800;margin-bottom:6px;display:block}
 .explain .verdict.ok{color:var(--good)}
 .explain .verdict.no{color:var(--bad)}
+.explain .why{padding:10px 12px;border-radius:10px;margin-top:8px;border-left:3px solid var(--line)}
+.explain .why b{color:var(--ink)}
+.explain .why.wrong{background:color-mix(in srgb,var(--bad) 9%,transparent);border-left-color:var(--bad)}
+.explain .why.right{background:color-mix(in srgb,var(--good) 9%,transparent);border-left-color:var(--good)}
 
 .quiz-foot{display:flex;gap:12px;margin-top:22px;align-items:center}
 .quiz-foot .spacer{margin-left:auto}

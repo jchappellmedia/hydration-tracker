@@ -610,9 +610,11 @@ const Generators = {
       ans = v; rule = `Differences increase by 1 each step (starting at ${step}).`;
     }
     const opts = this._distract(ans);
+    const ruleText = rule.replace(/\.$/,'').toLowerCase();
     return { id:'gen-ns-'+Math.random().toString(36).slice(2), category:'math', type:'Number Series',
       q:`What number comes next?  ${seq.join(', ')}, ____`,
-      options:opts.options, answer:opts.answer, explanation:`${rule} So the next term is ${ans}.` };
+      options:opts.options, answer:opts.answer, explanation:`${rule} So the next term is ${ans}.`,
+      wrongHint:`it doesn’t continue the sequence — the rule is: ${ruleText}, which gives ${ans}` };
   },
 
   arithmetic(){
@@ -625,11 +627,13 @@ const Generators = {
     else { const q=this._r(2,12); const prod=q*b; const opts=this._distract(q);
       return { id:'gen-ar-'+Math.random().toString(36).slice(2), category:'math', type:'Arithmetic',
         q:`${prod} ÷ ${b} = ?`, options:opts.options, answer:opts.answer,
-        explanation:`${prod} ÷ ${b} = ${q}.` }; }
+        explanation:`${prod} ÷ ${b} = ${q}.`,
+        wrongHint:`the exact result of ${prod} ÷ ${b} is ${q}` }; }
     const opts = this._distract(ans);
     return { id:'gen-ar-'+Math.random().toString(36).slice(2), category:'math', type:'Arithmetic',
       q:`${a} ${sym} ${b} = ?`, options:opts.options, answer:opts.answer,
-      explanation:`${a} ${sym} ${b} = ${ans}.` };
+      explanation:`${a} ${sym} ${b} = ${ans}.`,
+      wrongHint:`the exact result of ${a} ${sym} ${b} is ${ans}` };
   },
 
   percentage(){
@@ -639,7 +643,8 @@ const Generators = {
     const opts = this._distract(ans);
     return { id:'gen-pc-'+Math.random().toString(36).slice(2), category:'math', type:'Percentage',
       q:`What is ${pct}% of ${base}?`, options:opts.options, answer:opts.answer,
-      explanation:`${pct}% of ${base} = ${base} × ${pct/100} = ${ans}.` };
+      explanation:`${pct}% of ${base} = ${base} × ${pct/100} = ${ans}.`,
+      wrongHint:`${pct}% of ${base} is ${base} × ${pct/100} = ${ans}, not this value` };
   },
 
   // Build 4 plausible numeric options around the correct answer
