@@ -11,6 +11,67 @@
        svg?:<svg string for the prompt>, svgOptions?:[<svg>...] }
    ========================================================================= */
 
+/* -------------------------------------------------------------------------
+   SVG helpers — used to build provably-correct visual reasoning questions
+   (next-in-series, odd-one-out, 3x3 matrix, figure analogy). Shapes are drawn
+   from parameters so a rule and its distractors are guaranteed consistent.
+   ------------------------------------------------------------------------- */
+function _polyPoints(n, cx, cy, r, rotDeg){
+  const out=[];
+  for(let i=0;i<n;i++){
+    const a=(-90+rotDeg)*Math.PI/180 + i*2*Math.PI/n;
+    out.push((cx+r*Math.cos(a)).toFixed(1)+','+(cy+r*Math.sin(a)).toFixed(1));
+  }
+  return out.join(' ');
+}
+// Draw a regular polygon. fill: 'none' | 'solid' | 'light'
+function poly(n, o){
+  o=o||{}; const cx=o.cx||50, cy=o.cy||50, r=o.r||32, rot=o.rot||0, sw=o.sw||4;
+  const f = o.fill==='solid'?'currentColor':'none';
+  const op = o.fill==='light'?' fill-opacity="0.3"':'';
+  const fill = o.fill==='light'?'currentColor':f;
+  return `<polygon points="${_polyPoints(n,cx,cy,r,rot)}" fill="${fill}"${op} stroke="currentColor" stroke-width="${sw}"/>`;
+}
+function circ(o){
+  o=o||{}; const cx=o.cx||50, cy=o.cy||50, r=o.r||30, sw=o.sw||4;
+  const fill = o.fill==='solid'?'currentColor':'none';
+  const op = o.fill==='light'?' fill-opacity="0.3"':'';
+  return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${o.fill==='light'?'currentColor':fill}"${op} stroke="currentColor" stroke-width="${sw}"/>`;
+}
+// An arrow rotated rotDeg (0 = pointing right)
+function arrow(rotDeg){
+  return `<g transform="translate(50,50) rotate(${rotDeg})" stroke="currentColor" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="-26" y1="0" x2="24" y2="0"/><polyline points="10,-14 26,0 10,14"/></g>`;
+}
+// N dots placed on a fixed 3x3 lattice (count 1..9)
+function dots(count){
+  const P=[[30,30],[50,30],[70,30],[30,50],[50,50],[70,50],[30,70],[50,70],[70,70]];
+  const order=[4,0,8,2,6,1,7,3,5]; // visually balanced fill order
+  let s='';
+  for(let i=0;i<count && i<9;i++){ const [x,y]=P[order[i]]; s+=`<circle cx="${x}" cy="${y}" r="7" fill="currentColor"/>`; }
+  return s;
+}
+// Wrap inner markup as a sequence tile / option tile / matrix
+function _tile(inner, cls){ return `<svg viewBox="0 0 100 100" class="${cls}">${inner}</svg>`; }
+function vtile(inner){ return _tile(inner,'vtile'); }
+function qmark(){ return _tile('<text x="50" y="70" font-size="52" text-anchor="middle" fill="currentColor">?</text>','vtile'); }
+function otile(inner){ return _tile(inner,'osvg'); }
+function vseq(tiles){ return `<div class="vseq">${tiles.join('')}</div>`; }
+function matrix3(cells){ // cells: array of 9 inner-svg fragments ('?' allowed via qmark-less)
+  let s='<svg viewBox="0 0 300 300" class="vmatrix">';
+  for(let i=0;i<9;i++){ const r=Math.floor(i/3), c=i%3;
+    s+=`<g transform="translate(${c*100},${r*100})"><rect x="3" y="3" width="94" height="94" rx="8" fill="none" stroke="var(--line)" stroke-width="2"/>${cells[i]}</g>`; }
+  return s+'</svg>';
+}
+function mqmark(){ return '<text x="50" y="66" font-size="44" text-anchor="middle" fill="currentColor">?</text>'; }
+// Two-column attention-to-detail table; rows: [[left,right],...]. Returns {html, identical}
+function adTable(rows){
+  let same=0;
+  const body=rows.map((p,i)=>{ const eq=p[0]===p[1]; if(eq) same++;
+    return `<tr><td>${i+1}</td><td class="mono">${p[0]}</td><td class="mono">${p[1]}</td></tr>`; }).join('');
+  const html=`<table class="adtable"><thead><tr><th>#</th><th>Set A</th><th>Set B</th></tr></thead><tbody>${body}</tbody></table>`;
+  return { html, identical:same };
+}
+
 const QUESTIONS = [
 
   /* ====================== VERBAL ABILITY ============================= */
@@ -1002,6 +1063,283 @@ const QUESTIONS = [
     q:'What comes next? ◔ ◑ ◕ ● ____',
     options:['◔','○','●','◑'], answer:1,
     explanation:'The circle fills up (quarter, half, three-quarter, full) then resets to empty (○).' },
+
+  /* ===================================================================
+     VISUAL PATTERN QUESTIONS — drawn to mirror the real CCAT spatial
+     section: Next-in-Series, Odd-One-Out, 3x3 Matrix, Figure Analogy.
+     Five answer choices, as on the actual test.
+     =================================================================== */
+
+  // ---- Next in Series ----
+  { id:'sv1', category:'spatial', type:'Next in Series',
+    q:'Which figure completes the series?',
+    svg: vseq([ vtile(poly(3)), vtile(poly(4)), vtile(poly(5)), qmark() ]),
+    options:['Hexagon (6 sides)','Pentagon (5 sides)','Heptagon (7 sides)','Square (4 sides)','Triangle (3 sides)'],
+    svgOptions:[ otile(poly(6)), otile(poly(5)), otile(poly(7)), otile(poly(4)), otile(poly(3)) ],
+    answer:0,
+    explanation:'The number of sides increases by one each step (3 → 4 → 5), so the next figure has 6 sides: a hexagon.' },
+
+  { id:'sv2', category:'spatial', type:'Next in Series',
+    q:'The arrow rotates by the same amount each step. Which arrow comes next?',
+    svg: vseq([ vtile(arrow(0)), vtile(arrow(45)), vtile(arrow(90)), qmark() ]),
+    options:['Pointing down-left','Pointing left','Pointing down','Pointing down-right','Pointing right'],
+    svgOptions:[ otile(arrow(135)), otile(arrow(180)), otile(arrow(90)), otile(arrow(45)), otile(arrow(0)) ],
+    answer:0,
+    explanation:'Each step the arrow turns 45° clockwise (right → down-right → down), so the next points down-left (135°).' },
+
+  { id:'sv3', category:'spatial', type:'Next in Series',
+    q:'Two things change each step. Which figure completes the series?',
+    svg: vseq([ vtile(poly(3,{fill:'none'})), vtile(poly(4,{fill:'solid'})), vtile(poly(5,{fill:'none'})), qmark() ]),
+    options:['Filled hexagon','Empty hexagon','Filled pentagon','Filled heptagon','Shaded hexagon (light)'],
+    svgOptions:[ otile(poly(6,{fill:'solid'})), otile(poly(6,{fill:'none'})), otile(poly(5,{fill:'solid'})), otile(poly(7,{fill:'solid'})), otile(poly(6,{fill:'light'})) ],
+    answer:0,
+    explanation:'Sides increase by one (3,4,5 → 6) and the fill alternates empty/solid (empty, solid, empty → solid). So the answer is a filled hexagon.' },
+
+  { id:'sv4', category:'spatial', type:'Next in Series',
+    q:'Which arrow comes next in the rotation?',
+    svg: vseq([ vtile(arrow(0)), vtile(arrow(90)), vtile(arrow(180)), qmark() ]),
+    options:['Pointing up','Pointing right','Pointing down','Pointing left','Pointing down-right'],
+    svgOptions:[ otile(arrow(270)), otile(arrow(0)), otile(arrow(90)), otile(arrow(180)), otile(arrow(45)) ],
+    answer:0,
+    explanation:'The arrow turns 90° clockwise each step (right → down → left), so the next points up.' },
+
+  { id:'sv5', category:'spatial', type:'Next in Series',
+    q:'How many dots should the next figure have?',
+    svg: vseq([ vtile(dots(1)), vtile(dots(3)), vtile(dots(5)), qmark() ]),
+    options:['7 dots','5 dots','9 dots','6 dots','8 dots'],
+    svgOptions:[ otile(dots(7)), otile(dots(5)), otile(dots(9)), otile(dots(6)), otile(dots(8)) ],
+    answer:0,
+    explanation:'The dot count goes up by 2 each step (1, 3, 5), so the next figure has 7 dots.' },
+
+  { id:'sv6', category:'spatial', type:'Next in Series',
+    q:'The figures lose a side each step. Which comes next?',
+    svg: vseq([ vtile(poly(6)), vtile(poly(5)), vtile(poly(4)), qmark() ]),
+    options:['Triangle (3 sides)','Square (4 sides)','Pentagon (5 sides)','Hexagon (6 sides)','Circle'],
+    svgOptions:[ otile(poly(3)), otile(poly(4)), otile(poly(5)), otile(poly(6)), otile(circ()) ],
+    answer:0,
+    explanation:'The number of sides decreases by one each step (6, 5, 4), so the next figure is a triangle (3 sides).' },
+
+  // ---- Odd One Out ----
+  { id:'oo1', category:'spatial', type:'Odd One Out',
+    q:'Four of these figures share a feature and one does not. Which is the odd one out?',
+    svg: vseq([ vtile(poly(4)), vtile(poly(5)), vtile(poly(3,{fill:'solid'})), vtile(poly(6)), vtile(poly(4)) ]),
+    options:['1st figure','2nd figure','3rd figure','4th figure','5th figure'],
+    answer:2,
+    explanation:'All the figures are unshaded outlines except the 3rd, which is solid-filled — it is the odd one out.' },
+
+  { id:'oo2', category:'spatial', type:'Odd One Out',
+    q:'Which figure does NOT belong with the others?',
+    svg: vseq([ vtile(poly(4)), vtile(poly(6)), vtile(poly(5)), vtile(poly(8)), vtile(poly(4)) ]),
+    options:['1st figure','2nd figure','3rd figure','4th figure','5th figure'],
+    answer:2,
+    explanation:'The square (4), hexagon (6), octagon (8) and square (4) all have an even number of sides; the 3rd figure is a pentagon (5 sides), which is odd.' },
+
+  { id:'oo3', category:'spatial', type:'Odd One Out',
+    q:'Four arrows point the same way and one differs. Which is the odd one out?',
+    svg: vseq([ vtile(arrow(0)), vtile(arrow(0)), vtile(arrow(270)), vtile(arrow(0)), vtile(arrow(0)) ]),
+    options:['1st arrow','2nd arrow','3rd arrow','4th arrow','5th arrow'],
+    answer:2,
+    explanation:'Four arrows point right; the 3rd arrow points up — the odd one out.' },
+
+  { id:'oo4', category:'spatial', type:'Odd One Out',
+    q:'Which figure does NOT belong, based on the number of dots?',
+    svg: vseq([ vtile(dots(2)), vtile(dots(4)), vtile(dots(3)), vtile(dots(6)), vtile(dots(8)) ]),
+    options:['1st figure','2nd figure','3rd figure','4th figure','5th figure'],
+    answer:2,
+    explanation:'The dot counts are 2, 4, 3, 6, 8. All are even except the 3rd figure, which has 3 dots (odd).' },
+
+  // ---- 3x3 Matrix ----
+  { id:'mx1', category:'spatial', type:'Matrix',
+    q:'Which option completes the 3×3 grid? (look across rows AND down columns)',
+    svg: matrix3([
+      poly(3,{fill:'none'}),  poly(4,{fill:'none'}),  poly(5,{fill:'none'}),
+      poly(3,{fill:'light'}), poly(4,{fill:'light'}), poly(5,{fill:'light'}),
+      poly(3,{fill:'solid'}), poly(4,{fill:'solid'}), mqmark() ]),
+    options:['Solid pentagon','Light pentagon','Solid square','Empty pentagon','Solid hexagon'],
+    svgOptions:[ otile(poly(5,{fill:'solid'})), otile(poly(5,{fill:'light'})), otile(poly(4,{fill:'solid'})), otile(poly(5,{fill:'none'})), otile(poly(6,{fill:'solid'})) ],
+    answer:0,
+    explanation:'Across each row the shape gains a side (triangle → square → pentagon); down each column the shading darkens (empty → light → solid). The missing cell is therefore a solid pentagon.' },
+
+  { id:'mx2', category:'spatial', type:'Matrix',
+    q:'Which option completes the grid? (the shading shifts position each row)',
+    svg: matrix3([
+      poly(5,{fill:'none'}),  poly(5,{fill:'light'}), poly(5,{fill:'solid'}),
+      poly(5,{fill:'light'}), poly(5,{fill:'solid'}), poly(5,{fill:'none'}),
+      poly(5,{fill:'solid'}), poly(5,{fill:'none'}),  mqmark() ]),
+    options:['Light pentagon','Empty pentagon','Solid pentagon','Light square','Light hexagon'],
+    svgOptions:[ otile(poly(5,{fill:'light'})), otile(poly(5,{fill:'none'})), otile(poly(5,{fill:'solid'})), otile(poly(4,{fill:'light'})), otile(poly(6,{fill:'light'})) ],
+    answer:0,
+    explanation:'Each row uses the cycle empty → light → solid, but the cycle shifts one step to the left each row. The bottom row runs solid, empty, then light — so the missing cell is a light-shaded pentagon.' },
+
+  { id:'mx3', category:'spatial', type:'Matrix',
+    q:'The arrow turns the same amount from cell to cell (reading left-to-right, top-to-bottom). Which completes the grid?',
+    svg: matrix3([
+      arrow(0),   arrow(45),  arrow(90),
+      arrow(135), arrow(180), arrow(225),
+      arrow(270), arrow(315), mqmark() ]),
+    options:['Pointing right','Pointing up-left','Pointing down-right','Pointing left','Pointing down'],
+    svgOptions:[ otile(arrow(0)), otile(arrow(315)), otile(arrow(45)), otile(arrow(180)), otile(arrow(90)) ],
+    answer:0,
+    explanation:'Reading in order, the arrow rotates 45° clockwise each cell (0°, 45°, 90° … 315°). The next is 360° = 0°, pointing right.' },
+
+  // ---- Figure Analogy ----
+  { id:'fa1', category:'spatial', type:'Figure Analogy',
+    q:'The top pair changes in a certain way. Apply the SAME change to the bottom figure. Which completes it?',
+    svg: vseq([ vtile(poly(3,{fill:'none'})), vtile('<text x="50" y="68" font-size="40" text-anchor="middle" fill="currentColor">→</text>'), vtile(poly(3,{fill:'solid'})) ])
+       + vseq([ vtile(poly(4,{fill:'none'})), vtile('<text x="50" y="68" font-size="40" text-anchor="middle" fill="currentColor">→</text>'), qmark() ]),
+    options:['Solid square','Empty square','Solid pentagon','Solid triangle','Light square'],
+    svgOptions:[ otile(poly(4,{fill:'solid'})), otile(poly(4,{fill:'none'})), otile(poly(5,{fill:'solid'})), otile(poly(3,{fill:'solid'})), otile(poly(4,{fill:'light'})) ],
+    answer:0,
+    explanation:'The top pair keeps the same shape but fills it in (empty triangle → solid triangle). Applying that to the empty square gives a solid square.' },
+
+  { id:'fa2', category:'spatial', type:'Figure Analogy',
+    q:'Apply the same rotation shown in the top pair to the bottom figure. Which completes it?',
+    svg: vseq([ vtile(arrow(0)), vtile('<text x="50" y="68" font-size="40" text-anchor="middle" fill="currentColor">→</text>'), vtile(arrow(90)) ])
+       + vseq([ vtile(arrow(270)), vtile('<text x="50" y="68" font-size="40" text-anchor="middle" fill="currentColor">→</text>'), qmark() ]),
+    options:['Pointing right','Pointing left','Pointing down','Pointing up','Pointing down-right'],
+    svgOptions:[ otile(arrow(0)), otile(arrow(180)), otile(arrow(90)), otile(arrow(270)), otile(arrow(45)) ],
+    answer:0,
+    explanation:'The top pair rotates the arrow 90° clockwise (right → down). Rotating the up-arrow 90° clockwise gives an arrow pointing right.' },
+
+  /* ===================================================================
+     VERBAL — Attention to Detail (two-column matching, real CCAT format)
+     =================================================================== */
+  (function(){ const t=adTable([
+      ['8847TQ','8847TQ'], ['MX-0931-K','MX-0931-K'], ['river_run','river_runn'],
+      ['00FF9A2','00FF9A2'], ['Delta-77','Delta-71'] ]);
+    return { id:'ad1', category:'verbal', type:'Attention to Detail',
+      q:'How many of the five rows have Set A and Set B EXACTLY the same?',
+      svg:t.html, options:['0','1','2','3','4','5'], answer:t.identical,
+      explanation:'Rows 1, 2 and 4 match exactly. Row 3 differs ("run" vs "runn") and row 5 differs ("77" vs "71") — so 3 rows are identical.' }; })(),
+
+  (function(){ const t=adTable([
+      ['Kowalski, A.','Kowalski, A.'], ['inv#4471902','inv#4471902'], ['β-carotene','β-caroteen'],
+      ['Set 12.0.4','Set 12.0.4'], ['rhythm&blues','rhythm&blues'] ]);
+    return { id:'ad2', category:'verbal', type:'Attention to Detail',
+      q:'How many of the five rows are EXACTLY identical between the two columns?',
+      svg:t.html, options:['0','1','2','3','4','5'], answer:t.identical,
+      explanation:'Rows 1, 2, 4 and 5 match. Only row 3 differs ("carotene" vs "caroteen"), so 4 rows are identical.' }; })(),
+
+  (function(){ const t=adTable([
+      ['9G7-x12','9G7-x12'], ['Strasse 14b','Strasse 14b'], ['ZZ-009-zz','ZZ-009-zz'],
+      ['portfolio.v2','portfolio.v2'], ['acct: 88301','acct: 88031'] ]);
+    return { id:'ad3', category:'verbal', type:'Attention to Detail',
+      q:'How many of the five rows are EXACTLY identical between the two columns?',
+      svg:t.html, options:['0','1','2','3','4','5'], answer:t.identical,
+      explanation:'Rows 1–4 match exactly. Row 5 differs ("88301" vs "88031" — the digits are transposed), so 4 rows are identical.' }; })(),
+
+  /* ===================================================================
+     LOGIC — Deductive Reasoning & Seating Arrangement (end-of-test style)
+     =================================================================== */
+  { id:'lg1', category:'math', type:'Deductive Reasoning',
+    q:'Five runners finish a race (1st–5th). Wes finished before Tom. Tom finished before Sara. Uma finished immediately after Sara. Vic finished last. Who finished FIRST?',
+    options:['Wes','Tom','Sara','Uma','Vic'], answer:0,
+    explanation:'Vic is 5th. Uma is right after Sara, so Sara=3rd, Uma=4th (Sara can\'t be 4th or Uma would tie Vic). That leaves Wes and Tom for 1st–2nd with Wes before Tom: Wes 1st, Tom 2nd. Wes finished first.' },
+
+  { id:'lg2', category:'math', type:'Seating Arrangement',
+    q:'Five friends sit in chairs 1–5 (left to right). Raj is in chair 1. Tara is in chair 2. Priya is not at either end. Quinn sits immediately to Priya\'s right. Sam sits somewhere to the right of Quinn. Who is in chair 5?',
+    options:['Sam','Priya','Quinn','Raj','Tara'], answer:0,
+    explanation:'Chairs 3–5 remain for Priya, Quinn, Sam. Priya can\'t be at the end, and Quinn = Priya+1, Sam > Quinn. Priya=3, Quinn=4, Sam=5 is the only fit, so Sam is in chair 5.' },
+
+  { id:'lg3', category:'math', type:'Deductive Reasoning',
+    q:'All engineers are problem-solvers. No problem-solver dislikes coffee. Maria is an engineer. Which statement MUST be true?',
+    options:['Maria dislikes coffee','Maria does not dislike coffee','Maria is not a problem-solver','Maria drinks tea'], answer:1,
+    explanation:'Maria is an engineer, so she is a problem-solver. No problem-solver dislikes coffee, so Maria does not dislike coffee.' },
+
+  { id:'lg4', category:'math', type:'Deductive Reasoning',
+    q:'"If it rains, the game is canceled." The game was NOT canceled. What can you conclude?',
+    options:['It rained','It did not rain','The game was delayed','Nothing can be concluded'], answer:1,
+    explanation:'This is modus tollens: if rain → cancellation, and there was no cancellation, then it did not rain.' },
+
+  { id:'lg5', category:'math', type:'Deductive Reasoning',
+    q:'In a building, the gym is above the pool. The café is below the pool. The office is above the gym. Which is on the LOWEST floor?',
+    options:['Office','Gym','Pool','Café'], answer:3,
+    explanation:'From top to bottom: office, gym, pool, café. The café is on the lowest floor.' },
+
+  { id:'lg6', category:'math', type:'Deductive Reasoning',
+    q:'Some musicians are painters. All painters are creative. Which statement MUST be true?',
+    options:['All musicians are creative','Some musicians are creative','No musician is creative','All creative people are painters'], answer:1,
+    explanation:'The musicians who are painters must be creative (all painters are creative), so at least some musicians are creative. We cannot say all musicians are.' },
+
+  /* ===================================================================
+     VERBAL — Harder vocabulary & reasoning
+     =================================================================== */
+  { id:'vh1', category:'verbal', type:'Analogy',
+    q:'Ephemeral is to eternal as ____ is to abundant.',
+    options:['plentiful','scarce','ample','frequent'], answer:1,
+    explanation:'Ephemeral (fleeting) and eternal (everlasting) are opposites; the opposite of abundant is scarce.' },
+  { id:'vh2', category:'verbal', type:'Antonym',
+    q:'Which word is most nearly OPPOSITE to "GREGARIOUS"?',
+    options:['Sociable','Outgoing','Reclusive','Cheerful'], answer:2,
+    explanation:'Gregarious means sociable and fond of company; its opposite is reclusive (preferring to be alone).' },
+  { id:'vh3', category:'verbal', type:'Synonym',
+    q:'Which word means most nearly the same as "CAPRICIOUS"?',
+    options:['Steady','Fickle','Honest','Generous'], answer:1,
+    explanation:'Capricious means given to sudden, unpredictable changes — fickle.' },
+  { id:'vh4', category:'verbal', type:'Sentence Completion',
+    q:'The senator\'s ____ response — neither confirming nor denying the report — frustrated the journalists.',
+    options:['decisive','equivocal','candid','furious'], answer:1,
+    explanation:'"Neither confirming nor denying" describes an equivocal (deliberately ambiguous) response.' },
+  { id:'vh5', category:'verbal', type:'Analogy',
+    q:'Cobbler is to shoes as cooper is to ____?',
+    options:['Wood','Barrels','Hats','Ropes'], answer:1,
+    explanation:'A cobbler makes/repairs shoes; a cooper is a craftsman who makes barrels.' },
+  { id:'vh6', category:'verbal', type:'Antonym',
+    q:'Which word is most nearly OPPOSITE to "ZENITH"?',
+    options:['Peak','Summit','Nadir','Apex'], answer:2,
+    explanation:'Zenith means the highest point; its opposite is the nadir, the lowest point.' },
+  { id:'vh7', category:'verbal', type:'Synonym',
+    q:'Which word means most nearly the same as "OBFUSCATE"?',
+    options:['Clarify','Confuse','Reveal','Simplify'], answer:1,
+    explanation:'To obfuscate is to deliberately make something unclear or confusing.' },
+  { id:'vh8', category:'verbal', type:'Sentence Completion',
+    q:'Far from being a ____ critic, she praised almost every painting in the exhibit.',
+    options:['generous','discerning','captious','silent'], answer:2,
+    explanation:'"Far from being a ___ critic, she praised almost everything" needs a word meaning fault-finding — captious (overly critical) fits the contrast.' },
+
+  /* ===================================================================
+     MATH & LOGIC — Harder, multi-step
+     =================================================================== */
+  { id:'mh1', category:'math', type:'Percentage',
+    q:'A coat is discounted 20%, then an extra 10% is taken off the reduced price. What is the overall discount from the original price?',
+    options:['28%','30%','25%','32%'], answer:0,
+    explanation:'Successive discounts multiply: 0.80 × 0.90 = 0.72, so 72% of the price remains — a 28% total discount (not 30%).' },
+  { id:'mh2', category:'math', type:'Number Series',
+    q:'What number comes next? 3, 7, 15, 31, ____',
+    options:['47','63','62','64'], answer:1,
+    explanation:'Each term is doubled and then +1: 31 × 2 + 1 = 63.' },
+  { id:'mh3', category:'math', type:'Word Problem',
+    q:'One pipe fills a tank in 6 hours, another in 12 hours. Running together, how long to fill it?',
+    options:['3 hours','4 hours','6 hours','9 hours'], answer:1,
+    explanation:'Rates add: 1/6 + 1/12 = 2/12 + 1/12 = 3/12 = 1/4 tank per hour, so it fills in 4 hours.' },
+  { id:'mh4', category:'math', type:'Logic',
+    q:'If 3 machines make 3 widgets in 3 minutes, how many machines are needed to make 100 widgets in 100 minutes?',
+    options:['3','100','33','9'], answer:0,
+    explanation:'Each machine makes 1 widget per 3 minutes. In 100 minutes a machine makes about 33 widgets, so 3 machines make ~100 — the rate is unchanged, the answer is 3.' },
+  { id:'mh5', category:'math', type:'Word Problem',
+    q:'A driver goes to a city at 60 mph and returns along the same road at 40 mph. What is the average speed for the whole trip?',
+    options:['48 mph','50 mph','52 mph','45 mph'], answer:0,
+    explanation:'Average speed = total distance ÷ total time. For equal distances it is the harmonic mean: 2 × 60 × 40 ÷ (60 + 40) = 4800 ÷ 100 = 48 mph.' },
+  { id:'mh6', category:'math', type:'Word Problem',
+    q:'$1,000 is invested at 10% interest compounded annually. What is it worth after 2 years?',
+    options:['$1,200','$1,210','$1,100','$1,221'], answer:1,
+    explanation:'Year 1: 1,000 × 1.10 = 1,100. Year 2: 1,100 × 1.10 = 1,210.' },
+  { id:'mh7', category:'math', type:'Ratio',
+    q:'If a : b = 2 : 3 and b : c = 4 : 5, what is a : c?',
+    options:['2 : 5','8 : 15','6 : 5','10 : 15'], answer:1,
+    explanation:'Scale b to match: a:b = 8:12 and b:c = 12:15, giving a:b:c = 8:12:15. So a:c = 8:15.' },
+  { id:'mh8', category:'math', type:'Number Series',
+    q:'What number comes next? 2, 3, 5, 7, 11, 13, ____',
+    options:['15','16','17','19'], answer:2,
+    explanation:'These are consecutive prime numbers; the next prime after 13 is 17.' },
+  { id:'mh9', category:'math', type:'Word Problem',
+    q:'On an analog clock at exactly 3:15, what is the angle between the hour and minute hands?',
+    options:['0°','7.5°','15°','22.5°'], answer:1,
+    explanation:'At 3:15 the minute hand is at 90°. The hour hand has moved 15 min past 3, i.e. 3×30 + 15×0.5 = 97.5°. The difference is 7.5°.' },
+  { id:'mh10', category:'math', type:'Word Problem',
+    q:'A 25% increase followed by a 20% decrease leaves a price at what fraction of the original?',
+    options:['Exactly the same','5% higher','5% lower','25% higher'], answer:0,
+    explanation:'1.25 × 0.80 = 1.00, so the price ends up exactly where it started.' },
 ];
 
 /* -------------------------------------------------------------------------
@@ -1012,9 +1350,9 @@ const Generators = {
   _r(min, max){ return Math.floor(Math.random() * (max - min + 1)) + min; },
 
   numberSeries(){
-    const start = this._r(1, 9);
-    const step = this._r(2, 6);
-    const type = this._r(0, 2);
+    const start = this._r(2, 12);
+    const step = this._r(3, 9);
+    const type = this._r(0, 4);
     let seq = [], rule = '', ans;
     if (type === 0){ // arithmetic
       for (let i=0;i<5;i++) seq.push(start + i*step);
@@ -1024,10 +1362,18 @@ const Generators = {
       let v = start;
       for (let i=0;i<4;i++){ seq.push(v); v*=r; }
       ans = v; rule = `Multiply by ${r} each time.`;
-    } else { // increasing difference
+    } else if (type === 2){ // increasing difference
       let v = start, d = step;
       for (let i=0;i<5;i++){ seq.push(v); v += d; d++; }
       ans = v; rule = `Differences increase by 1 each step (starting at ${step}).`;
+    } else if (type === 3){ // double and add k
+      const k = this._r(1, 4); let v = start;
+      for (let i=0;i<4;i++){ seq.push(v); v = v*2 + k; }
+      ans = v; rule = `Double the previous term and add ${k}.`;
+    } else { // alternating: add a, then multiply by 2
+      const a = this._r(2, 6); let v = start;
+      for (let i=0;i<5;i++){ seq.push(v); v = (i % 2 === 0) ? v + a : v * 2; }
+      ans = v; rule = `Alternately add ${a} and multiply by 2.`;
     }
     const opts = this._distract(ans);
     const ruleText = rule.replace(/\.$/,'').toLowerCase();
@@ -1038,13 +1384,13 @@ const Generators = {
   },
 
   arithmetic(){
-    const a = this._r(12, 99), b = this._r(2, 19);
+    const a = this._r(24, 149), b = this._r(3, 24);
     const op = this._r(0, 3);
     let ans, sym;
     if (op===0){ ans=a+b; sym='+'; }
     else if (op===1){ ans=a-b; sym='−'; }
     else if (op===2){ ans=a*b; sym='×'; }
-    else { const q=this._r(2,12); const prod=q*b; const opts=this._distract(q);
+    else { const q=this._r(3,15); const prod=q*b; const opts=this._distract(q);
       return { id:'gen-ar-'+Math.random().toString(36).slice(2), category:'math', type:'Arithmetic',
         q:`${prod} ÷ ${b} = ?`, options:opts.options, answer:opts.answer,
         explanation:`${prod} ÷ ${b} = ${q}.`,

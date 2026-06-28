@@ -16,11 +16,13 @@ A free, comprehensive web app for practicing and preparing for the **Criteria Co
 
 ## Question areas
 
+The bank holds **240+ questions** built to mirror the real CCAT, weighted to the actual section mix (~34% verbal, ~34% numerical, ~22% spatial, ~10% logic).
+
 | Area | Examples |
 |------|----------|
-| **Verbal** | analogies, synonyms/antonyms, sentence completion, odd-one-out, word relationships |
-| **Math & Logic** | number series, percentages, ratios, word problems, averages, logical ordering & syllogisms |
-| **Spatial & Abstract** | shape/figure series, rotation & mirrors, attention to detail, matrices |
+| **Verbal** | analogies, synonyms/antonyms, sentence completion, odd-one-out, word relationships, and two-column **attention-to-detail** matching |
+| **Math & Logic** | number series, percentages, ratios, multi-step word problems, averages, plus **deductive-reasoning & seating-arrangement** logic puzzles |
+| **Spatial & Abstract** | the three official visual formats — **next-in-series**, **odd-one-out**, and **3×3 matrices** — plus figure analogies, rotation & mirrors (rendered as real SVG figures with five answer choices) |
 
 ## Tech
 

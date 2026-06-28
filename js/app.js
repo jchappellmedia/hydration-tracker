@@ -9,7 +9,8 @@
     math:    { name:'Math & Logic',    color:'var(--math)',    icon:'🔢' },
     spatial: { name:'Spatial & Abstract', color:'var(--spatial)', icon:'🧩' },
   };
-  // Real CCAT proportions (≈ verbal/math/spatial are roughly even across 50)
+  // The real CCAT is 50 questions in 15 minutes (≈18s each), weighted toward
+  // verbal & numerical with a spatial section and a few logic items at the end.
   const FULL_TEST_SIZE = 50;
   const FULL_TEST_TIME = 15 * 60; // seconds
 
@@ -39,17 +40,21 @@
   function fmtTime(s){ const m=Math.floor(s/60), ss=s%60; return m+':'+String(ss).padStart(2,'0'); }
   function flash(msg){ const f=document.createElement('div'); f.className='flash'; f.textContent=msg; document.body.appendChild(f); setTimeout(()=>f.remove(),1900); }
 
-  // Pick a balanced set of static questions across categories
+  // Pick a set mirroring real CCAT proportions: ~34% verbal, ~44% math+logic,
+  // ~22% spatial. We build a weighted draw sequence and pull without repeats.
   function pickBalanced(n){
     const byCat = { verbal:[], math:[], spatial:[] };
     QUESTIONS.forEach(q=>byCat[q.category] && byCat[q.category].push(q));
     Object.keys(byCat).forEach(k=>byCat[k]=shuffle(byCat[k]));
-    const out=[]; const cats=['verbal','math','spatial']; let i=0;
-    while(out.length<n){
-      const c=cats[i%3]; i++;
-      if(byCat[c].length){ out.push(byCat[c].shift()); }
-      else if(byCat.verbal.length+byCat.math.length+byCat.spatial.length===0) break;
-    }
+    const targets = { verbal:Math.round(n*0.34), spatial:Math.round(n*0.22) };
+    targets.math = n - targets.verbal - targets.spatial;
+    const out=[];
+    ['verbal','math','spatial'].forEach(c=>{
+      for(let k=0;k<targets[c] && byCat[c].length;k++) out.push(byCat[c].shift());
+    });
+    // top up if any category ran short
+    const rest = shuffle([...byCat.verbal, ...byCat.math, ...byCat.spatial]);
+    while(out.length<n && rest.length) out.push(rest.shift());
     return shuffle(out);
   }
   function pickCategory(cat, n){ return shuffle(QUESTIONS.filter(q=>q.category===cat)).slice(0,n); }
@@ -97,7 +102,7 @@
       const optionsHtml=q.options.map((opt,i)=>{
         const ov = q.svgOptions ? q.svgOptions[i] : '';
         return `<button class="answer" data-i="${i}" ${answered!=null?'disabled':''}>
-            <span class="key">${'ABCD'[i]}</span>
+            <span class="key">${'ABCDE'[i]}</span>
             ${ov?`<span class="osvg-wrap">${ov}</span>`:''}
             <span class="atext">${opt}</span>
           </button>`;
@@ -158,7 +163,7 @@
       const ok = sel===q.answer;
       const slot=$('#explain-slot');
       if(slot){
-        const cl='ABCD'[q.answer];
+        const cl='ABCDE'[q.answer];
         let h=`<div class="explain"><span class="verdict ${ok?'ok':'no'}">${ok?'✓ Correct':(sel===-1?'⤳ Skipped — here is the answer':'✕ Not quite')}</span>`;
         if(!ok && sel!==-1 && sel!=null){
           h+=`<div class="why wrong"><b>Why “${q.options[sel]}” is wrong:</b> ${cap(wrongReason(q,sel))}.</div>`;
@@ -491,9 +496,9 @@
           <p>The <b>Criteria Cognitive Aptitude Test</b> measures your ability to solve problems, digest information, and think critically. It is widely used in hiring. Key facts:</p>
           <ul>
             <li><b>50 questions</b> in <b>15 minutes</b> — that's about <b>18 seconds per question</b>.</li>
-            <li>Questions get <b>progressively harder</b>. There is <b>no penalty for wrong answers</b>, so never leave a blank.</li>
-            <li><b>Fewer than 1%</b> of people finish all 50. The average raw score is around <b>24</b>.</li>
-            <li>Three areas are mixed throughout: Verbal, Math &amp; Logic, and Spatial Reasoning.</li>
+            <li>Questions get <b>progressively harder</b>. There is <b>no penalty for wrong answers</b>, so never leave a blank, and you <b>cannot skip and return</b> later.</li>
+            <li><b>Fewer than 1%</b> of people finish all 50. The average raw score is around <b>24</b>; competitive roles target <b>35+</b>.</li>
+            <li>Approximate mix: <b>~34% verbal</b>, <b>~34% numerical (math)</b>, <b>~22% spatial</b>, and <b>~10% logic</b>, interleaved throughout.</li>
           </ul>
 
           <h3>📖 Verbal Ability</h3>
@@ -516,12 +521,19 @@
             <li><b>Logic:</b> "all/some/none" syllogisms — diagram them; ordering puzzles — write the chain (A &gt; B &gt; C).</li>
           </ul>
 
-          <h3>🧩 Spatial & Abstract</h3>
+          <h3>🧩 Spatial Reasoning</h3>
+          <p>The three official CCAT spatial formats — all visual, with five answer choices:</p>
           <ul>
-            <li><b>Shape/figure series:</b> track one feature at a time — count of sides, rotation, shading, position.</li>
-            <li><b>Rotation &amp; mirrors:</b> imagine turning the figure 90°/180°; mirror = left-right flip.</li>
-            <li><b>Attention to detail:</b> compare strings character-by-character; the difference is usually a single swapped digit/letter or case.</li>
-            <li><b>Matrices:</b> read changes across rows AND down columns.</li>
+            <li><b>Next-in-series:</b> 3–5 figures follow a rule; pick the figure that continues it. Track <i>one feature at a time</i> — number of sides, rotation, shading, count, or position.</li>
+            <li><b>Odd-one-out:</b> five figures, four share a property and one breaks it. Scan shape, orientation, symmetry, shading, and element count.</li>
+            <li><b>Matrix (3×3):</b> a grid with one cell missing. The rule runs <i>across rows AND down columns</i> — often two rules combined (e.g. shape changes across, shading changes down).</li>
+            <li><b>Rotation &amp; mirrors:</b> imagine turning the figure 90°/180° (clockwise unless shown otherwise); a mirror is a left-right flip.</li>
+          </ul>
+
+          <h3>🔎 Verbal Attention to Detail</h3>
+          <ul>
+            <li>You get <b>two columns of short strings</b> (names, codes, addresses) and count how many rows match <b>exactly</b>.</li>
+            <li>Differences are tiny: a swapped digit (88301 vs 88031), a doubled letter, or a case change. Compare <b>character by character</b>, left to right.</li>
           </ul>
 
           <h3>🎯 Test-day strategy</h3>
