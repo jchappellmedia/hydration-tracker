@@ -81,12 +81,15 @@
   function buildExam(){
     const used=new Set(); const out=[];
     EXAM_BLUEPRINT.forEach(s=>{
-      let pool=QUESTIONS.filter(q=>s.types.includes(q.type) && !used.has(q.id)
+      const pool=QUESTIONS.filter(q=>s.types.includes(q.type) && !used.has(q.id)
         && (!s.cat || q.category===s.cat)
         && (!s.visual || q.svgOptions || /vseq|vmatrix/.test(q.svg||'')));
-      pool=shuffle(pool).slice(0,s.n);
-      pool.forEach(q=>used.add(q.id));
-      out.push(...pool);
+      // hardest first: draw from the 'hard' pool, then top up with the rest
+      const hard=shuffle(pool.filter(q=>q.diff==='hard'));
+      const rest=shuffle(pool.filter(q=>q.diff!=='hard'));
+      const pick=hard.concat(rest).slice(0,s.n);
+      pick.forEach(q=>used.add(q.id));
+      out.push(...pick);
     });
     // top up to 50 if any pool fell short
     if(out.length<FULL_TEST_SIZE){
