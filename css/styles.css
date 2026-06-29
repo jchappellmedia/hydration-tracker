@@ -163,6 +163,10 @@ main{max-width:1040px;margin:0 auto;padding:26px 20px 80px}
 .adtable th{background:var(--card2);color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
 .adtable td:first-child,.adtable th:first-child{width:34px;text-align:center;color:var(--muted)}
 .mono{font-family:ui-monospace,"SF Mono",Menlo,monospace;letter-spacing:.02em}
+/* data tables keep all columns left-aligned (no narrow index column) */
+.datatable td:first-child,.datatable th:first-child{width:auto;text-align:left}
+.datatable td.rh{font-weight:700}
+.vchart{width:100%;max-width:340px;height:auto;color:var(--brand);margin:16px 0;display:block}
 
 .answers{display:grid;gap:12px;margin-top:22px}
 .answer{

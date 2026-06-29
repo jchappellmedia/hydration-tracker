@@ -59,6 +59,43 @@
   }
   function pickCategory(cat, n){ return shuffle(QUESTIONS.filter(q=>q.category===cat)).slice(0,n); }
 
+  // The exact CCAT blueprint (BoostPrep full-length structure):
+  // Verbal 18, Math & Logic 21, Spatial 11 — by subtype.
+  const EXAM_BLUEPRINT = [
+    { slot:'Sentence Completion', types:['Sentence Completion'], cat:'verbal', n:9 },
+    { slot:'Analogies',           types:['Analogy'],             cat:'verbal', n:4 },
+    { slot:'Attention to Detail', types:['Attention to Detail'], cat:'verbal', n:3 },
+    { slot:'Antonyms',            types:['Antonym'],             cat:'verbal', n:2 },
+    { slot:'Basic Math',          types:['Basic Math'],          cat:'math',   n:2 },
+    { slot:'Word Problems',       types:['Word Problem','Percentage','Ratio','Average','Fraction'], cat:'math', n:11 },
+    { slot:'Number Series',       types:['Number Series'],       cat:'math',   n:2 },
+    { slot:'Tables & Graphs',     types:['Table & Graph'],       cat:'math',   n:2 },
+    { slot:'Syllogism',           types:['Syllogism'],           cat:'math',   n:3 },
+    { slot:'Seating',             types:['Seating Arrangement'], cat:'math',   n:1 },
+    { slot:'Odd One Out',         types:['Odd One Out'],         cat:'spatial', visual:true, n:4 },
+    { slot:'Matrices',            types:['Matrix'],              cat:'spatial', visual:true, n:3 },
+    { slot:'Next in Series',      types:['Next in Series'],      cat:'spatial', visual:true, n:4 },
+  ];
+  // Assemble a 50-question exam matching the blueprint, then interleave so the
+  // subjects are mixed throughout (like the real test). No repeats within a sim.
+  function buildExam(){
+    const used=new Set(); const out=[];
+    EXAM_BLUEPRINT.forEach(s=>{
+      let pool=QUESTIONS.filter(q=>s.types.includes(q.type) && !used.has(q.id)
+        && (!s.cat || q.category===s.cat)
+        && (!s.visual || q.svgOptions || /vseq|vmatrix/.test(q.svg||'')));
+      pool=shuffle(pool).slice(0,s.n);
+      pool.forEach(q=>used.add(q.id));
+      out.push(...pool);
+    });
+    // top up to 50 if any pool fell short
+    if(out.length<FULL_TEST_SIZE){
+      const extra=shuffle(QUESTIONS.filter(q=>!used.has(q.id)));
+      while(out.length<FULL_TEST_SIZE && extra.length){ out.push(extra.shift()); }
+    }
+    return shuffle(out);
+  }
+
   /* ---------- Quiz engine ---------- */
   const Quiz = {
     state:null,
@@ -321,7 +358,7 @@
         <div class="grid cols-3">
           <div class="card mode-card" data-go="full">
             <div class="ic blue">⏱️</div><h3>Full Simulation</h3>
-            <p>50 questions, 15-minute timer, no feedback until the end — exactly like the real CCAT.</p>
+            <p>50 questions, 15-minute timer, no feedback until the end. Built to the exact CCAT blueprint: 18 verbal, 21 math &amp; logic, 11 spatial.</p>
             <div class="go">Start the test →</div>
           </div>
           <div class="card mode-card" data-go="category">
@@ -621,7 +658,7 @@
     go(where){
       switch(where){
         case 'home': Home.render(); Views.show('home'); break;
-        case 'full': Quiz.start({mode:'full',label:'Full CCAT simulation',questions:pickBalanced(FULL_TEST_SIZE),timeLimit:FULL_TEST_TIME}); break;
+        case 'full': Quiz.start({mode:'full',label:'Full CCAT simulation',questions:buildExam(),timeLimit:FULL_TEST_TIME}); break;
         case 'quick': Quiz.start({mode:'quick',label:'Quick 10 warm-up',questions:pickBalanced(10),timeLimit:180}); break;
         case 'category': Setup.category(); break;
         case 'drill': Setup.drill(); break;

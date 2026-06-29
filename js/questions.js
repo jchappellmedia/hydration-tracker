@@ -68,8 +68,44 @@ function adTable(rows){
   let same=0;
   const body=rows.map((p,i)=>{ const eq=p[0]===p[1]; if(eq) same++;
     return `<tr><td>${i+1}</td><td class="mono">${p[0]}</td><td class="mono">${p[1]}</td></tr>`; }).join('');
-  const html=`<table class="adtable"><thead><tr><th>#</th><th>Set A</th><th>Set B</th></tr></thead><tbody>${body}</tbody></table>`;
+  const html=`<table class="adtable"><thead><tr><th>#</th><th>Left-Hand Column</th><th>Right-Hand Column</th></tr></thead><tbody>${body}</tbody></table>`;
   return { html, identical:same };
+}
+// A mini grid of n×n small squares with the first k filled (CCAT filled-square matrix cells)
+function cellSquares(k, n){
+  n=n||3; const gap=7, cell=(100-gap*(n+1))/n; let s=''; let idx=0;
+  for(let r=0;r<n;r++) for(let c=0;c<n;c++){
+    const x=gap+c*(cell+gap), y=gap+r*(cell+gap);
+    s+=`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${cell.toFixed(1)}" height="${cell.toFixed(1)}" fill="${idx<k?'currentColor':'none'}" stroke="currentColor" stroke-width="1.6"/>`;
+    idx++;
+  }
+  return s;
+}
+// Concentric (nested) shapes, outermost first. side 0 = circle.
+function nested(layers){
+  const radii=[42,30,18,9];
+  return layers.map((sd,i)=>{ const r=radii[i]||8;
+    return sd===0 ? `<circle cx="50" cy="50" r="${r}" fill="none" stroke="currentColor" stroke-width="3"/>`
+                  : `<polygon points="${_polyPoints(sd,50,50,r,0)}" fill="none" stroke="currentColor" stroke-width="3"/>`;
+  }).join('');
+}
+// Simple bar chart from labels + values (returns an <svg>)
+function barChart(labels, values){
+  const W=320,H=180,pad=30,max=Math.max(...values);
+  const step=(W-pad*2)/values.length, bw=step*0.55;
+  let g=`<line x1="${pad}" y1="${H-pad}" x2="${W-pad}" y2="${H-pad}" stroke="var(--muted)" stroke-width="1.5"/>`;
+  values.forEach((v,i)=>{ const h=(v/max)*(H-pad*2-10); const x=pad+i*step+(step-bw)/2; const y=H-pad-h;
+    g+=`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw.toFixed(1)}" height="${h.toFixed(1)}" rx="3" fill="currentColor" fill-opacity="0.75"/>`;
+    g+=`<text x="${(x+bw/2).toFixed(1)}" y="${(y-5).toFixed(1)}" font-size="11" text-anchor="middle" fill="currentColor">${v}</text>`;
+    g+=`<text x="${(x+bw/2).toFixed(1)}" y="${H-pad+15}" font-size="11" text-anchor="middle" fill="var(--muted)">${labels[i]}</text>`;
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" class="vchart">${g}</svg>`;
+}
+// HTML data table
+function dataTable(headers, rows){
+  const h=headers.map(x=>`<th>${x}</th>`).join('');
+  const b=rows.map(r=>`<tr>${r.map((c,i)=>`<td${i===0?' class="rh"':''}>${c}</td>`).join('')}</tr>`).join('');
+  return `<table class="adtable datatable"><thead><tr>${h}</tr></thead><tbody>${b}</tbody></table>`;
 }
 
 const QUESTIONS = [
@@ -1340,6 +1376,218 @@ const QUESTIONS = [
     q:'A 25% increase followed by a 20% decrease leaves a price at what fraction of the original?',
     options:['Exactly the same','5% higher','5% lower','25% higher'], answer:0,
     explanation:'1.25 × 0.80 = 1.00, so the price ends up exactly where it started.' },
+
+  /* ===================================================================
+     EXAM-BLUEPRINT QUESTIONS — authored to match the exact CCAT mix
+     (BoostPrep full-length structure). Original wording & answers.
+     =================================================================== */
+
+  // ---- Verbal · Attention to Detail (two-column, count exact matches) ----
+  (function(){ const t=adTable([
+      ['Harborview Logistics','Harborview Logistics'], ['Cedar Peak Holdings','Cedar Peak Holding'],
+      ['Quantum Health Labs','Quantum Health Labs'], ['Northstar Robotics','Northstar Robotic'],
+      ['Vega Capital Partners','Vega Capital Partners'] ]);
+    return { id:'ad4', category:'verbal', type:'Attention to Detail',
+      q:'How many of the five items in the left-hand column are EXACTLY the same as the corresponding entry in the right-hand column?',
+      svg:t.html, options:['1','2','3','4','5'], answer:t.identical-1,
+      explanation:'Rows 1, 3 and 5 match. Row 2 ("Holdings" vs "Holding") and row 4 ("Robotics" vs "Robotic") differ — so 3 are identical.' }; })(),
+
+  (function(){ const t=adTable([
+      ['382 Crestwood Ave.','382 Crestwood Ave.'], ['1047 Brookhaven Dr.','1047 Brookhaven Dr.'],
+      ['56 Lindenwood Ct.','56 Lindewood Ct.'], ['9920 Sycamore Blvd.','9920 Sycamore Blvd.'],
+      ['413 Ironwood Ln.','431 Ironwood Ln.'] ]);
+    return { id:'ad5', category:'verbal', type:'Attention to Detail',
+      q:'How many of the five items in the left-hand column are EXACTLY the same as the corresponding entry in the right-hand column?',
+      svg:t.html, options:['1','2','3','4','5'], answer:t.identical-1,
+      explanation:'Rows 1, 2 and 4 match. Row 3 ("Lindenwood" vs "Lindewood") and row 5 ("413" vs "431") differ — so 3 are identical.' }; })(),
+
+  (function(){ const t=adTable([
+      ['SKU-7741-QA','SKU-7741-QA'], ['SKU-3098-ZR','SKU-3098-ZB'], ['SKU-5512-RB','SKU-5512-RB'],
+      ['SKU-6604-MK','SKU-6604-MX'], ['SKU-1180-TT','SKU-1180-TT'] ]);
+    return { id:'ad6', category:'verbal', type:'Attention to Detail',
+      q:'How many of the five items in the left-hand column are EXACTLY the same as the corresponding entry in the right-hand column?',
+      svg:t.html, options:['1','2','3','4','5'], answer:t.identical-1,
+      explanation:'Rows 1, 3 and 5 match. Row 2 ("ZR" vs "ZB") and row 4 ("MK" vs "MX") differ — so 3 are identical.' }; })(),
+
+  (function(){ const t=adTable([
+      ['Dr. Eleanor Whitcomb','Dr. Eleanor Whitcomb'], ['Marcus O’Brien','Marcus O’Brian'],
+      ['Priyanka Raghavan','Priyanka Raghavan'], ['Jonathan Steele','Johnathan Steele'],
+      ['Yusuf Abdullah','Yusuf Abdullah'] ]);
+    return { id:'ad7', category:'verbal', type:'Attention to Detail',
+      q:'How many of the five items in the left-hand column are EXACTLY the same as the corresponding entry in the right-hand column?',
+      svg:t.html, options:['1','2','3','4','5'], answer:t.identical-1,
+      explanation:'Rows 1, 3 and 5 match. Row 2 ("O’Brien" vs "O’Brian") and row 4 ("Jonathan" vs "Johnathan") differ — so 3 are identical.' }; })(),
+
+  (function(){ const t=adTable([
+      ['Order #88-40192','Order #88-40192'], ['Order #57-13388','Order #57-13388'],
+      ['Order #91-66204','Order #91-66240'], ['Order #34-72015','Order #34-72015'],
+      ['Order #20-55810','Order #20-55810'] ]);
+    return { id:'ad8', category:'verbal', type:'Attention to Detail',
+      q:'How many of the five items in the left-hand column are EXACTLY the same as the corresponding entry in the right-hand column?',
+      svg:t.html, options:['1','2','3','4','5'], answer:t.identical-1,
+      explanation:'Rows 1, 2, 4 and 5 match. Only row 3 differs ("66204" vs "66240" — two digits transposed), so 4 are identical.' }; })(),
+
+  // ---- Math · Basic Math & Calculation ----
+  { id:'bm1', category:'math', type:'Basic Math',
+    q:'Which of the following is the LARGEST?',
+    options:['5.5','5.45','5.405','5.54','5.509'], answer:3,
+    explanation:'All start with 5. Compare tenths: 5.5x and 5.54 have the highest tenths (5). Among 5.5, 5.54, 5.509, the hundredths decide: 5.54 (4) beats 5.50 — so 5.54 is largest.' },
+  { id:'bm2', category:'math', type:'Basic Math',
+    q:'14 is 25% of what number?',
+    options:['42','48','52','56','60'], answer:3,
+    explanation:'14 = 0.25 × x, so x = 14 ÷ 0.25 = 14 × 4 = 56.' },
+  { id:'bm3', category:'math', type:'Basic Math',
+    q:'Which of the following is the LARGEST?',
+    options:['2/3','3/5','0.72','5/8','0.69'], answer:2,
+    explanation:'As decimals: 2/3 ≈ 0.667, 3/5 = 0.6, 0.72, 5/8 = 0.625, 0.69. The largest is 0.72.' },
+  { id:'bm4', category:'math', type:'Basic Math',
+    q:'Calculate: 18 + 7 × 4 − 9',
+    options:['37','45','31','91','46'], answer:0,
+    explanation:'Order of operations: 7 × 4 = 28 first, then 18 + 28 − 9 = 37.' },
+  { id:'bm5', category:'math', type:'Basic Math',
+    q:'Which fraction is equivalent to 0.375?',
+    options:['1/4','3/8','2/5','5/16','3/4'], answer:1,
+    explanation:'0.375 = 375/1000 = 3/8.' },
+
+  // ---- Math · Word Problems (profit/loss, capacity — original numbers) ----
+  { id:'wp1', category:'math', type:'Word Problem',
+    q:'A store bought 18 identical fans for $5,400 and sold them all for $6,480, making the same profit on each. What was the profit per fan?',
+    options:['$40','$50','$60','$70','$80'], answer:2,
+    explanation:'Total profit = $6,480 − $5,400 = $1,080. Per fan = $1,080 ÷ 18 = $60.' },
+  { id:'wp2', category:'math', type:'Word Problem',
+    q:'A large elevator can carry no more than 9 adults or no more than 15 children. What is the maximum number of children that can ride with 3 adults already aboard?',
+    options:['5','10','12','6','9'], answer:1,
+    explanation:'9 adults = 15 children, so 1 adult = 15/9 = 5/3 children of capacity. 3 adults use 5 children of capacity, leaving 15 − 5 = 10 children.' },
+  { id:'wp3', category:'math', type:'Word Problem',
+    q:'Maria sold $12,600 worth of identical bicycles, earning a profit of $90 on each, for a total profit of $1,800. How many bicycles did she sell?',
+    options:['14','18','20','22','24'], answer:2,
+    explanation:'Number of bicycles = total profit ÷ profit each = $1,800 ÷ $90 = 20.' },
+  { id:'wp4', category:'math', type:'Word Problem',
+    q:'A printer produces 240 pages in 8 minutes. At the same rate, how long to print 600 pages?',
+    options:['16 min','18 min','20 min','24 min','25 min'], answer:2,
+    explanation:'Rate = 240 ÷ 8 = 30 pages/min. 600 ÷ 30 = 20 minutes.' },
+
+  // ---- Math · Number Series (letter-group, like real test) ----
+  { id:'ns1', category:'math', type:'Number Series',
+    q:'What is the next group of letters in the series?  cst … dtu … euv … fvw … ?',
+    options:['gwx','hwx','gxy','gwy','hyw'], answer:0,
+    explanation:'Each of the three letters advances by 1: (c,d,e,f→g), (s,t,u,v→w), (t,u,v,w→x). So the next group is gwx.' },
+  { id:'ns2', category:'math', type:'Number Series',
+    q:'What is the next number in the series?  1980, 1987, 1994, 2001, 2008, ____',
+    options:['2014','2015','2016','2012','2009'], answer:1,
+    explanation:'It is an arithmetic series increasing by 7 each step: 2008 + 7 = 2015.' },
+
+  // ---- Math · Tables & Graphs ----
+  { id:'tg1', category:'math', type:'Table & Graph',
+    q:'The bar chart shows daily website visitors (in thousands). What is the difference, in thousands, between the highest and lowest day?',
+    svg: barChart(['Mon','Tue','Wed','Thu','Fri'],[22,38,14,45,30]),
+    options:['23','28','31','33','45'], answer:2,
+    explanation:'Highest = Thu (45), lowest = Wed (14). Difference = 45 − 14 = 31 thousand visitors.' },
+  { id:'tg2', category:'math', type:'Table & Graph',
+    q:'The table shows units sold by four stores over two months. Which store sold the MOST units in total across both months?',
+    svg: dataTable(['Store','April','May'],[['Store A','210','240'],['Store B','260','205'],['Store C','230','250'],['Store D','190','280']]),
+    options:['Store A','Store B','Store C','Store D','They tie'], answer:2,
+    explanation:'Totals: A = 450, B = 465, C = 480, D = 470. Store C sold the most (480).' },
+  { id:'tg3', category:'math', type:'Table & Graph',
+    q:'The bar chart shows quarterly revenue (in $thousands). By how much did revenue grow from Q1 to Q4?',
+    svg: barChart(['Q1','Q2','Q3','Q4'],[50,65,60,86]),
+    options:['$30k','$32k','$34k','$36k','$40k'], answer:3,
+    explanation:'Q4 − Q1 = 86 − 50 = 36, i.e. $36 thousand.' },
+  { id:'tg4', category:'math', type:'Table & Graph',
+    q:'The table shows rainfall (mm) for four cities. How much more rain did the wettest city get than the driest?',
+    svg: dataTable(['City','Rainfall (mm)'],[['Riverton','48'],['Oakdale','72'],['Pinehurst','35'],['Bayview','60']]),
+    options:['25 mm','30 mm','37 mm','40 mm','12 mm'], answer:2,
+    explanation:'Wettest = Oakdale (72), driest = Pinehurst (35). 72 − 35 = 37 mm.' },
+  { id:'tg5', category:'math', type:'Table & Graph',
+    q:'The bar chart shows tickets sold per show. What fraction of all tickets were sold for Show C?',
+    svg: barChart(['A','B','C','D'],[30,20,40,10]),
+    options:['1/5','1/4','2/5','1/2','1/3'], answer:2,
+    explanation:'Total = 30 + 20 + 40 + 10 = 100. Show C sold 40, which is 40/100 = 2/5.' },
+
+  // ---- Math/Logic · Syllogism (True / False / Uncertain) ----
+  { id:'sy1', category:'math', type:'Syllogism',
+    q:'If the first two statements are true, is the final statement true? — All roses are flowers. All flowers need water. Therefore, all roses need water.',
+    options:['True','False','Uncertain'], answer:0,
+    explanation:'Roses ⊆ flowers ⊆ things that need water, so all roses need water. The conclusion follows: True.' },
+  { id:'sy2', category:'math', type:'Syllogism',
+    q:'If the first two statements are true, is the final statement true? — Every employee at the firm speaks French. Lena speaks French. Therefore, Lena is an employee at the firm.',
+    options:['True','False','Uncertain'], answer:2,
+    explanation:'Speaking French does not make someone an employee (it affirms the consequent). Lena may or may not work there — Uncertain.' },
+  { id:'sy3', category:'math', type:'Syllogism',
+    q:'If the first two statements are true, is the final statement true? — All planets in this system orbit the star. Vesca is a planet in this system. Therefore, Vesca does not orbit the star.',
+    options:['True','False','Uncertain'], answer:1,
+    explanation:'The premises say every such planet orbits the star, which directly contradicts the conclusion. So it is False.' },
+  { id:'sy4', category:'math', type:'Syllogism',
+    q:'If the first two statements are true, is the final statement true? — Maria’s grandmother has green eyes. Maria’s grandfather has green eyes. Therefore, Maria has green eyes.',
+    options:['True','False','Uncertain'], answer:2,
+    explanation:'Eye colour is not guaranteed to pass down this way; Maria might or might not have green eyes — Uncertain.' },
+  { id:'sy5', category:'math', type:'Syllogism',
+    q:'If the first two statements are true, is the final statement true? — The library charges $2 for each day a book is late. Tom returned a book 4 days late. Therefore, Tom owes $8.',
+    options:['True','False','Uncertain'], answer:0,
+    explanation:'4 days × $2/day = $8, which matches the conclusion exactly: True.' },
+  { id:'sy6', category:'math', type:'Syllogism',
+    q:'If the first two statements are true, is the final statement true? — All squares are rectangles. This shape is a rectangle. Therefore, this shape is a square.',
+    options:['True','False','Uncertain'], answer:2,
+    explanation:'Being a rectangle does not make a shape a square (rectangles need not be squares). It cannot be determined — Uncertain.' },
+
+  // ---- Math/Logic · Seating Arrangement ----
+  { id:'se1', category:'math', type:'Seating Arrangement',
+    q:'Five cars — Red, Blue, Green, White, Black — park in spots 1–5 (left to right). Green is in spot 3. Blue is in spot 5. White is parked immediately to the right of Black. Which car is in spot 1?',
+    options:['Black','Red','White','Green','Blue'], answer:0,
+    explanation:'Green=3, Blue=5 leave spots 1, 2, 4 for Red, White, Black. White must be immediately right of Black, so Black=1, White=2; Red takes spot 4. Spot 1 is Black.' },
+
+  // ---- Spatial · Odd One Out (visual) ----
+  { id:'oo5', category:'spatial', type:'Odd One Out',
+    q:'Which of the following does NOT belong?',
+    svg: vseq([ vtile(nested([4,6,0])), vtile(nested([4,0,3])), vtile(nested([4,3,6])), vtile(nested([3,4,0])), vtile(nested([4,6,3])) ]),
+    options:['1st figure','2nd figure','3rd figure','4th figure','5th figure'],
+    answer:3,
+    explanation:'Every figure has a square as its outermost shape except the 4th, whose outer shape is a triangle — it is the odd one out.' },
+
+  { id:'oo6', category:'spatial', type:'Odd One Out',
+    q:'Which of the following does NOT belong?',
+    svg: vseq([ vtile(poly(5)), vtile(poly(3)), vtile(poly(6)), vtile(circ()), vtile(poly(4)) ]),
+    options:['1st figure','2nd figure','3rd figure','4th figure','5th figure'],
+    answer:4,
+    explanation:'The pentagon, triangle, hexagon and circle contain no right angles. Only the 5th figure — the square — has right angles, so it is the odd one out.' },
+
+  { id:'oo7', category:'spatial', type:'Odd One Out',
+    q:'Which of the following does NOT belong?',
+    svg: vseq([ vtile(poly(3,{rot:0})), vtile(poly(3,{rot:0})), vtile(poly(3,{rot:180})), vtile(poly(3,{rot:0})), vtile(poly(3,{rot:0})) ]),
+    options:['1st figure','2nd figure','3rd figure','4th figure','5th figure'],
+    answer:2,
+    explanation:'Four triangles point upward; the 3rd points downward, making it the odd one out.' },
+
+  // ---- Spatial · Matrices (filled-square grids, classic CCAT style) ----
+  { id:'mxs1', category:'spatial', type:'Matrix',
+    q:'Which option should replace the question mark to complete the pattern?',
+    svg: matrix3([ cellSquares(2),cellSquares(3),cellSquares(4),
+                   cellSquares(1),cellSquares(2),cellSquares(3),
+                   cellSquares(0),cellSquares(1),mqmark() ]),
+    options:['2 squares filled','1 square filled','3 squares filled','0 squares filled','4 squares filled'],
+    svgOptions:[ otile(cellSquares(2)), otile(cellSquares(1)), otile(cellSquares(3)), otile(cellSquares(0)), otile(cellSquares(4)) ],
+    answer:0,
+    explanation:'The number of filled squares increases by 1 across each row and decreases by 1 down each column. The bottom row is 0, 1, so the missing cell has 2 filled squares.' },
+
+  { id:'mxs2', category:'spatial', type:'Matrix',
+    q:'Which option should replace the question mark to complete the pattern?',
+    svg: matrix3([ cellSquares(1),cellSquares(2),cellSquares(3),
+                   cellSquares(2),cellSquares(3),cellSquares(4),
+                   cellSquares(3),cellSquares(4),mqmark() ]),
+    options:['5 squares filled','4 squares filled','6 squares filled','3 squares filled','7 squares filled'],
+    svgOptions:[ otile(cellSquares(5)), otile(cellSquares(4)), otile(cellSquares(6)), otile(cellSquares(3)), otile(cellSquares(7)) ],
+    answer:0,
+    explanation:'The number of filled squares increases by 1 across each row and down each column. The bottom row runs 3, 4, so the missing cell has 5 filled squares.' },
+
+  { id:'mxs3', category:'spatial', type:'Matrix',
+    q:'Which option should replace the question mark to complete the pattern?',
+    svg: matrix3([ cellSquares(0),cellSquares(2),cellSquares(4),
+                   cellSquares(1),cellSquares(3),cellSquares(5),
+                   cellSquares(2),cellSquares(4),mqmark() ]),
+    options:['6 squares filled','5 squares filled','4 squares filled','7 squares filled','8 squares filled'],
+    svgOptions:[ otile(cellSquares(6)), otile(cellSquares(5)), otile(cellSquares(4)), otile(cellSquares(7)), otile(cellSquares(8)) ],
+    answer:0,
+    explanation:'Across each row the count rises by 2; down each column it rises by 1. The bottom row is 2, 4, so the missing cell has 6 filled squares.' },
 ];
 
 /* -------------------------------------------------------------------------
