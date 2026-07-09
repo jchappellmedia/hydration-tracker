@@ -1,0 +1,57 @@
+# Runs the AI content pipeline on demand (and optionally on a schedule).
+#
+# Setup: add repository secrets KIE_API_KEY and LATE_API_KEY under
+# Settings → Secrets and variables → Actions.
+#
+# To run automatically, uncomment the `schedule` block below.
+
+name: content-pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      job:
+        description: Path to the job spec to run
+        default: content-pipeline/jobs/example-job.json
+      dry_run:
+        description: Dry run (no generation, no posting)
+        type: boolean
+        default: true
+  # schedule:
+  #   - cron: '0 14 * * *'  # every day at 14:00 UTC
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run tests
+        working-directory: content-pipeline
+        run: npm test
+
+      - name: Run pipeline
+        working-directory: content-pipeline
+        env:
+          KIE_API_KEY: ${{ secrets.KIE_API_KEY }}
+          LATE_API_KEY: ${{ secrets.LATE_API_KEY }}
+        run: |
+          JOB="${{ github.event.inputs.job || 'content-pipeline/jobs/example-job.json' }}"
+          JOB="${JOB#content-pipeline/}"
+          if [ "${{ github.event.inputs.dry_run || 'true' }}" = "true" ]; then
+            node src/cli.js run "$JOB" --dry-run
+          else
+            node src/cli.js run "$JOB"
+          fi
+
+      - name: Upload generated media
+        if: github.event.inputs.dry_run == 'false'
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-content
+          path: content-pipeline/output/
+          if-no-files-found: ignore

@@ -1,0 +1,37 @@
+{
+  "name": "hydration-daily",
+  "caption": "Your body is 60% water — top it up. 💧 #hydration #wellness #health",
+  "assets": [
+    {
+      "id": "hero-image",
+      "type": "image",
+      "prompt": "Macro photo of a condensation-covered glass of ice water on a sunlit wooden table, golden hour, shallow depth of field, vibrant and refreshing",
+      "aspect_ratio": "1:1"
+    },
+    {
+      "id": "reel",
+      "type": "video",
+      "prompt": "Cinematic slow-motion shot of crystal clear water splashing into a glass, sunlight refracting through droplets, refreshing summer vibes, vertical format",
+      "aspectRatio": "9:16"
+    },
+    {
+      "id": "background-track",
+      "type": "music",
+      "prompt": "Chill upbeat lofi instrumental, light percussion, fresh summer morning mood, 30 seconds",
+      "instrumental": true
+    },
+    {
+      "id": "voiceover",
+      "type": "speech",
+      "text": "Quick reminder: drink a glass of water right now. Your future self will thank you."
+    }
+  ],
+  "post": {
+    "enabled": false,
+    "platforms": ["instagram", "tiktok"],
+    "mediaFrom": ["reel"],
+    "publishNow": false,
+    "scheduledFor": null,
+    "timezone": "America/New_York"
+  }
+}

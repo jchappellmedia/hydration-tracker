@@ -1,0 +1,17 @@
+{
+  "name": "content-pipeline",
+  "version": "1.0.0",
+  "description": "AI content generation pipeline: video, audio, music, and image generation via KIE.ai, with social posting via Late (getlate.dev)",
+  "type": "module",
+  "private": true,
+  "bin": {
+    "content-pipeline": "./src/cli.js"
+  },
+  "scripts": {
+    "start": "node src/cli.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  }
+}
