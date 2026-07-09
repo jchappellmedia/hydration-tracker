@@ -1,0 +1,8 @@
+# Secrets — never commit API keys
+content-pipeline/.env
+.env
+
+# Generated media
+content-pipeline/output/
+
+node_modules/
