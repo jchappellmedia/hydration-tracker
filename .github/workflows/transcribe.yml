@@ -1,0 +1,64 @@
+name: Transcribe queued videos
+
+on:
+  workflow_dispatch:
+    inputs:
+      video:
+        description: YouTube URL or video ID
+        required: true
+  push:
+    branches:
+      - claude/video-transcript-extraction-dm97h3
+    paths:
+      - transcripts/queue.txt
+
+permissions:
+  contents: write
+
+jobs:
+  transcribe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install --quiet youtube-transcript-api yt-dlp
+
+      - name: Transcribe queued videos
+        run: |
+          set +e
+          if [ -n "${{ github.event.inputs.video }}" ]; then
+            echo "${{ github.event.inputs.video }}" >> transcripts/queue.txt
+          fi
+          [ -f transcripts/queue.txt ] || exit 0
+          while IFS= read -r url; do
+            url="$(echo "$url" | tr -d '[:space:]')"
+            [ -z "$url" ] && continue
+            echo "::group::Transcribing $url"
+            if ! python scripts/transcribe.py "$url"; then
+              echo "transcript API failed, trying yt-dlp captions..."
+              rm -rf /tmp/subs && mkdir -p /tmp/subs
+              yt-dlp --skip-download --write-auto-subs --write-subs \
+                --sub-langs "en.*" -o "/tmp/subs/%(id)s.%(ext)s" "$url" \
+                && python scripts/vtt_to_md.py /tmp/subs transcripts \
+                || echo "WARNING: all methods failed for $url"
+            fi
+            echo "::endgroup::"
+          done < transcripts/queue.txt
+          : > transcripts/queue.txt
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add transcripts/
+          if git diff --cached --quiet; then
+            echo "Nothing to commit"
+          else
+            git commit -m "Add transcripts from queue [skip ci]"
+            git push
+          fi
