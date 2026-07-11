@@ -28,6 +28,9 @@ jobs:
       - name: Install dependencies
         run: pip install --quiet youtube-transcript-api yt-dlp
 
+      - name: Diagnostic probe
+        run: python scripts/transcript_probe.py gGmM-Oo4_WA || true
+
       - name: Transcribe queued videos
         run: |
           set +e
