@@ -1,5 +1,7 @@
 # Video Transcript
 
+- **Title:** $110M CEO Explains: 7 Skills to Make Your First $1M in 2026
+- **Channel:** Michia Rohrssen
 - **Source:** https://youtu.be/gGmM-Oo4_WA
 - **Saved:** 2026-07-11
 
