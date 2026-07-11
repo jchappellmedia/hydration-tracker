@@ -28,9 +28,6 @@ jobs:
       - name: Install dependencies
         run: pip install --quiet youtube-transcript-api yt-dlp
 
-      - name: Diagnostic probe
-        run: python scripts/transcript_probe.py gGmM-Oo4_WA || true
-
       - name: Transcribe queued videos
         run: |
           set +e
@@ -44,6 +41,8 @@ jobs:
             echo "::group::Transcribing $url"
             if python scripts/innertube_transcript.py "$url"; then
               echo "innertube API succeeded"
+            elif python scripts/thirdparty_transcript.py "$url"; then
+              echo "third-party service succeeded"
             elif ! python scripts/transcribe.py "$url"; then
               echo "transcript API failed, trying yt-dlp captions..."
               rm -rf /tmp/subs && mkdir -p /tmp/subs
