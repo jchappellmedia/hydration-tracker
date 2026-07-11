@@ -39,7 +39,9 @@ jobs:
             url="$(echo "$url" | tr -d '[:space:]')"
             [ -z "$url" ] && continue
             echo "::group::Transcribing $url"
-            if ! python scripts/transcribe.py "$url"; then
+            if python scripts/innertube_transcript.py "$url"; then
+              echo "innertube API succeeded"
+            elif ! python scripts/transcribe.py "$url"; then
               echo "transcript API failed, trying yt-dlp captions..."
               rm -rf /tmp/subs && mkdir -p /tmp/subs
               yt-dlp --skip-download --write-auto-subs --write-subs \
