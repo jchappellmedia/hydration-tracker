@@ -562,6 +562,7 @@
         <div class="lib-item"><b>$110M CEO Explains: 7 Skills to Make Your First $1M</b> — Michia Rohrssen's skill stack</div>
         <div class="lib-item"><b>The 7 Baby Steps Explained (Top Criticisms Addressed)</b> — Dave Ramsey's personal-finance foundation (Phase 0)</div>
         <div class="lib-item"><b>How To Quit Your Job (And Do What You Love)</b> — Simon Squibb &amp; Ali Abdaal's 8-step escape blueprint (Phase 1)</div>
+        <div class="lib-item"><b>Think and Grow Rich</b> — Napoleon Hill's 1937 classic, full public-domain text in the repo (Phase 8)</div>
       </div>`;
   }
 
