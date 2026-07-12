@@ -179,7 +179,7 @@
       el.dataset.phase = phase.id;
       el.innerHTML = `
         <div class="phase-head">
-          <div class="phase-num">${prog.done === prog.total ? "✓" : phase.num}</div>
+          <div class="phase-num">${prog.done === prog.total ? "✓" : (phase.num === 0 ? "💰" : phase.num)}</div>
           <div class="phase-title">
             <h2>${esc(phase.title)}</h2>
             <div class="tagline">${esc(phase.tagline)}</div>
@@ -520,9 +520,10 @@
       </div>
       <div class="card">
         <h2>Source Material</h2>
-        <p class="muted">This tutorial is built from full transcripts of both videos, stored in this repository:</p>
-        <div class="lib-item"><b>How to Make $1,000,000 From Scratch</b> — the 3-step blueprint (market → launch → scale)</div>
-        <div class="lib-item"><b>$110M CEO Explains: 7 Skills to Make Your First $1M</b> — the skill stack</div>
+        <p class="muted">This tutorial is built from full transcripts of these videos, stored in this repository:</p>
+        <div class="lib-item"><b>How to Make $1,000,000 From Scratch</b> — Michia Rohrssen's 3-step blueprint (market → launch → scale)</div>
+        <div class="lib-item"><b>$110M CEO Explains: 7 Skills to Make Your First $1M</b> — Michia Rohrssen's skill stack</div>
+        <div class="lib-item"><b>The 7 Baby Steps Explained (Top Criticisms Addressed)</b> — Dave Ramsey's personal-finance foundation (Phase 0)</div>
       </div>`;
   }
 

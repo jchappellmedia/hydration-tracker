@@ -10,6 +10,88 @@ const CURRICULUM = {
   },
   phases: [
     {
+      id: "p0",
+      num: 0,
+      title: "Get Your Money Right — The 7 Baby Steps",
+      tagline: "The plan 10 million people have used to get straightened up. Your income is your most powerful wealth-building tool — free it first.",
+      intro: "From Dave Ramsey's 7 Baby Steps: personal finance is 80% behavior, 20% math. Debt is the most aggressively marketed product in America (Visa, Mastercard, Discover and Amex alone spend $4B/year selling it), and 'the borrower is slave to the lender.' Run this track in parallel with the business phases — a founder with no payments makes braver decisions ('your career choices are different when you're free'). Do the steps in order; don't remix them.",
+      steps: [
+        {
+          id: "bs1-starter",
+          title: "Baby Step 1 — Save $1,000 (Starter Emergency Fund)",
+          time: "under 30 days",
+          lesson: [
+            "Save <b>$1,000</b>, set it aside, and touch it only for true emergencies. Criticism addressed: 'adjust it for inflation!' — Ramsey's answer: it was <i>never</i> meant to be enough. It exists so a $350 alternator doesn't derail your debt payoff and kill your <b>emotional momentum</b> — this is a behavior-modification program, and momentum is the fuel.",
+            "It's the easiest step (garage sale, sell stuff online, clean out the piggy bank — most people can do it inside 30 days) and simultaneously the hardest: it's the moment you decide whether you'll actually submit to a different set of ideas than the ones that got you here. That's called change, and change is uncomfortable.",
+            "Don't reorder the steps or negotiate with them. 'Don't argue with the eight-pack when you've got a keg.'",
+          ],
+          actions: [
+            "Open a separate savings account today and name it EMERGENCY ONLY.",
+            "List 10 things you can sell this week (garage sale, Craigslist, marketplace). Sell them.",
+            "Move every spare dollar in until the account reads $1,000.",
+            "Write the rule where you'll see it: this money is for emergencies — not couches, not boats, not deals.",
+          ],
+          metric: "$1,000 sitting untouched in a separate account",
+        },
+        {
+          id: "bs2-snowball",
+          title: "Baby Step 2 — Kill All Debt with the Debt Snowball",
+          time: "18–24 months average",
+          lesson: [
+            "List every debt except your house, <b>smallest balance to largest</b> (ignore interest rates). Minimum payments on everything but the smallest; attack the smallest with everything you have. When it dies, roll its payment into the next one. Squeeze, throw, repeat — by the big ones, you're shoveling huge payments.",
+            "Criticism addressed: 'the avalanche (highest interest first) is mathematically correct.' Ramsey: incomplete math — a behavior tool must include <b>probability of completion</b>. The snowball completes ~80% of the time; the avalanche ~20%, saving only ~1.3 months and ~$1,500 if executed perfectly. A Northwestern University study concluded the snowball wins. Quick wins build the hope that finishes the race. 'If we were doing math, we wouldn't have credit card debt.'",
+            "The myths the video dismantles: airline miles (of 10,167 millionaires studied, the number who credited credit-card points: <b>zero</b>) · 'debit cards aren't protected' (Visa's zero-liability covers debit too) · car payments as a way of life (average payment ≈ $700/month — 10 months of that buys a decent cash car) · leasing ('the most expensive way to finance a car' — effective rate ≈ 14.2%; 82% of millionaires never had a car loan or lease) · building your FICO score (an 'I-love-debt score' — 100% of it measures how you interact with debt, not whether you're winning) · cosigning ('the bank, whose whole job is lending, decided your relative won't pay') · 'you can't go to college without loans' (71% of millionaires took none).",
+            "The method is <b>gazelle intensity</b> (Proverbs 6): the cheetah is faster, but the gazelle escapes 18 of 19 times because one of them is running for its life. Deliver yourself — nobody in the White House is coming to prosper your house. Sell so much stuff the kids think they're next; work extra; stop borrowing — have the 'plastectomy.' Pause investing temporarily and throw everything at the debt.",
+          ],
+          actions: [
+            "List every non-mortgage debt smallest to largest in this step's notes — today, all of them.",
+            "Cut up / freeze the credit cards. No new borrowing, period.",
+            "Pause retirement contributions temporarily and redirect the money at the smallest debt.",
+            "Add income: one extra job, overtime, or 10 extra sales calls a day (your Phase 1 skill compounds here).",
+            "Every debt you kill, roll its payment into the next — track the snowball in your notes monthly.",
+          ],
+          metric: "Everything but the house: $0",
+        },
+        {
+          id: "bs3-fund",
+          title: "Baby Step 3 — Fully Funded Emergency Fund (3–6 Months)",
+          time: "6–12 months",
+          lesson: [
+            "Stay gazelle-intense one more step: bank <b>3–6 months of expenses</b>. It's going to rain — 78% of American households have a major negative financial event in any given 10-year window. An emergency fund turns a crisis into an inconvenience; without one, life is drama-to-drama-to-drama.",
+            "Criticism addressed: 'invest your emergency fund!' No. It's not an investment, it's <b>insurance</b> — you're paying (in foregone returns) to protect the things that make you money. High-yield savings, liquid, boring. Your spouse's security is worth more than the spread.",
+            "When you're here — no payments but the house, $15–30k in the bank — you're in roughly the top 10% of Americans financially. Now <b>downshift from intense to intentional</b>: vacations, eating out, and investing come back, funded by all the payments you no longer have.",
+          ],
+          actions: [
+            "Calculate your real monthly expenses; multiply by 3–6 and write down your target number.",
+            "Auto-transfer to a high-yield savings account every payday until you hit it.",
+            "Define 'emergency' in writing with your spouse/partner — and what it isn't.",
+            "When funded: officially downshift. Restart investing and normal life, on a written budget.",
+          ],
+          metric: "3–6 months of expenses, liquid and untouched",
+        },
+        {
+          id: "bs47-wealth",
+          title: "Baby Steps 4–7 — Invest 15%, Kids' College, Kill the Mortgage, Give",
+          time: "runs simultaneously, then for life",
+          book: { name: "Baby Steps Millionaires", author: "Dave Ramsey" },
+          lesson: [
+            "<b>Step 4 — 15% of household income into retirement.</b> Compound interest is 'the eighth wonder of the world.' The S&P 500 has averaged ~11.2% since inception; even the dumbed-down model — $77k average income, no raise for 35 years, 10% returns — lands at $3.6M. Criticism addressed: '15% isn't enough anymore' — it isn't forever; after the house is paid (step 6→7) you invest far more. Investing = long track record, left alone a long time. Day trading (78% lose money) and crypto are speculating, not investing; millionaires' portfolios are 'disturbingly boring.'",
+            "<b>Step 5 — save for kids' college</b> in an ESA/529. Pay cash; there is no good student loan (student debt is delaying marriage, moving out, and home-buying for a whole generation). College is worth it 'if you study the right things at the right place at the right price' — there's zero data linking the brand name of the school to success. Trades and certifications are legitimate routes ($110k welders, six-figure devs with no degree). Scholarships? You can withdraw the scholarship amount from the 529 penalty-free.",
+            "<b>Step 6 — pay off the house early.</b> The typical millionaire in the 10,167-person study: 52 years old, paid-off house worth ~$600k plus ~$700k in retirement accounts, built over ~18 boring years. Number who got rich borrowing against the house to buy funds: zero. Criticism addressed: 'keep the mortgage for the tax deduction' — 90% of Americans take the standard deduction, and even for the rest, paying the bank $10,000 of interest to save $2,200 of tax is trading dollars for quarters. People on this plan pay the house off in ~7 years.",
+            "<b>Step 7 — build wealth and give outrageously.</b> Generosity is a character quality, not an act — and generous people statistically prosper (better marriages, better promotions, better lives). 'Money is like candles: lighting someone else's doesn't diminish yours.' Live like no one else so that later you can live — and give — like no one else.",
+          ],
+          actions: [
+            "Set retirement contributions to exactly 15% of gross household income (401k/Roth IRA, boring index/mutual funds).",
+            "If you have kids: open an ESA or 529 this month and start any amount.",
+            "Apply every raise and windfall to the mortgage principal; calculate your payoff date at the current pace.",
+            "Build giving into the budget now — a fixed percentage, automatic, starting this month.",
+            "Add a goal in the Goals tab: your net-worth-$1M date, using the millionaire math above.",
+          ],
+          metric: "15% investing on autopilot; a written mortgage-payoff date; giving line in the budget",
+        },
+      ],
+    },
+    {
       id: "p1",
       num: 1,
       title: "Build Your Million-Dollar Skill Stack",
@@ -444,6 +526,7 @@ const CURRICULUM = {
     },
   ],
   library: [
+    { skill: "Money Foundation", name: "Baby Steps Millionaires", author: "Dave Ramsey", why: "The study of 10,167 millionaires behind the 7 Baby Steps — how ordinary incomes become 7-figure net worths." },
     { skill: "Sales & Persuasion", name: "Never Split the Difference", author: "Chris Voss", why: "Stay calm, persuade, and win high-stakes conversations — the tactics behind the $110M exit negotiation." },
     { skill: "Copywriting", name: "Copywriting Secrets", author: "Jim Edwards", why: "Straightforward, modern; teaches the Hook → Persuade → CTA formula that all advertising runs on." },
     { skill: "Product Thinking", name: "The Lean Startup", author: "Eric Ries", why: "The framework for interviewing customers so they teach you exactly what to build." },
