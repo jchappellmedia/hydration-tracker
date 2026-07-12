@@ -3,7 +3,7 @@ name: Deploy site to GitHub Pages
 on:
   push:
     branches:
-      - claude/video-transcript-extraction-dm97h3
+      - main
     paths:
       - "skillstack/**"
       - "index.html"
