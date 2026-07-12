@@ -566,6 +566,7 @@
         <div class="lib-item"><b>The 3 Fundamentals of "10x" Growth</b> — Dr. Benjamin Hardy's breakdown of 10x vs 2x (Phase 9)</div>
         <div class="lib-item"><b>Declutter Your Way To Success</b> — Terri Savelle Foy's excellence-and-environment discipline (Phase 10)</div>
         <div class="lib-item"><b>Mindset: The New Psychology of Success (summary)</b> — Carol Dweck's fixed vs. growth mindset research (Phase 11)</div>
+        <div class="lib-item"><b>The 7 Habits of Highly Effective People</b> — Stephen Covey's character framework, concepts summarized (Phase 12; the book is copyrighted, so its text is not stored in this repo)</div>
       </div>`;
   }
 
