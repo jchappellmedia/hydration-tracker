@@ -1,0 +1,37 @@
+name: Extract PDF text to artifact (not committed)
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: URL of the PDF to extract
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install --quiet pypdf
+
+      - name: Extract
+        run: |
+          mkdir -p /tmp/pdfout
+          echo "${{ github.event.inputs.url }}" > /tmp/queue.txt
+          python scripts/pdf_to_text.py /tmp/queue.txt /tmp/pdfout
+
+      - name: Upload text as short-lived artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: extracted-text
+          path: /tmp/pdfout/
+          retention-days: 1
