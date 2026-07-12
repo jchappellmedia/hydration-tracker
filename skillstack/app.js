@@ -239,6 +239,7 @@
 
     if (step.widget === "market-calc") renderMarketCalc($(".widget-slot", el));
     if (step.widget === "leverage-score") renderLeverageScore($(".widget-slot", el));
+    if (step.widget === "freedom-calc") renderFreedomCalc($(".widget-slot", el));
 
     $(".step-head", el).addEventListener("click", () => el.classList.toggle("open"));
     $$("input[type=checkbox][data-action]", el).forEach((cb) => {
@@ -316,6 +317,42 @@
     $$("input[data-lev]", slot).forEach((cb) => cb.addEventListener("change", () => {
       w[cb.dataset.lev] = cb.checked; update(); save();
     }));
+    update();
+  }
+
+  function renderFreedomCalc(slot) {
+    const w = state.widgets.freedom || (state.widgets.freedom = { costs: "", buffer: "20", price: "" });
+    slot.innerHTML = `
+      <div class="widget">
+        <h4>Freedom Number Calculator</h4>
+        <label>Your essential monthly costs ($)
+          <input type="number" min="0" id="fc-costs" value="${esc(w.costs)}" placeholder="e.g. 2500">
+        </label>
+        <label>Safety buffer (%)
+          <input type="number" min="0" max="100" id="fc-buffer" value="${esc(w.buffer)}">
+        </label>
+        <label>Price of what you'll sell, per month ($) <span class="muted">(optional)</span>
+          <input type="number" min="0" id="fc-price" value="${esc(w.price)}" placeholder="e.g. 300">
+        </label>
+        <div class="widget-result" id="fc-result"></div>
+      </div>`;
+    const update = () => {
+      w.costs = $("#fc-costs", slot).value;
+      w.buffer = $("#fc-buffer", slot).value;
+      w.price = $("#fc-price", slot).value;
+      const el = $("#fc-result", slot);
+      if (!w.costs) { el.textContent = ""; return; }
+      const number = Math.ceil(Number(w.costs) * (1 + Number(w.buffer || 0) / 100));
+      let text = `Your freedom number: ${fmtMoney(number)}/month`;
+      if (Number(w.price) > 0) {
+        text += ` — that's ${Math.ceil(number / Number(w.price))} customers at ${fmtMoney(Number(w.price))}/month`;
+      }
+      el.className = "widget-result pass";
+      el.textContent = text;
+      save();
+    };
+    ["fc-costs", "fc-buffer", "fc-price"].forEach((id) =>
+      $("#" + id, slot).addEventListener("input", update));
     update();
   }
 
@@ -524,6 +561,7 @@
         <div class="lib-item"><b>How to Make $1,000,000 From Scratch</b> — Michia Rohrssen's 3-step blueprint (market → launch → scale)</div>
         <div class="lib-item"><b>$110M CEO Explains: 7 Skills to Make Your First $1M</b> — Michia Rohrssen's skill stack</div>
         <div class="lib-item"><b>The 7 Baby Steps Explained (Top Criticisms Addressed)</b> — Dave Ramsey's personal-finance foundation (Phase 0)</div>
+        <div class="lib-item"><b>How To Quit Your Job (And Do What You Love)</b> — Simon Squibb &amp; Ali Abdaal's 8-step escape blueprint (Phase 1)</div>
       </div>`;
   }
 
