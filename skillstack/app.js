@@ -563,6 +563,7 @@
         <div class="lib-item"><b>The 7 Baby Steps Explained (Top Criticisms Addressed)</b> — Dave Ramsey's personal-finance foundation (Phase 0)</div>
         <div class="lib-item"><b>How To Quit Your Job (And Do What You Love)</b> — Simon Squibb &amp; Ali Abdaal's 8-step escape blueprint (Phase 1)</div>
         <div class="lib-item"><b>Think and Grow Rich</b> — Napoleon Hill's 1937 classic, full public-domain text in the repo (Phase 8)</div>
+        <div class="lib-item"><b>The 3 Fundamentals of "10x" Growth</b> — Dr. Benjamin Hardy's breakdown of 10x vs 2x (Phase 9)</div>
       </div>`;
   }
 
