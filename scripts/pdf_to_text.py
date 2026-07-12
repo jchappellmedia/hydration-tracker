@@ -27,22 +27,45 @@ def main():
     if not queue.exists():
         sys.exit(0)
 
+    ok = 0
     for url in [l.strip() for l in queue.read_text().splitlines() if l.strip()]:
-        name = Path(urllib.parse.urlparse(url).path).stem or "document"
-        pdf_path = Path("/tmp") / f"{name}.pdf"
-        print(f"downloading {url}")
-        req = urllib.request.Request(url, headers={"User-Agent": UA})
-        with urllib.request.urlopen(req, timeout=120) as r:
-            pdf_path.write_bytes(r.read())
-        print(f"downloaded {pdf_path.stat().st_size} bytes")
+        try:
+            name = Path(urllib.parse.urlparse(url).path).stem or "document"
+            pdf_path = Path("/tmp") / f"{name}.pdf"
+            print(f"downloading {url}")
+            origin = f"{urllib.parse.urlparse(url).scheme}://{urllib.parse.urlparse(url).netloc}"
+            req = urllib.request.Request(url, headers={
+                "User-Agent": UA,
+                "Accept": "application/pdf,text/plain,*/*",
+                "Accept-Language": "en-US,en;q=0.9",
+                "Referer": origin + "/",
+                "Sec-Fetch-Dest": "document",
+                "Sec-Fetch-Mode": "navigate",
+                "Sec-Fetch-Site": "same-origin",
+                "Upgrade-Insecure-Requests": "1",
+            })
+            with urllib.request.urlopen(req, timeout=120) as r:
+                data = r.read()
+            pdf_path.write_bytes(data)
+            print(f"downloaded {len(data)} bytes")
 
-        reader = PdfReader(str(pdf_path))
-        pages = [(page.extract_text() or "") for page in reader.pages]
-        text = "\n\n".join(pages)
-        text = re.sub(r"[ \t]+", " ", text)
-        out = out_dir / f"{name}.txt"
-        out.write_text(text, encoding="utf-8")
-        print(f"extracted {len(reader.pages)} pages -> {out} ({len(text)} chars)")
+            if data[:5] == b"%PDF-":
+                reader = PdfReader(str(pdf_path))
+                pages = [(page.extract_text() or "") for page in reader.pages]
+                text = "\n\n".join(pages)
+                print(f"parsed {len(reader.pages)} PDF pages")
+            else:
+                text = data.decode("utf-8", "replace")
+                print("not a PDF; saved as plain text")
+            text = re.sub(r"[ \t]+", " ", text)
+            out = out_dir / f"{name}.txt"
+            out.write_text(text, encoding="utf-8")
+            print(f"saved {out} ({len(text)} chars)")
+            ok += 1
+        except Exception as exc:
+            print(f"FAILED {url}: {exc}")
+    if not ok:
+        sys.exit("no documents extracted")
 
 
 if __name__ == "__main__":
