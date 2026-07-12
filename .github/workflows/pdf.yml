@@ -1,0 +1,42 @@
+name: Extract text from queued PDFs
+
+on:
+  push:
+    branches:
+      - claude/video-transcript-extraction-dm97h3
+    paths:
+      - transcripts/pdf-queue.txt
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install --quiet pypdf
+
+      - name: Extract queued PDFs
+        run: |
+          python scripts/pdf_to_text.py transcripts/pdf-queue.txt transcripts
+          : > transcripts/pdf-queue.txt
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add transcripts/
+          if git diff --cached --quiet; then
+            echo "Nothing to commit"
+          else
+            git commit -m "Add extracted PDF text [skip ci]"
+            git push
+          fi
