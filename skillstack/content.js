@@ -837,6 +837,65 @@ const CURRICULUM = {
         },
       ],
     },
+    {
+      id: "gm",
+      num: 11,
+      title: "The Growth Mindset — Learners Beat Non-Learners",
+      tagline: "Carol Dweck's research: the belief you hold about your own abilities quietly decides how every other phase of this roadmap goes.",
+      intro: "From Carol Dweck's 'Mindset: The New Psychology of Success': decades of research show people carry one of two beliefs about their abilities. A fixed mindset says talent and intelligence are set in stone — so life becomes an endless audition to prove you have enough. A growth mindset says abilities are developed through effort and learning — so challenges become fuel. This phase matters because the roadmap ahead is built out of setbacks: rejected pitches, failed lean tests, CAB no-shows. Which mindset you bring determines whether those setbacks end your journey or teach it.",
+      steps: [
+        {
+          id: "gm1-two",
+          title: "Know the Two Mindsets",
+          time: "self-diagnosis, 30 minutes",
+          book: { name: "Mindset: The New Psychology of Success", author: "Carol S. Dweck" },
+          lesson: [
+            "Dweck's research began with a shock: given puzzles too hard for them, some children lit up — one declared he loved a challenge. They believed struggling made them smarter, so 'failure' wasn't a verdict; it was information. That single belief difference splits people into what she calls the two mindsets.",
+            "<b>Fixed mindset:</b> abilities are innate and unchangeable, so every task is a referendum on your worth. Failure means you ARE a failure; visible effort is embarrassing (truly talented people shouldn't need it); challenges are threats to avoid. <b>Growth mindset:</b> abilities are a starting point developed through effort, strategy, and learning. Failure stings but reads as 'not there yet'; effort is the mechanism, not the confession.",
+            "Even the inventor of the IQ test, Alfred Binet, designed it to find students who needed better teaching — he insisted intelligence can be grown with practice and training. Dweck's bad-day test makes the contrast practical: after a poor grade, a parking ticket, and a friend brushing you off, the fixed mind concludes 'I'm worthless'; the growth mind plans 'study differently, park carefully, check on my friend.' Same day, opposite trajectories. And mindsets themselves are just beliefs — which means they can be changed.",
+          ],
+          actions: [
+            "Take the honest inventory: write down 3 things you've avoided (a skill, a pitch, a market) because failing would 'prove' something about you.",
+            "For each, write the growth reframe: what would attempting it teach you regardless of outcome?",
+            "Notice your effort story: catch one moment this week where you hid effort or avoided being seen struggling.",
+          ],
+          metric: "Avoidance list written and reframed; one hidden-effort moment caught",
+        },
+        {
+          id: "gm2-business",
+          title: "Growth Mindset in Business & Leadership",
+          time: "apply as you build",
+          lesson: [
+            "The stakes are corporate, not just personal. Dweck points to Enron as the 'talent mindset' taken to its conclusion: a culture obsessed with appearing brilliant, where admitting mistakes was unthinkable — so mistakes got hidden instead of fixed, all the way to collapse. Research backs the pattern: students praised for intelligence (rather than effort) began lying about their scores when challenges arrived.",
+            "Contrast Jim Collins' 'Good to Great' companies: the leaders who produced 15+ years of exceptional results were humble, feedback-hungry learners — questioning, debating, admitting error — not larger-than-life geniuses protecting their image. In a Wood & Bandura management simulation, growth-minded participants who treated setbacks as data kept adapting and ended up far more effective; fixed-minded ones protected their reputation and stagnated.",
+            "For your roadmap: praise and measure <i>process</i> — in yourself, your CAB conversations, and your pizza squad. A failed lean test (Phase 4) or a rejected pitch is your Wood & Bandura moment: the question is never 'am I talented enough?' but 'what does this result teach the next attempt?'",
+          ],
+          actions: [
+            "Rewrite one recent 'failure' (lost deal, dead test, bad launch) as a data report: what it showed, what changes next.",
+            "In your team or master mind, replace talent praise with process praise for one week ('the way you handled X' vs 'you're a natural').",
+            "Ask for one piece of uncomfortable feedback from a customer or peer — and thank them without defending.",
+          ],
+          metric: "One failure converted to a written data report; feedback sought and received undefended",
+        },
+        {
+          id: "gm3-rewire",
+          title: "Rewire the Inner Voice: From Judge to Coach",
+          time: "daily practice",
+          lesson: [
+            "Change isn't flipping a switch — Dweck describes it as gradually building strength until new beliefs take the lead. The mechanism traces to Aaron Beck's discovery behind cognitive therapy: automatic thoughts ('I'll never succeed,' 'I'm not good enough') fire before the feelings do, and catching and challenging those thoughts changes the outcome.",
+            "The fixed-mindset inner voice is a <b>judge</b> — every event becomes a verdict on your worth. The growth-mindset voice is a <b>coach</b> — it asks 'what can I take from this?' and 'how do I get better?'. Same events, different interrogation.",
+            "This is the engine under Phase 8's autosuggestion and Phase 9's identity work: your twice-daily statement, your rewritten story, and your raised floor are all growth-mindset installations. Dweck's students report that just learning the framework changes decisions — like her student who finally pursued writing once 'born creative' stopped being a requirement.",
+          ],
+          actions: [
+            "For 7 days, log every automatic 'I can't / I'm not' thought in this step's notes — just catching them is half the work.",
+            "Rewrite each as a coach question: 'What's my next move to get better at this?'",
+            "Add one growth line to your Phase 8 daily reading: e.g. 'Every result is information; I am built by attempts.'",
+            "Pick one thing you 'aren't good at' and take one lesson/attempt in it this week — vote for the new belief with action.",
+          ],
+          metric: "7-day thought log completed; one 'not my thing' skill attempted",
+        },
+      ],
+    },
   ],
   library: [
     { skill: "Money Foundation", name: "Baby Steps Millionaires", author: "Dave Ramsey", why: "The study of 10,167 millionaires behind the 7 Baby Steps — how ordinary incomes become 7-figure net worths." },
@@ -846,6 +905,7 @@ const CURRICULUM = {
     { skill: "10x Growth", name: "10x Is Easier Than 2x", author: "Dan Sullivan & Dr. Benjamin Hardy", why: "The framework behind Phase 9 — keep the vital 20%, release the 80%, and let your future self set the filter." },
     { skill: "10x Growth", name: "Who Not How", author: "Dan Sullivan & Dr. Benjamin Hardy", why: "Stop asking 'how do I do this?' and start asking 'who can do this?' — the delegation mindset behind trust-based leadership." },
     { skill: "Excellence", name: "Declutter Your Way to Success", author: "Terri Savelle Foy", why: "The link between an ordered environment and an ordered life — the discipline behind Phase 10." },
+    { skill: "Growth Mindset", name: "Mindset: The New Psychology of Success", author: "Carol S. Dweck", why: "The research behind Phase 11 — why believing abilities can grow changes how every challenge in this roadmap plays out." },
     { skill: "Sales & Persuasion", name: "Never Split the Difference", author: "Chris Voss", why: "Stay calm, persuade, and win high-stakes conversations — the tactics behind the $110M exit negotiation." },
     { skill: "Copywriting", name: "Copywriting Secrets", author: "Jim Edwards", why: "Straightforward, modern; teaches the Hook → Persuade → CTA formula that all advertising runs on." },
     { skill: "Product Thinking", name: "The Lean Startup", author: "Eric Ries", why: "The framework for interviewing customers so they teach you exactly what to build." },
