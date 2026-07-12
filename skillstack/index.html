@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Million Dollar Roadmap</title>
+  <meta name="description" content="An interactive tutorial that walks you from zero to your first $1M: build the skill stack, find a billion-dollar market, sell before you build, and scale to freedom.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">🏔️</span>
+      <div>
+        <h1>Million Dollar Roadmap</h1>
+        <p class="brand-sub">From zero → skill stack → billion-dollar market → first revenue → freedom</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <div id="sync-status" class="sync-status" title="Data sync status">local only</div>
+      <button id="auth-btn" class="btn btn-ghost">Sign in to sync</button>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="dashboard">Dashboard</button>
+    <button class="tab" data-tab="journey">The Journey</button>
+    <button class="tab" data-tab="goals">Goals &amp; Plans</button>
+    <button class="tab" data-tab="library">Library</button>
+  </nav>
+
+  <main>
+    <section id="tab-dashboard" class="tab-panel active"></section>
+    <section id="tab-journey" class="tab-panel"></section>
+    <section id="tab-goals" class="tab-panel"></section>
+    <section id="tab-library" class="tab-panel"></section>
+  </main>
+
+  <div id="auth-modal" class="modal hidden">
+    <div class="modal-card">
+      <button class="modal-close" data-close>&times;</button>
+      <h2>Sync your progress</h2>
+      <p class="muted">Create an account (or sign in) to save your progress, goals, and notes to the cloud and access them from any device. Without an account everything still works — it just stays in this browser.</p>
+      <form id="auth-form">
+        <label>Email
+          <input type="email" id="auth-email" required autocomplete="email" placeholder="you@example.com">
+        </label>
+        <label>Password
+          <input type="password" id="auth-password" required minlength="6" autocomplete="current-password" placeholder="6+ characters">
+        </label>
+        <div class="row gap">
+          <button type="submit" class="btn btn-primary" data-mode="signin">Sign in</button>
+          <button type="button" class="btn" id="signup-btn">Create account</button>
+        </div>
+        <p id="auth-msg" class="auth-msg"></p>
+      </form>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <p>Based on Michia Rohrssen's playbooks: <em>How to Make $1M From Scratch</em> and <em>7 Skills to Make Your First $1M</em>. Full transcripts live in this repo. Educational content — outcomes depend on execution.</p>
+    <p class="row gap">
+      <button id="export-btn" class="btn btn-ghost btn-sm">Export data</button>
+      <label class="btn btn-ghost btn-sm" for="import-file">Import data</label>
+      <input type="file" id="import-file" accept=".json" hidden>
+      <button id="reset-btn" class="btn btn-ghost btn-sm danger">Reset all progress</button>
+    </p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="content.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
