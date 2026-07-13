@@ -351,6 +351,11 @@
           </div>
           <div class="module-body">
             ${m.why ? `<div class="module-why">${m.why}</div>` : ""}
+            ${(m.learn || []).length ? `<div class="module-learn">
+              <div class="learn-label">📖 The learning</div>
+              ${m.learn.map((p) => `<p>${p}</p>`).join("")}
+            </div>` : ""}
+            ${(m.steps || []).length ? `<div class="steps-label">✅ Baby steps</div>` : ""}
             ${(m.steps || []).map((s) => planStepHTML(s)).join("")}
           </div>
         </div>`;

@@ -213,8 +213,24 @@ label input, label textarea, label select { margin-top: 6px; font-weight: 400; }
 .module.open .module-chevron { transform: rotate(90deg); }
 .module-body { display: none; padding: 2px 17px 16px; }
 .module.open .module-body { display: block; }
-.module-why { font-size: 0.9rem; color: var(--text-muted); padding: 6px 0 13px; border-bottom: 1px dashed var(--border); margin-bottom: 6px; }
+.module-why { font-size: 0.9rem; color: var(--text-muted); padding: 6px 0 13px; margin-bottom: 4px; }
 .module-why b { color: var(--text); font-weight: 700; }
+.module-learn {
+  background: color-mix(in srgb, var(--accent) 7%, var(--bg-soft));
+  border: 1px solid color-mix(in srgb, var(--accent) 26%, var(--border));
+  border-radius: 12px; padding: 13px 15px; margin: 4px 0 14px;
+}
+.module-learn p { font-size: 0.89rem; margin: 9px 0; }
+.module-learn p:first-of-type { margin-top: 4px; }
+.module-learn p:last-child { margin-bottom: 0; }
+.module-learn b { color: var(--accent); font-weight: 700; }
+@media (prefers-color-scheme: light) { .module-learn b { color: #4f46e5; } }
+.learn-label, .steps-label {
+  font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em;
+  color: var(--text-muted);
+}
+.learn-label { margin-bottom: 4px; color: var(--accent); }
+.steps-label { margin: 4px 0 2px; }
 
 /* ---------- Baby steps ---------- */
 .step-row { display: flex; gap: 12px; align-items: flex-start; padding: 12px 2px; border-bottom: 1px solid var(--border); }
