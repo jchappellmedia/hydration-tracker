@@ -403,7 +403,7 @@
           </div>
           ${hasLesson ? `<div class="lstep-chevron" data-open="${esc(s.id)}">›</div>` : ""}
         </div>
-        ${hasLesson ? `<div class="lstep-body"><div class="lesson">${s.lesson.map((p) => `<p>${p}</p>`).join("")}</div></div>` : ""}
+        ${hasLesson ? `<div class="lstep-body"><div class="lesson">${s.lesson.map((p) => (/^\s*<(h4|h5|ul|ol|p|div|blockquote|hr)/i.test(p) ? p : `<p>${p}</p>`)).join("")}<div class="lesson-end">✍️ Talk it over, then check the step off when you've done it.</div></div></div>` : ""}
       </div>`;
   }
   function updateModuleEl(el, m) {

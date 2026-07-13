@@ -245,9 +245,16 @@ label input, label textarea, label select { margin-top: 6px; font-weight: 400; }
 .lstep-body { display: none; padding: 0 13px 13px 50px; }
 .lstep.open .lstep-body { display: block; }
 .lstep-body .lesson { border-top: 1px dashed var(--border); padding-top: 6px; }
-.lstep-body .lesson p { font-size: 0.88rem; margin: 9px 0; }
-.lstep-body .lesson b { color: var(--accent); font-weight: 700; }
-@media (prefers-color-scheme: light) { .lstep-body .lesson b { color: #4f46e5; } }
+.lstep-body .lesson p { font-size: 0.9rem; margin: 10px 0; line-height: 1.62; }
+.lstep-body .lesson b { color: var(--text); font-weight: 700; }
+.lstep-body .lesson h4 { font-size: 0.96rem; margin: 18px 0 6px; color: var(--accent); letter-spacing: -0.01em; }
+.lstep-body .lesson h5 { font-size: 0.9rem; margin: 14px 0 4px; color: var(--text); }
+.lstep-body .lesson ul, .lstep-body .lesson ol { margin: 8px 0 8px 4px; padding-left: 20px; }
+.lstep-body .lesson li { font-size: 0.9rem; margin: 6px 0; line-height: 1.55; }
+.lstep-body .lesson blockquote { margin: 12px 0; padding: 8px 14px; border-left: 3px solid var(--accent); background: var(--bg-card); border-radius: 0 8px 8px 0; font-size: 0.9rem; }
+.lstep-body .lesson hr { border: none; border-top: 1px dashed var(--border); margin: 16px 0; }
+.lesson-end { margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--border); font-size: 0.82rem; color: var(--text-muted); }
+@media (prefers-color-scheme: light) { .lstep-body .lesson b { color: #141a22; } }
 @media (max-width: 480px) { .lstep-body { padding-left: 13px; } }
 
 /* ---------- Details tab list ---------- */
