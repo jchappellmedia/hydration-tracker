@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Million Dollar Roadmap</title>
-  <meta name="description" content="An interactive tutorial that walks you from zero to your first $1M: build the skill stack, find a billion-dollar market, sell before you build, and scale to freedom.">
+  <title>Freedom Plan</title>
+  <meta name="description" content="Your step-by-step course from where you are today to freedom: one plan, daily baby steps, built around your real life.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -34,31 +34,27 @@
     <div class="brand">
       <span class="brand-mark">🏔️</span>
       <div>
-        <h1>Million Dollar Roadmap</h1>
-        <p class="brand-sub">From zero → skill stack → billion-dollar market → first revenue → freedom</p>
+        <h1>Freedom Plan</h1>
+        <p class="brand-sub">One course. Daily baby steps. Built around your life.</p>
       </div>
     </div>
     <div class="top-actions">
       <div id="sync-status" class="sync-status" title="Data sync status">local only</div>
-      <button id="pw-btn" class="btn btn-ghost" hidden>Change password</button>
-      <button id="auth-btn" class="btn btn-ghost">Sign in to sync</button>
+      <button id="pw-btn" class="btn btn-ghost btn-sm" hidden>Password</button>
+      <button id="auth-btn" class="btn btn-ghost btn-sm">Sign in</button>
     </div>
   </header>
 
   <nav class="tabs" role="tablist">
-    <button class="tab active" data-tab="dashboard">Dashboard</button>
-    <button class="tab" data-tab="journey">The Journey</button>
-    <button class="tab" data-tab="myplan">My Plan</button>
-    <button class="tab" data-tab="goals">Goals &amp; Plans</button>
-    <button class="tab" data-tab="library">Library</button>
+    <button class="tab active" data-tab="today"><span class="tab-ico">☀️</span>Today</button>
+    <button class="tab" data-tab="plan"><span class="tab-ico">🗺️</span>The Plan</button>
+    <button class="tab" data-tab="learn"><span class="tab-ico">📚</span>Learn</button>
   </nav>
 
   <main>
-    <section id="tab-dashboard" class="tab-panel active"></section>
-    <section id="tab-journey" class="tab-panel"></section>
-    <section id="tab-myplan" class="tab-panel"></section>
-    <section id="tab-goals" class="tab-panel"></section>
-    <section id="tab-library" class="tab-panel"></section>
+    <section id="tab-today" class="tab-panel active"></section>
+    <section id="tab-plan" class="tab-panel"></section>
+    <section id="tab-learn" class="tab-panel"></section>
   </main>
 
   <div id="pw-modal" class="modal hidden">
@@ -101,7 +97,7 @@
   </div>
 
   <footer class="foot">
-    <p>Based on Michia Rohrssen's playbooks: <em>How to Make $1M From Scratch</em> and <em>7 Skills to Make Your First $1M</em>. Full transcripts live in this repo. Educational content — outcomes depend on execution.</p>
+    <p>Your progress and plan sync privately to your account. The "Learn" course is built from the source playbooks and books. Educational content — outcomes depend on execution.</p>
     <p class="row gap">
       <button id="export-btn" class="btn btn-ghost btn-sm">Export data</button>
       <label class="btn btn-ghost btn-sm" for="import-file">Import data</label>
