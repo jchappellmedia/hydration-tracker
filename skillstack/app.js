@@ -96,11 +96,14 @@
 
   function updateAuthUI() {
     const btn = document.getElementById("auth-btn");
+    const pwBtn = document.getElementById("pw-btn");
     if (user) {
       btn.textContent = "Sign out";
+      pwBtn.hidden = false;
       setSyncStatus("synced ✓", true);
     } else {
       btn.textContent = "Sign in to sync";
+      pwBtn.hidden = true;
       setSyncStatus("local only", false);
     }
   }
@@ -627,6 +630,39 @@
       const pw = $("#auth-password").value;
       if (!email || pw.length < 6) { msgEl.className = "auth-msg err"; msgEl.textContent = "Enter an email and a 6+ character password."; return; }
       handleAuth("signup", email, pw, msgEl);
+    });
+
+    // Change password
+    const pwModal = $("#pw-modal");
+    $("#pw-btn").addEventListener("click", () => {
+      $("#pw-msg").textContent = "";
+      pwModal.classList.remove("hidden");
+    });
+    $("[data-close-pw]", pwModal).addEventListener("click", () => pwModal.classList.add("hidden"));
+    pwModal.addEventListener("click", (e) => { if (e.target === pwModal) pwModal.classList.add("hidden"); });
+    $("#pw-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const msg = $("#pw-msg");
+      const pw = $("#pw-new").value;
+      if (pw !== $("#pw-confirm").value) {
+        msg.className = "auth-msg err";
+        msg.textContent = "Passwords don't match.";
+        return;
+      }
+      if (!sb || !user) return;
+      msg.className = "auth-msg";
+      msg.textContent = "Updating…";
+      const { error } = await sb.auth.updateUser({ password: pw });
+      if (error) {
+        msg.className = "auth-msg err";
+        msg.textContent = error.message;
+      } else {
+        msg.className = "auth-msg ok";
+        msg.textContent = "Password updated ✓";
+        $("#pw-new").value = "";
+        $("#pw-confirm").value = "";
+        setTimeout(() => pwModal.classList.add("hidden"), 900);
+      }
     });
 
     $("#export-btn").addEventListener("click", () => {

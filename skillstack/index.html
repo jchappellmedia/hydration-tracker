@@ -40,6 +40,7 @@
     </div>
     <div class="top-actions">
       <div id="sync-status" class="sync-status" title="Data sync status">local only</div>
+      <button id="pw-btn" class="btn btn-ghost" hidden>Change password</button>
       <button id="auth-btn" class="btn btn-ghost">Sign in to sync</button>
     </div>
   </header>
@@ -57,6 +58,24 @@
     <section id="tab-goals" class="tab-panel"></section>
     <section id="tab-library" class="tab-panel"></section>
   </main>
+
+  <div id="pw-modal" class="modal hidden">
+    <div class="modal-card">
+      <button class="modal-close" data-close-pw>&times;</button>
+      <h2>Change password</h2>
+      <p class="muted">Pick a new password for your account. You'll stay signed in.</p>
+      <form id="pw-form">
+        <label>New password
+          <input type="password" id="pw-new" required minlength="8" autocomplete="new-password" placeholder="8+ characters">
+        </label>
+        <label>Confirm new password
+          <input type="password" id="pw-confirm" required minlength="8" autocomplete="new-password">
+        </label>
+        <button type="submit" class="btn btn-primary">Update password</button>
+        <p id="pw-msg" class="auth-msg"></p>
+      </form>
+    </div>
+  </div>
 
   <div id="auth-modal" class="modal hidden">
     <div class="modal-card">
