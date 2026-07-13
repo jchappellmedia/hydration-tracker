@@ -14,6 +14,7 @@ Merge rules (mirrors the app's pullRemote logic so progress is never lost):
     state (updatedAt = Date.now()) outranks the seed.
 """
 import base64
+import gzip
 import json
 import os
 import sys
@@ -40,7 +41,10 @@ def request(method, url, headers, body=None):
 def main():
     email = os.environ["ACCOUNT_EMAIL"]
     password = os.environ["ACCOUNT_PASSWORD"]
-    plan = json.loads(base64.b64decode(os.environ["PLAN_B64"]))
+    payload = base64.b64decode(os.environ["PLAN_B64"])
+    if payload[:2] == b"\x1f\x8b":  # optionally gzipped to fit dispatch input limits
+        payload = gzip.decompress(payload)
+    plan = json.loads(payload)
     if not isinstance(plan, dict) or "sections" not in plan:
         print("INVALID PLAN PAYLOAD")
         return 1
