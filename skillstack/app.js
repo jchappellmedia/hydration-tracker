@@ -567,6 +567,7 @@
         <div class="lib-item"><b>Declutter Your Way To Success</b> — Terri Savelle Foy's excellence-and-environment discipline (Phase 10)</div>
         <div class="lib-item"><b>Mindset: The New Psychology of Success (summary)</b> — Carol Dweck's fixed vs. growth mindset research (Phase 11)</div>
         <div class="lib-item"><b>The 7 Habits of Highly Effective People</b> — Stephen Covey's character framework, concepts summarized (Phase 12; the book is copyrighted, so its text is not stored in this repo)</div>
+        <div class="lib-item"><b>How to Win Friends and Influence People</b> — Dale Carnegie's principles, summarized (Phase 13; copyrighted book, so its text is not stored in this repo)</div>
       </div>`;
   }
 

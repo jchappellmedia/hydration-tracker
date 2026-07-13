@@ -958,6 +958,65 @@ const CURRICULUM = {
         },
       ],
     },
+    {
+      id: "wf",
+      num: 13,
+      title: "Win Friends — The Human Relations Playbook",
+      tagline: "Dale Carnegie's 1936 classic: every sale, hire, partnership, and negotiation in this roadmap runs through people.",
+      intro: "From Dale Carnegie's 'How to Win Friends and Influence People': dealing with people is the biggest single skill in business — and people are creatures of emotion and pride, not logic. Carnegie's system is a set of concrete habits for handling people, winning them over, and leading them without resentment. It's the interpersonal engine behind your sales calls (Phase 2), CAB outreach (Phase 6), and team leadership (Phase 7).",
+      steps: [
+        {
+          id: "wf1-handling",
+          title: "The Fundamentals of Handling People",
+          time: "practiced in every interaction",
+          book: { name: "How to Win Friends and Influence People", author: "Dale Carnegie" },
+          lesson: [
+            "<b>Don't criticize, condemn, or complain.</b> Criticism puts people on the defensive, wounds their pride, and breeds resentment instead of change — even people who are objectively in the wrong rarely blame themselves. Before correcting anyone, ask what made their behavior make sense to them.",
+            "<b>Give honest, sincere appreciation.</b> The deepest craving in human nature is the desire to feel important. Appreciation is not flattery — flattery is counterfeit and people detect it; appreciation is finding something genuinely admirable and saying so specifically.",
+            "<b>Arouse an eager want.</b> The only way to get anyone to do anything is to make them want to do it. Frame every request in terms of what the other person wants — Carnegie's fishing rule: bait the hook to suit the fish, not the fisherman. Notice your CAB script (Phase 6) already does this: you ask for their expertise (which they want to give) rather than their money.",
+          ],
+          actions: [
+            "Go one full week without criticizing, condemning, or complaining — log every slip in this step's notes.",
+            "Send one specific, genuine appreciation message a day for a week (customers, teammates, mentors).",
+            "Rewrite your main outreach message so every sentence is about what THEY want, then A/B it against the old one.",
+          ],
+          metric: "7-day no-criticism streak; appreciation habit running; outreach rewritten",
+        },
+        {
+          id: "wf2-liked",
+          title: "Six Ways to Make People Like You",
+          time: "daily habits",
+          lesson: [
+            "<b>1. Become genuinely interested in other people</b> — you'll make more friends in two months of interest in others than in two years of trying to be interesting. <b>2. Smile</b> — it costs nothing and telegraphs 'I'm glad to see you' before a word is spoken. <b>3. Remember names</b> — a person's name is, to them, the sweetest sound in any language; forgetting it says they didn't matter.",
+            "<b>4. Be a good listener and encourage others to talk about themselves</b> — the person who talks mostly about themselves leaves thinking YOU were a brilliant conversationalist. <b>5. Talk in terms of the other person's interests</b> — research what they care about before the meeting. <b>6. Make the other person feel important — and do it sincerely.</b>",
+            "These six compound directly with your roadmap: interviews (Phase 4) and advice-first outreach (Phase 6) are structured listening; Voss-style sales (Phase 2) is steering while THEY talk; Covey's emotional bank account (Phase 12) is the ledger these deposits go into.",
+          ],
+          actions: [
+            "Build a name system: write down every new name immediately with one memorable detail; use it twice in the conversation.",
+            "In your next 5 conversations, target an 80/20 talk ratio — them 80, you 20. Count questions you asked.",
+            "Before every meeting this week, spend 5 minutes learning one genuine interest of the other person and open with it.",
+          ],
+          metric: "Name system in use; 5 conversations run at listener ratio",
+        },
+        {
+          id: "wf3-influence",
+          title: "Win People Over & Lead Without Resentment",
+          time: "the negotiation and leadership layer",
+          lesson: [
+            "<b>Winning people to your way of thinking:</b> the only way to win an argument is to avoid it (even when you win, you've made the other person feel inferior — you lose the deal); never tell someone flatly they're wrong; when YOU'RE wrong, admit it quickly and emphatically; begin friendly; get early yeses by starting with points of agreement; let the other person do most of the talking; and above all, <b>let them feel the idea is theirs</b> — people fight ideas imposed on them and champion ideas they own. Try honestly to see things from their point of view.",
+            "<b>Leading without breeding resentment:</b> begin with sincere praise before any correction; call attention to mistakes indirectly; talk about your own errors first; <b>ask questions instead of giving orders</b> ('what do you think of trying…?'); always let the other person save face; praise every improvement, however small ('hearty in approbation, lavish in praise'); and give people a fine reputation to live up to — they'll stretch to keep it.",
+            "This is the operating manual for your pizza squad (Phase 7), your document-and-delegate playbook owners, and every CAB member conversation where you want the roadmap ideas to become THEIR ideas.",
+          ],
+          actions: [
+            "In your next disagreement, don't argue: ask 3 questions to understand their view before offering yours.",
+            "Guide your next product/roadmap discussion so the conclusion is voiced by the other person, not you.",
+            "Replace one direct order to a teammate/contractor with a question this week.",
+            "Give one person a reputation to live up to ('you're the most reliable person on this') and watch what happens.",
+          ],
+          metric: "One disagreement resolved without arguing; one idea successfully 'owned' by someone else",
+        },
+      ],
+    },
   ],
   library: [
     { skill: "Money Foundation", name: "Baby Steps Millionaires", author: "Dave Ramsey", why: "The study of 10,167 millionaires behind the 7 Baby Steps — how ordinary incomes become 7-figure net worths." },
@@ -969,6 +1028,7 @@ const CURRICULUM = {
     { skill: "Excellence", name: "Declutter Your Way to Success", author: "Terri Savelle Foy", why: "The link between an ordered environment and an ordered life — the discipline behind Phase 10." },
     { skill: "Growth Mindset", name: "Mindset: The New Psychology of Success", author: "Carol S. Dweck", why: "The research behind Phase 11 — why believing abilities can grow changes how every challenge in this roadmap plays out." },
     { skill: "Character", name: "The 7 Habits of Highly Effective People", author: "Stephen R. Covey", why: "The character operating system behind Phase 12 — private victory, public victory, and sharpening the saw." },
+    { skill: "People Skills", name: "How to Win Friends and Influence People", author: "Dale Carnegie", why: "The human-relations playbook behind Phase 13 — handling people, being liked, and leading without resentment." },
     { skill: "Sales & Persuasion", name: "Never Split the Difference", author: "Chris Voss", why: "Stay calm, persuade, and win high-stakes conversations — the tactics behind the $110M exit negotiation." },
     { skill: "Copywriting", name: "Copywriting Secrets", author: "Jim Edwards", why: "Straightforward, modern; teaches the Hook → Persuade → CTA formula that all advertising runs on." },
     { skill: "Product Thinking", name: "The Lean Startup", author: "Eric Ries", why: "The framework for interviewing customers so they teach you exactly what to build." },
