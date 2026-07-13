@@ -17,4 +17,5 @@ jobs:
           KEY="sb_publishable_dfuSJkpp1yZy5yg4tlKsGw_ync0kLXy"
           URL="https://utupgcayrwocavdmhyle.supabase.co"
           curl -sf "$URL/auth/v1/health" -H "apikey: $KEY" && echo " auth ok"
-          curl -sf "$URL/rest/v1/" -H "apikey: $KEY" -o /dev/null && echo "rest ok"
+          curl -sf "$URL/rest/v1/skillstack_state?select=user_id&limit=1" \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY" && echo " rest ok"
