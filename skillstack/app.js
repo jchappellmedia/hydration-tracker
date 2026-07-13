@@ -67,12 +67,20 @@
     const { data, error } = await sb.from("skillstack_state")
       .select("data, updated_at").eq("user_id", user.id).maybeSingle();
     if (error) { console.warn("pull failed", error); return; }
-    if (data && data.data && data.data.updatedAt > (state.updatedAt || 0)) {
-      state = Object.assign(defaultState(), data.data);
+    const remote = data && data.data;
+    if (remote && remote.updatedAt > (state.updatedAt || 0)) {
+      const localPlan = state.plan;
+      state = Object.assign(defaultState(), remote);
+      if (!state.plan && localPlan) state.plan = localPlan; // never lose a plan
       localStorage.setItem(LS_KEY, JSON.stringify(state));
       renderAll();
-    } else if (state.updatedAt) {
-      schedulePush(); // local is newer -> push up
+    } else {
+      if (remote && remote.plan && !state.plan) {
+        state.plan = remote.plan; // adopt plan from another device
+        localStorage.setItem(LS_KEY, JSON.stringify(state));
+        renderAll();
+      }
+      if (state.updatedAt) schedulePush(); // local is newer -> push up
     }
   }
 
@@ -459,6 +467,88 @@
     return streak;
   }
 
+  // ---------- Render: My Plan (private, lives in synced account data) ----------
+  function renderMyPlan() {
+    const root = $("#tab-myplan");
+    if (!state.plan) {
+      root.innerHTML = `
+        <div class="card">
+          <h2>My Plan</h2>
+          <p class="muted">This tab holds your private, personalized plan. It lives in your account data — never in the website's public code — and syncs across your devices.</p>
+          <p class="muted">No plan loaded yet. If you were given a plan file, import it here:</p>
+          <div class="row gap" style="margin-top:12px">
+            <label class="btn btn-primary" for="plan-file">Import plan file</label>
+            <input type="file" id="plan-file" accept=".json" hidden>
+          </div>
+        </div>`;
+      wirePlanImport(root);
+      return;
+    }
+    const plan = state.plan;
+    root.innerHTML = `
+      <div class="card">
+        <div class="row spread">
+          <div>
+            <h2>${esc(plan.title || "My Plan")}</h2>
+            <p class="muted">${esc(plan.subtitle || "")}${plan.updated ? " · updated " + esc(plan.updated) : ""}</p>
+          </div>
+          <div class="row gap">
+            <label class="btn btn-ghost btn-sm" for="plan-file">Re-import</label>
+            <input type="file" id="plan-file" accept=".json" hidden>
+          </div>
+        </div>
+      </div>
+      <div id="plan-sections"></div>`;
+    const wrap = $("#plan-sections", root);
+    (plan.sections || []).forEach((sec, si) => {
+      const items = sec.items || [];
+      const done = items.filter((i) => i.done).length;
+      const el = document.createElement("div");
+      el.className = "card";
+      el.innerHTML = `
+        <div class="row spread">
+          <h2>${esc(sec.title)}</h2>
+          ${items.length ? `<span class="muted">${done}/${items.length}</span>` : ""}
+        </div>
+        <div class="lesson">${(sec.body || []).map((p) => `<p>${p}</p>`).join("")}</div>
+        ${items.length ? `<div class="actions-title">Action items</div>` : ""}
+        <div class="actions">
+          ${items.map((it, ii) => `
+            <label class="action-item ${it.done ? "done" : ""}">
+              <input type="checkbox" data-si="${si}" data-ii="${ii}" ${it.done ? "checked" : ""}>
+              <span>${esc(it.text)}</span>
+            </label>`).join("")}
+        </div>`;
+      wrap.appendChild(el);
+    });
+    $$("input[data-si]", root).forEach((cb) => {
+      cb.addEventListener("change", () => {
+        state.plan.sections[cb.dataset.si].items[cb.dataset.ii].done = cb.checked;
+        cb.closest(".action-item").classList.toggle("done", cb.checked);
+        save();
+      });
+    });
+    wirePlanImport(root);
+  }
+
+  function wirePlanImport(root) {
+    const input = $("#plan-file", root);
+    if (!input) return;
+    input.addEventListener("change", async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      try {
+        const plan = JSON.parse(await file.text());
+        if (!plan || !Array.isArray(plan.sections)) throw new Error("bad shape");
+        state.plan = plan;
+        save();
+        renderMyPlan();
+      } catch {
+        alert("That file isn't a valid plan file.");
+      }
+    });
+  }
+
   // ---------- Render: Goals & Plans ----------
   function renderGoals() {
     const root = $("#tab-goals");
@@ -691,6 +781,7 @@
   function renderAll() {
     renderDashboard();
     renderJourney();
+    renderMyPlan();
     renderGoals();
     renderLibrary();
   }
