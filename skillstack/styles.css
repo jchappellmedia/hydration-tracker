@@ -232,7 +232,29 @@ label input, label textarea, label select { margin-top: 6px; font-weight: 400; }
 .learn-label { margin-bottom: 4px; color: var(--accent); }
 .steps-label { margin: 4px 0 2px; }
 
-/* ---------- Baby steps ---------- */
+/* ---------- Baby steps as lesson cards ---------- */
+.lstep { border: 1px solid var(--border); border-radius: 12px; margin-bottom: 9px; overflow: hidden; background: var(--bg-soft); }
+.lstep.done { border-color: color-mix(in srgb, var(--green) 35%, var(--border)); }
+.lstep-head { display: flex; gap: 11px; align-items: flex-start; padding: 12px 13px; }
+.lstep-main { flex: 1; min-width: 0; cursor: pointer; }
+.lstep-main .txt { font-size: 0.93rem; }
+.lstep.done .lstep-main .txt { text-decoration: line-through; color: var(--text-muted); }
+.lstep-chevron { color: var(--text-muted); font-size: 1.1rem; cursor: pointer; transition: transform .2s; flex-shrink: 0; padding: 0 2px; }
+.lstep.open .lstep-chevron { transform: rotate(90deg); }
+.lesson-hint { display: inline-flex; align-items: center; font-size: 0.68rem; font-weight: 800; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); text-transform: uppercase; letter-spacing: 0.02em; }
+.lstep-body { display: none; padding: 0 13px 13px 50px; }
+.lstep.open .lstep-body { display: block; }
+.lstep-body .lesson { border-top: 1px dashed var(--border); padding-top: 6px; }
+.lstep-body .lesson p { font-size: 0.88rem; margin: 9px 0; }
+.lstep-body .lesson b { color: var(--accent); font-weight: 700; }
+@media (prefers-color-scheme: light) { .lstep-body .lesson b { color: #4f46e5; } }
+@media (max-width: 480px) { .lstep-body { padding-left: 13px; } }
+
+/* ---------- Details tab list ---------- */
+.detail-list { margin: 6px 0 0; padding-left: 20px; }
+.detail-list li { font-size: 0.89rem; margin: 7px 0; }
+
+/* ---------- (legacy) simple step rows ---------- */
 .step-row { display: flex; gap: 12px; align-items: flex-start; padding: 12px 2px; border-bottom: 1px solid var(--border); }
 .step-row:last-child { border-bottom: none; }
 .step-check {

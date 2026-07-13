@@ -355,8 +355,8 @@
               <div class="learn-label">📖 The learning</div>
               ${m.learn.map((p) => `<p>${p}</p>`).join("")}
             </div>` : ""}
-            ${(m.steps || []).length ? `<div class="steps-label">✅ Baby steps</div>` : ""}
-            ${(m.steps || []).map((s) => planStepHTML(s)).join("")}
+            ${(m.steps || []).length ? `<div class="steps-label">✅ Baby steps — tap any step for its lesson</div>` : ""}
+            ${(m.steps || []).map((s) => lessonStepHTML(s)).join("")}
           </div>
         </div>`;
     });
@@ -364,15 +364,23 @@
 
     $$(".module", root).forEach((el) => {
       $(".module-head", el).addEventListener("click", () => el.classList.toggle("open"));
-      $$(".step-check[data-step], .step-main[data-step]", el).forEach((node) =>
+      // checkbox toggles done
+      $$(".step-check[data-step]", el).forEach((node) =>
         node.addEventListener("click", (e) => {
-          e.preventDefault(); e.stopPropagation();
+          e.stopPropagation();
           const m = planModules().find((x) => x.id === el.dataset.module);
           const s = (m.steps || []).find((x) => x.id === node.dataset.step);
           if (!s) return;
           s.done = !s.done;
           save();
           updateModuleEl(el, m);
+        }));
+      // tapping the step text/chevron opens its lesson
+      $$("[data-open]", el).forEach((node) =>
+        node.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const row = node.closest(".lstep");
+          if (row) row.classList.toggle("open");
         }));
     });
 
@@ -383,14 +391,19 @@
     else { const first = $(".module", root); if (first) first.classList.add("open"); }
   }
 
-  function planStepHTML(s) {
+  function lessonStepHTML(s) {
+    const hasLesson = Array.isArray(s.lesson) && s.lesson.length;
     return `
-      <div class="step-row ${s.done ? "done" : ""}" data-row="${esc(s.id)}">
-        <div class="step-check" data-step="${esc(s.id)}">${s.done ? "✓" : ""}</div>
-        <div class="step-main" data-step="${esc(s.id)}">
-          <div class="txt">${esc(s.text)}</div>
-          <div class="step-tags">${whoChip(s.who)} ${cadChip(s.cadence)}</div>
+      <div class="lstep ${s.done ? "done" : ""}" data-lstep="${esc(s.id)}">
+        <div class="lstep-head">
+          <div class="step-check" data-step="${esc(s.id)}" title="Mark done">${s.done ? "✓" : ""}</div>
+          <div class="lstep-main" data-open="${esc(s.id)}">
+            <div class="txt">${esc(s.text)}</div>
+            <div class="step-tags">${whoChip(s.who)} ${cadChip(s.cadence)}${hasLesson ? ` <span class="lesson-hint">📖 Lesson</span>` : ""}</div>
+          </div>
+          ${hasLesson ? `<div class="lstep-chevron" data-open="${esc(s.id)}">›</div>` : ""}
         </div>
+        ${hasLesson ? `<div class="lstep-body"><div class="lesson">${s.lesson.map((p) => `<p>${p}</p>`).join("")}</div></div>` : ""}
       </div>`;
   }
   function updateModuleEl(el, m) {
@@ -400,10 +413,34 @@
     $(".module-badge", el).textContent = complete ? "✓" : (m.icon || "•");
     $(".m-count", el).textContent = `${p.done}/${p.total} steps${complete ? " · done 🎉" : ""}`;
     (m.steps || []).forEach((s) => {
-      const row = $(`.step-row[data-row="${CSS.escape(s.id)}"]`, el);
-      if (row) { row.classList.toggle("done", !!s.done); $(".step-check", row).textContent = s.done ? "✓" : ""; }
+      const row = $(`.lstep[data-lstep="${CSS.escape(s.id)}"]`, el);
+      if (row) { row.classList.toggle("done", !!s.done); const c = $(".step-check", row); if (c) c.textContent = s.done ? "✓" : ""; }
     });
     refreshProgress();
+  }
+
+  // ---------- Render: Details (full written plan) ----------
+  function renderDetails() {
+    const root = $("#tab-details");
+    const d = state.plan && state.plan.detailed;
+    if (!d || !Array.isArray(d.sections)) {
+      root.innerHTML = `<div class="card"><h2>The detailed plan</h2>
+        <p class="muted">Your full written plan lives here — the whole picture behind the steps. It'll appear once your plan is loaded.</p></div>`;
+      return;
+    }
+    let html = `<div class="card">
+      <h2>${esc((state.plan.title || "The Plan"))} — the full write-up</h2>
+      <p class="muted">The detailed narrative behind the course. Read it when you want the whole story; work it day to day over in <b>The Plan</b>.</p></div>`;
+    d.sections.forEach((sec) => {
+      const items = sec.items || [];
+      html += `<div class="card">
+        <h2>${esc(sec.title)}</h2>
+        <div class="lesson">${(sec.body || []).map((p) => `<p>${p}</p>`).join("")}</div>
+        ${items.length ? `<div class="actions-title">Key moves</div>
+          <ul class="detail-list">${items.map((it) => `<li>${esc(typeof it === "string" ? it : it.text)}</li>`).join("")}</ul>` : ""}
+      </div>`;
+    });
+    root.innerHTML = html;
   }
   function openModule(id) {
     const root = $("#tab-plan");
@@ -728,6 +765,7 @@
   function renderAll() {
     renderToday();
     renderPlan();
+    renderDetails();
     renderLearn();
   }
 
