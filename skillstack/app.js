@@ -37,14 +37,26 @@
   }
 
   // ---------- Supabase sync ----------
+  function setLocked(locked) {
+    document.body.classList.toggle("locked", locked);
+  }
+
   function initSupabase() {
-    if (!window.supabase || typeof SUPABASE_URL === "undefined") return;
+    if (!window.supabase || typeof SUPABASE_URL === "undefined") {
+      const msg = document.getElementById("gate-msg");
+      if (msg) {
+        msg.className = "auth-msg err";
+        msg.textContent = "Can't reach the sign-in service. Check your connection and reload.";
+      }
+      return;
+    }
     try {
       sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     } catch (e) { console.warn("supabase init failed", e); return; }
 
     sb.auth.onAuthStateChange(async (_event, session) => {
       user = session ? session.user : null;
+      setLocked(!user);
       updateAuthUI();
       if (user) await pullRemote();
     });
@@ -579,6 +591,23 @@
 
   function wireChrome() {
     $$(".tab").forEach((t) => t.addEventListener("click", () => switchTab(t.dataset.tab)));
+
+    // Login gate
+    const gateMsg = $("#gate-msg");
+    $("#gate-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      handleAuth("signin", normalizeEmail($("#gate-email").value), $("#gate-password").value, gateMsg);
+    });
+    $("#gate-signup").addEventListener("click", () => {
+      const email = normalizeEmail($("#gate-email").value);
+      const pw = $("#gate-password").value;
+      if (!email || pw.length < 6) {
+        gateMsg.className = "auth-msg err";
+        gateMsg.textContent = "Enter an email and a 6+ character password.";
+        return;
+      }
+      handleAuth("signup", email, pw, gateMsg);
+    });
 
     const modal = $("#auth-modal");
     $("#auth-btn").addEventListener("click", async () => {

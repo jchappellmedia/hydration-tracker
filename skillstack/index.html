@@ -8,7 +8,28 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="locked">
+  <div id="auth-gate" class="auth-gate">
+    <div class="modal-card gate-card">
+      <div class="gate-brand">🏔️</div>
+      <h2>Million Dollar Roadmap</h2>
+      <p class="muted">Sign in to open your roadmap. Your progress, goals, and notes are stored securely in your account.</p>
+      <form id="gate-form">
+        <label>Email or username
+          <input type="text" id="gate-email" required autocomplete="username" placeholder="you@example.com">
+        </label>
+        <label>Password
+          <input type="password" id="gate-password" required minlength="6" autocomplete="current-password" placeholder="••••••••">
+        </label>
+        <div class="row gap">
+          <button type="submit" class="btn btn-primary" style="flex:1">Sign in</button>
+          <button type="button" class="btn" id="gate-signup">Create account</button>
+        </div>
+        <p id="gate-msg" class="auth-msg"></p>
+      </form>
+    </div>
+  </div>
+
   <header class="topbar">
     <div class="brand">
       <span class="brand-mark">🏔️</span>
