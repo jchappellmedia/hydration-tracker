@@ -1,0 +1,55 @@
+/* ===========================================================================
+   CCAT Prep — public configuration.
+
+   Everything here is safe to ship to the browser. The Supabase publishable key
+   only grants what row-level security allows, and the plans below carry no
+   Stripe price ids — the `stripe-checkout` Edge Function resolves a plan key to
+   a real price server-side, so the amount charged can't be edited from the
+   client.
+   =========================================================================== */
+window.CCAT_CONFIG = {
+  SUPABASE_URL: "https://utupgcayrwocavdmhyle.supabase.co",
+  SUPABASE_KEY: "sb_publishable_dfuSJkpp1yZy5yg4tlKsGw_ync0kLXy",
+
+  // Order matters — this drives the pricing table.
+  PLANS: [
+    {
+      id: "sprint",
+      name: "7-Day Sprint",
+      price: "$9",
+      cadence: "one-time",
+      tagline: "Interview next week? Cram properly.",
+      features: [
+        "Everything in Pro for 7 full days",
+        "Unlimited 50-question timed simulations",
+        "The complete 240+ question bank",
+        "Full answer review with explanations",
+        "Endless untimed drills",
+      ],
+    },
+    {
+      id: "lifetime",
+      name: "Lifetime Pro",
+      price: "$29",
+      cadence: "one-time · best value",
+      badge: "Most popular",
+      highlight: true,
+      tagline: "Pay once. Keep it for every job hunt.",
+      features: [
+        "Everything in the Sprint, forever",
+        "No subscription, no renewal",
+        "Progress synced across your devices",
+        "Percentile tracking over time",
+        "All future questions &amp; features included",
+      ],
+    },
+  ],
+
+  // What a free visitor gets before the paywall appears.
+  FREE_LIMITS: {
+    fullSims: 1,        // lifetime count of full 50-question simulations
+    topicQuestions: 10, // max questions per topic practice session
+    drillQuestions: 10, // max questions per untimed drill session
+    bankFraction: 0.4,  // share of the question bank available for free
+  },
+};

@@ -5,9 +5,9 @@
   'use strict';
 
   const CATS = {
-    verbal:  { name:'Verbal',          color:'var(--verbal)',  icon:'📖' },
-    math:    { name:'Math & Logic',    color:'var(--math)',    icon:'🔢' },
-    spatial: { name:'Spatial & Abstract', color:'var(--spatial)', icon:'🧩' },
+    verbal:  { name:'Verbal',             color:'var(--verbal)'  },
+    math:    { name:'Math & Logic',       color:'var(--math)'    },
+    spatial: { name:'Spatial & Abstract', color:'var(--spatial)' },
   };
   // The real CCAT is 50 questions in 15 minutes (≈18s each), weighted toward
   // verbal & numerical with a spatial section and a few logic items at the end.
@@ -21,8 +21,31 @@
   const Store = {
     key:'ccat-prep-v1',
     load(){ try { return JSON.parse(localStorage.getItem(this.key)) || {history:[]}; } catch { return {history:[]}; } },
-    save(d){ localStorage.setItem(this.key, JSON.stringify(d)); },
+    save(d){ localStorage.setItem(this.key, JSON.stringify(d)); this.syncToCloud(d); },
     addResult(r){ const d=this.load(); d.history.push(r); if(d.history.length>100) d.history=d.history.slice(-100); this.save(d); },
+
+    /* Cross-device history is a Pro perk. Free users stay local-only, which is
+       also why nothing here is required for the app to work offline. */
+    syncToCloud(d){
+      if(!window.Account || !Account.isPro()) return;
+      clearTimeout(this._pushT);
+      this._pushT=setTimeout(()=>Account.pushProgress(d||this.load()), 900);
+    },
+    async syncFromCloud(){
+      if(!window.Account || !Account.isPro() || this._pulled) return;
+      this._pulled=true;
+      const remote=await Account.pullProgress();
+      if(!remote || !Array.isArray(remote.history)) return;
+      const local=this.load();
+      // Merge on (date, mode) so practising signed-out then signing in doesn't
+      // silently drop either side.
+      const seen=new Set(local.history.map(h=>h.date+'|'+h.mode));
+      const merged=local.history.concat(remote.history.filter(h=>!seen.has(h.date+'|'+h.mode)));
+      merged.sort((a,b)=>new Date(a.date)-new Date(b.date));
+      local.history=merged.slice(-100);
+      localStorage.setItem(this.key, JSON.stringify(local));
+      this.syncToCloud(local);
+    },
     stats(){
       const d=this.load(); const h=d.history;
       const full = h.filter(x=>x.mode==='full');
@@ -31,7 +54,9 @@
       const totalQ = h.reduce((a,x)=>a+x.total,0);
       return { tests:full.length, best, avg, totalQ, history:h };
     },
-    theme(){ return this.load().theme || 'dark'; },
+    // Paper by default: the real CCAT is sat on a white screen, so practising
+    // on white is closer to the thing being rehearsed.
+    theme(){ return this.load().theme || 'light'; },
     setTheme(t){ const d=this.load(); d.theme=t; this.save(d); },
   };
 
@@ -44,7 +69,7 @@
   // ~22% spatial. We build a weighted draw sequence and pull without repeats.
   function pickBalanced(n){
     const byCat = { verbal:[], math:[], spatial:[] };
-    QUESTIONS.forEach(q=>byCat[q.category] && byCat[q.category].push(q));
+    Access.pool(QUESTIONS).forEach(q=>byCat[q.category] && byCat[q.category].push(q));
     Object.keys(byCat).forEach(k=>byCat[k]=shuffle(byCat[k]));
     const targets = { verbal:Math.round(n*0.34), spatial:Math.round(n*0.22) };
     targets.math = n - targets.verbal - targets.spatial;
@@ -57,7 +82,9 @@
     while(out.length<n && rest.length) out.push(rest.shift());
     return shuffle(out);
   }
-  function pickCategory(cat, n){ return shuffle(QUESTIONS.filter(q=>q.category===cat)).slice(0,n); }
+  // Topic practice draws from the slice of the bank this visitor has paid for
+  // (all of it, for Pro).
+  function pickCategory(cat, n){ return shuffle(Access.pool(QUESTIONS).filter(q=>q.category===cat)).slice(0,n); }
 
   // The exact CCAT blueprint (BoostPrep full-length structure):
   // Verbal 18, Math & Logic 21, Spatial 11 — by subtype.
@@ -151,9 +178,9 @@
       const progPct = s.drill ? 0 : ((s.idx)/s.questions.length*100);
       $('#view-quiz').innerHTML=`
         <div class="quiz-head">
-          ${s.timed?`<div class="timer" id="timer"><span>⏱</span><span class="t">${fmtTime(s.remaining)}</span></div>`:''}
+          ${s.timed?`<div class="timer" id="timer"><span>TIME</span><span class="t">${fmtTime(s.remaining)}</span></div>`:''}
           <div class="qcount">Question <b>${s.idx+1}</b> / ${total}</div>
-          <span class="cat-tag ${q.category}">${cat.icon} ${cat.name}</span>
+          <span class="cat-tag ${q.category}">${cat.name}</span>
         </div>
         ${s.drill?'':`<div class="progress-track"><div class="progress-fill" style="width:${progPct}%"></div></div>`}
         <div class="qcard">
@@ -260,16 +287,31 @@
       const isFull = r.mode==='full';
       // Percentile estimate based on CCAT norms (raw score out of 50 → approx percentile)
       const percentile = isFull ? estPercentile(r.correct) : null;
-      const verdict = pct>=80?'Outstanding! 🏆':pct>=65?'Great work! 🎉':pct>=50?'Solid effort 👍':pct>=35?'Keep practicing 💪':'Room to grow 🌱';
+      const verdict = pct>=80?'Outstanding.':pct>=65?'Strong result.':pct>=50?'Solid effort.':pct>=35?'Keep practising.':'Room to grow.';
       const ringColor = pct>=65?'var(--good)':pct>=45?'var(--warn)':'var(--bad)';
       const circ=2*Math.PI*78;
       const off=circ*(1-pct/100);
+
+      // Answer review after a full simulation is the strongest upgrade moment:
+      // the score is on screen and the natural next question is "what did I get
+      // wrong?". Topic practice already explains every answer inline, so that
+      // stays open — the wall goes here, not in front of learning.
+      const reviewLocked = isFull && !Access.isPro();
+      const upsell = reviewLocked ? `
+        <div class="upsell">
+          <div class="upsell-ic">§</div>
+          <div>
+            <b>Unlock unlimited simulations &amp; full answer review</b>
+            <p>You've used your free simulation. Pro opens the complete 240+ question bank, endless drills, and a breakdown of every question you missed — from $9, one-time.</p>
+          </div>
+          <button class="btn primary" id="r-upgrade">See plans →</button>
+        </div>` : '';
 
       const bd = Object.entries(r.cats).map(([k,v])=>{
         if(!v.t) return '';
         const p=Math.round(v.c/v.t*100);
         return `<div class="bd-row">
-          <span class="lbl">${CATS[k].icon} ${CATS[k].name}</span>
+          <span class="lbl">${CATS[k].name}</span>
           <span class="bd-bar"><i style="width:${p}%;background:${CATS[k].color}"></i></span>
           <span class="num">${v.c}/${v.t}</span></div>`;
       }).join('');
@@ -287,20 +329,29 @@
           <div class="verdict-line">${verdict}</div>
           <div class="result-sub">
             ${r.label}${isFull?` · You answered ${r.answered} of ${FULL_TEST_SIZE} in time`:''}
-            ${percentile!=null?` · Est. <b>${percentile}th</b> percentile`:''}
+            ${percentile!=null?` · Est. <b>${ord(percentile)}</b> percentile`:''}
             · Time: ${fmtTime(r.timeUsed)}
           </div>
         </div>
         <div class="breakdown">${bd}</div>
         ${isFull?`<div class="card" style="margin-top:18px">
-          <b>What this means:</b> <span style="color:var(--muted)">The real CCAT has 50 questions in 15 minutes — most people answer ~24 correctly and very few finish. A raw score of ${r.correct} would place you around the <b>${percentile}th percentile</b> versus the general population.</span>
+          <b>What this means:</b> <span style="color:var(--muted)">The real CCAT has 50 questions in 15 minutes — most people answer ~24 correctly and very few finish. A raw score of ${r.correct} would place you around the <b>${ord(percentile)} percentile</b> versus the general population.</span>
         </div>`:''}
+        ${upsell}
         <div class="btn-row" style="margin-top:22px;justify-content:center">
-          <button class="btn primary lg" id="r-review">Review answers</button>
+          <button class="btn primary lg" id="r-review">Review answers${reviewLocked?' <sup>PRO</sup>':''}</button>
           <button class="btn lg" id="r-again">Try again</button>
           <button class="btn ghost lg" id="r-home">Home</button>
         </div>`;
-      $('#r-review').addEventListener('click',()=>Review.render(r));
+      $('#r-review').addEventListener('click',()=>{
+        if(reviewLocked){
+          Paywall.open({ title:'See exactly what went wrong',
+            body:`You scored ${r.correct}/${r.total}. The answer review walks every question you missed — the correct answer, why the one you picked fails, and the rule being tested. That is where a score actually moves.` });
+          return;
+        }
+        Review.render(r);
+      });
+      const upBtn=$('#r-upgrade'); if(upBtn) upBtn.addEventListener('click',()=>Router.go('pricing'));
       $('#r-again').addEventListener('click',()=>{ Views.show('home'); });
       $('#r-home').addEventListener('click',()=>{ Home.render(); Views.show('home'); });
       this._last=r;
@@ -338,17 +389,35 @@
   const Home = {
     render(){
       const s=Store.stats();
+      const pro=Access.isPro();
+      const simsLeft=Math.max(0,(CCAT_CONFIG.FREE_LIMITS.fullSims||1)-Access.freeSimsUsed());
+      const banner = pro ? `
+        <div class="tier-banner pro">
+          <span class="tier-ic">✦</span>
+          <div><b>${Account.planLabel()} is active</b>
+          <span>Unlimited simulations, the full question bank, endless drills and full answer review.${
+            Account.daysLeft()!=null?` <b>${Account.daysLeft()} day${Account.daysLeft()===1?'':'s'} left.</b>`:''}</span></div>
+        </div>` : `
+        <div class="tier-banner">
+          <span class="tier-ic">§</span>
+          <div><b>${simsLeft?`You have ${simsLeft} free full simulation${simsLeft===1?'':'s'} left`:'Free simulation used'}</b>
+          <span>Pro unlocks unlimited timed sims, all 240+ questions, endless drills and full answer review — from $9, one-time.</span></div>
+          <button class="btn primary" id="h-upgrade">See plans →</button>
+        </div>`;
+
       $('#view-home').innerHTML=`
         <div class="hero">
-          <h1>Master the <span class="grad">CCAT</span></h1>
-          <p>The Criteria Cognitive Aptitude Test is a <b>50-question, 15-minute</b> test of problem-solving, critical thinking, and learning ability. Train with realistic questions across all three areas — verbal, math &amp; logic, and spatial reasoning — then take full timed simulations to track your progress.</p>
+          <h1>Sit the <span class="grad">CCAT</span><br />like you've sat it before.</h1>
+          <p>You get one attempt, <b>15 minutes</b>, <b>50 questions</b>, and no second look at anything you skip. Practise under exactly those conditions until the clock stops being the hard part — then find out, before the day itself, roughly where you land.</p>
           <div class="pills">
             <span class="pill"><b>50</b> questions</span>
             <span class="pill"><b>15</b> minutes</span>
-            <span class="pill"><b>3</b> skill areas</span>
-            <span class="pill">Avg score ≈ <b>24</b></span>
+            <span class="pill"><b>18s</b> per question</span>
+            <span class="pill"><b>24</b> average score</span>
           </div>
         </div>
+
+        ${banner}
 
         <div class="grid cols-4">
           <div class="stat"><b>${s.tests}</b><span>Sims taken</span></div>
@@ -360,37 +429,128 @@
         <div class="section-title">Practice Modes<span class="sub">Pick how you want to train today</span></div>
         <div class="grid cols-3">
           <div class="card mode-card" data-go="full">
-            <div class="ic blue">⏱️</div><h3>Full Simulation</h3>
+            <div class="ic">I</div><h3>Full Simulation</h3>
             <p>50 questions, 15-minute timer, no feedback until the end. Built to the exact CCAT blueprint: 18 verbal, 21 math &amp; logic, 11 spatial.</p>
             <div class="go">Start the test →</div>
           </div>
           <div class="card mode-card" data-go="category">
-            <div class="ic green">🎯</div><h3>Practice by Topic</h3>
+            <div class="ic">II</div><h3>Practice by Topic</h3>
             <p>Focus on verbal, math &amp; logic, or spatial reasoning with instant explanations.</p>
             <div class="go">Choose a topic →</div>
           </div>
           <div class="card mode-card" data-go="drill">
-            <div class="ic purple">♾️</div><h3>Untimed Drills</h3>
+            <div class="ic">III</div><h3>Untimed Drills</h3>
             <p>No clock. Unlimited number-series, arithmetic &amp; percentage problems with a full why-it's-right / why-you-were-wrong breakdown after each answer.</p>
             <div class="go">Start drilling →</div>
           </div>
           <div class="card mode-card" data-go="quick">
-            <div class="ic orange">⚡</div><h3>Quick 10</h3>
+            <div class="ic">IV</div><h3>Quick 10</h3>
             <p>A fast, mixed 10-question timed warm-up (3 minutes) to test yourself.</p>
             <div class="go">Quick test →</div>
           </div>
           <div class="card mode-card" data-go="study">
-            <div class="ic pink">📚</div><h3>Study Guide</h3>
+            <div class="ic">V</div><h3>Study Guide</h3>
             <p>Strategies, formulas, question-type breakdowns, and the percentile chart.</p>
             <div class="go">Read the guide →</div>
           </div>
           <div class="card mode-card" data-go="progress">
-            <div class="ic blue">📈</div><h3>My Progress</h3>
+            <div class="ic">VI</div><h3>My Progress</h3>
             <p>See your score history and category strengths over time.</p>
             <div class="go">View progress →</div>
           </div>
-        </div>`;
+        </div>
+
+        ${pro ? '' : `
+        <div class="section-title">Go Pro<span class="sub">One payment. No subscription.</span></div>
+        ${Paywall.pricingHTML()}`}`;
+
       $$('.mode-card').forEach(c=>c.addEventListener('click',()=>Router.go(c.dataset.go)));
+      const hu=$('#h-upgrade'); if(hu) hu.addEventListener('click',()=>Router.go('pricing'));
+      if(!pro) Paywall.bindBuyButtons($('#view-home'));
+    },
+  };
+
+  /* ---------- Pricing ---------- */
+  const Pricing = {
+    render(){
+      const pro=Access.isPro();
+      $('#view-pricing').innerHTML=`
+        <div class="section-title">Pricing<span class="sub">Everything you need to walk into that test confident</span></div>
+        ${pro ? `<div class="tier-banner pro">
+            <span class="tier-ic">✦</span>
+            <div><b>${Account.planLabel()} is already active on this account.</b>
+            <span>Nothing more to buy — head back and start a simulation.</span></div>
+            <button class="btn primary" id="pr-home">Start practising →</button>
+          </div>` : Paywall.pricingHTML()}
+
+        <div class="section-title">What's in each tier</div>
+        <div class="card">
+          <table class="table compare">
+            <tr><th>Feature</th><th>Free</th><th>Pro</th></tr>
+            <tr><td>Full 50-question timed simulations</td><td>1 total</td><td><b>Unlimited</b></td></tr>
+            <tr><td>Question bank</td><td>~40%</td><td><b>All 240+</b></td></tr>
+            <tr><td>Questions per practice session</td><td>${CCAT_CONFIG.FREE_LIMITS.topicQuestions}</td><td><b>No cap</b></td></tr>
+            <tr><td>Untimed generated drills</td><td>${CCAT_CONFIG.FREE_LIMITS.drillQuestions} per session</td><td><b>Endless</b></td></tr>
+            <tr><td>Answer review after a simulation</td><td>—</td><td><b>Every question</b></td></tr>
+            <tr><td>Explanations during topic practice</td><td><b>Yes</b></td><td><b>Yes</b></td></tr>
+            <tr><td>Study guide &amp; percentile chart</td><td><b>Yes</b></td><td><b>Yes</b></td></tr>
+            <tr><td>Progress synced across devices</td><td>—</td><td><b>Yes</b></td></tr>
+          </table>
+        </div>
+
+        <div class="section-title">Questions</div>
+        <div class="card guide">
+          <h3>Is this a subscription?</h3>
+          <p>No. Both plans are a single charge. The Sprint gives you 7 days of Pro; Lifetime never expires and there is nothing to cancel.</p>
+          <h3>How do I get my access after paying?</h3>
+          <p>Stripe sends us the confirmation and your account is upgraded automatically — usually within a couple of seconds of returning to the site.</p>
+          <h3>Do you store my card details?</h3>
+          <p>Never. Payment happens entirely on Stripe's checkout page; we only receive a confirmation that it succeeded.</p>
+          <h3>Will this get me the exact questions on my test?</h3>
+          <p>No, and be wary of anyone who claims otherwise. These are original questions built to the real CCAT's structure, timing and difficulty curve. What you're buying is practice under genuine conditions.</p>
+          <h3>Refunds?</h3>
+          <p>Email us within 14 days and we'll refund it, no argument.</p>
+        </div>`;
+
+      if(pro){ $('#pr-home').onclick=()=>Router.go('home'); }
+      else Paywall.bindBuyButtons($('#view-pricing'));
+      Views.show('pricing');
+    },
+  };
+
+  /* ---------- Account ---------- */
+  const AccountView = {
+    render(){
+      const a=window.Account;
+      const signedIn=a.isSignedIn();
+      const pro=Access.isPro();
+
+      $('#view-account').innerHTML=`
+        <div class="section-title">Your Account<span class="sub">${signedIn?a.user.email:'Not signed in'}</span></div>
+        <div class="card">
+          ${a.offline ? `<p class="tier-note">The accounts service isn't reachable right now. Practice still works — your progress is saved in this browser.</p>` : ''}
+          ${signedIn ? `
+            <div class="acct-row"><span>Signed in as</span><b>${a.user.email}</b></div>
+            <div class="acct-row"><span>Plan</span><b>${a.planLabel()}</b></div>
+            ${a.daysLeft()!=null?`<div class="acct-row"><span>Access expires in</span><b>${a.daysLeft()} day${a.daysLeft()===1?'':'s'}</b></div>`:''}
+            ${pro?'':`<div class="acct-row"><span>Free simulations used</span><b>${Access.freeSimsUsed()} / ${CCAT_CONFIG.FREE_LIMITS.fullSims}</b></div>`}
+            <div class="btn-row">
+              ${pro?'':`<button class="btn primary" id="ac-upgrade">Upgrade to Pro →</button>`}
+              <button class="btn ghost" id="ac-signout">Sign out</button>
+            </div>` : `
+            <p style="color:var(--muted)">An account keeps your progress across devices and is how a Pro purchase stays attached to you. Practice works fine without one.</p>
+            <div class="btn-row">
+              <button class="btn primary" id="ac-signin">Sign in</button>
+              <button class="btn" id="ac-signup">Create account</button>
+            </div>`}
+        </div>`;
+
+      const bind=(id,fn)=>{ const el=$('#'+id); if(el) el.onclick=fn; };
+      bind('ac-upgrade',()=>Router.go('pricing'));
+      bind('ac-signout',async()=>{ await a.signOut(); flash('Signed out'); AccountView.render(); });
+      bind('ac-signin',()=>AuthUI.open('signin',{ then:()=>AccountView.render() }));
+      bind('ac-signup',()=>AuthUI.open('signup',{ then:()=>AccountView.render() }));
+      Views.show('account');
     },
   };
 
@@ -398,31 +558,55 @@
   const Setup = {
     category(){
       let cat='verbal', count=10, timed=false;
-      const draw=()=>{ $('#view-category').innerHTML=`
+      const draw=()=>{
+        const max=Access.maxTopicQuestions();
+        const counts=Access.bankCounts(cat);
+        const locked=n=>n!=='All' && n>max;
+        if(count!=='All' && count>max) count=max;
+
+        $('#view-category').innerHTML=`
         <div class="section-title">Practice by Topic<span class="sub">Untimed by default · explanations after every question</span></div>
         <div class="card">
           <div class="opt-group"><h4>Choose a topic</h4><div class="choices" id="c-cat">
-            ${Object.entries(CATS).map(([k,v])=>`<button class="choice ${cat===k?'sel':''}" data-v="${k}">${v.icon} ${v.name}</button>`).join('')}
+            ${Object.entries(CATS).map(([k,v])=>`<button class="choice ${cat===k?'sel':''}" data-v="${k}">${v.name}</button>`).join('')}
           </div></div>
           <div class="opt-group"><h4>Number of questions</h4><div class="choices" id="c-count">
-            ${[5,10,15,'All'].map(n=>`<button class="choice ${String(count)===String(n)?'sel':''}" data-v="${n}">${n}</button>`).join('')}
+            ${[5,10,15,25,'All'].map(n=>{
+              const isAll=n==='All';
+              const lock=(isAll&&!Access.isPro())||locked(n);
+              return `<button class="choice ${String(count)===String(n)?'sel':''} ${lock?'locked':''}"
+                data-v="${n}" data-lock="${lock?1:0}">${isAll?`All (${counts.total})`:n}${lock?' <sup>PRO</sup>':''}</button>`;
+            }).join('')}
           </div></div>
           <div class="opt-group"><h4>Timer</h4><div class="choices" id="c-timed">
             <button class="choice ${!timed?'sel':''}" data-v="off">Untimed (learn)</button>
             <button class="choice ${timed?'sel':''}" data-v="on">Timed (~18s/Q)</button>
           </div></div>
+          ${Access.isPro() ? '' : `<div class="tier-note">
+            You're on the free tier: <b>${counts.free}</b> of ${counts.total} ${CATS[cat].name.toLowerCase()} questions,
+            up to ${max} per session. <button class="linkish" id="c-upgrade">Unlock the full bank →</button>
+          </div>`}
           <div class="btn-row">
             <button class="btn primary lg" id="c-start">Start practice →</button>
             <button class="btn ghost lg" id="c-back">← Home</button>
           </div>
         </div>`;
         $$('#c-cat .choice').forEach(b=>b.onclick=()=>{cat=b.dataset.v;draw();});
-        $$('#c-count .choice').forEach(b=>b.onclick=()=>{count=b.dataset.v==='All'?'All':+b.dataset.v;draw();});
+        $$('#c-count .choice').forEach(b=>b.onclick=()=>{
+          if(b.dataset.lock==='1'){
+            Paywall.open({ title:'Longer sessions are a Pro feature',
+              body:`Free practice runs up to ${max} questions at a time from ${counts.free} of the ${counts.total} ${CATS[cat].name.toLowerCase()} questions. Pro opens the whole bank with no session cap.` });
+            return;
+          }
+          count=b.dataset.v==='All'?'All':+b.dataset.v; draw();
+        });
         $$('#c-timed .choice').forEach(b=>b.onclick=()=>{timed=b.dataset.v==='on';draw();});
+        const up=$('#c-upgrade'); if(up) up.onclick=()=>Router.go('pricing');
         $('#c-back').onclick=()=>Router.go('home');
         $('#c-start').onclick=()=>{
-          const pool=QUESTIONS.filter(q=>q.category===cat);
-          const n=count==='All'?pool.length:Math.min(count,pool.length);
+          const pool=Access.pool(QUESTIONS).filter(q=>q.category===cat);
+          let n=count==='All'?pool.length:Math.min(count,pool.length);
+          n=Math.min(n,max);
           const qs=pickCategory(cat,n);
           Quiz.start({ mode:'category', label:`${CATS[cat].name} practice`, questions:qs,
             timeLimit: timed? n*18 : null });
@@ -437,8 +621,13 @@
                        : t==='arith' ?Generators.arithmetic()
                        : t==='pct'   ?Generators.percentage()
                        : Generators.random();
-      let topic='mixed', length='endless';
-      const draw=()=>{ $('#view-drill').innerHTML=`
+      let topic='mixed', length='10';
+      const draw=()=>{
+        const pro=Access.isPro();
+        const cap=Access.maxDrillQuestions();
+        if(!pro && length!=='10') length='10';
+
+        $('#view-drill').innerHTML=`
         <div class="section-title">Untimed Practice Drills
           <span class="sub">No clock, no pressure — every question shows the full breakdown right after you answer</span></div>
         <div class="card">
@@ -446,18 +635,33 @@
             ${Object.entries(TOPICS).map(([k,v])=>`<button class="choice ${topic===k?'sel':''}" data-v="${k}">${v}</button>`).join('')}
           </div></div>
           <div class="opt-group"><h4>How many questions?</h4><div class="choices" id="d-len">
-            ${[['10','10'],['25','25'],['endless','Endless ♾️']].map(([v,l])=>`<button class="choice ${length===v?'sel':''}" data-v="${v}">${l}</button>`).join('')}
+            ${[['10','10'],['25','25'],['endless','Endless']].map(([v,l])=>{
+              const lock=!pro && v!=='10';
+              return `<button class="choice ${length===v?'sel':''} ${lock?'locked':''}" data-v="${v}" data-lock="${lock?1:0}">${l}${lock?' <sup>PRO</sup>':''}</button>`;
+            }).join('')}
           </div></div>
           <div class="opt-group"><h4>Mode</h4>
             <div class="pill" style="display:inline-block">⏱ Untimed · explanations after every answer</div>
           </div>
+          ${pro ? '' : `<div class="tier-note">
+            Free drills run ${cap} questions at a time.
+            <button class="linkish" id="d-upgrade">Go endless with Pro →</button>
+          </div>`}
           <div class="btn-row">
             <button class="btn primary lg" id="d-start">Start drilling →</button>
             <button class="btn ghost lg" id="d-back">← Home</button>
           </div>
         </div>`;
         $$('#d-topic .choice').forEach(b=>b.onclick=()=>{topic=b.dataset.v;draw();});
-        $$('#d-len .choice').forEach(b=>b.onclick=()=>{length=b.dataset.v;draw();});
+        $$('#d-len .choice').forEach(b=>b.onclick=()=>{
+          if(b.dataset.lock==='1'){
+            Paywall.open({ title:'Endless drilling is a Pro feature',
+              body:`Free drills stop after ${cap} questions. Pro removes the cap entirely — these generated number-series, arithmetic and percentage problems never run out, which is exactly what builds speed.` });
+            return;
+          }
+          length=b.dataset.v; draw();
+        });
+        const dup=$('#d-upgrade'); if(dup) dup.onclick=()=>Router.go('pricing');
         $('#d-back').onclick=()=>Router.go('home');
         $('#d-start').onclick=()=>{
           const gen=()=>genFor(topic);
@@ -499,7 +703,7 @@
       s.history.forEach(h=>{ if(h.cats) Object.entries(h.cats).forEach(([k,v])=>{agg[k].c+=v.c;agg[k].t+=v.t;}); });
       const catBars=Object.entries(agg).map(([k,v])=>{
         const p=v.t?Math.round(v.c/v.t*100):0;
-        return `<div class="bd-row"><span class="lbl">${CATS[k].icon} ${CATS[k].name}</span>
+        return `<div class="bd-row"><span class="lbl">${CATS[k].name}</span>
           <span class="bd-bar"><i style="width:${p}%;background:${CATS[k].color}"></i></span>
           <span class="num">${p}%</span></div>`;
       }).join('');
@@ -532,7 +736,7 @@
       $('#view-study').innerHTML=`
         <div class="section-title">CCAT Study Guide<span class="sub">Everything you need to walk in prepared</span></div>
         <div class="card guide">
-          <h3>📋 What is the CCAT?</h3>
+          <h3>What is the CCAT?</h3>
           <p>The <b>Criteria Cognitive Aptitude Test</b> measures your ability to solve problems, digest information, and think critically. It is widely used in hiring. Key facts:</p>
           <ul>
             <li><b>50 questions</b> in <b>15 minutes</b> — that's about <b>18 seconds per question</b>.</li>
@@ -541,7 +745,7 @@
             <li>Approximate mix: <b>~34% verbal</b>, <b>~34% numerical (math)</b>, <b>~22% spatial</b>, and <b>~10% logic</b>, interleaved throughout.</li>
           </ul>
 
-          <h3>📖 Verbal Ability</h3>
+          <h3>Verbal Ability</h3>
           <ul>
             <li><b>Analogies:</b> identify the relationship in the first pair, then apply it. (worker : tool, part : whole, cause : effect, degree, opposite).</li>
             <li><b>Synonyms / Antonyms:</b> build vocabulary; watch for the trap option that's a synonym when an antonym is asked.</li>
@@ -549,7 +753,7 @@
             <li><b>Odd-one-out:</b> find the shared category, then the outlier.</li>
           </ul>
 
-          <h3>🔢 Math & Logic</h3>
+          <h3>Math & Logic</h3>
           <p>Memorize these so you don't burn time deriving them:</p>
           <div class="formula">Percent of a number:  X% of N = (X/100) × N</div>
           <div class="formula">Percent change:  (new − old) ÷ old × 100</div>
@@ -561,7 +765,7 @@
             <li><b>Logic:</b> "all/some/none" syllogisms — diagram them; ordering puzzles — write the chain (A &gt; B &gt; C).</li>
           </ul>
 
-          <h3>🧩 Spatial Reasoning</h3>
+          <h3>Spatial Reasoning</h3>
           <p>The three official CCAT spatial formats — all visual, with five answer choices:</p>
           <ul>
             <li><b>Next-in-series:</b> 3–5 figures follow a rule; pick the figure that continues it. Track <i>one feature at a time</i> — number of sides, rotation, shading, count, or position.</li>
@@ -570,13 +774,13 @@
             <li><b>Rotation &amp; mirrors:</b> imagine turning the figure 90°/180° (clockwise unless shown otherwise); a mirror is a left-right flip.</li>
           </ul>
 
-          <h3>🔎 Verbal Attention to Detail</h3>
+          <h3>Verbal Attention to Detail</h3>
           <ul>
             <li>You get <b>two columns of short strings</b> (names, codes, addresses) and count how many rows match <b>exactly</b>.</li>
             <li>Differences are tiny: a swapped digit (88301 vs 88031), a doubled letter, or a case change. Compare <b>character by character</b>, left to right.</li>
           </ul>
 
-          <h3>🎯 Test-day strategy</h3>
+          <h3>Test-day strategy</h3>
           <ul>
             <li><b>Triage fast:</b> if a question isn't clicking in ~20 seconds, guess and move on. One hard question isn't worth three easy ones.</li>
             <li><b>Never leave blanks</b> — wrong answers don't hurt you, so guess everything you can't reach.</li>
@@ -584,7 +788,7 @@
             <li>Eliminate obviously-wrong options to improve guess odds.</li>
           </ul>
 
-          <h3>📊 Score percentile chart</h3>
+          <h3>Score percentile chart</h3>
           <p>Approximate percentile vs. the general adult population (your target also depends on the role):</p>
           <table class="table">
             <tr><th>Raw score (/50)</th><th>≈ Percentile</th><th>Interpretation</th></tr>
@@ -641,6 +845,12 @@
     return WRONG_REASONS[(q.type||'').toLowerCase()] || 'it doesn’t satisfy the rule this question is testing';
   }
   function cap(s){ return s ? s.charAt(0).toUpperCase()+s.slice(1) : s; }
+  // 1st / 2nd / 3rd / 4th … (11th, 12th, 13th are the exceptions)
+  function ord(n){
+    const t=n%100, d=n%10;
+    const suf = (t>=11&&t<=13) ? 'th' : (d===1?'st':d===2?'nd':d===3?'rd':'th');
+    return n+suf;
+  }
 
   function estPercentile(raw){
     // piecewise-linear estimate from the chart above
@@ -654,29 +864,93 @@
 
   /* ---------- Views / Router ---------- */
   const Views={
-    list:['home','category','drill','quiz','results','review','study','progress'],
-    show(v){ this.list.forEach(x=>$('#view-'+x).classList.toggle('hidden', x!==v)); window.scrollTo({top:0,behavior:'smooth'}); this._cur=v; setActiveNav(v); },
+    list:['home','category','drill','quiz','results','review','study','progress','pricing','account'],
+    show(v){
+      this.list.forEach(x=>$('#view-'+x).classList.toggle('hidden', x!==v));
+      // Exam mode: under a real clock the site chrome is noise, and a
+      // simulation should feel like the thing it simulates. Entering and
+      // leaving both route through here, so the class can't get stranded.
+      document.body.classList.toggle('exam-mode', v==='quiz' && !!(Quiz.state && Quiz.state.timed));
+      window.scrollTo({top:0,behavior:'smooth'}); this._cur=v; setActiveNav(v);
+    },
   };
   const Router={
     go(where){
       switch(where){
         case 'home': Home.render(); Views.show('home'); break;
-        case 'full': Quiz.start({mode:'full',label:'Full CCAT simulation',questions:buildExam(),timeLimit:FULL_TEST_TIME}); break;
+        case 'full': {
+          // The free tier includes one complete simulation — the score it
+          // produces is the pitch, so it is never the thing behind the wall.
+          const gate=Access.canFullSim();
+          if(!gate.ok){ Paywall.open(gate); return; }
+          Access.recordFullSim();
+          Quiz.start({mode:'full',label:'Full CCAT simulation',questions:buildExam(),timeLimit:FULL_TEST_TIME});
+          break;
+        }
         case 'quick': Quiz.start({mode:'quick',label:'Quick 10 warm-up',questions:pickBalanced(10),timeLimit:180}); break;
         case 'category': Setup.category(); break;
         case 'drill': Setup.drill(); break;
         case 'study': Guide.render(); break;
         case 'progress': Progress.render(); break;
+        case 'pricing': Pricing.render(); break;
+        case 'account': AccountView.render(); break;
       }
     }
   };
   function setActiveNav(v){
-    const map={home:'home',study:'study',progress:'progress'};
+    const map={home:'home',study:'study',progress:'progress',pricing:'pricing'};
     $$('.nav button[data-nav]').forEach(b=>b.classList.toggle('active', b.dataset.nav===map[v]));
   }
 
   /* ---------- theme ---------- */
-  function applyTheme(t){ document.documentElement.classList.toggle('light', t==='light'); $('#theme-btn').textContent = t==='light'?'🌙':'☀️'; }
+  function applyTheme(t){
+    const paper = t==='light';
+    document.documentElement.classList.toggle('light', paper);
+    // The mark is a contrast dial, not a sun/moon — it reads either way, so
+    // only the tooltip needs to change (and it must not clobber the SVG).
+    $('#theme-btn').title = paper?'Switch to ink (dark)':'Switch to paper (light)';
+    // Keep the mobile browser chrome in step with the page.
+    const meta=document.querySelector('meta[name="theme-color"]');
+    if(meta) meta.setAttribute('content', paper?'#f6f2e9':'#141210');
+  }
+
+  /* ---------- returning from Stripe ---------- */
+  // Stripe redirects back the instant the card clears, but the webhook that
+  // actually writes the entitlement is a separate request. Poll for a few
+  // seconds rather than greeting a paying customer with "you're on the free
+  // tier".
+  async function handleCheckoutReturn(){
+    const params=new URLSearchParams(location.search);
+    const status=params.get('checkout');
+    if(!status) return;
+
+    history.replaceState({}, '', location.pathname);
+
+    if(status==='cancelled'){ flash('Checkout cancelled — nothing was charged.'); return; }
+    if(status!=='success') return;
+
+    const el=document.createElement('div');
+    el.className='modal-backdrop';
+    el.innerHTML=`<div class="modal"><div class="modal-head">
+      <span class="logo lg">C</span><h2>Confirming your payment…</h2>
+      <p>This takes a couple of seconds. Don't close the tab.</p></div>
+      <div class="spinner"></div></div>`;
+    document.body.appendChild(el);
+    document.body.classList.add('modal-open');
+
+    const ok=await Account.waitForEntitlement();
+    el.remove();
+    document.body.classList.remove('modal-open');
+
+    if(ok){
+      Home.render(); Views.show('home');
+      flash('Pro unlocked — go take a simulation.');
+    } else {
+      alert("Your payment went through, but we haven't received the confirmation yet. "
+        + "It usually lands within a minute — refresh the page and it'll be there. "
+        + "If it isn't, reply to your Stripe receipt and we'll sort it out immediately.");
+    }
+  }
 
   /* ---------- boot ---------- */
   function boot(){
@@ -684,7 +958,34 @@
     $('#theme-btn').addEventListener('click',()=>{ const t=document.documentElement.classList.contains('light')?'dark':'light'; Store.setTheme(t); applyTheme(t); });
     $$('.nav button[data-nav]').forEach(b=>b.addEventListener('click',()=>Router.go(b.dataset.nav)));
     $('#brand-home').addEventListener('click',()=>Router.go('home'));
+    $('#account-btn').addEventListener('click',()=>Router.go('account'));
+    $('#footer-pricing').addEventListener('click',(e)=>{ e.preventDefault(); Router.go('pricing'); });
+
     Home.render(); Views.show('home');
+
+    // Sign-in / purchase can land at any time; keep the visible view honest.
+    Account.onChange(()=>{
+      refreshNavState();
+      const v=Views._cur;
+      if(v==='home') Home.render();
+      else if(v==='pricing') Pricing.render();
+      else if(v==='account') AccountView.render();
+      Store.syncFromCloud();
+    });
+
+    Account.ready.then(()=>{ refreshNavState(); handleCheckoutReturn(); });
   }
+
+  function refreshNavState(){
+    const pro=Access.isPro();
+    const nav=$('#nav-pricing');
+    if(nav){
+      nav.querySelector('.label').textContent = pro ? 'Pro ✦' : 'Upgrade';
+      nav.classList.toggle('is-pro', pro);
+    }
+    const acct=$('#account-btn');
+    if(acct) acct.title = Account.isSignedIn() ? Account.user.email : 'Sign in';
+  }
+
   document.addEventListener('DOMContentLoaded',boot);
 })();

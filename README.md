@@ -1,8 +1,25 @@
 # CCAT Prep — Cognitive Aptitude Trainer
 
-A free, comprehensive web app for practicing and preparing for the **Criteria Cognitive Aptitude Test (CCAT)** — a 50-question, 15-minute test of problem-solving, critical thinking, and learning ability.
+A web app for practicing and preparing for the **Criteria Cognitive Aptitude Test (CCAT)** — a 50-question, 15-minute test of problem-solving, critical thinking, and learning ability. Free to start; **Pro** unlocks the full bank and unlimited simulations.
 
 **Live site:** https://jchappellmedia.github.io/hydration-tracker/
+
+## Pricing
+
+| | Free | Pro |
+|---|---|---|
+| Full 50-question timed simulations | 1 total | **Unlimited** |
+| Question bank | ~40% | **All 240+** |
+| Questions per practice session | 10 | **No cap** |
+| Untimed generated drills | 10 per session | **Endless** |
+| Answer review after a simulation | — | **Every question** |
+| Explanations during topic practice | Yes | Yes |
+| Study guide & percentile chart | Yes | Yes |
+| Progress synced across devices | — | **Yes** |
+
+Two one-time purchases, no subscription: **7-Day Sprint $9** and **Lifetime Pro
+$29**. Payment runs through Stripe Checkout — see
+[docs/STRIPE_SETUP.md](docs/STRIPE_SETUP.md) to configure it.
 
 ## Features
 
@@ -11,7 +28,7 @@ A free, comprehensive web app for practicing and preparing for the **Criteria Co
 - **Endless Drill** — unlimited, procedurally generated number-series, arithmetic, and percentage problems.
 - **Quick 10** — a fast 3-minute mixed warm-up.
 - **Study Guide** — strategies, formulas, question-type breakdowns, and a score→percentile chart.
-- **Progress Tracking** — score history and per-area accuracy, stored privately in your browser (localStorage). Nothing is sent anywhere.
+- **Progress Tracking** — score history and per-area accuracy, kept in your browser; Pro also syncs it across devices.
 - Light/dark theme, fully responsive, works offline once loaded.
 
 ## Question areas
@@ -26,14 +43,69 @@ The bank holds **240+ questions** built to mirror the real CCAT, weighted to the
 
 ## Tech
 
-Pure static HTML/CSS/JavaScript — no build step, no backend, no dependencies. Hosted on GitHub Pages.
+Static HTML/CSS/JavaScript — no build step, no bundler. Hosted on GitHub Pages.
+Accounts, entitlements and payments are handled by Supabase (Postgres + Edge
+Functions) and Stripe; without them the app still runs, just free-tier only.
 
 ```
-index.html        # app shell + nav
-css/styles.css    # styling (light/dark)
-js/questions.js   # question bank + procedural generators
-js/app.js         # quiz engine, scoring, views, router
+index.html                              # app shell + nav
+css/styles.css                          # styling (light/dark)
+js/questions.js                         # question bank + procedural generators
+js/app.js                               # quiz engine, scoring, views, router
+js/config.js                            # public config: Supabase keys, plans, free limits
+js/account.js                           # auth, entitlement lookup, Stripe Checkout
+js/paywall.js                           # free-tier limits, upgrade modal, auth modal
+
+supabase/migrations/                    # entitlements, progress sync, webhook event log
+supabase/functions/stripe-checkout/     # creates a Checkout Session for a signed-in user
+supabase/functions/stripe-webhook/      # verifies Stripe's signature, grants access
+docs/STRIPE_SETUP.md                    # what to configure before taking money
 ```
+
+### Design
+
+The theme is called **Examination**, and it is aimed at one specific person:
+someone who has been emailed an assessment link with a 48-hour deadline, is
+anxious about it, and is deciding whether this tool is serious enough to trust
+with $29. Everything follows from that.
+
+- **Paper and ink, not navy and neon.** Warm off-white with near-black type by
+  default; a warm-charcoal "ink" mode for late-night revision. Paper is the
+  default because the real CCAT is sat on a white screen — practising on white
+  is closer to the thing being rehearsed.
+- **Instrument Serif** for display, **IBM Plex Sans** for structure, **IBM Plex
+  Mono** for every number. Scores, timers, prices and percentiles are all
+  tabular mono, so nothing shifts width as a clock counts down.
+- **Hairline rules, 3px corners, no drop shadows.** Grids are printed tables
+  whose cells share a rule, not floating cards.
+- **One signal colour.** Amber is reserved for time and the primary action, so
+  urgency still means something when it shows up.
+- **No decorative emoji.** Practice modes are numbered `I`–`VI` the way an exam
+  paper numbers its sections; locked controls carry a small `PRO` tag, which
+  names what unlocks them instead of just showing a padlock.
+- **Exam mode.** During a timed simulation the header, footer and page ruling
+  are removed entirely. Navigation is noise under a clock, and a simulation
+  should feel like the thing it simulates.
+- **The clock never blinks.** It shifts amber then red as time runs down, but it
+  does not flash — a flashing clock spikes panic in exactly the person least
+  able to afford it, and the colour carries the same information.
+
+`prefers-reduced-motion` disables all animation.
+
+### How access is granted
+
+The browser asks for a *plan key* (`sprint` / `lifetime`); the Edge Function
+resolves it to a Stripe price ID held server-side, so the amount charged can't
+be edited from the client. When the payment clears, Stripe calls the webhook,
+which verifies the signature and writes a row to `ccat_entitlements` using the
+service-role key. That table has an RLS policy for `select` and none for
+`insert`/`update` — a user can read their own entitlement and can never create
+one.
+
+The paywall *UI* is client-side and a determined visitor can unlock it in
+devtools; the question bank ships in the page, so it was never secret. What's
+not forgeable is the payment record. `docs/STRIPE_SETUP.md` covers this and what
+to do if you later want a paywall that holds against that.
 
 ## Disclaimer
 
