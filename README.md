@@ -18,8 +18,9 @@ A web app for practicing and preparing for the **Criteria Cognitive Aptitude Tes
 | Progress synced across devices | — | **Yes** |
 
 Two one-time purchases, no subscription: **7-Day Sprint $9** and **Lifetime Pro
-$29**. Payment runs through Stripe Checkout — see
-[docs/STRIPE_SETUP.md](docs/STRIPE_SETUP.md) to configure it.
+$29**. Payment runs on Stripe Payment Links and is live — see
+[docs/STRIPE_SETUP.md](docs/STRIPE_SETUP.md) for how it works and how to
+operate it.
 
 ## Features
 
@@ -57,9 +58,8 @@ js/account.js                           # auth, entitlement lookup, Stripe Check
 js/paywall.js                           # free-tier limits, upgrade modal, auth modal
 
 supabase/migrations/                    # entitlements, progress sync, webhook event log
-supabase/functions/stripe-checkout/     # creates a Checkout Session for a signed-in user
 supabase/functions/stripe-webhook/      # verifies Stripe's signature, grants access
-docs/STRIPE_SETUP.md                    # what to configure before taking money
+docs/STRIPE_SETUP.md                    # how payments work + operations runbook
 ```
 
 ### Design
@@ -94,10 +94,10 @@ with $29. Everything follows from that.
 
 ### How access is granted
 
-The browser asks for a *plan key* (`sprint` / `lifetime`); the Edge Function
-maps it to an amount hard-coded server-side (inline `price_data` — no products
-or price IDs to create in Stripe), so the amount charged can't be edited from
-the client. When the payment clears, Stripe calls the webhook,
+Checkout runs on Stripe Payment Links — hosted pages owned by Stripe — with
+the buyer's user id attached as `client_reference_id`, so no Stripe secret key
+exists anywhere in this project's infrastructure and the amount charged can't
+be edited from the client. When the payment clears, Stripe calls the webhook,
 which verifies the signature and writes a row to `ccat_entitlements` using the
 service-role key. That table has an RLS policy for `select` and none for
 `insert`/`update` — a user can read their own entitlement and can never create

@@ -11,6 +11,14 @@ window.CCAT_CONFIG = {
   SUPABASE_URL: "https://utupgcayrwocavdmhyle.supabase.co",
   SUPABASE_KEY: "sb_publishable_dfuSJkpp1yZy5yg4tlKsGw_ync0kLXy",
 
+  // Stripe Payment Links — public by design; the price lives on Stripe's side.
+  // The site appends ?client_reference_id=<user id> before redirecting, which
+  // is how the webhook knows whose account to upgrade.
+  PAYMENT_LINKS: {
+    sprint:   "https://buy.stripe.com/fZu6oH8DG0od0MVdQg2oE06",
+    lifetime: "https://buy.stripe.com/4gMdR94nqb2R9jrcMc2oE07",
+  },
+
   // Order matters — this drives the pricing table.
   PLANS: [
     {

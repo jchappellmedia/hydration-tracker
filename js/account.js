@@ -87,34 +87,20 @@
     /* ---------------- billing ---------------- */
 
     /**
-     * Sends the user to Stripe Checkout for `plan`. Only the plan key travels
-     * over the wire; the price lives in the Edge Function's environment.
+     * Sends the user to the Stripe Payment Link for `plan`. The link carries
+     * the price on Stripe's side; we attach the buyer's user id as
+     * client_reference_id so the webhook knows whose account to upgrade.
      */
     async checkout(plan) {
-      requireBackend();
       if (!this.user) throw new Error("Create an account first — it's how we attach your purchase to you.");
 
-      const { data: { session } } = await sb.auth.getSession();
-      if (!session) throw new Error("Your session expired. Please sign in again.");
+      const link = (CFG.PAYMENT_LINKS || {})[plan];
+      if (!link) throw new Error("This plan isn't available right now.");
 
-      const res = await fetch(`${CFG.SUPABASE_URL}/functions/v1/stripe-checkout`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${session.access_token}`,
-          "apikey": CFG.SUPABASE_KEY,
-        },
-        body: JSON.stringify({
-          plan,
-          returnUrl: location.origin + location.pathname,
-        }),
-      });
-
-      const payload = await res.json().catch(() => ({}));
-      if (!res.ok || !payload.url) {
-        throw new Error(payload.error || "Checkout is not available right now.");
-      }
-      location.href = payload.url;
+      const url = new URL(link);
+      url.searchParams.set("client_reference_id", this.user.id);
+      if (this.user.email) url.searchParams.set("prefilled_email", this.user.email);
+      location.href = url.toString();
     },
 
     /** Re-reads the entitlement — used after returning from Stripe. */
