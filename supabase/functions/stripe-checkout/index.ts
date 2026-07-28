@@ -1,19 +1,20 @@
 // ===========================================================================
 // stripe-checkout — creates a Stripe Checkout Session for the signed-in user.
 //
-// The browser only ever sends a *plan key* ("sprint" / "lifetime"). The actual
-// Stripe price id is read from this function's environment, so a tampered
-// client cannot invent its own price. The caller's Supabase JWT is verified
-// in-handler (see getUser below) before anything else, which is what lets the
-// webhook later attribute the payment to a real user id.
+// The browser only ever sends a *plan key* ("sprint" / "lifetime"). The price
+// is defined RIGHT HERE, server-side, as inline price_data — a tampered client
+// cannot invent its own amount, and no products or price ids have to be
+// created in the Stripe dashboard first. Changing a price means editing PLANS
+// below and redeploying this function; keep js/config.js's display copy in
+// step when you do. The caller's Supabase JWT is verified in-handler (see
+// getUser below), which is what lets the webhook later attribute the payment
+// to a real user id.
 //
 // Deployed with verify_jwt = false so the CORS preflight can reach the handler;
 // the getUser() check below is the real gate and rejects anonymous callers.
 //
 // Required secrets:
 //   STRIPE_SECRET_KEY        sk_live_… / sk_test_…
-//   STRIPE_PRICE_SPRINT      price_…  (7-day pass)
-//   STRIPE_PRICE_LIFETIME    price_…  (lifetime)
 //   ALLOWED_ORIGINS          comma-separated list of site origins
 // ===========================================================================
 
@@ -26,9 +27,19 @@ const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") ?? "", {
   httpClient: Stripe.createFetchHttpClient(),
 });
 
-const PRICE_BY_PLAN: Record<string, string | undefined> = {
-  sprint: Deno.env.get("STRIPE_PRICE_SPRINT"),
-  lifetime: Deno.env.get("STRIPE_PRICE_LIFETIME"),
+// Amounts are in cents. These are the prices actually charged — the numbers in
+// js/config.js are only what the pricing page displays.
+const PLANS: Record<string, { amount: number; name: string; description: string }> = {
+  sprint: {
+    amount: 900,
+    name: "CCAT Prep — 7-Day Sprint",
+    description: "7 days of Pro: unlimited simulations, the full question bank, endless drills and answer review.",
+  },
+  lifetime: {
+    amount: 2900,
+    name: "CCAT Prep — Lifetime Pro",
+    description: "Pro forever on one account: unlimited simulations, the full question bank, endless drills, answer review and progress sync.",
+  },
 };
 
 const ALLOWED_ORIGINS = (Deno.env.get("ALLOWED_ORIGINS") ?? "")
@@ -82,9 +93,9 @@ Deno.serve(async (req: Request) => {
     // --- what are they buying? -------------------------------------------
     const body = await req.json().catch(() => ({}));
     const plan = String(body.plan ?? "");
-    const price = PRICE_BY_PLAN[plan];
-    if (!price) {
-      return json({ error: `Unknown or unconfigured plan "${plan}".` }, 400, origin);
+    const planDef = PLANS[plan];
+    if (!planDef) {
+      return json({ error: `Unknown plan "${plan}".` }, 400, origin);
     }
 
     // Already paid for life? Don't let them buy twice by accident.
@@ -113,7 +124,14 @@ Deno.serve(async (req: Request) => {
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
-      line_items: [{ price, quantity: 1 }],
+      line_items: [{
+        price_data: {
+          currency: "usd",
+          unit_amount: planDef.amount,
+          product_data: { name: planDef.name, description: planDef.description },
+        },
+        quantity: 1,
+      }],
       customer_email: user.email ?? undefined,
       client_reference_id: user.id,
       // The webhook reads these back. client_reference_id alone would do, but
