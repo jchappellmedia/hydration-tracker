@@ -145,7 +145,7 @@
         <div class="modal wide">
           <button class="modal-x" aria-label="Close">✕</button>
           <div class="modal-head">
-            <span class="lock-ic">🔒</span>
+            <span class="lock-ic">§</span>
             <h2>${info.title || "That's a Pro feature"}</h2>
             <p>${info.body || ""}</p>
           </div>

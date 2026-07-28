@@ -62,6 +62,36 @@ supabase/functions/stripe-webhook/      # verifies Stripe's signature, grants ac
 docs/STRIPE_SETUP.md                    # what to configure before taking money
 ```
 
+### Design
+
+The theme is called **Examination**, and it is aimed at one specific person:
+someone who has been emailed an assessment link with a 48-hour deadline, is
+anxious about it, and is deciding whether this tool is serious enough to trust
+with $29. Everything follows from that.
+
+- **Paper and ink, not navy and neon.** Warm off-white with near-black type by
+  default; a warm-charcoal "ink" mode for late-night revision. Paper is the
+  default because the real CCAT is sat on a white screen — practising on white
+  is closer to the thing being rehearsed.
+- **Instrument Serif** for display, **IBM Plex Sans** for structure, **IBM Plex
+  Mono** for every number. Scores, timers, prices and percentiles are all
+  tabular mono, so nothing shifts width as a clock counts down.
+- **Hairline rules, 3px corners, no drop shadows.** Grids are printed tables
+  whose cells share a rule, not floating cards.
+- **One signal colour.** Amber is reserved for time and the primary action, so
+  urgency still means something when it shows up.
+- **No decorative emoji.** Practice modes are numbered `I`–`VI` the way an exam
+  paper numbers its sections; locked controls carry a small `PRO` tag, which
+  names what unlocks them instead of just showing a padlock.
+- **Exam mode.** During a timed simulation the header, footer and page ruling
+  are removed entirely. Navigation is noise under a clock, and a simulation
+  should feel like the thing it simulates.
+- **The clock never blinks.** It shifts amber then red as time runs down, but it
+  does not flash — a flashing clock spikes panic in exactly the person least
+  able to afford it, and the colour carries the same information.
+
+`prefers-reduced-motion` disables all animation.
+
 ### How access is granted
 
 The browser asks for a *plan key* (`sprint` / `lifetime`); the Edge Function

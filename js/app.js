@@ -5,9 +5,9 @@
   'use strict';
 
   const CATS = {
-    verbal:  { name:'Verbal',          color:'var(--verbal)',  icon:'📖' },
-    math:    { name:'Math & Logic',    color:'var(--math)',    icon:'🔢' },
-    spatial: { name:'Spatial & Abstract', color:'var(--spatial)', icon:'🧩' },
+    verbal:  { name:'Verbal',             color:'var(--verbal)'  },
+    math:    { name:'Math & Logic',       color:'var(--math)'    },
+    spatial: { name:'Spatial & Abstract', color:'var(--spatial)' },
   };
   // The real CCAT is 50 questions in 15 minutes (≈18s each), weighted toward
   // verbal & numerical with a spatial section and a few logic items at the end.
@@ -54,7 +54,9 @@
       const totalQ = h.reduce((a,x)=>a+x.total,0);
       return { tests:full.length, best, avg, totalQ, history:h };
     },
-    theme(){ return this.load().theme || 'dark'; },
+    // Paper by default: the real CCAT is sat on a white screen, so practising
+    // on white is closer to the thing being rehearsed.
+    theme(){ return this.load().theme || 'light'; },
     setTheme(t){ const d=this.load(); d.theme=t; this.save(d); },
   };
 
@@ -176,9 +178,9 @@
       const progPct = s.drill ? 0 : ((s.idx)/s.questions.length*100);
       $('#view-quiz').innerHTML=`
         <div class="quiz-head">
-          ${s.timed?`<div class="timer" id="timer"><span>⏱</span><span class="t">${fmtTime(s.remaining)}</span></div>`:''}
+          ${s.timed?`<div class="timer" id="timer"><span>TIME</span><span class="t">${fmtTime(s.remaining)}</span></div>`:''}
           <div class="qcount">Question <b>${s.idx+1}</b> / ${total}</div>
-          <span class="cat-tag ${q.category}">${cat.icon} ${cat.name}</span>
+          <span class="cat-tag ${q.category}">${cat.name}</span>
         </div>
         ${s.drill?'':`<div class="progress-track"><div class="progress-fill" style="width:${progPct}%"></div></div>`}
         <div class="qcard">
@@ -285,7 +287,7 @@
       const isFull = r.mode==='full';
       // Percentile estimate based on CCAT norms (raw score out of 50 → approx percentile)
       const percentile = isFull ? estPercentile(r.correct) : null;
-      const verdict = pct>=80?'Outstanding! 🏆':pct>=65?'Great work! 🎉':pct>=50?'Solid effort 👍':pct>=35?'Keep practicing 💪':'Room to grow 🌱';
+      const verdict = pct>=80?'Outstanding.':pct>=65?'Strong result.':pct>=50?'Solid effort.':pct>=35?'Keep practising.':'Room to grow.';
       const ringColor = pct>=65?'var(--good)':pct>=45?'var(--warn)':'var(--bad)';
       const circ=2*Math.PI*78;
       const off=circ*(1-pct/100);
@@ -297,7 +299,7 @@
       const reviewLocked = isFull && !Access.isPro();
       const upsell = reviewLocked ? `
         <div class="upsell">
-          <div class="upsell-ic">🔓</div>
+          <div class="upsell-ic">§</div>
           <div>
             <b>Unlock unlimited simulations &amp; full answer review</b>
             <p>You've used your free simulation. Pro opens the complete 240+ question bank, endless drills, and a breakdown of every question you missed — from $9, one-time.</p>
@@ -309,7 +311,7 @@
         if(!v.t) return '';
         const p=Math.round(v.c/v.t*100);
         return `<div class="bd-row">
-          <span class="lbl">${CATS[k].icon} ${CATS[k].name}</span>
+          <span class="lbl">${CATS[k].name}</span>
           <span class="bd-bar"><i style="width:${p}%;background:${CATS[k].color}"></i></span>
           <span class="num">${v.c}/${v.t}</span></div>`;
       }).join('');
@@ -337,7 +339,7 @@
         </div>`:''}
         ${upsell}
         <div class="btn-row" style="margin-top:22px;justify-content:center">
-          <button class="btn primary lg" id="r-review">Review answers${reviewLocked?' 🔒':''}</button>
+          <button class="btn primary lg" id="r-review">Review answers${reviewLocked?' <sup>PRO</sup>':''}</button>
           <button class="btn lg" id="r-again">Try again</button>
           <button class="btn ghost lg" id="r-home">Home</button>
         </div>`;
@@ -391,13 +393,13 @@
       const simsLeft=Math.max(0,(CCAT_CONFIG.FREE_LIMITS.fullSims||1)-Access.freeSimsUsed());
       const banner = pro ? `
         <div class="tier-banner pro">
-          <span class="tier-ic">★</span>
+          <span class="tier-ic">✦</span>
           <div><b>${Account.planLabel()} is active</b>
           <span>Unlimited simulations, the full question bank, endless drills and full answer review.${
             Account.daysLeft()!=null?` <b>${Account.daysLeft()} day${Account.daysLeft()===1?'':'s'} left.</b>`:''}</span></div>
         </div>` : `
         <div class="tier-banner">
-          <span class="tier-ic">🔓</span>
+          <span class="tier-ic">§</span>
           <div><b>${simsLeft?`You have ${simsLeft} free full simulation${simsLeft===1?'':'s'} left`:'Free simulation used'}</b>
           <span>Pro unlocks unlimited timed sims, all 240+ questions, endless drills and full answer review — from $9, one-time.</span></div>
           <button class="btn primary" id="h-upgrade">See plans →</button>
@@ -405,13 +407,13 @@
 
       $('#view-home').innerHTML=`
         <div class="hero">
-          <h1>Master the <span class="grad">CCAT</span></h1>
-          <p>The Criteria Cognitive Aptitude Test is a <b>50-question, 15-minute</b> test of problem-solving, critical thinking, and learning ability. Train with realistic questions across all three areas — verbal, math &amp; logic, and spatial reasoning — then take full timed simulations to track your progress.</p>
+          <h1>Sit the <span class="grad">CCAT</span><br />like you've sat it before.</h1>
+          <p>You get one attempt, <b>15 minutes</b>, <b>50 questions</b>, and no second look at anything you skip. Practise under exactly those conditions until the clock stops being the hard part — then find out, before the day itself, roughly where you land.</p>
           <div class="pills">
             <span class="pill"><b>50</b> questions</span>
             <span class="pill"><b>15</b> minutes</span>
-            <span class="pill"><b>3</b> skill areas</span>
-            <span class="pill">Avg score ≈ <b>24</b></span>
+            <span class="pill"><b>18s</b> per question</span>
+            <span class="pill"><b>24</b> average score</span>
           </div>
         </div>
 
@@ -427,32 +429,32 @@
         <div class="section-title">Practice Modes<span class="sub">Pick how you want to train today</span></div>
         <div class="grid cols-3">
           <div class="card mode-card" data-go="full">
-            <div class="ic blue">⏱️</div><h3>Full Simulation</h3>
+            <div class="ic">I</div><h3>Full Simulation</h3>
             <p>50 questions, 15-minute timer, no feedback until the end. Built to the exact CCAT blueprint: 18 verbal, 21 math &amp; logic, 11 spatial.</p>
             <div class="go">Start the test →</div>
           </div>
           <div class="card mode-card" data-go="category">
-            <div class="ic green">🎯</div><h3>Practice by Topic</h3>
+            <div class="ic">II</div><h3>Practice by Topic</h3>
             <p>Focus on verbal, math &amp; logic, or spatial reasoning with instant explanations.</p>
             <div class="go">Choose a topic →</div>
           </div>
           <div class="card mode-card" data-go="drill">
-            <div class="ic purple">♾️</div><h3>Untimed Drills</h3>
+            <div class="ic">III</div><h3>Untimed Drills</h3>
             <p>No clock. Unlimited number-series, arithmetic &amp; percentage problems with a full why-it's-right / why-you-were-wrong breakdown after each answer.</p>
             <div class="go">Start drilling →</div>
           </div>
           <div class="card mode-card" data-go="quick">
-            <div class="ic orange">⚡</div><h3>Quick 10</h3>
+            <div class="ic">IV</div><h3>Quick 10</h3>
             <p>A fast, mixed 10-question timed warm-up (3 minutes) to test yourself.</p>
             <div class="go">Quick test →</div>
           </div>
           <div class="card mode-card" data-go="study">
-            <div class="ic pink">📚</div><h3>Study Guide</h3>
+            <div class="ic">V</div><h3>Study Guide</h3>
             <p>Strategies, formulas, question-type breakdowns, and the percentile chart.</p>
             <div class="go">Read the guide →</div>
           </div>
           <div class="card mode-card" data-go="progress">
-            <div class="ic blue">📈</div><h3>My Progress</h3>
+            <div class="ic">VI</div><h3>My Progress</h3>
             <p>See your score history and category strengths over time.</p>
             <div class="go">View progress →</div>
           </div>
@@ -475,7 +477,7 @@
       $('#view-pricing').innerHTML=`
         <div class="section-title">Pricing<span class="sub">Everything you need to walk into that test confident</span></div>
         ${pro ? `<div class="tier-banner pro">
-            <span class="tier-ic">★</span>
+            <span class="tier-ic">✦</span>
             <div><b>${Account.planLabel()} is already active on this account.</b>
             <span>Nothing more to buy — head back and start a simulation.</span></div>
             <button class="btn primary" id="pr-home">Start practising →</button>
@@ -566,14 +568,14 @@
         <div class="section-title">Practice by Topic<span class="sub">Untimed by default · explanations after every question</span></div>
         <div class="card">
           <div class="opt-group"><h4>Choose a topic</h4><div class="choices" id="c-cat">
-            ${Object.entries(CATS).map(([k,v])=>`<button class="choice ${cat===k?'sel':''}" data-v="${k}">${v.icon} ${v.name}</button>`).join('')}
+            ${Object.entries(CATS).map(([k,v])=>`<button class="choice ${cat===k?'sel':''}" data-v="${k}">${v.name}</button>`).join('')}
           </div></div>
           <div class="opt-group"><h4>Number of questions</h4><div class="choices" id="c-count">
             ${[5,10,15,25,'All'].map(n=>{
               const isAll=n==='All';
               const lock=(isAll&&!Access.isPro())||locked(n);
               return `<button class="choice ${String(count)===String(n)?'sel':''} ${lock?'locked':''}"
-                data-v="${n}" data-lock="${lock?1:0}">${isAll?`All (${counts.total})`:n}${lock?' 🔒':''}</button>`;
+                data-v="${n}" data-lock="${lock?1:0}">${isAll?`All (${counts.total})`:n}${lock?' <sup>PRO</sup>':''}</button>`;
             }).join('')}
           </div></div>
           <div class="opt-group"><h4>Timer</h4><div class="choices" id="c-timed">
@@ -633,9 +635,9 @@
             ${Object.entries(TOPICS).map(([k,v])=>`<button class="choice ${topic===k?'sel':''}" data-v="${k}">${v}</button>`).join('')}
           </div></div>
           <div class="opt-group"><h4>How many questions?</h4><div class="choices" id="d-len">
-            ${[['10','10'],['25','25'],['endless','Endless ♾️']].map(([v,l])=>{
+            ${[['10','10'],['25','25'],['endless','Endless']].map(([v,l])=>{
               const lock=!pro && v!=='10';
-              return `<button class="choice ${length===v?'sel':''} ${lock?'locked':''}" data-v="${v}" data-lock="${lock?1:0}">${l}${lock?' 🔒':''}</button>`;
+              return `<button class="choice ${length===v?'sel':''} ${lock?'locked':''}" data-v="${v}" data-lock="${lock?1:0}">${l}${lock?' <sup>PRO</sup>':''}</button>`;
             }).join('')}
           </div></div>
           <div class="opt-group"><h4>Mode</h4>
@@ -701,7 +703,7 @@
       s.history.forEach(h=>{ if(h.cats) Object.entries(h.cats).forEach(([k,v])=>{agg[k].c+=v.c;agg[k].t+=v.t;}); });
       const catBars=Object.entries(agg).map(([k,v])=>{
         const p=v.t?Math.round(v.c/v.t*100):0;
-        return `<div class="bd-row"><span class="lbl">${CATS[k].icon} ${CATS[k].name}</span>
+        return `<div class="bd-row"><span class="lbl">${CATS[k].name}</span>
           <span class="bd-bar"><i style="width:${p}%;background:${CATS[k].color}"></i></span>
           <span class="num">${p}%</span></div>`;
       }).join('');
@@ -734,7 +736,7 @@
       $('#view-study').innerHTML=`
         <div class="section-title">CCAT Study Guide<span class="sub">Everything you need to walk in prepared</span></div>
         <div class="card guide">
-          <h3>📋 What is the CCAT?</h3>
+          <h3>What is the CCAT?</h3>
           <p>The <b>Criteria Cognitive Aptitude Test</b> measures your ability to solve problems, digest information, and think critically. It is widely used in hiring. Key facts:</p>
           <ul>
             <li><b>50 questions</b> in <b>15 minutes</b> — that's about <b>18 seconds per question</b>.</li>
@@ -743,7 +745,7 @@
             <li>Approximate mix: <b>~34% verbal</b>, <b>~34% numerical (math)</b>, <b>~22% spatial</b>, and <b>~10% logic</b>, interleaved throughout.</li>
           </ul>
 
-          <h3>📖 Verbal Ability</h3>
+          <h3>Verbal Ability</h3>
           <ul>
             <li><b>Analogies:</b> identify the relationship in the first pair, then apply it. (worker : tool, part : whole, cause : effect, degree, opposite).</li>
             <li><b>Synonyms / Antonyms:</b> build vocabulary; watch for the trap option that's a synonym when an antonym is asked.</li>
@@ -751,7 +753,7 @@
             <li><b>Odd-one-out:</b> find the shared category, then the outlier.</li>
           </ul>
 
-          <h3>🔢 Math & Logic</h3>
+          <h3>Math & Logic</h3>
           <p>Memorize these so you don't burn time deriving them:</p>
           <div class="formula">Percent of a number:  X% of N = (X/100) × N</div>
           <div class="formula">Percent change:  (new − old) ÷ old × 100</div>
@@ -763,7 +765,7 @@
             <li><b>Logic:</b> "all/some/none" syllogisms — diagram them; ordering puzzles — write the chain (A &gt; B &gt; C).</li>
           </ul>
 
-          <h3>🧩 Spatial Reasoning</h3>
+          <h3>Spatial Reasoning</h3>
           <p>The three official CCAT spatial formats — all visual, with five answer choices:</p>
           <ul>
             <li><b>Next-in-series:</b> 3–5 figures follow a rule; pick the figure that continues it. Track <i>one feature at a time</i> — number of sides, rotation, shading, count, or position.</li>
@@ -772,13 +774,13 @@
             <li><b>Rotation &amp; mirrors:</b> imagine turning the figure 90°/180° (clockwise unless shown otherwise); a mirror is a left-right flip.</li>
           </ul>
 
-          <h3>🔎 Verbal Attention to Detail</h3>
+          <h3>Verbal Attention to Detail</h3>
           <ul>
             <li>You get <b>two columns of short strings</b> (names, codes, addresses) and count how many rows match <b>exactly</b>.</li>
             <li>Differences are tiny: a swapped digit (88301 vs 88031), a doubled letter, or a case change. Compare <b>character by character</b>, left to right.</li>
           </ul>
 
-          <h3>🎯 Test-day strategy</h3>
+          <h3>Test-day strategy</h3>
           <ul>
             <li><b>Triage fast:</b> if a question isn't clicking in ~20 seconds, guess and move on. One hard question isn't worth three easy ones.</li>
             <li><b>Never leave blanks</b> — wrong answers don't hurt you, so guess everything you can't reach.</li>
@@ -786,7 +788,7 @@
             <li>Eliminate obviously-wrong options to improve guess odds.</li>
           </ul>
 
-          <h3>📊 Score percentile chart</h3>
+          <h3>Score percentile chart</h3>
           <p>Approximate percentile vs. the general adult population (your target also depends on the role):</p>
           <table class="table">
             <tr><th>Raw score (/50)</th><th>≈ Percentile</th><th>Interpretation</th></tr>
@@ -863,7 +865,14 @@
   /* ---------- Views / Router ---------- */
   const Views={
     list:['home','category','drill','quiz','results','review','study','progress','pricing','account'],
-    show(v){ this.list.forEach(x=>$('#view-'+x).classList.toggle('hidden', x!==v)); window.scrollTo({top:0,behavior:'smooth'}); this._cur=v; setActiveNav(v); },
+    show(v){
+      this.list.forEach(x=>$('#view-'+x).classList.toggle('hidden', x!==v));
+      // Exam mode: under a real clock the site chrome is noise, and a
+      // simulation should feel like the thing it simulates. Entering and
+      // leaving both route through here, so the class can't get stranded.
+      document.body.classList.toggle('exam-mode', v==='quiz' && !!(Quiz.state && Quiz.state.timed));
+      window.scrollTo({top:0,behavior:'smooth'}); this._cur=v; setActiveNav(v);
+    },
   };
   const Router={
     go(where){
@@ -894,7 +903,16 @@
   }
 
   /* ---------- theme ---------- */
-  function applyTheme(t){ document.documentElement.classList.toggle('light', t==='light'); $('#theme-btn').textContent = t==='light'?'🌙':'☀️'; }
+  function applyTheme(t){
+    const paper = t==='light';
+    document.documentElement.classList.toggle('light', paper);
+    // The mark is a contrast dial, not a sun/moon — it reads either way, so
+    // only the tooltip needs to change (and it must not clobber the SVG).
+    $('#theme-btn').title = paper?'Switch to ink (dark)':'Switch to paper (light)';
+    // Keep the mobile browser chrome in step with the page.
+    const meta=document.querySelector('meta[name="theme-color"]');
+    if(meta) meta.setAttribute('content', paper?'#f6f2e9':'#141210');
+  }
 
   /* ---------- returning from Stripe ---------- */
   // Stripe redirects back the instant the card clears, but the webhook that
@@ -926,7 +944,7 @@
 
     if(ok){
       Home.render(); Views.show('home');
-      flash('🎉 Pro unlocked — go take a simulation.');
+      flash('Pro unlocked — go take a simulation.');
     } else {
       alert("Your payment went through, but we haven't received the confirmation yet. "
         + "It usually lands within a minute — refresh the page and it'll be there. "
@@ -962,7 +980,7 @@
     const pro=Access.isPro();
     const nav=$('#nav-pricing');
     if(nav){
-      nav.querySelector('.label').textContent = pro ? 'Pro ★' : 'Upgrade';
+      nav.querySelector('.label').textContent = pro ? 'Pro ✦' : 'Upgrade';
       nav.classList.toggle('is-pro', pro);
     }
     const acct=$('#account-btn');
