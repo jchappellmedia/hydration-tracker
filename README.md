@@ -95,8 +95,9 @@ with $29. Everything follows from that.
 ### How access is granted
 
 The browser asks for a *plan key* (`sprint` / `lifetime`); the Edge Function
-resolves it to a Stripe price ID held server-side, so the amount charged can't
-be edited from the client. When the payment clears, Stripe calls the webhook,
+maps it to an amount hard-coded server-side (inline `price_data` — no products
+or price IDs to create in Stripe), so the amount charged can't be edited from
+the client. When the payment clears, Stripe calls the webhook,
 which verifies the signature and writes a row to `ccat_entitlements` using the
 service-role key. That table has an RLS policy for `select` and none for
 `insert`/`update` — a user can read their own entitlement and can never create
