@@ -1,128 +1,96 @@
-# Going live with payments
+# Payments — how it works (already live)
 
-The code is finished, and it no longer needs any products or prices created in
-Stripe — the checkout function defines the $9 / $29 amounts itself, server-side,
-as inline `price_data`. What's left is three secrets and one webhook. Budget
-about **8 minutes**, no CLI required.
+Payments went live on 2026-07-28. Nothing needs setting up; this document
+records how the pieces fit and how to operate them.
 
-Nothing below can be committed to the repo: every value is a secret.
+## The architecture
 
----
+Checkout runs on **Stripe Payment Links** — hosted pages owned by Stripe — so
+no Stripe secret key exists anywhere in this project's infrastructure.
 
-## 1. Add two repository secrets on GitHub
+```
+browser                          Stripe                     stripe-webhook (Supabase)
+   │                                │                                │
+   ├─ click "Get Lifetime Pro"      │                                │
+   │  (must be signed in)           │                                │
+   ├─ redirect to payment link ────▶│                                │
+   │  ?client_reference_id=<uid>    │                                │
+   │                                ├─ card charged on Stripe's page │
+   │                                ├─ signed event ────────────────▶│
+   │                                │                    verify signature
+   │                                │                    (secret from ccat_config)
+   │                                │                    upsert ccat_entitlements
+   │◀─ redirect ?checkout=success ──┤                    (service role)
+   ├─ poll own entitlement until the row appears → "Pro unlocked"
+```
 
-GitHub repo → **Settings → Secrets and variables → Actions → New repository
-secret**:
+## The live pieces
 
-| Name | Where it comes from |
+| Piece | Value |
 |---|---|
-| `SUPABASE_ACCESS_TOKEN` | https://supabase.com/dashboard/account/tokens → Generate new token |
-| `STRIPE_SECRET_KEY` | https://dashboard.stripe.com/acct_1OlkAQDIgK32JhoU/apikeys — `sk_test_…` to trial the flow, `sk_live_…` to take real money |
+| 7-Day Sprint link ($9) | `https://buy.stripe.com/fZu6oH8DG0od0MVdQg2oE06` |
+| Lifetime Pro link ($29) | `https://buy.stripe.com/4gMdR94nqb2R9jrcMc2oE07` |
+| Webhook endpoint (Stripe side) | `we_1TyKXIDIgK32JhoUdPpcRT3k` → `…/functions/v1/stripe-webhook` |
+| Webhook events | `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `charge.refunded` |
+| Signing secret | row `stripe_webhook_secret` in the service-role-only `public.ccat_config` table |
+| Frontend config | `js/config.js` → `PAYMENT_LINKS` |
 
-## 2. Run the deploy workflow
+## Why it's safe
 
-**Actions → Deploy payments backend → Run workflow.** It deploys both Edge
-Functions and pushes the secrets into the Supabase project. (It will warn that
-`STRIPE_WEBHOOK_SECRET` is missing — expected on the first run.)
+- **Prices live on Stripe.** The payment links carry the amounts; nothing a
+  visitor can edit changes what they're charged.
+- **Only the webhook grants access.** `ccat_entitlements` has a `select` RLS
+  policy and no write policies — browsers can read their own row, never create
+  one. The webhook verifies Stripe's signature before touching the database and
+  writes with the service-role key.
+- **Buyer attribution:** the site appends `?client_reference_id=<supabase user
+  id>` to the link, and the webhook maps the plan from the link's metadata with
+  an amount fallback (900¢ → sprint, 2900¢ → lifetime).
+- **Retries are idempotent:** every Stripe event id is recorded in
+  `ccat_stripe_events` before processing; redeliveries are no-ops.
 
-## 3. Register the webhook, then re-run
+## Operating it
 
-Stripe Dashboard → **Developers → Webhooks → Add endpoint** (same test/live
-mode as your key):
+**Change a price** — create a new payment link in the Stripe dashboard (or ask
+Claude to), put its URL in `js/config.js`, and update the displayed price in
+the same file. If the amount changes, add it to `PLAN_BY_AMOUNT` in
+`supabase/functions/stripe-webhook/index.ts` and redeploy.
 
-- **URL:** `https://utupgcayrwocavdmhyle.supabase.co/functions/v1/stripe-webhook`
-- **Events:** `checkout.session.completed`,
-  `checkout.session.async_payment_succeeded`, `charge.refunded`
-
-Copy the endpoint's **Signing secret**, add it as a third repository secret
-named `STRIPE_WEBHOOK_SECRET`, and run the workflow once more. Without it the
-webhook rejects every delivery and paid customers never get their access —
-it's the single most common thing to forget.
-
-<details>
-<summary>Prefer the Supabase CLI instead of the workflow?</summary>
+**Redeploy the webhook** — Actions → *Deploy payments backend* (needs the
+`SUPABASE_ACCESS_TOKEN` repository secret), or:
 
 ```bash
-supabase login
-supabase link --project-ref utupgcayrwocavdmhyle
-supabase functions deploy stripe-checkout --no-verify-jwt
-supabase functions deploy stripe-webhook  --no-verify-jwt
-supabase secrets set \
-  STRIPE_SECRET_KEY=sk_test_xxx \
-  ALLOWED_ORIGINS=https://jchappellmedia.github.io \
-  STRIPE_WEBHOOK_SECRET=whsec_xxx
+supabase functions deploy stripe-webhook --no-verify-jwt --project-ref utupgcayrwocavdmhyle
 ```
 
-`--no-verify-jwt` matters on both functions, for different reasons: the webhook
-is called by Stripe (no Supabase JWT — its authenticity is the signature check
-inside the function), and the checkout function must let the browser's CORS
-preflight through (its real gate is the in-handler `getUser()` check).
-`SUPABASE_URL`, `SUPABASE_ANON_KEY` and `SUPABASE_SERVICE_ROLE_KEY` are
-injected by the platform — don't set them yourself.
-
-</details>
-
-## 4. Test the loop
-
-1. Open https://jchappellmedia.github.io/hydration-tracker/ → **Upgrade** → pick a plan.
-2. Create an account when prompted.
-3. Pay with `4242 4242 4242 4242` (any future expiry, any CVC) if you used a test key.
-4. You should land back on the site, see "Confirming your payment…", then "Pro unlocked".
-
-If it hangs on confirming, check `supabase functions logs stripe-webhook` and
-the endpoint's delivery attempts in the Stripe dashboard. A `400 Invalid
-signature` means `STRIPE_WEBHOOK_SECRET` is wrong or belongs to the other mode.
-
-Confirm the grant landed:
+**Rotate the webhook signing secret** — Stripe dashboard → the endpoint → roll
+secret, then update the row:
 
 ```sql
-select user_id, plan, status, expires_at from public.ccat_entitlements;
+update public.ccat_config
+   set value = 'whsec_NEW'
+ where key = 'stripe_webhook_secret';
 ```
 
-When you're happy, repeat steps 3–4 with the live key and a live-mode webhook
-endpoint.
+**Refund someone** — refund the charge in the Stripe dashboard; the
+`charge.refunded` event flips their entitlement to `refunded` automatically.
+(Note: metadata-based refund revocation applies to charges carrying a
+`supabase_user_id`; for payment-link purchases, revoke manually if needed:
+`update ccat_entitlements set status='revoked' where user_id='…'`.)
 
----
+**Watch it** — `supabase functions logs stripe-webhook`, the endpoint's
+delivery log in the Stripe dashboard, and:
 
-## How the money path works
-
-```
-browser                stripe-checkout          Stripe            stripe-webhook
-   │                         │                     │                     │
-   ├─ "I want 'lifetime'" ──▶│                     │                     │
-   │   (+ Supabase JWT)      │                     │                     │
-   │                    verify JWT                 │                     │
-   │                    plan → $ amount            │                     │
-   │                    (constant in code,         │                     │
-   │                     not from the client)      │                     │
-   │                         ├─ create session ───▶│                     │
-   │◀── checkout URL ────────┤                     │                     │
-   ├──────────── card details go only to Stripe ──▶│                     │
-   │                         │                     ├─ signed event ─────▶│
-   │                         │                     │            verify signature
-   │                         │                     │            write entitlement
-   │◀─ redirect back, poll until the row appears ──┤            (service role)
+```sql
+select user_id, plan, status, amount_total, created_at
+  from public.ccat_entitlements order by created_at desc;
 ```
 
-Properties worth keeping if you change this:
+## The honest limitation
 
-- **The amount never comes from the client.** The browser sends `"sprint"` or
-  `"lifetime"`; the function maps that to a hard-coded amount. Changing a price
-  means editing `PLANS` in `stripe-checkout/index.ts` and redeploying — update
-  the display copy in `js/config.js` at the same time, or the page will
-  advertise a price it doesn't charge.
-- **Only the webhook grants access.** `ccat_entitlements` has an RLS policy for
-  `select` and none for `insert`/`update` — the anon and authenticated keys
-  cannot write to it. The webhook uses the service-role key, which never
-  reaches a browser.
-- **Retries are idempotent.** Each Stripe event id is recorded before
-  processing, so redeliveries are no-ops rather than duplicate grants.
-
-### The honest limitation
-
-The *paywall UI* is client-side: someone in devtools can unlock the interface,
-and the question bank ships in the page anyway. What's not forgeable is the
-payment record. If you later want a wall that holds against a determined user,
-serve Pro questions from an authenticated Edge Function that checks
+The paywall *UI* is client-side: a determined visitor can unlock the interface
+in devtools, and the question bank ships in the page anyway. What's not
+forgeable is the payment record. If you later want a wall that holds against
+that, serve Pro questions from an authenticated Edge Function that checks
 `ccat_entitlements` — a content-delivery change; the billing side is already
 right.

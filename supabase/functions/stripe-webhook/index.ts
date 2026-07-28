@@ -5,17 +5,20 @@
 // Authenticity comes from the Stripe signature check instead; an unsigned or
 // mis-signed request is rejected before any database write happens.
 //
-// Required secrets:
-//   STRIPE_SECRET_KEY
-//   STRIPE_WEBHOOK_SECRET       whsec_… from the endpoint in the Stripe dashboard
-//   SUPABASE_SERVICE_ROLE_KEY   injected automatically by Supabase
+// Checkout happens on Stripe Payment Links, so this function never calls the
+// Stripe API — signature verification is pure crypto and needs only the
+// endpoint's signing secret. That secret is read from the service-role-only
+// public.ccat_config table (falling back to a STRIPE_WEBHOOK_SECRET env var if
+// one is set), which means going live requires no CLI secret-setting at all.
 // ===========================================================================
 
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import Stripe from "npm:stripe@17.7.0";
 import { createClient } from "npm:@supabase/supabase-js@2.49.4";
 
-const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") ?? "", {
+// Only used for Stripe.webhooks.constructEventAsync — no API calls are made,
+// so no secret API key is required.
+const stripe = new Stripe("sk_unused_signature_verification_only", {
   apiVersion: "2025-02-24.acacia",
   httpClient: Stripe.createFetchHttpClient(),
 });
@@ -29,6 +32,31 @@ const admin = createClient(
 
 const SPRINT_DAYS = 7;
 
+// Amounts double as plan identification if a session arrives without metadata
+// (belt and braces — payment-link metadata normally carries the plan).
+const PLAN_BY_AMOUNT: Record<number, "sprint" | "lifetime"> = {
+  900: "sprint",
+  2900: "lifetime",
+};
+
+let cachedSecret: string | null = null;
+async function webhookSecret(): Promise<string> {
+  const env = Deno.env.get("STRIPE_WEBHOOK_SECRET");
+  if (env) return env;
+  if (cachedSecret) return cachedSecret;
+  const { data, error } = await admin
+    .from("ccat_config")
+    .select("value")
+    .eq("key", "stripe_webhook_secret")
+    .maybeSingle();
+  if (error || !data) {
+    console.error("Could not load stripe_webhook_secret from ccat_config:", error);
+    return "";
+  }
+  cachedSecret = data.value;
+  return cachedSecret;
+}
+
 Deno.serve(async (req: Request) => {
   const signature = req.headers.get("Stripe-Signature");
   if (!signature) return new Response("Missing Stripe-Signature", { status: 400 });
@@ -38,11 +66,7 @@ Deno.serve(async (req: Request) => {
   let event: Stripe.Event;
   try {
     // Async variant: Deno's SubtleCrypto has no synchronous HMAC.
-    event = await stripe.webhooks.constructEventAsync(
-      raw,
-      signature,
-      Deno.env.get("STRIPE_WEBHOOK_SECRET") ?? "",
-    );
+    event = await stripe.webhooks.constructEventAsync(raw, signature, await webhookSecret());
   } catch (err) {
     console.error("Signature verification failed:", err);
     return new Response("Invalid signature", { status: 400 });
@@ -97,12 +121,20 @@ Deno.serve(async (req: Request) => {
 });
 
 async function grantAccess(session: Stripe.Checkout.Session) {
+  // Payment links carry the buyer's Supabase user id via the
+  // ?client_reference_id= URL parameter the site appends before redirecting.
   const userId = session.metadata?.supabase_user_id ?? session.client_reference_id;
-  const plan = session.metadata?.plan;
 
-  if (!userId || (plan !== "sprint" && plan !== "lifetime")) {
-    console.error("Paid session without a usable user id / plan:", session.id);
-    return; // 200 anyway — retrying will not fix missing metadata
+  let plan = session.metadata?.plan as "sprint" | "lifetime" | undefined;
+  if (plan !== "sprint" && plan !== "lifetime") {
+    plan = session.amount_total != null ? PLAN_BY_AMOUNT[session.amount_total] : undefined;
+  }
+
+  if (!userId || !plan) {
+    console.error("Paid session without a usable user id / plan:", session.id,
+      "client_reference_id:", session.client_reference_id,
+      "amount_total:", session.amount_total);
+    return; // 200 anyway — retrying will not fix missing attribution
   }
 
   // A sprint buyer who already has time left should have it extended, not
