@@ -1,0 +1,14 @@
+project_id = "utupgcayrwocavdmhyle"
+
+# Both functions authenticate themselves rather than relying on the platform's
+# JWT gate:
+#   stripe-checkout — calls getUser() on the caller's token in-handler, and needs
+#                     verify_jwt = false so the browser's CORS preflight (which
+#                     carries no Authorization header) reaches the handler.
+#   stripe-webhook  — called by Stripe, not a user; authenticity comes from the
+#                     Stripe signature check.
+[functions.stripe-checkout]
+verify_jwt = false
+
+[functions.stripe-webhook]
+verify_jwt = false
