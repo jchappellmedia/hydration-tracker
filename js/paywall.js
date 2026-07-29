@@ -57,8 +57,8 @@
       if (used < allowed) return { ok: true, free: true, remaining: allowed - used };
       return {
         ok: false,
-        title: "You've used your free simulation",
-        body: "Full 50-question simulations under real exam conditions are the fastest way to move your score — and repetition is what makes them work. Pro gives you unlimited attempts.",
+        title: "That was the free test",
+        body: "Here's the honest part: your first score is rarely your best, because the format does half the damage. The people who walk in calm are the ones who took this thing until it got boring. Pro makes retakes unlimited.",
       };
     },
 
@@ -120,7 +120,7 @@
               btn.disabled = false;
               btn.textContent = original;
               AuthUI.open("signup", {
-                message: "Create an account first — it's how your purchase stays attached to you.",
+                message: "Ten seconds first — an account is just so the purchase lands on you and not on a stranger's browser.",
                 then: () => window.Account.checkout(btn.dataset.plan).catch((e) => alert(e.message)),
               });
               return;
@@ -189,8 +189,8 @@
               <span class="logo lg">C</span>
               <h2>${isSignup ? "Create your account" : "Welcome back"}</h2>
               <p>${opts.message || (isSignup
-                ? "Free to start — one full simulation, topic practice and the whole study guide."
-                : "Sign in to pick up your progress and your Pro access.")}</p>
+                ? "Takes ten seconds. It's just somewhere for your scores — and Pro, if you buy it — to live."
+                : "Welcome back. Your progress and your Pro access are where you left them.")}</p>
             </div>
             <form id="auth-form" novalidate>
               <label>Email
