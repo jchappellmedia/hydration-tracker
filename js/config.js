@@ -42,7 +42,7 @@ window.CCAT_CONFIG = {
       cadence: "one-time · best value",
       badge: "Most popular",
       highlight: true,
-      tagline: "Because this probably isn't your last job hunt.",
+      tagline: "Pay once. Use it for every test after this one, too.",
       features: [
         "Everything in the Sprint, forever",
         "Nothing renews, nothing to cancel",
