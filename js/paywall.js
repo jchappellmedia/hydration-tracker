@@ -57,8 +57,8 @@
       if (used < allowed) return { ok: true, free: true, remaining: allowed - used };
       return {
         ok: false,
-        title: "That was the free test",
-        body: "Here's the honest part: your first score is rarely your best, because the format does half the damage. The people who walk in calm are the ones who took this thing until it got boring. Pro makes retakes unlimited.",
+        title: "You already used your free test",
+        body: "Most people don't get their best score on the first try — that's normal. The more you practice, the less scary it gets. Pro gives you unlimited practice tests.",
       };
     },
 
@@ -120,7 +120,7 @@
               btn.disabled = false;
               btn.textContent = original;
               AuthUI.open("signup", {
-                message: "Ten seconds first — an account is just so the purchase lands on you and not on a stranger's browser.",
+                message: "First, make a quick account. This way your purchase is saved to you, not lost.",
                 then: () => window.Account.checkout(btn.dataset.plan).catch((e) => alert(e.message)),
               });
               return;
@@ -189,8 +189,8 @@
               <span class="logo lg">C</span>
               <h2>${isSignup ? "Create your account" : "Welcome back"}</h2>
               <p>${opts.message || (isSignup
-                ? "Takes ten seconds. It's just somewhere for your scores — and Pro, if you buy it — to live."
-                : "Welcome back. Your progress and your Pro access are where you left them.")}</p>
+                ? "Just takes a second. This saves your scores and your Pro access."
+                : "Good to see you again. Your progress is right where you left it.")}</p>
             </div>
             <form id="auth-form" novalidate>
               <label>Email

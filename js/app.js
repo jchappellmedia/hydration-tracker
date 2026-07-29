@@ -301,8 +301,8 @@
         <div class="upsell">
           <div class="upsell-ic">§</div>
           <div>
-            <b>Your second attempt will be better. That's the whole trick.</b>
-            <p>The CCAT rewards familiarity more than genius — pacing, guessing fast, knowing the puzzle types on sight. Pro gives you unlimited full tests, all 240+ questions, and the breakdown of everything you missed. From $9, once.</p>
+            <b>Your next try will be better.</b>
+            <p>Nobody aces this on the first go. Practice again and again until the questions stop feeling new. Pro unlocks unlimited full tests, every question in the bank, and shows you exactly what you missed. Starts at $9, one time.</p>
           </div>
           <button class="btn primary" id="r-upgrade">See plans →</button>
         </div>` : '';
@@ -345,8 +345,8 @@
         </div>`;
       $('#r-review').addEventListener('click',()=>{
         if(reviewLocked){
-          Paywall.open({ title:'Want to see what you missed?',
-            body:`You got ${r.correct} of ${r.total}. The review shows every question, the right answer, and why yours wasn't it. Reading it after each attempt is how the number moves — skipping it is how people stay stuck at their first score.` });
+          Paywall.open({ title:'See what you got wrong',
+            body:`You got ${r.correct} of ${r.total} right. Pro shows you every question, the right answer, and why your answer was wrong. This is how your score actually goes up.` });
           return;
         }
         Review.render(r);
@@ -400,17 +400,17 @@
         </div>` : `
         <div class="tier-banner">
           <span class="tier-ic">§</span>
-          <div><b>${simsLeft?'Your first full practice test is free':'You’ve used your free test'}</b>
+          <div><b>${simsLeft?'Your first practice test is free':'You used your free test'}</b>
           <span>${simsLeft
-            ?'Take it cold and see your score — most people are surprised by which sections eat their time. No card needed.'
-            :'Your first score is rarely your best. Pro makes retakes unlimited, from $9, once.'}</span></div>
+            ?'No card, no signup tricks. Just take it and see your real score.'
+            :'Most people need more than one try. Pro gives you unlimited tests, starting at $9.'}</span></div>
           <button class="btn primary" id="h-upgrade">See plans →</button>
         </div>`;
 
       $('#view-home').innerHTML=`
         <div class="hero">
-          <h1>Nobody finishes<br />the <span class="grad">CCAT</span>.</h1>
-          <p>So that email in your inbox — <b>50 questions, 15 minutes</b>, due by Friday — isn't really testing what you know. It's testing how you handle 18 seconds a question, and whether you've seen this kind of test before. Both of those are learnable. Take a free full-length practice test right now and find out where you actually stand, while it still costs nothing to find out.</p>
+          <h1>Practice the <span class="grad">CCAT</span><br />so test day feels easy.</h1>
+          <p>The CCAT gives you 50 questions in 15 minutes. That's 18 seconds each. Most people run out of time before they run out of questions. The fix is simple: practice under the same pressure until it stops feeling new. Start with a full practice test — it's free, and it shows you exactly where you stand.</p>
           <div class="pills">
             <span class="pill"><b>50</b> questions</span>
             <span class="pill"><b>15</b> minutes</span>
@@ -428,42 +428,42 @@
           <div class="stat"><b>${s.totalQ}</b><span>Q practiced</span></div>
         </div>
 
-        <div class="section-title">Practice Modes<span class="sub">New here? Start with the full test — knowing your baseline changes what's worth practising.</span></div>
+        <div class="section-title">Practice Modes<span class="sub">New here? Start with the full test. It shows you what to work on.</span></div>
         <div class="grid cols-3">
           <div class="card mode-card" data-go="full">
             <div class="ic">I</div><h3>Full Simulation</h3>
-            <p>The real thing, minus the consequences. Same blueprint as the actual test — 18 verbal, 21 math &amp; logic, 11 spatial — on the same merciless clock.</p>
+            <p>Don't know what to expect? This is the real test, timed the same way. 50 questions, 15 minutes, no do-overs.</p>
             <div class="go">Start the test →</div>
           </div>
           <div class="card mode-card" data-go="category">
             <div class="ic">II</div><h3>Practice by Topic</h3>
-            <p>Weak on the shape puzzles? Almost everyone is. Drill one area at a time, with a plain-English explanation after every answer.</p>
+            <p>Bad at the shape puzzles, or the word questions? Pick one topic and practice just that, with the answer explained every time.</p>
             <div class="go">Choose a topic →</div>
           </div>
           <div class="card mode-card" data-go="drill">
             <div class="ic">III</div><h3>Untimed Drills</h3>
-            <p>Mental-math speed is the cheapest points you'll ever buy. Grind number series and percentages with no clock breathing on you.</p>
+            <p>Math too slow? Practice with no clock first. Speed comes later, once the steps feel easy.</p>
             <div class="go">Start drilling →</div>
           </div>
           <div class="card mode-card" data-go="quick">
             <div class="ic">IV</div><h3>Quick 10</h3>
-            <p>Ten mixed questions, three minutes. For the bus, the lunch break, or the night before.</p>
+            <p>Only have a few minutes? Do 10 questions in 3 minutes. Good for a lunch break.</p>
             <div class="go">Quick test →</div>
           </div>
           <div class="card mode-card" data-go="study">
             <div class="ic">V</div><h3>Study Guide</h3>
-            <p>What's on the test, how it's scored, and the habits that save seconds. Twenty minutes well spent if the CCAT is new to you.</p>
+            <p>Not sure what's even on this test? Read this first. 20 minutes, and you'll know what to expect.</p>
             <div class="go">Read the guide →</div>
           </div>
           <div class="card mode-card" data-go="progress">
             <div class="ic">VI</div><h3>My Progress</h3>
-            <p>Your scores over time, and which section is still costing you. Watching the line climb is the good part.</p>
+            <p>Want proof you're getting better? See your scores over time, and which section still needs work.</p>
             <div class="go">View progress →</div>
           </div>
         </div>
 
         ${pro ? '' : `
-        <div class="section-title">Go Pro<span class="sub">Pay once. Practise until the format is boring.</span></div>
+        <div class="section-title">Go Pro<span class="sub">Pay once. No monthly fee, nothing to cancel.</span></div>
         ${Paywall.pricingHTML()}`}`;
 
       $$('.mode-card').forEach(c=>c.addEventListener('click',()=>Router.go(c.dataset.go)));
@@ -477,7 +477,7 @@
     render(){
       const pro=Access.isPro();
       $('#view-pricing').innerHTML=`
-        <div class="section-title">Pricing<span class="sub">Two ways to buy. Both one-time. Nothing renews.</span></div>
+        <div class="section-title">Pricing<span class="sub">Pay once. No subscription, nothing to cancel.</span></div>
         ${pro ? `<div class="tier-banner pro">
             <span class="tier-ic">✦</span>
             <div><b>${Account.planLabel()} is already active on this account.</b>
@@ -500,22 +500,22 @@
           </table>
         </div>
 
-        <div class="section-title">Questions people actually ask</div>
+        <div class="section-title">Common questions</div>
         <div class="card guide">
-          <h3>My test is in two days. Is this even worth starting?</h3>
-          <p>That's most people here, honestly. Do this tonight: read the study guide (20 minutes), take one full simulation, then read the review of everything you missed. Sleep. Take another in the morning. Format familiarity is the fastest points you can buy this close to the date — that's exactly what the $9 Sprint is for.</p>
-          <h3>I'm good at my job. Why am I this nervous about a 15-minute quiz?</h3>
-          <p>Because it's a speed test wearing an intelligence-test costume, and nobody warned you. 18 seconds a question rattles everyone the first time. It stops being rattling somewhere around the third practice run — that's the entire premise of this site.</p>
+          <h3>My test is in two days. Can this actually help?</h3>
+          <p>Yes. Tonight: read the study guide (20 minutes), then take one full practice test, then look at what you got wrong. Sleep. Take another one tomorrow. Getting used to the format is the fastest way to raise your score, especially this close to test day.</p>
+          <h3>Why am I so nervous about a 15-minute test?</h3>
+          <p>Because 18 seconds a question is fast, and nobody warns you about that part. It feels scary the first time. By your third practice test, it won't.</p>
           <h3>Is this a subscription?</h3>
-          <p>No. You pay once. The Sprint just ends after 7 days; Lifetime doesn't end. There's nothing to cancel because nothing renews.</p>
-          <h3>How fast do I get access after paying?</h3>
-          <p>You don't do anything — Stripe tells us your payment cleared and your account upgrades itself, usually before you've finished landing back on the site.</p>
-          <h3>Do you store my card?</h3>
-          <p>We never even see it. The payment page belongs to Stripe. All that comes back to us is "they paid."</p>
-          <h3>Will this show me the actual questions from my test?</h3>
-          <p>No — and anyone who promises that is lying to you. What you get is original questions built to the same structure, mix and time pressure. The format is the thing you can train. That part transfers.</p>
-          <h3>What if it doesn't help?</h3>
-          <p>Email within 14 days and we'll refund you. No form, no interrogation.</p>
+          <p>No. You pay once. The Sprint plan lasts 7 days. Lifetime never ends. Either way, nothing renews and there's nothing to cancel.</p>
+          <h3>How fast do I get access after I pay?</h3>
+          <p>Right away. As soon as your payment goes through, your account unlocks. No waiting.</p>
+          <h3>Do you see my card number?</h3>
+          <p>No. Stripe handles your payment. We only find out if it worked.</p>
+          <h3>Will I see the exact questions from my real test?</h3>
+          <p>No, and don't trust anyone who says they can promise that. These questions match the same style, mix, and time pressure as the real CCAT. That's what actually helps.</p>
+          <h3>What if this doesn't help me?</h3>
+          <p>Email us within 14 days and we'll refund you. No questions asked.</p>
         </div>`;
 
       if(pro){ $('#pr-home').onclick=()=>Router.go('home'); }
@@ -589,8 +589,8 @@
             <button class="choice ${timed?'sel':''}" data-v="on">Timed (~18s/Q)</button>
           </div></div>
           ${Access.isPro() ? '' : `<div class="tier-note">
-            Free gets you <b>${counts.free}</b> of the ${counts.total} ${CATS[cat].name.toLowerCase()} questions, ${max} at a time.
-            <button class="linkish" id="c-upgrade">Open all of them →</button>
+            Free gives you <b>${counts.free}</b> of ${counts.total} ${CATS[cat].name.toLowerCase()} questions, ${max} at a time.
+            <button class="linkish" id="c-upgrade">Unlock all of them →</button>
           </div>`}
           <div class="btn-row">
             <button class="btn primary lg" id="c-start">Start practice →</button>
@@ -600,8 +600,8 @@
         $$('#c-cat .choice').forEach(b=>b.onclick=()=>{cat=b.dataset.v;draw();});
         $$('#c-count .choice').forEach(b=>b.onclick=()=>{
           if(b.dataset.lock==='1'){
-            Paywall.open({ title:'Longer sessions are a Pro thing',
-              body:`Free practice runs ${max} questions at a time, from a fixed slice of the bank. That's enough to learn the ropes. Pro is for doing reps — the whole bank, no session cap.` });
+            Paywall.open({ title:'That many questions is a Pro feature',
+              body:`Free practice is capped at ${max} questions at a time. That's enough to learn the basics. Pro removes the cap so you can practice as much as you want.` });
             return;
           }
           count=b.dataset.v==='All'?'All':+b.dataset.v; draw();
@@ -661,8 +661,8 @@
         $$('#d-topic .choice').forEach(b=>b.onclick=()=>{topic=b.dataset.v;draw();});
         $$('#d-len .choice').forEach(b=>b.onclick=()=>{
           if(b.dataset.lock==='1'){
-            Paywall.open({ title:'Endless mode is Pro',
-              body:`Free drills stop at ${cap} questions. The generator itself never runs out — Pro just takes the cap off, so you can grind until the patterns are automatic instead of effortful.` });
+            Paywall.open({ title:'Endless drills are a Pro feature',
+              body:`Free drills stop at ${cap} questions. Pro takes the limit off, so you can keep going until the questions feel easy.` });
             return;
           }
           length=b.dataset.v; draw();
