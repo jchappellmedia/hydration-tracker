@@ -1,7 +1,7 @@
-# Job Description Reference — Roofing & Home Improvement Sales (Phoenix area)
+# Job Description Reference — Roofing & Home Improvement Sales, Discount Pro Home (Tempe, AZ)
 
 ## Application Details
-- **Company:** Not named anywhere in the ad. Apply via Indeed with resume, or text "MONDAY" with your name to 480-788-6086.
+- **Company:** Discount Pro Home — Tempe, AZ. Apply via Indeed with resume, or text "MONDAY" with your name to 480-788-6086. Indeed notes they respond to 75%+ of applications, typically within 1 day.
 - **Role:** Door-to-door canvassing and cold calling — roofing, windows, doors, HVAC, exteriors
 - **Pay:** 100% commission. Ad claims $100K–$300K/year, "$3,000–$9,000 per week," "$150K is our low end."
 - **Location:** On the road (Phoenix metro implied by the 480 number)
