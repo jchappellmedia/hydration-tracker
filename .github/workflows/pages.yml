@@ -9,6 +9,13 @@ on:
       - "index.html"
       - "css/**"
       - "js/**"
+      # SEO landing pages + crawl files. Without these globs a new page would
+      # merge to main and silently never deploy.
+      - "ccat-scores/**"
+      - "what-is-the-ccat/**"
+      - "free-ccat-practice-test/**"
+      - "sitemap.xml"
+      - "robots.txt"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
