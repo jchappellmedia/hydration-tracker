@@ -1,71 +1,84 @@
 # Daily Job Hunt — Scheduled Task Setup
 
-The skill is installed and works right now for anything pasted into chat. This file is only about the **daily automated run**.
+## What happened on the first run
 
-## Why you have to create the schedule yourself
+The Routine fired and behaved correctly: its environment had the Indeed and Google Drive connectors, but **no GitHub access**. Because the deduplication tracker lived only in the repo, it could not confirm what had already been applied to — so it stopped instead of risking duplicate applications. That was the safety rule working as designed.
 
-Creating a Routine from inside a session needs a one-tap approval that isn't rendering on your device (the same gate that blocked repo access earlier). Creating it from the claude.ai UI skips that gate — and it's the better path anyway, because the UI lets you **attach connectors**. Routines created from inside a session carry none, which would leave the daily run without Indeed or Google Drive.
+The real problem was architectural: the run had a single point of failure. That is now fixed on my side, and there are two things for you to do.
 
-## Setup
+---
 
-1. Go to **claude.ai → Routines** (or Settings → Routines).
-2. **New Routine.**
-3. Name: `Daily Job Hunt`
-4. Schedule: **Weekdays at 7:00 AM** (Arizona / Phoenix time).
-5. Environment: the same one this session uses — it has the repo with the skill.
-6. **Connectors: attach Indeed and Google Drive.** This is the step that matters. Without them the run falls back to WebSearch and the offline CV copy, which works but is weaker.
-7. Paste the prompt below.
-8. Turn on notifications so you get the morning report on your phone.
+## Fix 1 — Install the skill to your account (required)
 
-## The prompt
+The skill lives in the repo. **No repo access means no skill**, so this is the step that matters most.
+
+Ask me for the `.skill` file (or use the one sent earlier), then click **Save skill** on the file card. That installs it into your profile, and every session — including scheduled runs — can use it whether or not the repo is attached.
+
+## Fix 2 — Attach the repo to the Routine (recommended, not required)
+
+In **claude.ai → Routines → Daily Job Hunt → environment/sources**, add the `jchappellmedia/hydration-tracker` repo.
+
+With the repo attached, the run commits everything and you get full version history. Without it, the run still works — it now falls back to Google Drive — but the application folders live only in the chat report and the attachments.
+
+---
+
+## What I changed so this cannot halt the run again
+
+The tracker now has a second home that scheduled runs can always reach:
+
+- **`Job Hunt Tracker (master)`** in your Google Drive — seeded with all seven jobs from this session.
+- Each run also writes a **`Job Hunt Log <date>`** file. Reading the master plus every log file rebuilds the complete dedup record.
+
+Drive files cannot be edited in place by the tools, hence the one-file-per-run approach. The run only stops now if *both* the repo and Drive are unreachable — at which point it genuinely cannot know what has already been sent.
+
+---
+
+## The Routine prompt
+
+Replace the existing prompt with this version:
 
 ```
 Run the daily job hunt for Joshua Chappell.
 
-Invoke the `job-hunt` skill (in .claude/skills/job-hunt/ of this repo) and follow its
-scheduled-run workflow end to end:
+Use the `job-hunt` skill and follow its scheduled-run workflow end to end.
 
-1. Re-read the living CV Google Doc, then the search criteria. If the Google Drive
-   connector is unavailable, fall back to references/candidate-profile.md and say so
-   in the report.
-2. Read applications/_tracker.csv first — never apply to anything already listed there.
-3. Discover jobs via the Indeed MCP across the title x location matrix. If the Indeed
-   connector is unavailable, use the WebSearch fallback in references/search-criteria.md
-   and note which path you used.
-4. Screen for pay at or above $75,000/year, and remote or within a 30-minute commute
-   of Mesa AZ 85206.
-5. Rank by fit and take the top 3-5. Fewer is fine if fewer qualify — do not pad the
-   day with weak applications.
-6. Build all five documents per job. Render resume and cover letter to PDF with
-   .claude/skills/job-hunt/scripts/render_pdf.sh and verify each resume is exactly
-   one page.
-7. Apply where every gate in the application playbook passes. Queue everything else
-   with the specific blocker named.
-8. Log every job examined to the tracker, including skips and the reason.
-9. Write the run summary to applications/_daily-log/<today>.md, report it in chat, and
-   attach PDFs with SendUserFile for anything applied or queued.
-10. Commit and push to branch claude/job-hunting-instructions-2y6kgj — the container
-    is ephemeral.
+Notes for this environment:
+- If GitHub access is unavailable, DO NOT halt. Read the dedup record from Google
+  Drive instead: the file "Job Hunt Tracker (master)" plus every file titled
+  "Job Hunt Log <date>". The union of those is the authoritative list of jobs
+  already seen.
+- If the Google Doc CV is unreachable, fall back to references/candidate-profile.md
+  in the skill and say so in the report.
+- If the Indeed connector is unavailable, use the WebSearch fallback in
+  references/search-criteria.md and note which discovery path you used.
 
-Lead the report with anything queued that needs my decision. If nothing clears the bar
-today, say so plainly rather than lowering the bar.
+Then:
+1. Screen for pay at or above $75,000/year, and remote or within a 30-minute
+   commute of Mesa AZ 85206.
+2. Rank by fit and take the top 3-5. Fewer is fine if fewer qualify — do not pad
+   the day with weak applications.
+3. Build all five documents per job. Render resume and cover letter to PDF and
+   verify each resume is exactly one page.
+4. Apply where every gate in the application playbook passes. Queue everything
+   else with the specific blocker named.
+5. Log every job examined — to the repo tracker if reachable, and always to a new
+   Google Drive file titled "Job Hunt Log <today's date>".
+6. Report in chat and attach PDFs with SendUserFile for anything applied or queued.
+7. If the repo is reachable, commit and push to claude/job-hunting-instructions-2y6kgj.
+
+Lead the report with anything queued that needs my decision. If nothing clears the
+bar today, say so plainly rather than lowering the bar.
 ```
 
-## What you'll get each morning
-
-- Counts: how many jobs found, how many screened out and why.
-- Anything **applied to**, with links and confirmation screenshots.
-- Anything **queued** and the exact blocker — this is your action list.
-- PDFs attached.
-- Honest flags on any role worth knowing about before an interview.
+---
 
 ## Three things that expand what it can submit on its own
 
-Until these exist, applications get built and queued rather than submitted. That's the safe default, not a failure.
+Until these exist, applications get built and queued rather than submitted — the safe default, not a failure.
 
 1. **A logged-in Indeed session** exported to `~/.config/job-hunt/session.json`. Without it, aggregator applications queue; direct company portals (Workday, Greenhouse, Lever, Breezy) still work.
 2. **Your criminal-history answer** — add it to the answer bank in `references/application-playbook.md`.
-3. **A target salary number** for when a required field won't accept a skip.
+3. **A target salary number** for when a required field will not accept a skip.
 
 ## Permanently manual, by design
 

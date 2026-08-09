@@ -17,7 +17,7 @@ Two entry points, same machinery:
 Everything is written under a single job-hunt workspace. Pick it once at the start of a run:
 
 - If the working directory is a git repo that already has an `applications/` folder, use that. Commit and push at the end of every run — those containers are ephemeral and unpushed work is lost.
-- Otherwise create and use `~/Job Hunt/` (or the working directory the user has set up for this). No git required; just keep the same folder across runs so the tracker accumulates.
+- Otherwise create and use `~/Job Hunt/` (or whatever working directory is set up for this). No git required.
 
 Inside the workspace:
 
@@ -27,6 +27,21 @@ applications/
   _daily-log/<date>.md      what each run did
   <company>-<role>/         one folder per job, five documents + PDFs
 ```
+
+### Reading the tracker when the repo is unreachable
+
+Scheduled runs fire in fresh containers that sometimes have connectors but **no GitHub access**. The repo tracker is then unreadable, and applying blind risks duplicates.
+
+Do not halt the run over this. There is a second, connector-backed copy in Google Drive:
+
+- **`Job Hunt Tracker (master)`** — fileId `10s5vIdmZ2i2z6K1MevtUg9aKZf-idc7GNKHYLK_DQxY`
+- Plus every Drive file titled **`Job Hunt Log <date>`** — one per run.
+
+Rebuild the dedup set by reading the master file and searching Drive for `title contains 'Job Hunt Log'`, then reading each. The union of those is authoritative enough to apply against.
+
+Drive files cannot be edited in place by these tools, so **append by creating a new file** titled `Job Hunt Log <YYYY-MM-DD>` at the end of each run, listing every job examined in the same pipe-delimited format. Write it whether or not the repo was reachable — that is what keeps the Drive record complete.
+
+Only stop and report without applying when **both** the repo and Drive are unreadable. In that case you genuinely cannot tell what has already been sent, and a duplicate application is worse than a missed day.
 
 ## Before anything else
 
@@ -52,15 +67,15 @@ Skip the salary/geography screen here. If Joshua pasted it, he wants it. Still t
 ## Scheduled: the daily run
 
 1. **Load** the profile and criteria.
-2. **Read the tracker** at `applications/_tracker.csv` first. Everything already there is off the table — never apply twice. This matters more than anything else in the run; a duplicate application is worse than a missed one.
+2. **Read the tracker** first — the repo copy if reachable, otherwise the Drive copies (see **Workspace**). Everything already listed is off the table; never apply twice. This is the one check to get right before anything else.
 3. **Discover.** Run the Indeed MCP `search_jobs` across the query × location matrix in `references/search-criteria.md`. Cast wide; screening comes next.
 4. **Screen** each hit against the salary floor, geography, and exclusions. Most candidates die here — that is correct and expected.
 5. **Rank** survivors by fit against the profile. Take the top 3–5. Volume is not the goal; a tailored application beats five generic ones, and Joshua's name is attached to every submission.
 6. **Build** the five documents per job.
 7. **Apply** per the playbook — auto-submit what qualifies, queue the rest.
-8. **Log** every job to the tracker, including ones skipped and why.
+8. **Log** every job examined to the tracker, including skips and the reason — to the repo copy when reachable, and always to a new Drive `Job Hunt Log <date>` file.
 9. **Report** — see **Reporting** below.
-10. **Save the work.** In a git repo, commit and push. Otherwise confirm the workspace files are written where the next run will find them.
+10. **Save the work.** In a git repo, commit and push. Without repo access, the Drive log plus the chat report with attached PDFs *is* the record — say so plainly so nothing looks lost.
 
 ## Deliverables per job
 
@@ -121,7 +136,7 @@ Write the same summary to `applications/_daily-log/<YYYY-MM-DD>.md` in the works
 
 ## Tracker
 
-`applications/_tracker.csv` in the workspace, one row per job ever seen:
+`applications/_tracker.csv` in the workspace, one row per job ever seen (mirrored to Drive — see **Workspace**):
 
 ```
 date,company,role,location,pay,source,url,status,folder,notes
