@@ -12,6 +12,22 @@ Two entry points, same machinery:
 - **Ad-hoc** — a job description or link appears in chat. Build materials for that one job, apply, log it.
 - **Scheduled** — the daily run. Discover jobs, screen them, build materials, apply, report.
 
+## Workspace
+
+Everything is written under a single job-hunt workspace. Pick it once at the start of a run:
+
+- If the working directory is a git repo that already has an `applications/` folder, use that. Commit and push at the end of every run — those containers are ephemeral and unpushed work is lost.
+- Otherwise create and use `~/Job Hunt/` (or the working directory the user has set up for this). No git required; just keep the same folder across runs so the tracker accumulates.
+
+Inside the workspace:
+
+```
+applications/
+  _tracker.csv              every job ever seen — the deduplication record
+  _daily-log/<date>.md      what each run did
+  <company>-<role>/         one folder per job, five documents + PDFs
+```
+
 ## Before anything else
 
 Read these two files. They are the ground truth and they change over time:
@@ -26,7 +42,7 @@ The profile file mirrors a **living Google Doc**. Re-read the live doc at the st
 ## Ad-hoc: a job lands in chat
 
 1. Get the full posting text. If given a link, try the Indeed MCP (`search_jobs` by title+location, then `get_job_details`) — direct page fetches of Indeed/LinkedIn/ZipRecruiter return 403. If you cannot retrieve it, ask for the pasted text rather than guessing at requirements.
-2. Create `applications/<company>-<role-slug>/`.
+2. Create `applications/<company>-<role-slug>/` in the workspace.
 3. Produce all five documents in this order (see **Deliverables** below).
 4. Apply — see `references/application-playbook.md`.
 5. Append to the tracker.
@@ -44,7 +60,7 @@ Skip the salary/geography screen here. If Joshua pasted it, he wants it. Still t
 7. **Apply** per the playbook — auto-submit what qualifies, queue the rest.
 8. **Log** every job to the tracker, including ones skipped and why.
 9. **Report** — see **Reporting** below.
-10. **Commit and push.** The container is ephemeral; unpushed work is lost.
+10. **Save the work.** In a git repo, commit and push. Otherwise confirm the workspace files are written where the next run will find them.
 
 ## Deliverables per job
 
@@ -75,11 +91,14 @@ Mechanics:
 - Header: name, Mesa AZ, phone, email, LinkedIn, and 1–2 portfolio links **only when they help** (creative roles yes; finance, insurance, and sales roles no).
 - Build from `assets/resume-template.html` — it is tuned for one page, 0.5" margins, and clean Word paste.
 
-Then render and verify:
+Then render and verify — run the bundled script from the skill directory:
 
 ```bash
-scripts/render_pdf.sh applications/<dir>/resume.html "Joshua_Chappell_Resume_<Company>.pdf"
+<skill-dir>/scripts/render_pdf.sh <app-dir>/resume.html "Joshua_Chappell_Resume_<Company>.pdf" --preview
 ```
+
+`--preview` also writes a PNG. Read it — the page count tells you it fits, but only
+looking at it tells you whether the bottom third is dead space.
 
 The script prints the page count. **Two pages means fix it and re-render** — tighten `line-height`, `.job` margin, and `li` margin rather than shrinking the font. Lots of white space at the bottom is the opposite failure; open the spacing up until the content reaches the bottom margin.
 
@@ -98,11 +117,11 @@ End every run with a summary in chat covering:
 
 Attach the PDFs with `SendUserFile` for anything queued or applied.
 
-Write the same summary to `applications/_daily-log/<YYYY-MM-DD>.md`.
+Write the same summary to `applications/_daily-log/<YYYY-MM-DD>.md` in the workspace.
 
 ## Tracker
 
-`applications/_tracker.csv`, one row per job ever seen:
+`applications/_tracker.csv` in the workspace, one row per job ever seen:
 
 ```
 date,company,role,location,pay,source,url,status,folder,notes

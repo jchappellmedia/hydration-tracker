@@ -63,6 +63,17 @@ Run the Indeed MCP `search_jobs` across these. Titles and locations multiply out
 **Title queries — adjacent/leadership:**
 - Communications Manager · Creative Project Manager · Production Manager
 
+### If the Indeed connector is unavailable
+
+Scheduled runs sometimes fire without connector tools attached, and the Indeed MCP is flaky on its own. Do not abandon the run — fall back to `WebSearch` and work the same matrix:
+
+- `"<title>" jobs Mesa OR Gilbert OR Chandler OR Tempe AZ $75,000`
+- `"<title>" remote jobs hiring salary`
+- `site:boards.greenhouse.io <title> Arizona` — also `lever.co`, `myworkdayjobs.com`, `breezy.hr`
+- East Valley employers hiring directly: Banner Health, Dignity Health, Valleywise Health, Mesa Public Schools, Gilbert Public Schools, Chandler Unified, Maricopa County, City of Mesa, City of Chandler, ASU, Mesa Community College, Charter One / Leona Group, American Leadership Academy
+
+Direct-employer career pages are the better source anyway; they carry the jobs aggregators miss and the applications are more automatable. Note in the report which discovery path was used, so a connector outage does not look like a quiet week in the market.
+
 Sector note: education, healthcare, government, and higher-ed employers in the East Valley are unusually good matches — Charter One, GCE, ALA, and the AZ Legislature all sit in that world, and those employers pay salaried with benefits. Weight them up.
 
 ## Daily volume
