@@ -1,0 +1,95 @@
+<style>
+  @page { size: letter; margin: 0.5in; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Calibri", "Segoe UI", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #1a1a1a;
+    max-width: 7.5in;
+    margin: 0 auto;
+  }
+  header { text-align: center; margin-bottom: 13px; }
+  h1 { font-size: 15px; letter-spacing: 1px; margin-bottom: 5px; }
+  .contact { font-size: 12.5px; color: #333; line-height: 1.7; }
+  .contact a { color: #1a4d8f; text-decoration: none; }
+  .summary { margin: 9px 0 12px; text-align: justify; }
+  h2 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border-bottom: 1.5px solid #1a4d8f;
+    color: #1a4d8f;
+    padding-bottom: 3px;
+    margin: 14px 0 8px;
+  }
+  .job { margin-bottom: 12px; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .job-company { font-weight: bold; }
+  .job-meta { font-size: 12px; color: #555; white-space: nowrap; }
+  ul { list-style: none; margin: 5px 0 0; }
+  li { position: relative; padding-left: 14px; margin-bottom: 4px; }
+  li::before { content: "\25AA"; position: absolute; left: 0; color: #1a4d8f; font-size: 9px; top: 2px; }
+  .skills p { line-height: 1.65; }
+  .edu-line { margin-bottom: 5px; }
+  .edu-line span { color: #555; }
+  a { color: #1a4d8f; }
+</style>
+
+<!--
+  RESUME TEMPLATE — one page, 0.5" margins, pastes cleanly into Word.
+
+  The CSS above is the tuned baseline. To fit the page, adjust in this order:
+    body line-height  ->  .job margin-bottom  ->  li margin-bottom  ->  h2 margins
+  Change font-size last. Verify with scripts/render_pdf.sh (it prints page count).
+
+  Reorder the job blocks per the angle library in references/candidate-profile.md.
+  Drop the portfolio links from the header for finance, insurance, and sales roles.
+-->
+
+<header>
+  <h1>JOSHUA CHAPPELL</h1>
+  <div class="contact">
+    Mesa, AZ &nbsp;&bull;&nbsp; 480-586-7959 &nbsp;&bull;&nbsp;
+    <a href="mailto:jchappellmedia@gmail.com">jchappellmedia@gmail.com</a><br>
+    <a href="https://www.linkedin.com/in/joshua-chappell/">LinkedIn</a>
+    <!-- creative roles only: &bull; Demo Reel &bull; Portfolio -->
+  </div>
+</header>
+
+<p class="summary">
+  [Three sentences. Active voice, calm confidence, aimed at this posting.
+  Open with the identity the employer is hiring for, then two real numbers
+  from the profile, then the capability that closes the gap to this job.]
+</p>
+
+<section>
+  <h2>Experience</h2>
+
+  <div class="job">
+    <div class="job-head">
+      <span><span class="job-company">[Company]</span> &mdash; [Title]</span>
+      <span class="job-meta">[City, ST] &nbsp;|&nbsp; [Start] &ndash; [End]</span>
+    </div>
+    <ul>
+      <li>[Bullet from the profile, 1&ndash;2 lines. Max 4 per job.]</li>
+    </ul>
+  </div>
+
+  <!-- Repeat .job blocks. Most relevant employer first. -->
+</section>
+
+<section class="skills">
+  <h2>Skills</h2>
+  <p>
+    [Profile skills, ordered by relevance to this posting, separated by &bull;]
+  </p>
+</section>
+
+<section>
+  <h2>Education &amp; Certifications</h2>
+  <div class="edu-line"><strong>Western Governors University</strong> &mdash; Master's in Marketing, Marketing Analytics Specialization <span>| Dec 2024</span></div>
+  <div class="edu-line"><strong>Brigham Young University</strong> &mdash; Bachelor's in Media Arts <span>| 2016</span></div>
+  <!-- business/finance/sales roles: add GCU MBA coursework line -->
+  <div class="edu-line"><span>[Certifications relevant to this posting]</span></div>
+</section>
