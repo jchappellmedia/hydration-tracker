@@ -64,7 +64,15 @@ On failure: keep the materials, set `status=queued`, write the specific blocker 
 
 Joshua's logins are **not** stored in this repo, ever. Two supported paths:
 
-- **Session file** — he logs in once and exports browser storage state to `~/.config/job-hunt/session.json` (outside the repo, gitignored by location). Playwright reuses it. Sessions expire; when they do, applications start failing and the report should say "session expired, please refresh."
+- **Session file** — `~/.config/job-hunt/session.json` (outside the repo, so it is never committed). Playwright reuses it. Sessions expire; when they do, applications start failing and the report should say "session expired, please refresh" rather than reporting a quiet week.
+
+  To create it, Joshua installs a cookie-exporter extension (Cookie-Editor works), logs into Indeed, exports cookies as JSON, and runs:
+
+  ```bash
+  python3 <skill-dir>/scripts/make_session.py ~/Downloads/cookies.json
+  ```
+
+  The script converts the export into Playwright's format, writes it with 0600 permissions, and then loads Indeed to confirm the session is actually signed in — better to find out at the desk than during a 7am run. `--verify-only` re-tests an existing session, which is the quick way to check whether a wave of failures is really an expiry.
 - **Environment variables** — `JOBHUNT_INDEED_EMAIL` etc., set in the environment configuration, never committed.
 
 With neither available, every aggregator application queues. Direct company portals that allow guest applications still work, which is another reason to prefer them.
