@@ -63,6 +63,12 @@ Run the Indeed MCP `search_jobs` across these. Titles and locations multiply out
 **Title queries — adjacent/leadership:**
 - Communications Manager · Creative Project Manager · Production Manager
 
+### ZipRecruiter links cannot be fetched
+
+`ziprecruiter.com` is blocked outright by this environment's network egress proxy — every URL on that domain fails, so retrying is wasted effort. Their share links also hide the employer, which makes a blind search impossible.
+
+When Joshua sends one, ask for either the pasted posting text **or** just the job title and company name. With a title and company, the Indeed MCP can usually locate the same posting and return the full description — that path works and is faster for him than copying the whole ad.
+
 ### If the Indeed connector is unavailable
 
 Scheduled runs sometimes fire without connector tools attached, and the Indeed MCP is flaky on its own. Do not abandon the run — fall back to `WebSearch` and work the same matrix:
