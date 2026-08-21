@@ -15,6 +15,7 @@ on:
       - "what-is-the-ccat/**"
       - "free-ccat-practice-test/**"
       - "sitemap.xml"
+      - "reel/**"
       - "robots.txt"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
