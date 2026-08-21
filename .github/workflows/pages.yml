@@ -1,15 +1,9 @@
-name: Deploy site to GitHub Pages
+name: Deploy portfolio to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - "skillstack/**"
-      - "index.html"
-      - "css/**"
-      - "js/**"
-      - ".github/workflows/pages.yml"
+    branches: ["claude/job-hunting-instructions-2y6kgj"]
+    paths: ["docs/**", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:
@@ -29,17 +23,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v4
         with:
           enablement: true
-
-      - name: Upload site
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
-
-      - name: Deploy
-        id: deployment
+          path: docs
+      - id: deployment
         uses: actions/deploy-pages@v4
