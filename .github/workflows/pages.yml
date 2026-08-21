@@ -1,9 +1,22 @@
-name: Deploy portfolio to GitHub Pages
+name: Deploy site to GitHub Pages
 
 on:
   push:
-    branches: ["claude/job-hunting-instructions-2y6kgj"]
-    paths: ["docs/**", ".github/workflows/pages.yml"]
+    branches:
+      - main
+    paths:
+      - "skillstack/**"
+      - "index.html"
+      - "css/**"
+      - "js/**"
+      # SEO landing pages + crawl files. Without these globs a new page would
+      # merge to main and silently never deploy.
+      - "ccat-scores/**"
+      - "what-is-the-ccat/**"
+      - "free-ccat-practice-test/**"
+      - "sitemap.xml"
+      - "robots.txt"
+      - ".github/workflows/pages.yml"
   workflow_dispatch:
 
 permissions:
@@ -23,11 +36,17 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v4
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
         with:
           enablement: true
-      - uses: actions/upload-pages-artifact@v3
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: docs
-      - id: deployment
+          path: .
+
+      - name: Deploy
+        id: deployment
         uses: actions/deploy-pages@v4
