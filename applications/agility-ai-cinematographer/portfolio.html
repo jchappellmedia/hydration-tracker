@@ -1,0 +1,473 @@
+<title>Chappell Reel — CTV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  /* ---------------------------------------------------------------
+     Screening-room palette. Committed dark: a reel is watched in a
+     dark surround, so every value is painted explicitly rather than
+     inherited from the viewer's theme.
+     Amber + desaturated teal are the two poles of a standard film
+     grade — the subject's own color science, not decoration.
+  ----------------------------------------------------------------*/
+  :root {
+    --ground:   #0E1113;
+    --surface:  #161A1D;
+    --surface-2:#1D2226;
+    --edge:     #2A3136;
+    --ink:      #E9E6E0;
+    --ink-dim:  #9AA3A9;
+    --ink-faint:#6B747A;
+    --amber:    #D08243;
+    --amber-lo: #8A5528;
+    --teal:     #4E858A;
+    --measure:  68ch;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  a { color: var(--amber); }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 3px;
+  }
+
+  .mono {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- masthead ---------- */
+
+  header.top {
+    border-bottom: 1px solid var(--edge);
+    padding: 72px 0 40px;
+  }
+
+  .eyebrow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    align-items: baseline;
+    margin-bottom: 26px;
+  }
+  .eyebrow .for {
+    color: var(--amber);
+    border: 1px solid var(--amber-lo);
+    padding: 3px 9px;
+  }
+
+  h1 {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(44px, 7.5vw, 82px);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    margin-bottom: 22px;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--amber);
+  }
+
+  .standfirst {
+    max-width: var(--measure);
+    color: var(--ink-dim);
+    font-size: 19px;
+    line-height: 1.62;
+  }
+  .standfirst strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ---------- reel pieces ---------- */
+
+  main { padding: 0 0 40px; }
+
+  .piece {
+    border-bottom: 1px solid var(--edge);
+    padding: 56px 0;
+  }
+
+  /* slate: the technical strip that heads every piece, the way a
+     clapperboard heads every take */
+  .slate {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px 20px;
+    padding-bottom: 16px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid var(--edge);
+  }
+  .slate .reel-no {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.09em;
+    color: var(--amber);
+    font-weight: 500;
+  }
+  .slate .rule {
+    flex: 1;
+    height: 1px;
+    background: var(--edge);
+    min-width: 20px;
+  }
+
+  .piece h2 {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin-bottom: 12px;
+  }
+
+  .piece .note {
+    max-width: var(--measure);
+    color: var(--ink-dim);
+    margin-bottom: 26px;
+  }
+
+  /* AI disclosure band — sits above its player, stated plainly */
+  .disclosure {
+    border-left: 2px solid var(--teal);
+    background: var(--surface);
+    padding: 18px 22px;
+    margin-bottom: 26px;
+    max-width: var(--measure);
+  }
+  .disclosure .tag {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--teal);
+    display: block;
+    margin-bottom: 8px;
+  }
+  .disclosure p {
+    color: var(--ink-dim);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .disclosure p + p { margin-top: 10px; }
+  .disclosure strong { color: var(--ink); font-weight: 500; }
+
+  /* player */
+  .frame {
+    position: relative;
+    background: #000;
+    border: 1px solid var(--edge);
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+  .frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+  /* Sits behind the iframe. If the player is blocked from loading,
+     this is what the viewer sees — so it has to stand on its own. */
+  .frame .fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    text-align: center;
+    padding: 24px;
+    background: var(--surface-2);
+  }
+  .frame .fallback span { color: var(--ink-faint); font-size: 14px; }
+
+  .watch {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    padding: 11px 20px;
+    border: 1px solid var(--amber-lo);
+    color: var(--amber);
+    text-decoration: none;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    transition: background-color 140ms ease, border-color 140ms ease;
+  }
+  .watch:hover { background: rgba(208,130,67,0.10); border-color: var(--amber); }
+  .watch .arrow { transition: transform 140ms ease; }
+  .watch:hover .arrow { transform: translateX(3px); }
+
+  /* ---------- capability + contact ---------- */
+
+  .caps { padding: 56px 0; border-bottom: 1px solid var(--edge); }
+
+  .caps h3, .contact h3 {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-weight: 400;
+    font-size: 30px;
+    margin-bottom: 26px;
+  }
+
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 30px;
+  }
+  .cap h4 {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .cap p { color: var(--ink-dim); font-size: 16px; line-height: 1.58; }
+
+  .contact { padding: 56px 0 88px; }
+  .contact .lines {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    color: var(--ink-dim);
+    text-transform: none;
+  }
+  .contact .lines a { text-decoration: none; }
+  .contact .lines a:hover { text-decoration: underline; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    header.top { padding: 48px 0 32px; }
+    .piece { padding: 40px 0; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="eyebrow mono">
+      <span class="for">Curated for Agility</span>
+      <span>Connected TV &nbsp;/&nbsp; AI Cinematography</span>
+      <span>Selected work &nbsp;&mdash;&nbsp; four pieces</span>
+    </div>
+
+    <h1>Joshua Chappell<br><em>shoots and generates.</em></h1>
+
+    <p class="standfirst">
+      Seven years behind RED, Canon, and Sony cinema bodies, and a working AI pipeline
+      that cut production time in half at my current shop. <strong>This reel is built for a
+      CTV room</strong> &mdash; four pieces, in order, showing lens-captured craft and
+      generated work side by side rather than as separate careers.
+    </p>
+  </header>
+
+  <main>
+
+    <!-- 01 -->
+    <article class="piece">
+      <div class="slate">
+        <span class="reel-no">Reel 01</span>
+        <span class="mono">Live action</span>
+        <span class="rule"></span>
+        <span class="mono">Vimeo 882198847</span>
+      </div>
+      <h2>Brand film</h2>
+      <p class="note">
+        Lens-captured narrative work &mdash; composition, lighting, and grade carried
+        end to end.
+      </p>
+      <div class="frame">
+        <div class="fallback">
+          <span class="mono">Player unavailable here</span>
+          <span>Open the piece on Vimeo below.</span>
+        </div>
+        <iframe src="https://player.vimeo.com/video/882198847?h=b06b5e4591&amp;title=0&amp;byline=0&amp;portrait=0"
+                title="Reel 01 — brand film" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <a class="watch" href="https://vimeo.com/882198847/b06b5e4591" target="_blank" rel="noopener">
+        Watch on Vimeo <span class="arrow">&rarr;</span>
+      </a>
+    </article>
+
+    <!-- 02 -->
+    <article class="piece">
+      <div class="slate">
+        <span class="reel-no">Reel 02</span>
+        <span class="mono">Live action</span>
+        <span class="rule"></span>
+        <span class="mono">Vimeo 1099054535</span>
+      </div>
+      <h2>Turning construction into cinema</h2>
+      <p class="note">
+        Built brand presence for construction companies by shooting the trades the way
+        you would shoot a feature &mdash; showing who they are and what they do.
+      </p>
+      <div class="frame">
+        <div class="fallback">
+          <span class="mono">Player unavailable here</span>
+          <span>Open the piece on Vimeo below.</span>
+        </div>
+        <iframe src="https://player.vimeo.com/video/1099054535?title=0&amp;byline=0&amp;portrait=0"
+                title="Reel 02 — turning construction into cinema" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <a class="watch" href="https://vimeo.com/1099054535" target="_blank" rel="noopener">
+        Watch on Vimeo <span class="arrow">&rarr;</span>
+      </a>
+    </article>
+
+    <!-- 03 -->
+    <article class="piece">
+      <div class="slate">
+        <span class="reel-no">Reel 03</span>
+        <span class="mono">Live action</span>
+        <span class="rule"></span>
+        <span class="mono">Vimeo 960746274</span>
+      </div>
+      <h2>Commercial spot</h2>
+      <p class="note">
+        Short-form commercial work cut for paid placement.
+      </p>
+      <div class="frame">
+        <div class="fallback">
+          <span class="mono">Player unavailable here</span>
+          <span>Open the piece on Vimeo below.</span>
+        </div>
+        <iframe src="https://player.vimeo.com/video/960746274?title=0&amp;byline=0&amp;portrait=0"
+                title="Reel 03 — commercial spot" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <a class="watch" href="https://vimeo.com/960746274" target="_blank" rel="noopener">
+        Watch on Vimeo <span class="arrow">&rarr;</span>
+      </a>
+    </article>
+
+    <!-- 04 -->
+    <article class="piece">
+      <div class="slate">
+        <span class="reel-no">Reel 04</span>
+        <span class="mono" style="color:#4E858A">AI generated</span>
+        <span class="rule"></span>
+        <span class="mono">Vimeo 1115622174</span>
+      </div>
+      <h2>Generated spot</h2>
+
+      <div class="disclosure">
+        <span class="tag">Note before watching</span>
+        <p>
+          <strong>This piece was generated with AI</strong>, built with the tools that were
+          available roughly <strong>a year ago</strong> &mdash; Runway, Kling, Midjourney,
+          Google Veo, and ElevenLabs for voice, assembled and graded in Premiere and
+          DaVinci Resolve.
+        </p>
+        <p>
+          That generation stack has moved a long way since. I am showing it as evidence of
+          how I direct a generated piece &mdash; shot design, continuity, pacing, and grade
+          &mdash; rather than as a demo of what the current models can do.
+        </p>
+      </div>
+
+      <div class="frame">
+        <div class="fallback">
+          <span class="mono">Player unavailable here</span>
+          <span>Open the piece on Vimeo below.</span>
+        </div>
+        <iframe src="https://player.vimeo.com/video/1115622174?h=6460f5b586&amp;title=0&amp;byline=0&amp;portrait=0"
+                title="Reel 04 — generated spot" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <a class="watch" href="https://vimeo.com/1115622174/6460f5b586" target="_blank" rel="noopener">
+        Watch on Vimeo <span class="arrow">&rarr;</span>
+      </a>
+    </article>
+
+    <section class="caps">
+      <h3>What I bring to a CTV room</h3>
+      <div class="cap-grid">
+        <div class="cap">
+          <h4>Camera</h4>
+          <p>
+            RED and Canon cinema bodies daily at the Arizona State Legislature.
+            Sony FX3 and FX6 across 200+ delivered pieces at Grand Canyon Education.
+            DJI Mavic 3 and gimbal work on over 150 shoots.
+          </p>
+        </div>
+        <div class="cap">
+          <h4>Light &amp; grade</h4>
+          <p>
+            Aputure systems &mdash; 1200d, 600d, 300d, sky panels, Fresnels.
+            Grading in DaVinci Resolve across S-Log3, Canon Log-3, and RED RGB Wide
+            Gamut; rebuilt one grading pipeline to run 3&times; faster.
+          </p>
+        </div>
+        <div class="cap">
+          <h4>Generation</h4>
+          <p>
+            A working AI pipeline rather than one-off prompts &mdash; Runway, Kling,
+            Midjourney, Veo, ElevenLabs, plus Claude agentic coding for the production
+            layer. Cut content production time in half at Charter One and 30% at my
+            own shop.
+          </p>
+        </div>
+        <div class="cap">
+          <h4>Broadcast delivery</h4>
+          <p>
+            An alumni campaign that ran during NCAA basketball broadcasts. 200+ pieces
+            delivered to TV, paid social, and organic, reaching millions. Comfortable
+            hitting spec on a deadline.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h3>Joshua Chappell</h3>
+      <div class="lines">
+        <span>Mesa, Arizona &nbsp;&mdash;&nbsp; available for Utah-based and remote CTV work</span>
+        <a href="mailto:jchappellmedia@gmail.com">jchappellmedia@gmail.com</a>
+        <a href="tel:+14805867959">480-586-7959</a>
+        <a href="https://www.linkedin.com/in/joshua-chappell/" target="_blank" rel="noopener">linkedin.com/in/joshua-chappell</a>
+        <a href="https://vimeo.com/1103241704" target="_blank" rel="noopener">Full demo reel &rarr;</a>
+      </div>
+    </section>
+
+  </main>
+</div>
