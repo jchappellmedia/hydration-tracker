@@ -120,7 +120,20 @@
     border: 0;
     display: block;
   }
-
+  /* Behind the iframe. If the player is blocked, this is what shows. */
+  .frame .fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+    padding: 24px;
+    background: var(--surface);
+  }
+  .frame .fallback span { color: var(--ink-faint); font-size: 14px; }
 
   footer {
     padding: 44px 0 84px;
@@ -158,9 +171,19 @@
         <span class="reel-no">01</span>
         <span class="rule"></span>
       </div>
+
+      <div class="disclosure">
+        <span class="tag">Note</span>
+        <p><strong>Made with AI.</strong></p>
+      </div>
+
       <div class="frame">
-        <iframe src="https://player.vimeo.com/video/882198847?h=b06b5e4591&amp;title=0&amp;byline=0&amp;portrait=0"
-                title="Reel 01" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        <div class="fallback">
+          <span class="mono">Player unavailable here</span>
+          <span><a href="https://vimeo.com/1220703634/1500ae4e40" target="_blank" rel="noopener" style="color:var(--amber)">Open this video</a></span>
+        </div>
+        <iframe src="https://player.vimeo.com/video/1220703634?h=1500ae4e40&amp;title=0&amp;byline=0&amp;portrait=0"
+                title="Reel 01 — AI generated" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
     </article>
 
@@ -169,8 +192,13 @@
         <span class="reel-no">02</span>
         <span class="rule"></span>
       </div>
+
       <div class="frame">
-        <iframe src="https://player.vimeo.com/video/1099054535?title=0&amp;byline=0&amp;portrait=0"
+        <div class="fallback">
+          <span class="mono">Player unavailable here</span>
+          <span><a href="https://vimeo.com/882198847/b06b5e4591" target="_blank" rel="noopener" style="color:var(--amber)">Open this video</a></span>
+        </div>
+        <iframe src="https://player.vimeo.com/video/882198847?h=b06b5e4591&amp;title=0&amp;byline=0&amp;portrait=0"
                 title="Reel 02" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
     </article>
@@ -180,8 +208,13 @@
         <span class="reel-no">03</span>
         <span class="rule"></span>
       </div>
+
       <div class="frame">
-        <iframe src="https://player.vimeo.com/video/960746274?title=0&amp;byline=0&amp;portrait=0"
+        <div class="fallback">
+          <span class="mono">Player unavailable here</span>
+          <span><a href="https://vimeo.com/1099054535" target="_blank" rel="noopener" style="color:var(--amber)">Open this video</a></span>
+        </div>
+        <iframe src="https://player.vimeo.com/video/1099054535?title=0&amp;byline=0&amp;portrait=0"
                 title="Reel 03" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
     </article>
@@ -192,18 +225,34 @@
         <span class="rule"></span>
       </div>
 
+      <div class="frame">
+        <div class="fallback">
+          <span class="mono">Player unavailable here</span>
+          <span><a href="https://vimeo.com/960746274" target="_blank" rel="noopener" style="color:var(--amber)">Open this video</a></span>
+        </div>
+        <iframe src="https://player.vimeo.com/video/960746274?title=0&amp;byline=0&amp;portrait=0"
+                title="Reel 04" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </article>
+
+    <article class="piece">
+      <div class="slate">
+        <span class="reel-no">05</span>
+        <span class="rule"></span>
+      </div>
+
       <div class="disclosure">
         <span class="tag">Note</span>
-        <p>
-          <strong>This one was generated with AI</strong> &mdash; ChatGPT for image
-          generation, Nano Banana, and Veo 3. Those were the tools available about a year
-          ago, and the models have moved a long way since.
-        </p>
+        <p><strong>This one was generated with AI</strong> &mdash; ChatGPT for image generation, Nano Banana, and Veo 3. Those were the tools available about a year ago, and the models have moved a long way since.</p>
       </div>
 
       <div class="frame">
+        <div class="fallback">
+          <span class="mono">Player unavailable here</span>
+          <span><a href="https://vimeo.com/1115622174/6460f5b586" target="_blank" rel="noopener" style="color:var(--amber)">Open this video</a></span>
+        </div>
         <iframe src="https://player.vimeo.com/video/1115622174?h=6460f5b586&amp;title=0&amp;byline=0&amp;portrait=0"
-                title="Reel 04 — AI generated" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                title="Reel 05 — AI generated" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
     </article>
 
