@@ -1,30 +1,30 @@
-# Email to send — copy and paste
+# Email — in Gmail drafts
 
+**Draft ID:** `r3944955281646004077` (created 2026-09-09, tightened same day)
 **To:** careers@cardoneventures.com
 **Subject:** Social Content Creator — Indeed — Joshua Chappell
-**Attach:** `Joshua_Chappell_Resume_CardoneVentures.pdf` (and the cover letter PDF if you prefer it attached rather than in the body)
+**Attached:** `Joshua_Chappell_Resume.pdf`, `Joshua_Chappell_CoverLetter.pdf`
+
+The body is short on purpose. The cover letter is attached, so the email only has to get the attachments opened.
 
 ---
 
 Hello Cardone Ventures Employee,
 
-By way of introduction, my name is Joshua Chappell. My intent is to apply for the Social Content Creator position at Cardone Ventures. I feel I have a lot of immediate value I can bring to your organization.
+I am applying for the Social Content Creator position. My resume and cover letter are attached.
 
-Your posting asks for someone confident behind the camera and in the edit. That is the work I have done for seven years. At Grand Canyon Education I delivered 200+ videos over two years that reached millions on TV, paid social, and organic channels. At Charter One I created and led a video initiative that raised click-through rates for running ads by over 200%, and a social content initiative that earned more than 20x the engagement of standard content. I shoot with the final edit in mind, then cut the footage myself. I have partnered with CEOs and executives on projects, so filming leadership is familiar ground. I keep assets organized in Frame.io and Dropbox, which cut search and retrieval time by over 50% and let other editors find what they need. I also build AI content workflows that cut production times in half, and that speed matters when same-day event content is due.
+I shoot and I edit. Seven years, including 200+ videos delivered at Grand Canyon Education. At Charter One my social content initiative earned more than 20x the engagement of standard content, and my video initiative raised ad click-through by over 200%. I work across Sony, Canon, and RED, finish in Premiere and Resolve, and build AI workflows that cut production time in half.
 
 A few samples of shooting and finished editing:
 
-- Intro video — https://vimeo.com/1109495649
-- Branded campaign — https://vimeo.com/1099054535
-- Trades and industrial work — https://lightbox-digital.com/construction-trades-industrial
-- Grand Canyon Education portfolio — https://lightbox-digital.com/gce
-- Executive and political capture — https://www.youtube.com/watch?v=vNRisdOF4OE
+Intro video - https://vimeo.com/1109495649
+Branded campaign - https://vimeo.com/1099054535
+Trades and industrial - https://lightbox-digital.com/construction-trades-industrial
+Grand Canyon Education - https://lightbox-digital.com/gce
+Executive and political capture - https://www.youtube.com/watch?v=vNRisdOF4OE
 
-I appreciate that you value being inspirational, accountable, transparent, disciplined, aligned, and results oriented; these are all values that I strive to emulate.
+I would welcome a conversation.
 
-Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you.
-
-Sincerely,
 Joshua Chappell
 480-586-7959
 jchappellmedia@gmail.com
@@ -33,3 +33,5 @@ https://www.linkedin.com/in/joshua-chappell/
 ---
 
 **Note:** the subject line format is what they asked for — job title plus where you found the posting.
+
+The attached PDFs are compact-font builds, small enough to send through the Gmail tool. Wording and links match the full-quality versions exactly. To send the nicer-looking ones instead, delete the attachments in Gmail and drag in `Joshua_Chappell_Resume_CardoneVentures.pdf` and `Joshua_Chappell_CoverLetter_CardoneVentures.pdf` from this folder.
