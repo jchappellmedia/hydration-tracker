@@ -123,6 +123,13 @@ Queen Creek, AZ · Aug 2018 – Aug 2020 · Full time
 
 ---
 
+## Community Involvement
+
+- Organizes and runs community events with his local church congregation.
+  *(Told to Claude directly on 2026-09-09; not yet in the living Google Doc. Joshua should add it
+  there so it survives as master. Details — event types, scale, dates — not yet captured; ask before
+  writing anything more specific than the line above.)*
+
 ## Education
 
 - **Western Governors University** — Master's in Marketing, Marketing Analytics Specialization · Aug 2024 – Dec 2024
