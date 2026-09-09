@@ -14,7 +14,7 @@ Your posting asks for someone confident behind the camera and in the edit. That 
 
 A few samples of shooting and finished editing:
 
-- Demo reel — https://vimeo.com/1103241704
+- Intro video — https://vimeo.com/1109495649
 - Branded campaign — https://vimeo.com/1099054535
 - Trades and industrial work — https://lightbox-digital.com/construction-trades-industrial
 - Grand Canyon Education portfolio — https://lightbox-digital.com/gce

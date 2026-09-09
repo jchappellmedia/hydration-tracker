@@ -44,9 +44,9 @@ Worth adding if you have an example I do not know about: same-day event turnarou
 
 ## Portfolio — this matters more than usual
 
-The posting says a portfolio is **required**, with examples of both shooting and finished editing across long-form, interviews, podcasts, events, and branded campaigns. Do not send only the demo reel. Send a short list with a line of context on each:
+The posting says a portfolio is **required**, with examples of both shooting and finished editing across long-form, interviews, podcasts, events, and branded campaigns. Do not send only one link. Send a short list with a line of context on each:
 
-- **Demo reel** — https://vimeo.com/1103241704
+- **Intro video** — https://vimeo.com/1109495649
 - **Branded campaign / construction into cinema** — https://vimeo.com/1099054535
 - **Story-driven brand work (Veterans piece)** — the Frame.io presentation
 - **Trades and industrial** — https://lightbox-digital.com/construction-trades-industrial

@@ -14,19 +14,19 @@ Search LinkedIn for **"Cardone Ventures"**, filter by People, then by title.
 
 **To the Social Media lead**
 
-> Hi [Name] — I applied for the Social Content Creator role today. I shoot and edit, and my last social initiative earned over 20x the engagement of standard content while a video initiative raised ad click-through by over 200%. Reel here if useful: vimeo.com/1103241704. Happy to talk about what you are building.
+> Hi [Name] — I applied for the Social Content Creator role today. I shoot and edit, and my last social initiative earned over 20x the engagement of standard content while a video initiative raised ad click-through by over 200%. Short intro video here if useful: vimeo.com/1109495649. Happy to talk about what you are building.
 
 **To Production / Creative**
 
-> Hi [Name] — I just applied for the Social Content Creator position. Seven years shooting and cutting my own work: 200+ videos at Grand Canyon Education, executive and political capture on RED and Canon, and full post in Premiere and Resolve. Reel: vimeo.com/1103241704. Would welcome a conversation.
+> Hi [Name] — I just applied for the Social Content Creator position. Seven years shooting and cutting my own work: 200+ videos at Grand Canyon Education, executive and political capture on RED and Canon, and full post in Premiere and Resolve. Intro video: vimeo.com/1109495649. Would welcome a conversation.
 
 **To the recruiter**
 
-> Hi [Name] — I submitted my application for the Social Content Creator role (found on Indeed) to careers@cardoneventures.com today. Seven years of professional videography and editing, with a portfolio covering interviews, events, branded campaigns, and social. Reel: vimeo.com/1103241704. Let me know if you need anything else from me.
+> Hi [Name] — I submitted my application for the Social Content Creator role (found on Indeed) to careers@cardoneventures.com today. Seven years of professional videography and editing, with a portfolio covering interviews, events, branded campaigns, and social. Intro video: vimeo.com/1109495649. Let me know if you need anything else from me.
 
 ## Notes
 
-- Keep the reel link in every message. For this role the work is the argument.
+- Keep the intro video link in every message. For this role the work is the argument.
 - One proof point per message. Do not stack them.
 - If you connect with the social lead, mention the AI workflow story — it is the thing they will not have heard from other applicants.
 - Do not send the same message to three people at the same company on the same day if they are on the same team. Pick the two most relevant.
