@@ -17,17 +17,21 @@ The short version: I shoot it and I cut it. Seven years in, with 200+ videos out
 
 Take a look for yourself:
 
-Intro video - https://vimeo.com/1109495649
-Branded campaign - https://vimeo.com/1099054535
-Grand Canyon Education - https://lightbox-digital.com/gce
-Executive and political capture - https://www.youtube.com/watch?v=vNRisdOF4OE
+[Intro video](https://vimeo.com/1109495649)
+[Branded campaign](https://vimeo.com/1099054535)
+[Grand Canyon Education](https://lightbox-digital.com/gce)
+[Executive and political capture](https://www.youtube.com/watch?v=vNRisdOF4OE)
 
 I would enjoy a conversation about what you are building.
 
 Joshua Chappell
 480-586-7959
-jchappellmedia@gmail.com
-https://www.linkedin.com/in/joshua-chappell/
+[jchappellmedia@gmail.com](mailto:jchappellmedia@gmail.com)
+[LinkedIn](https://www.linkedin.com/in/joshua-chappell/)
+
+The Gmail draft sends as HTML: each sample is a clickable hyperlink on its label,
+not a bare URL. A plain-text alternative with full URLs is included for mail
+clients that block HTML.
 
 ---
 
