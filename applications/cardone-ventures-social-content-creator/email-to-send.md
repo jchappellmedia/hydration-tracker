@@ -9,20 +9,20 @@ The body is short on purpose. The cover letter is attached, so the email only ha
 
 ---
 
-Hello Cardone Ventures Employee,
+Hello Cardone Ventures Team,
 
-I am applying for the Social Content Creator position. Resume and cover letter are attached.
+I want to be your next Social Content Creator. My resume and cover letter are attached.
 
-I shoot and I edit. Seven years, 200+ videos delivered at Grand Canyon Education. At Charter One my social content earned more than 20x the engagement of standard content and raised ad click-through by over 200%.
+The short version: I shoot it and I cut it. Seven years in, with 200+ videos out the door at Grand Canyon Education. At Charter One my social content pulled more than 20x the engagement of anything else we ran, and my video work lifted ad click-through by over 200%.
 
-Samples:
+Take a look for yourself:
 
 Intro video - https://vimeo.com/1109495649
 Branded campaign - https://vimeo.com/1099054535
 Grand Canyon Education - https://lightbox-digital.com/gce
 Executive and political capture - https://www.youtube.com/watch?v=vNRisdOF4OE
 
-I would welcome a conversation.
+I would enjoy a conversation about what you are building.
 
 Joshua Chappell
 480-586-7959
