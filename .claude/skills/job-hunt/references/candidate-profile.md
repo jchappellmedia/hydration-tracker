@@ -192,3 +192,6 @@ Corrections Joshua has made that persist across applications:
   beat. He has asked for this twice (Rico Roofing cover letter, Flock application question).
 - Write in his voice: short declarative sentences, strong verbs (crafted, delivered, built, slashed,
   commanded), numbers early. Avoid literary phrasing — it reads as someone else writing for him.
+- **No em dashes (long dashes) anywhere on a resume.** Use a comma between company and title
+  ("Lightbox Digital, Owner / Producer") and between school and degree. In prose use a comma or a
+  colon instead. En dashes in date and number ranges (Sep 2019 - Present, 5-20) are fine.
