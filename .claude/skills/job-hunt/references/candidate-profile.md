@@ -185,3 +185,8 @@ Corrections Joshua has made that persist across applications:
 - **Do not lead with the $10k close.** Keep it off finance/advisory materials entirely; elsewhere it is a supporting detail at most.
 - Keep the 7x video inventory claim off cover letters.
 - Portfolio and YouTube links come off the header for non-creative roles.
+- **Frame cover letters and application answers as value delivered to the employer**, not as what
+  Joshua wants from the job. Lead with what they get; keep his own motivation to a short closing
+  beat. He has asked for this twice (Rico Roofing cover letter, Flock application question).
+- Write in his voice: short declarative sentences, strong verbs (crafted, delivered, built, slashed,
+  commanded), numbers early. Avoid literary phrasing — it reads as someone else writing for him.
