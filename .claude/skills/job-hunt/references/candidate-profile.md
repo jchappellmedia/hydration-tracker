@@ -88,6 +88,8 @@ Phoenix, AZ · Feb 2025 – June 2025 · Part time, on-site
 - Captured high-end political videos for the AZ Legislature during a critical time in the year
 - Deployed RED and Canon cinema cameras daily
 - Documented prominent figures such as Robert F. Kennedy Jr. and the AZ Speaker of the House
+  *(Precision, confirmed by Joshua 2026-09-15: the **Speaker of the House** work was edited in Adobe
+  Premiere Pro; the **RFK Jr.** work was not. Never attach a Premiere editing claim to RFK Jr.)*
 - Synchronized with Communications teams across legislative bodies and chambers to execute projects effectively
 - Piloted DJI Mavic 3 drone and DJI gimbal systems frequently
 
