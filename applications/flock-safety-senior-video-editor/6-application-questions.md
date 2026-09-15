@@ -1,46 +1,48 @@
 # Application Question Answers — Flock Safety
 
-Framed as value delivered to them, not what Joshua wants. Short declarative
-sentences, strong verbs, numbers up front. Read it out loud before pasting.
+Value delivered to them, leading every paragraph. Short declarative sentences,
+strong verbs, numbers early. Read it out loud before pasting.
 
 ## "Why do you want to work at Flock? What excites you most about the company and this role?"
 
-### Primary answer (~145 words)
+### Primary answer (~115 words)
 
-You are hiring your first dedicated editor, so what you get first is range. I cut both modes in your posting: documentary that lets real people carry the story, and social-first work that earns attention in the first second. My social initiative earned over 20x the engagement of our standard content.
+Your first dedicated editor has to cover everything alone. That is what I do.
 
-You also get the whole post stack in one person — pacing, color, audio, motion, asset organization. I built a library that slashed retrieval time over 50% and rebuilt a grading pipeline to run 3x faster under deadline. A first editor sets the standard and builds the workflow behind it. I have done both from scratch.
+I work both modes in your posting — documentary that lets real people carry the story, and social cuts that earn attention in the first second. My social initiative earned over 20x the engagement of our standard content.
 
-What excites me is the subject. An investigation that closed. A family that got someone back. My best work comes from real people with something on the line.
+I own the full post stack too: pacing, color, audio, motion, and asset organization. And I build the systems behind it — a library that slashed retrieval time over 50%, a grading pipeline rebuilt to run 3x faster under deadline.
+
+What draws me to Flock is the subject. An investigation that closed. A family that got someone back. My best work comes from real people with something on the line.
 
 ---
 
-### Short version (~75 words)
+### Short version (~85 words)
 
-You are hiring your first dedicated editor, so what you get first is range. I cut both modes in your posting: documentary that lets real people carry the story, and social work that earns attention in the first second. My social initiative earned over 20x the engagement of our standard content.
+Your first dedicated editor has to cover everything alone. That is what I do.
 
-You also get the full post stack in one person. I built a library that slashed retrieval time over 50% and rebuilt a grading pipeline to run 3x faster.
+I work both modes in your posting — documentary that lets real people carry the story, and social cuts that earn attention fast. My social initiative earned over 20x the engagement of our standard content. I own the full post stack and build the systems behind it: a library that slashed retrieval time over 50%, a grading pipeline rebuilt to run 3x faster.
 
-What excites me is the subject — real people with something on the line.
+What draws me to Flock is the subject. Real people with something on the line.
 
 ---
 
 ### One-liner
 
-You get an editor who delivers both modes you described, owns the whole post stack, and has built the standard and the workflow from scratch before.
+Your first editor has to cover everything alone — both modes, the full post stack, and the systems behind it — and that is exactly what I do.
 
 ---
 
 ## Variant for the Creative Director posting
 
-Same structure, different value. That role sets the standard across design, film, and motion instead of owning the cut:
+Same shape, different premise. That role sets the standard rather than owning the cut:
 
-> What you get is a creative lead who ships and builds the machine behind the shipping. I have directed brand films from concept to delivery with crews up to 20, and I built the systems that make a team faster — an asset library that slashed retrieval time over 50%, a storyboard process that cut revision rounds in half, a grading pipeline rebuilt to run 3x faster. Standards hold up when the process behind them holds up.
+> A creative signature only holds if the person setting it still gets into the work. I direct brand films from concept to delivery with crews up to 20, and I build the systems that make a team faster — a library that slashed retrieval time over 50%, a storyboard process that halved revision rounds, a grading pipeline rebuilt to run 3x faster. Standards hold up when the process behind them holds up.
 
 ---
 
 ## Notes
 
-- **Do not say "I am passionate about public safety."** Everyone writes that. It reads as filler. The numbers and the specifics are what make it land.
-- **Quoting their posting back works.** Referencing their "not footage assembled cleanly to music" line proves you read it closely. Most applicants skim.
+- **Do not say "I am passionate about public safety."** Everyone writes that. It reads as filler. The numbers and specifics are what land.
+- **Quoting their posting back works.** If you have room, reference their "not footage assembled cleanly to music" line — it proves you read closely. Most applicants skim.
 - **Be ready for the follow-up.** Flock builds license plate readers and investigative tools for police departments. A recruiter may ask how you feel about that work. Have an honest answer in your own words. If you have reservations, that is worth knowing before you take a job telling this company's stories for a living.
