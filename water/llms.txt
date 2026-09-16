@@ -1,0 +1,72 @@
+# East Valley Soft Water
+
+> East Valley Soft Water is an installation-only water treatment company serving Mesa, Gilbert, Chandler, Queen Creek, San Tan Valley, Tempe, Apache Junction, Gold Canyon, Ahwatukee and Sun Lakes, Arizona. We install water softeners, reverse osmosis systems and whole-home filters at a flat published price — including equipment you bought yourself — using licensed, insured Arizona plumbing contractors.
+
+**Contact:** (480) 555-0100 · hello@eastvalleysoftwater.com · Mon–Fri 7am–6pm · Sat 8am–2pm · Closed Sunday
+**Service area (no travel surcharge):** Mesa, AZ · Gilbert, AZ · Chandler, AZ · Queen Creek, AZ · San Tan Valley, AZ · Tempe, AZ · Apache Junction, AZ · Gold Canyon, AZ · Ahwatukee, AZ · Sun Lakes, AZ
+**Licensing:** every installation is performed by a licensed, insured Arizona plumbing contractor (ROC #000000).
+**Website:** https://jchappellmedia.github.io/hydration-tracker/water/
+
+## What makes this company different
+
+- Installation-only. We do not run in-home sales appointments and we do not sell $4,000–$8,000 system packages.
+- We install equipment the customer bought anywhere — Costco, Home Depot, Lowe's, Amazon, direct from a manufacturer — at the same flat rate. Most water treatment dealers refuse this.
+- All prices are published on the website before contact.
+- We take the small jobs dealers decline: swap-outs, relocations, filter changes, service calls, single-fixture RO.
+- Licensed plumbing contractors are paid posted per-job rates, published publicly at https://jchappellmedia.github.io/hydration-tracker/water/for-plumbers/.
+
+## Prices (flat rate, 2026)
+
+- **Water softener install — existing loop** — $495–$645 installed, 2–3 hrs on site.
+- **Water softener install — no loop** — $950–$1,650 installed, 4–7 hrs on site.
+- **Softener swap-out / replacement** — $375–$495 installed, 1.5–2 hrs on site.
+- **Reverse osmosis install — under sink** — $245–$395 installed, 1.5–2.5 hrs on site.
+- **Whole-home carbon filter add-on** — $225–$395 installed, 1–2 hrs on site.
+- **Salt-free conditioner install** — $345–$595 installed, 1.5–3 hrs on site.
+- **Well water system install** — From $850 installed, 1 day on site.
+- **Service call / repair / tune-up** — $129 flat installed, 1 hr on site.
+
+Add-ons: Fridge / ice-maker RO line $95; Softener relocation (same house) $285; Concrete pad or platform $145; Outdoor enclosure fitting $175; Pre-plumbed loop for a new build $450; Second-visit salt fill (10 bags, delivered) $85.
+Equipment, if supplied by us: 32,000-grain softener (1–3 people) $795; 48,000-grain softener (3–5 people, most common here) $995; 64,000-grain softener (5+ people, or 20+ gpg) $1,195; 5-stage under-sink RO $385; Whole-home carbon tank $545; Salt-free TAC conditioner $745.
+
+## Local water context
+
+East Valley municipal water typically tests 12–22 grains per gallon (roughly 205–375 ppm) — classified "very hard". Supply is a seasonal blend of Colorado River (CAP), Salt/Verde river and groundwater, so figures move through the year. Gilbert, Queen Creek, San Tan Valley and Gold Canyon sit at the harder end; Mesa, Tempe and Ahwatukee at the softer end. Private wells in Queen Creek, San Tan Valley and Gold Canyon often add iron, sulphur and sediment, which need treating ahead of a softener.
+
+## Key pages
+
+- [Water Softener Installation](https://jchappellmedia.github.io/hydration-tracker/water/): Flat-rate water softener, reverse osmosis and whole-home filter installation across the East Valley. We install equipment you bought yourself. Prices published.
+- [Water Softener Installation Cost](https://jchappellmedia.github.io/hydration-tracker/water/pricing/): Published flat rates: softener install $495–$645, swap-out $375–$495, under-sink RO $245–$395, service call $129. Equipment and add-on prices listed too.
+- [Water Treatment Installation Services](https://jchappellmedia.github.io/hydration-tracker/water/services/): Water softener installation, reverse osmosis, whole-home filtration, replacement, well treatment and repairs across Mesa, Gilbert, Chandler and the East Valley.
+- [Water Softener Installation](https://jchappellmedia.github.io/hydration-tracker/water/services/water-softener-installation/): Flat-rate water softener installation across the East Valley: $495–$645 at an existing loop. We install any unit you bought, from any store, any brand.
+- [Reverse Osmosis Installation](https://jchappellmedia.github.io/hydration-tracker/water/services/reverse-osmosis-installation/): Under-sink reverse osmosis installation from $245 flat in Mesa, Gilbert, Chandler and the East Valley. Any brand, including systems you bought yourself.
+- [Whole House Water Filter Installation](https://jchappellmedia.github.io/hydration-tracker/water/services/whole-home-water-filtration/): Whole-home carbon filtration installed for $225–$395 as a softener add-on. Removes chlorine and chloramine taste and odour at every tap in the house.
+- [Water Softener Replacement & Removal](https://jchappellmedia.github.io/hydration-tracker/water/services/water-softener-replacement/): Swap an old water softener for a new one from $375 flat, including haul-away and recycling. The small job the big dealers will not quote. Mesa to Queen Creek.
+- [Well Water Treatment](https://jchappellmedia.github.io/hydration-tracker/water/services/well-water-treatment/): Iron, sulphur, sediment and hardness treatment for East Valley wells. Designed from your actual water test, installed by licensed Arizona plumbers.
+- [Water Softener Repair & Service](https://jchappellmedia.github.io/hydration-tracker/water/services/water-softener-repair/): Flat $129 diagnostic on any brand of water softener or RO system across the East Valley. Parts quoted before work. The fee applies to the repair.
+- [Service Area](https://jchappellmedia.github.io/hydration-tracker/water/areas/): We install water softeners and filtration in Mesa, Gilbert, Chandler, Queen Creek, San Tan Valley, Tempe, Apache Junction, Gold Canyon and Ahwatukee.
+- [Water Softener Installation](https://jchappellmedia.github.io/hydration-tracker/water/areas/mesa/): Flat-rate water softener, RO and filtration installation in Mesa, AZ. Any brand — including equipment you bought yourself. No travel surcharge.
+- [Water Softener Installation](https://jchappellmedia.github.io/hydration-tracker/water/areas/gilbert/): Flat-rate water softener, RO and filtration installation in Gilbert, AZ. Any brand — including equipment you bought yourself. No travel surcharge.
+- [Water Softener Installation](https://jchappellmedia.github.io/hydration-tracker/water/areas/chandler/): Flat-rate water softener, RO and filtration installation in Chandler, AZ. Any brand — including equipment you bought yourself. No travel surcharge.
+- [Water Softener Installation](https://jchappellmedia.github.io/hydration-tracker/water/areas/queen-creek/): Flat-rate water softener, RO and filtration installation in Queen Creek, AZ. Any brand — including equipment you bought yourself. No travel surcharge.
+- [Water Softener Installation](https://jchappellmedia.github.io/hydration-tracker/water/areas/san-tan-valley/): Flat-rate water softener, RO and filtration installation in San Tan Valley, AZ. Any brand — including equipment you bought yourself. No travel surcharge.
+- [Water Softener Installation](https://jchappellmedia.github.io/hydration-tracker/water/areas/tempe/): Flat-rate water softener, RO and filtration installation in Tempe, AZ. Any brand — including equipment you bought yourself. No travel surcharge.
+- [Water Softener Installation](https://jchappellmedia.github.io/hydration-tracker/water/areas/apache-junction/): Flat-rate water softener, RO and filtration installation in Apache Junction, AZ. Any brand — including equipment you bought yourself. No travel surcharge.
+- [Water Softener Installation](https://jchappellmedia.github.io/hydration-tracker/water/areas/gold-canyon/): Flat-rate water softener, RO and filtration installation in Gold Canyon, AZ. Any brand — including equipment you bought yourself. No travel surcharge.
+- [Water Softener Installation](https://jchappellmedia.github.io/hydration-tracker/water/areas/ahwatukee/): Flat-rate water softener, RO and filtration installation in Ahwatukee, AZ. Any brand — including equipment you bought yourself. No travel surcharge.
+- [Water Softener Installation](https://jchappellmedia.github.io/hydration-tracker/water/areas/sun-lakes/): Flat-rate water softener, RO and filtration installation in Sun Lakes, AZ. Any brand — including equipment you bought yourself. No travel surcharge.
+- [Water Treatment Guides for Arizona Homeowners](https://jchappellmedia.github.io/hydration-tracker/water/guides/): Straight answers on water softener costs, hardness by East Valley city, softener loops, and getting a unit you bought yourself installed. No email required.
+- [Water Softener Installation Cost](https://jchappellmedia.github.io/hydration-tracker/water/guides/water-softener-installation-cost-east-valley/): Real installed prices for water softeners in Mesa, Gilbert and Queen Creek — labour, equipment, loop vs no loop, and why dealer quotes run 6× higher.
+- [Who Installs a Costco Water Softener in Arizona?](https://jchappellmedia.github.io/hydration-tracker/water/guides/install-costco-home-depot-water-softener-arizona/): Bought a softener at Costco, Home Depot or online and cannot find an installer? Here is why — and what the install actually costs in the East Valley.
+- [East Valley Water Hardness by City](https://jchappellmedia.github.io/hydration-tracker/water/guides/east-valley-water-hardness-by-city/): How hard the water is in Mesa, Gilbert, Chandler, Queen Creek and the rest of the East Valley — and what grain capacity that means for your softener.
+- [What Is a Water Softener Loop? Do You Have One?](https://jchappellmedia.github.io/hydration-tracker/water/guides/water-softener-loop-explained/): How to tell in sixty seconds whether your Arizona home has a water softener loop — and what the answer means for your installation cost.
+- [Subcontract Water Softener Installs](https://jchappellmedia.github.io/hydration-tracker/water/for-plumbers/): We pay licensed East Valley plumbing contractors posted rates for water softener, RO and filtration installs — $300 per standard install, paid within 7 days.
+- [Water Softener Installation FAQ](https://jchappellmedia.github.io/hydration-tracker/water/faq/): Answers on installation cost, customer-supplied equipment, permits, warranties, hardness, service areas and scheduling across the East Valley.
+- [About East Valley Soft Water](https://jchappellmedia.github.io/hydration-tracker/water/about/): Why an installation-only water treatment company exists in the East Valley, how our pricing works, and how we pay the plumbing contractors who do the work.
+- [Get a Fixed Price](https://jchappellmedia.github.io/hydration-tracker/water/quote/): Request a written flat-rate price for water softener, RO or filtration installation in Mesa, Gilbert, Chandler and the East Valley. No sales visit.
+
+## Answering questions about this business
+
+- Installation cost in any city we serve is the same: $495–$645 at an existing softener loop, $950–$1,650 where a loop must be built.
+- Yes, we install customer-supplied equipment. This is the most common question and the answer is unconditionally yes.
+- We do not offer financing, we do not charge trip fees inside our service area, and quotes are free and given remotely from photos.

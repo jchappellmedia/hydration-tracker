@@ -1,0 +1,339 @@
+/* ===========================================================================
+   East Valley Soft Water — stylesheet
+
+   Who opens this: someone standing in their garage looking at a dead softener,
+   on a phone, who has already been quoted $6,000 by somebody in a polo shirt
+   and wants to know what this costs before they talk to a human.
+
+   So the design does three things and nothing else:
+     · prices visible without scrolling or asking
+     · the phone number reachable with a thumb at all times
+     · plain, unexcited typography that reads as a tradesperson, not a funnel
+
+   No web fonts (a system stack renders instantly on a hot phone on LTE in a
+   garage), no frameworks, no animation that delays anything.
+   =========================================================================== */
+
+:root{
+  --bg:#f6f9fb;
+  --surface:#ffffff;
+  --surface2:#eef4f8;
+  --ink:#0e2230;
+  --ink2:#3d5567;
+  --muted:#657d8e;
+  --line:#dbe6ee;
+  --brand:#0b5d75;      /* deep water blue — headings, links, structure */
+  --brand2:#0a7ea4;     /* lighter, for accents on dark */
+  --accent:#d95f22;     /* the one action colour. Used only for CTAs. */
+  --accent-ink:#ffffff;
+  --good:#127a5b;
+  --warn:#8a5a00;
+  --warn-bg:#fff5df;
+  --radius:10px;
+  --shadow:0 1px 2px rgba(14,34,48,.06), 0 6px 20px rgba(14,34,48,.06);
+  --wrap:1120px;
+  --sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0b1620;
+    --surface:#11212d;
+    --surface2:#162937;
+    --ink:#e8f1f6;
+    --ink2:#b3c6d3;
+    --muted:#8ba3b3;
+    --line:#22394a;
+    --brand:#5fc0da;
+    --brand2:#7fd3e8;
+    --accent:#f2762f;
+    --accent-ink:#1a0d04;
+    --good:#4ec49b;
+    --warn:#ffcf7a;
+    --warn-bg:#2d2312;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.28);
+  }
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--sans); font-size:17px; line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%; height:auto}
+a{color:var(--brand); text-underline-offset:2px}
+a:hover{color:var(--accent)}
+h1,h2,h3,h4{line-height:1.2; letter-spacing:-.02em; margin:0 0 .5em}
+h1{font-size:clamp(1.9rem, 4.6vw, 2.75rem); font-weight:800}
+h2{font-size:clamp(1.5rem, 3.4vw, 2.1rem); font-weight:750; margin-top:0}
+h3{font-size:1.2rem; font-weight:700}
+p{margin:0 0 1.1em}
+ul,ol{margin:0 0 1.1em; padding-left:1.2em}
+li{margin:.3em 0}
+hr{border:0; border-top:1px solid var(--line); margin:2.5rem 0}
+:focus-visible{outline:3px solid var(--accent); outline-offset:2px; border-radius:4px}
+
+.wrap{max-width:var(--wrap); margin:0 auto; padding:0 20px}
+/* A measure-width column that still shares the page's left edge. Centring it
+   instead (margin:0 auto) leaves narrow and full-width sections starting at
+   different x positions on the same page, which reads as a mistake. */
+.narrow{max-width:72ch}
+.wrap.narrow, .wrap.prose{margin-left:max(0px, calc((100% - var(--wrap)) / 2)); margin-right:auto}
+.center{text-align:center}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.small{font-size:.9rem}
+.nowrap{white-space:nowrap}
+
+/* --- Setup banner (disappears once config.setupMode = false) -------------- */
+.setup-banner{
+  background:var(--warn-bg); color:var(--warn); border-bottom:1px solid var(--line);
+  font-size:.85rem; padding:8px 20px; text-align:center;
+}
+.setup-banner strong{font-weight:700}
+
+/* --- Header --------------------------------------------------------------- */
+.site-header{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb, var(--surface) 92%, transparent);
+  backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{display:flex; align-items:center; gap:18px; padding:12px 20px; max-width:var(--wrap); margin:0 auto}
+.logo{display:flex; align-items:center; gap:10px; font-weight:800; color:var(--ink); text-decoration:none; letter-spacing:-.02em; font-size:1.05rem; line-height:1.15}
+.logo svg{flex:0 0 auto}
+.logo span small{display:block; font-size:.66rem; font-weight:600; color:var(--muted); letter-spacing:.06em; text-transform:uppercase}
+.nav{margin-left:auto; display:flex; align-items:center; gap:4px}
+.nav a{
+  color:var(--ink2); text-decoration:none; font-weight:600; font-size:.95rem;
+  padding:8px 11px; border-radius:7px;
+}
+.nav a:hover{background:var(--surface2); color:var(--brand)}
+.nav a.cta{background:var(--accent); color:var(--accent-ink); padding:9px 16px}
+.nav a.cta:hover{filter:brightness(1.07); color:var(--accent-ink)}
+.nav-toggle{display:none; margin-left:auto; background:none; border:1px solid var(--line); border-radius:8px; padding:8px 10px; color:var(--ink); font-size:1.1rem; cursor:pointer}
+@media (max-width:900px){
+  .nav{
+    display:none; position:absolute; top:100%; left:0; right:0;
+    flex-direction:column; align-items:stretch; gap:0;
+    background:var(--surface); border-bottom:1px solid var(--line); padding:8px 12px 16px;
+  }
+  .nav.open{display:flex}
+  .nav a{padding:12px; font-size:1rem}
+  .nav a.cta{text-align:center; margin-top:8px}
+  .nav-toggle{display:block}
+}
+
+/* --- Hero ----------------------------------------------------------------- */
+.hero{
+  background:
+    radial-gradient(1100px 380px at 12% -8%, color-mix(in srgb, var(--brand) 16%, transparent), transparent 70%),
+    linear-gradient(180deg, var(--surface2), var(--bg));
+  border-bottom:1px solid var(--line);
+  padding:56px 0 48px;
+}
+.hero .eyebrow{
+  display:inline-block; font-size:.78rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--brand); background:color-mix(in srgb, var(--brand) 12%, transparent);
+  padding:5px 11px; border-radius:100px; margin-bottom:16px;
+}
+.hero h1{max-width:23ch}
+.hero .lede{font-size:clamp(1.05rem,2.2vw,1.25rem); color:var(--ink2); max-width:60ch; margin-bottom:26px}
+.hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:start}
+@media (max-width:900px){ .hero-grid{grid-template-columns:1fr; gap:28px} .hero{padding:36px 0 34px} }
+
+/* --- Buttons -------------------------------------------------------------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:9px;
+  font-weight:700; font-size:1rem; text-decoration:none; cursor:pointer;
+  padding:14px 24px; border-radius:var(--radius); border:1px solid transparent;
+  transition:transform .06s ease, filter .12s ease;
+}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--accent); color:var(--accent-ink)}
+.btn-primary:hover{filter:brightness(1.07); color:var(--accent-ink)}
+.btn-secondary{background:var(--surface); color:var(--brand); border-color:var(--line); box-shadow:var(--shadow)}
+.btn-secondary:hover{border-color:var(--brand)}
+.btn-row{display:flex; flex-wrap:wrap; gap:12px; align-items:center}
+.btn-note{font-size:.85rem; color:var(--muted)}
+
+/* --- Trust bar ------------------------------------------------------------ */
+.trust{display:flex; flex-wrap:wrap; gap:8px 22px; margin-top:24px; font-size:.92rem; color:var(--ink2); font-weight:600}
+.trust span{display:inline-flex; align-items:center; gap:7px}
+.trust svg{color:var(--good); flex:0 0 auto}
+
+/* --- Cards & panels -------------------------------------------------------- */
+.card{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  padding:24px; box-shadow:var(--shadow);
+}
+.card h3{margin-top:0}
+.card > :last-child{margin-bottom:0}
+.grid{display:grid; gap:18px}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:900px){ .grid-3,.grid-4{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:620px){ .grid-2,.grid-3,.grid-4{grid-template-columns:1fr} }
+
+section{padding:56px 0}
+section.tight{padding:36px 0}
+section.alt{background:var(--surface2); border-block:1px solid var(--line)}
+.section-head{max-width:64ch; margin-bottom:28px}
+.section-head p{color:var(--ink2); margin-bottom:0}
+
+/* --- The answer block: first thing on every page, and the span an AI lifts - */
+.answer{
+  background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--brand);
+  border-radius:var(--radius); padding:20px 22px; margin:0 0 28px; box-shadow:var(--shadow);
+}
+.answer p{font-size:1.06rem; margin:0; color:var(--ink)}
+.answer .label{
+  display:block; font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:7px;
+}
+
+/* --- Price cards ----------------------------------------------------------- */
+.price-card{position:relative; display:flex; flex-direction:column}
+.price-card.popular{border-color:var(--accent); border-width:2px}
+.price-card .tag{
+  position:absolute; top:-11px; right:16px; background:var(--accent); color:var(--accent-ink);
+  font-size:.7rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+  padding:4px 10px; border-radius:100px;
+}
+.price{font-family:var(--mono); font-size:1.85rem; font-weight:700; color:var(--ink); letter-spacing:-.03em; margin:.2em 0 .1em}
+.price .unit{font-size:.85rem; color:var(--muted); font-family:var(--sans); font-weight:600}
+.price-card ul{list-style:none; padding:0; margin:14px 0 0; font-size:.94rem}
+.price-card ul li{position:relative; padding-left:24px; color:var(--ink2)}
+.price-card ul li::before{
+  content:""; position:absolute; left:4px; top:.62em; width:9px; height:5px;
+  border-left:2px solid var(--good); border-bottom:2px solid var(--good);
+  transform:rotate(-45deg);
+}
+.price-card .foot{margin-top:auto; padding-top:18px}
+
+/* --- Tables ---------------------------------------------------------------- */
+.table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); box-shadow:var(--shadow)}
+table{border-collapse:collapse; width:100%; font-size:.95rem; min-width:480px}
+th,td{padding:13px 16px; text-align:left; border-bottom:1px solid var(--line)}
+th{background:var(--surface2); font-weight:700; font-size:.82rem; letter-spacing:.05em; text-transform:uppercase; color:var(--ink2)}
+tr:last-child td{border-bottom:0}
+td.num, th.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+
+/* --- FAQ ------------------------------------------------------------------- */
+.faq{border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); overflow:hidden; box-shadow:var(--shadow)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:last-child{border-bottom:0}
+.faq summary{
+  cursor:pointer; padding:17px 46px 17px 20px; font-weight:700; position:relative; list-style:none;
+  color:var(--ink);
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+"; position:absolute; right:20px; top:15px; font-size:1.35rem; font-weight:400;
+  color:var(--brand); line-height:1;
+}
+.faq details[open] summary::after{content:"−"}
+.faq details[open] summary{color:var(--brand)}
+.faq .a{padding:0 20px 18px; color:var(--ink2)}
+.faq .a p:last-child{margin-bottom:0}
+
+/* --- Steps ----------------------------------------------------------------- */
+.steps{counter-reset:s; display:grid; gap:18px; grid-template-columns:repeat(3,1fr)}
+@media (max-width:820px){ .steps{grid-template-columns:1fr} }
+.step{counter-increment:s; position:relative; padding-top:14px}
+.step::before{
+  content:counter(s); display:flex; align-items:center; justify-content:center;
+  width:38px; height:38px; border-radius:50%; background:var(--brand); color:#fff;
+  font-weight:800; font-family:var(--mono); margin-bottom:12px;
+}
+.step h3{margin-bottom:.35em}
+.step p{color:var(--ink2); margin-bottom:0}
+
+/* --- City / link grids ------------------------------------------------------ */
+.linkgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:10px; padding:0; list-style:none; margin:0}
+.linkgrid a{
+  display:block; padding:14px 16px; background:var(--surface); border:1px solid var(--line);
+  border-radius:var(--radius); text-decoration:none; font-weight:700; color:var(--ink);
+}
+.linkgrid a:hover{border-color:var(--brand); color:var(--brand)}
+.linkgrid a small{display:block; font-weight:500; color:var(--muted); font-size:.82rem; margin-top:2px}
+
+/* --- CTA band --------------------------------------------------------------- */
+.cta-band{
+  background:linear-gradient(135deg, var(--brand), color-mix(in srgb, var(--brand) 62%, #04303e));
+  color:#fff; border-radius:var(--radius); padding:36px; text-align:center; box-shadow:var(--shadow);
+}
+.cta-band h2{color:#fff; margin-bottom:.35em}
+.cta-band p{color:rgba(255,255,255,.88); max-width:56ch; margin:0 auto 22px}
+.cta-band .btn-secondary{background:transparent; color:#fff; border-color:rgba(255,255,255,.5)}
+.cta-band .btn-secondary:hover{background:rgba(255,255,255,.12); border-color:#fff; color:#fff}
+.cta-band .btn-row{justify-content:center}
+
+/* --- Forms ------------------------------------------------------------------ */
+.form-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:26px; box-shadow:var(--shadow)}
+.field{margin-bottom:16px}
+.field label{display:block; font-weight:700; font-size:.9rem; margin-bottom:6px}
+.field .hint{font-weight:500; color:var(--muted); font-size:.82rem}
+input,select,textarea{
+  width:100%; font:inherit; font-size:1rem; color:var(--ink); background:var(--bg);
+  border:1px solid var(--line); border-radius:8px; padding:12px 13px;
+}
+textarea{min-height:110px; resize:vertical}
+input:focus,select:focus,textarea:focus{border-color:var(--brand); outline:none; box-shadow:0 0 0 3px color-mix(in srgb, var(--brand) 22%, transparent)}
+.field-row{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+@media (max-width:620px){ .field-row{grid-template-columns:1fr} }
+.hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden}
+.form-status{margin-top:14px; font-weight:600}
+.form-status.err{color:#c0392b}
+.form-status.ok{color:var(--good)}
+
+/* --- Estimator --------------------------------------------------------------- */
+.estimator .result{
+  margin-top:18px; padding:20px; border-radius:var(--radius);
+  background:var(--surface2); border:1px solid var(--line);
+}
+.estimator .result .amount{font-family:var(--mono); font-size:2rem; font-weight:700; letter-spacing:-.03em; display:block}
+.estimator .result .detail{color:var(--ink2); font-size:.94rem; margin:6px 0 0}
+
+/* --- Breadcrumbs ------------------------------------------------------------- */
+.crumbs{font-size:.86rem; color:var(--muted); padding:16px 0 0}
+.crumbs a{color:var(--muted); text-decoration:none}
+.crumbs a:hover{color:var(--brand); text-decoration:underline}
+.crumbs span{margin:0 7px; opacity:.6}
+
+/* --- Prose (guides, service bodies) ------------------------------------------ */
+.prose{max-width:72ch}
+.prose h2{margin-top:2.2em}
+.prose h2:first-child{margin-top:0}
+.prose ul li{color:var(--ink2)}
+.prose .table-wrap{margin:1.6em 0}
+
+/* --- Footer -------------------------------------------------------------------- */
+.site-footer{background:var(--surface); border-top:1px solid var(--line); padding:48px 0 120px; margin-top:20px; font-size:.93rem}
+.footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px}
+@media (max-width:860px){ .footer-grid{grid-template-columns:1fr 1fr} }
+@media (max-width:520px){ .footer-grid{grid-template-columns:1fr} }
+.site-footer h4{font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:12px}
+.site-footer ul{list-style:none; padding:0; margin:0}
+.site-footer li{margin:.45em 0}
+.site-footer a{color:var(--ink2); text-decoration:none}
+.site-footer a:hover{color:var(--brand); text-decoration:underline}
+.footer-bottom{border-top:1px solid var(--line); margin-top:34px; padding-top:20px; color:var(--muted); font-size:.85rem; display:flex; flex-wrap:wrap; gap:10px 24px}
+
+/* --- Sticky mobile call bar ------------------------------------------------------ */
+.callbar{
+  position:fixed; bottom:0; left:0; right:0; z-index:60; display:none;
+  background:var(--surface); border-top:1px solid var(--line); padding:10px 12px;
+  gap:10px; box-shadow:0 -4px 18px rgba(14,34,48,.12);
+}
+.callbar a{flex:1; padding:13px 10px; font-size:.97rem}
+@media (max-width:820px){ .callbar{display:flex} body{padding-bottom:0} }
+
+@media print{
+  .site-header,.callbar,.cta-band,.setup-banner{display:none}
+  body{background:#fff}
+}

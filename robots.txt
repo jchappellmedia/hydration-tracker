@@ -3,3 +3,4 @@ Allow: /
 Disallow: /skillstack/
 
 Sitemap: https://jchappellmedia.github.io/hydration-tracker/sitemap.xml
+Sitemap: https://jchappellmedia.github.io/hydration-tracker/water/sitemap.xml

@@ -16,6 +16,7 @@ on:
       - "free-ccat-practice-test/**"
       - "sitemap.xml"
       - "reel/**"
+      - "water/**"
       - "robots.txt"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
