@@ -154,6 +154,21 @@ The Spartan race is genuinely useful on grit-culture sales postings. Elsewhere i
 
 ---
 
+## Career direction
+
+As of 2026-09-16 Joshua is **exploring a career change into the skilled trades** alongside his media and
+marketing search. Treat both tracks as live.
+
+When a trades posting comes in:
+- Reframe him as a field service operator, not a filmmaker. The real transferables are the 5.0-star
+  customer service year, six years of self-directed service calls, comfort on construction and industrial
+  job sites (ladders, attics, roofs), equipment inventory stewardship ($30k at ALA, $1M at GCE), teaching
+  technical skills hands-on, and a clean driving record.
+- Drop portfolio links and media framing entirely.
+- **He has no HVAC, electrical, plumbing, or licensed trade experience.** Never imply otherwise.
+- Flag the pay honestly. Trades entry roles run well below his $75k floor, and a career change costs two
+  to three years of reduced income before journeyman rates catch up.
+
 ## Known gaps — never paper over these
 
 Recurring requirements Joshua does **not** have. Leave them off the resume, name them in the analysis:
