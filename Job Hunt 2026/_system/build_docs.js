@@ -340,14 +340,14 @@ function referenceHtml() {
   ul { margin: 3px 0 6px; padding-left: 20px; } li { margin-bottom: 3px; } p { margin: 0 0 7px; }
   .jd { border-left: 3px solid #c9d6e8; padding-left: 12px; }
   .note { color: #555; font-size: 11.5px; } .src { font-size: 10.5px; } a { color: #1a4d8f; }
-  .cols { display: flex; gap: 18px; } .cols > div { flex: 1; }
+  .cols > div { margin-bottom: 4px; } .cols li { break-inside: avoid; }
   .pros h3 { color: #1d6b35; } .cons h3 { color: #9a2a1d; }
 </style></head><body>
 <h1>${esc(job.company)}</h1><p class="sub">${esc(job.role)}</p>
 <a class="apply" href="${esc(F.apply_url)}">Apply for this job &rarr;<span>${esc(F.apply_url)}</span></a>
 <h2>At a glance</h2><table>${facts}</table>
 ${(F.why || []).length ? `<h3>${esc(F.why_heading || "Why it made today's top five")}</h3><ul>${F.why.map(x => `<li>${inlineHtml(x)}</li>`).join('')}</ul>` : ''}
-${(F.gaps || []).length ? `<h3>Gaps to be ready for</h3><ul>${F.gaps.map(x => `<li>${inlineHtml(x)}</li>`).join('')}</ul>` : ''}
+${(F.gaps || []).length ? `<h3>Gaps to be ready for</h3>${F.gaps_note ? `<p class="note">${inlineHtml(F.gaps_note)}</p>` : ''}<ul>${F.gaps.map(x => `<li>${inlineHtml(x)}</li>`).join('')}</ul>` : ''}
 <h2>Job description (word for word)</h2>
 <p class="note">${inlineHtml(F.jd_source || '')}</p>
 <div class="jd">${jd}</div>
@@ -394,7 +394,7 @@ function referenceDocx() {
         children: [new D.Paragraph({ children: inlineRuns(String(b), body) })] }),
     ] })) }));
   if ((F.why || []).length) { k.push(H3(F.why_heading || "Why it made today's top five")); F.why.forEach(x => k.push(LI(inlineRuns(x, body)))); }
-  if ((F.gaps || []).length) { k.push(H3('Gaps to be ready for')); F.gaps.forEach(x => k.push(LI(inlineRuns(x, body)))); }
+  if ((F.gaps || []).length) { k.push(H3('Gaps to be ready for')); if (F.gaps_note) k.push(P(F.gaps_note, { size: 18, color: '555555', italics: true })); F.gaps.forEach(x => k.push(LI(inlineRuns(x, body)))); }
   k.push(H2('Job description (word for word)'));
   if (F.jd_source) k.push(P(F.jd_source, { size: 18, color: '555555' }));
   mdBlocks(F.jd_text).forEach(b => {

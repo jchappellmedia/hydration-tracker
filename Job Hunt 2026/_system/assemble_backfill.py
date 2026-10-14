@@ -67,6 +67,8 @@ for slug, date, company, company_file, role in rows:
         "why_heading": "Why it fit",
         "why": jb.get("why") or [],
         "gaps": jb.get("gaps") or [],
+        "gaps_note": ("Suggested answers carried over from the original analysis. Some assume a course or "
+                      "certification is under way; say those only if they are true when you interview."),
         "jd_source": jb.get("jd_source") or "",
         "jd_text": jd_text or "The posting text was not saved for this application.",
         "research": research_for.get(slug, {}),
