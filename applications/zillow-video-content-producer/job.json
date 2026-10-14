@@ -1,0 +1,131 @@
+{
+ "company": "Zillow",
+ "company_file": "Zillow",
+ "role": "Video Content Producer",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "Demo Reel",
+    "url": "https://vimeo.com/1103241704"
+   },
+   {
+    "label": "Real Estate Work",
+    "url": "https://gaudy-motorcycle-974.notion.site/Real-Estate-Video-and-Photo-Samples-23b59a1fbab18093b468e2911cff5264"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "summary": "Video producer with seven-plus years across the full video lifecycle: planning, on-set production, post, and publishing. Delivered 98% of projects on time and 92% within budget while commanding crews of 5-20, and delivered 200+ videos for one of the largest marketing agencies in the country. Built AI content workflows that cut production times in half, and reached over a million people on YouTube.",
+  "jobs": [
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Collaborated with key stakeholders to 7x video inventory while bumping overall quality up by 2x.",
+     "Built content workflows with Claude agentic coding that cut production times in half while keeping stories authentic.",
+     "Led video initiatives that raised ad click-through rates by over 200% and drove paid and organic engagement over 100%.",
+     "Planned video and photo for enrollment initiatives with high-level executives; managed projects in Wrike and Notion."
+    ]
+   },
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Delivered 98% of projects on time and 92% within budget, commanding crews of 5-20 people per project.",
+     "Filmed model home videos for Blandford Homes and photographed homes for realtors.",
+     "Maintained an organized library of video assets in Frame.io and Dropbox, reducing search and retrieval time by over 50%; crafted storyboards that slashed back-and-forth communication by over 50%.",
+     "Reached over a million people on YouTube teaching cutting-edge post production techniques."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Delivered 200+ videos over two years reaching millions on TV, paid social, and organic channels.",
+     "Crystallized scope of work across departments with competing interests, so stakeholder goals were met and exceeded.",
+     "Catalyzed an alumni campaign shown during NCAA basketball games; directed cinematography for quarterly brand shoots that built a vast online stock footage library.",
+     "Led within a 15-person media team, maximized over $1 million of in-house film gear, and tracked projects in Workamajig and Trello."
+    ]
+   },
+   {
+    "company": "Arizona State Legislature",
+    "title": "Video Producer",
+    "location": "Phoenix, AZ",
+    "dates": "Feb 2025 - June 2025",
+    "bullets": [
+     "Synchronized with Communications teams across legislative bodies and chambers to execute projects effectively.",
+     "Documented Robert F. Kennedy Jr. and the AZ Speaker of the House on RED and Canon cinema cameras.",
+     "Revolutionized color grading workflows to be 3x as fast in DaVinci Resolve with Canon Log-3 and RED RGB Wide Gamut."
+    ]
+   }
+  ],
+  "skills": [
+   "Video Production, Intake to Delivery",
+   "Project Management (Wrike, Notion, Workamajig, Trello)",
+   "Budgets, Quotes & Scope of Work",
+   "Storyboards & Production Planning",
+   "Crew Leadership (5-20)",
+   "Media Management (Frame.io, Dropbox)",
+   "Adobe Creative Suite (Premiere Pro, After Effects, Audition, Photoshop, Lightroom)",
+   "DaVinci Resolve & Color Grading",
+   "Final Cut Pro",
+   "Cinema Cameras (Sony FX, RED, Canon)",
+   "Aputure Lighting & Grip",
+   "Real Estate Video & Photo",
+   "YouTube & Social Video",
+   "Ad Performance Tracking (Meta Pixel)",
+   "AI Video Workflows (Claude, Runway, ElevenLabs, Kling)",
+   "Drone (FAA Part 107)"
+  ],
+  "education": [
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   },
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   }
+  ],
+  "certifications": [
+   "Part 107 Drone Operator License",
+   "Google Digital Marketing & E-Commerce"
+  ]
+ },
+ "cover_letter": {
+  "greeting": "Hello Zillow Employee,",
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "Demo Reel",
+    "url": "https://vimeo.com/1103241704"
+   },
+   {
+    "label": "Real Estate Work",
+    "url": "https://gaudy-motorcycle-974.notion.site/Real-Estate-Video-and-Photo-Samples-23b59a1fbab18093b468e2911cff5264"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the Video Content Producer position at Zillow. I feel I have a lot of immediate value I can bring to your organization.",
+   "Your posting asks for someone to help build the engine behind StudioZ's growing video operation. I have run that kind of operation at my own company for seven years. At Lightbox Digital I take each project from intake through delivery. I delivered 98% of projects on time and 92% within budget, commanding crews of 5-20 people per project. I maintained an organized library of video assets in Frame.io and Dropbox, reducing search and retrieval time by over 50%, and I crafted storyboards that slashed back-and-forth communication by over 50%. At Charter One I built content workflows with Claude agentic coding that cut production times in half.",
+   "You would get a producer who has worked every stage of the lifecycle, on set and in post. At Grand Canyon Education I delivered 200+ videos over two years reaching millions on TV, paid social, and organic channels, and I crystallized scope of work across departments with competing interests. Real estate is familiar ground: I filmed model home videos for Blandford Homes and photographed homes for realtors. I know the YouTube publishing side as a creator: I reached over a million people on YouTube teaching cutting-edge post production techniques.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ }
+}
