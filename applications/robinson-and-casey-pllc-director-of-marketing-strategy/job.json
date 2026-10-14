@@ -1,0 +1,129 @@
+{
+ "company": "Robinson and Casey, PLLC",
+ "company_file": "RobinsonAndCasey",
+ "role": "Director of Marketing Strategy",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "Portfolio",
+    "url": "https://lightbox-digital.com/"
+   },
+   {
+    "label": "Demo Reel",
+    "url": "https://vimeo.com/1103241704"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "summary": "Marketing leader who raised ad click-through rates by over 200% and drove more than 20x the engagement of standard content with campaigns he created and led. Holds a Master's in Marketing with a Marketing Analytics Specialization and has built content for healthcare, education, and B2B clients. Has owned Lightbox Digital since 2019: generates leads with Facebook ads, tracks ad performance with the Facebook pixel, commands crews of 5-20, and shoots, designs, and writes the creative.",
+  "jobs": [
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Created and led a video initiative that raised click-through rates for running ads by over 200%, and drove paid and organic engagement by over 100%.",
+     "Created and led a social media content initiative that drove more than 20x the engagement of standard content.",
+     "Brainstormed with high-level executives to plan the role video and photography play in enrollment initiatives.",
+     "Increased engagement on all school websites by updating photo and video across every channel; built AI content workflows that cut production times in half."
+    ]
+   },
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Accelerated 2x enrollment for a large charter school over one year by leading a video content creation initiative.",
+     "Generated leads with Facebook ads and organic media outreach; integrated on-site call-to-action elements with the Facebook pixel to monitor ad performance.",
+     "Partnered with CEOs, realtors, and builders; commanded crews of 5-20 and delivered 98% of projects on time and 92% within budget.",
+     "Held 5.0-star Google Business reviews for over a full year; set revenue goals and tracked expenses in Excel and Google Sheets."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Delivered 200+ videos over two years that reached millions on TV, paid social, and organic channels.",
+     "Produced content for healthcare professionals and the college of theology; scripted original organic content with the marketing team.",
+     "Catalyzed an alumni campaign shown during NCAA basketball games, leading to a noticeable increase in engagement.",
+     "Directed cinematography for higher-end brand shoots every quarter inside a 15-person media team."
+    ]
+   },
+   {
+    "company": "American Leadership Academy",
+    "title": "Photography Teacher",
+    "location": "Queen Creek, AZ",
+    "dates": "Aug 2018 - Aug 2020",
+    "bullets": [
+     "Amplified the program's social media accounts, leading to a 20% increase in enrollment the following year.",
+     "Mentored over 90 students per year and orchestrated a community art gallery night."
+    ]
+   }
+  ],
+  "skills": [
+   "Marketing Strategy & Campaign Planning",
+   "Marketing Analytics & Reporting",
+   "Lead Generation (Meta Ads, Facebook Pixel)",
+   "Google Business Optimization",
+   "Inbound Marketing (HubSpot)",
+   "Brand Messaging & Content Strategy",
+   "Copy & Script Writing",
+   "Videography & Photography",
+   "Graphic Design (Photoshop, Lightroom, Canva)",
+   "Video Editing (Premiere Pro, DaVinci Resolve, After Effects)",
+   "AI Workflows (Claude, ChatGPT, ElevenLabs, Runway)",
+   "Project Management (Wrike, Notion, Google Workspace)",
+   "Excel & Google Sheets"
+  ],
+  "education": [
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   },
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   }
+  ],
+  "certifications": [
+   "Google Digital Marketing & E-Commerce (2024)",
+   "WGU Marketing Analytics (2024)",
+   "HubSpot Inbound Marketing (2024)"
+  ]
+ },
+ "cover_letter": {
+  "email": "jchappellmedia@gmail.com",
+  "greeting": "Hello Robinson & Casey Employee,",
+  "links": [
+   {
+    "label": "Portfolio",
+    "url": "https://lightbox-digital.com/"
+   },
+   {
+    "label": "Demo Reel",
+    "url": "https://vimeo.com/1103241704"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the Director of Marketing Strategy at Robinson & Casey. I feel I have a lot of immediate value I can bring to your organization.",
+   "This role turns the firm's goals into a plan, runs the campaigns, and reports what they return. That is the work I do. At Charter One I created and led a video initiative that raised click-through rates for running ads by over 200%, and a social media content initiative that drove more than 20x the engagement of standard content. I plan that work with high-level executives, the way this role plans with your CEO and Chief Relationship Officer. At Lightbox Digital I generate leads with Facebook ads and tie on-site call-to-action elements to the Facebook pixel to monitor ad performance. My Master's in Marketing with a Marketing Analytics Specialization is the base for the metrics and ROI reporting this role owns.",
+   "Your families reach out in the hardest moments of their lives, so the message has to be clear and kind on every channel. I have built enrollment content for families at Charter One and produced content for healthcare professionals at Grand Canyon Education. I shoot, edit, and design the creative myself, which covers the videography, photography, and graphic design on your preferred list. I have also been the vendor since 2019, and I delivered 98% of projects on time and 92% within budget. I know what good vendor work looks like, and I will hold your website, SEO, PPC, and creative partners to it.",
+   "I appreciate that you value honesty, courage, integrity, empathy, perseverance, and service; these are all values that I strive to emulate.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ }
+}
