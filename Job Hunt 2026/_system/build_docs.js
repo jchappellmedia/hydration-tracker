@@ -306,7 +306,7 @@ function mdBlocks(md) {
   const blocks = []; let para = [];
   const flush = () => { if (para.length) { blocks.push({ k: 'p', t: para.join(' ') }); para = []; } };
   for (const raw of lines) {
-    const l = raw.trimEnd();
+    const l = raw.trimEnd().replace(/^\s*>\s?/, '');
     if (!l.trim()) { flush(); continue; }
     let m;
     if ((m = l.match(/^\s*#{1,6}\s+(.*)$/))) { flush(); blocks.push({ k: 'h', t: m[1] }); }
