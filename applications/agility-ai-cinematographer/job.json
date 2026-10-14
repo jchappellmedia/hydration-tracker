@@ -1,0 +1,101 @@
+{
+ "company": "Agility",
+ "company_file": "Agility",
+ "role": "AI Cinematographer",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "Curated Reel",
+    "url": "https://jchappellmedia.github.io/hydration-tracker/reel/"
+   },
+   {
+    "label": "Website",
+    "url": "https://lightbox-digital.com"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "summary": "Filmmaker with seven-plus years behind the camera. Delivered 200+ videos that reached millions on TV, paid social, and organic channels, including a campaign that ran during NCAA basketball broadcasts. Known for professionally lit, fully graded work and a 98% on-time delivery record.",
+  "jobs": [
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Crafted cinematic corporate documentaries and interviews, properly composed and professionally lit.",
+     "Increased brand presence for construction companies by turning construction into cinema.",
+     "Sculpted light with Aputure fixtures and color graded log footage in DaVinci Resolve.",
+     "Dominated 5.0-star reviews for over an entire year; delivered 98% of projects on time and 92% within budget while directing teams of 5 to 20."
+    ]
+   },
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Led video initiatives that drove paid and organic engagement by over 100%.",
+     "Created a video initiative that raised click-through rates for running ads by over 200%.",
+     "Collaborated with key stakeholders to 7x video inventory while doubling overall quality."
+    ]
+   },
+   {
+    "company": "Arizona State Legislature",
+    "title": "Video Producer",
+    "location": "Phoenix, AZ",
+    "dates": "Feb 2025 - June 2025",
+    "bullets": [
+     "Deployed cinema cameras daily; piloted drone and gimbal systems.",
+     "Rebuilt color grading workflows to run 3x faster in DaVinci Resolve.",
+     "Documented prominent figures including Robert F. Kennedy Jr. and the AZ Speaker of the House."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Catalyzed an alumni campaign shown during NCAA basketball broadcasts, lifting engagement.",
+     "Delivered 200+ videos over two years that reached millions on TV, paid social, and organic channels.",
+     "Deployed grip equipment and Aputure lighting systems including 1200d, 600d, 300d, sky panels, and Fresnels; maximized over $1 million of in-house film gear.",
+     "Directed cinematography for higher-end brand shoots every quarter and commanded a gimbal on over 150 shoots."
+    ]
+   }
+  ],
+  "skills": [
+   "Cinematography",
+   "Lighting (Aputure 1200d/600d/300d, sky panels, Fresnels, grip)",
+   "Color Grading (DaVinci Resolve)",
+   "Composition & Visual Storytelling",
+   "Editing (Premiere Pro, DaVinci Resolve, Final Cut Pro, After Effects)",
+   "Motion Graphics",
+   "Drone & Gimbal (FAA Part 107)",
+   "Broadcast & Paid-Media Delivery",
+   "AI-Assisted Production"
+  ],
+  "education": [
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   },
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   }
+  ],
+  "certifications": [
+   "Part 107 Drone Operator License",
+   "Google Digital Marketing & E-Commerce",
+   "HubSpot Inbound Marketing"
+  ],
+  "extra_sections": [],
+  "education_heading": "Education & Certifications"
+ }
+}

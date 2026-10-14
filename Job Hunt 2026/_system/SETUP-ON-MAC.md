@@ -17,7 +17,8 @@ This only has to happen once.
    > Set up a scheduled task that runs every day at 6:47 AM on this Mac. Each run should follow
    > `Job Hunt 2026/_system/DAILY-RUN.md` in my iCloud Drive exactly: find the five best new jobs,
    > never repeat one, and save each job's resume, cover letter, and job description and company
-   > research sheet (PDF and Word) into its own folder inside `Job Hunt 2026`. Before scheduling,
+   > research sheet into its own folder inside `Job Hunt 2026`. Every document is a PDF with a Word
+   > copy next to it, and the reference sheet is always a PDF. Before scheduling,
    > run the one-time setup in section 1 of that file and do one test run so I can check it.
 
    The task needs the Indeed, ZipRecruiter, Dice, and Google Drive connectors switched on.

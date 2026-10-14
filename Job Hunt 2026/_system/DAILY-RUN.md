@@ -158,6 +158,10 @@ Look at `resume_preview.png` before moving on.
 
 ### 7c. Reference sheet: job description, apply link, company research
 
+**The reference sheet is always delivered as a PDF**, with clickable links: the apply button at the
+top and a numbered source link on every research point. A Word copy sits next to it. A run that
+leaves the sheet as Markdown, HTML, or Word only is not finished.
+
 `job.json` → `reference`:
 - `apply_url`: the link he clicks to apply. Keep it intact.
 - `facts`: rows of `[label, value]`: Pay (and its tier), Location and commute, Work mode, Posted, Source, Job ID.
@@ -176,7 +180,7 @@ Then build everything:
 node build_docs.js "<job folder>/job.json" "<job folder>"
 ```
 
-That produces, in the job folder:
+That produces the following in the job folder. Check that all seven files exist and that the reference-sheet **PDF** opens before you move on:
 
 ```
 Joshua_Chappell_Resume_<Co>.pdf / .docx

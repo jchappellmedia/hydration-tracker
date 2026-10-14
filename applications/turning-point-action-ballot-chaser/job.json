@@ -1,0 +1,117 @@
+{
+ "company": "Turning Point Action",
+ "company_file": "TurningPointAction",
+ "role": "Ballot Chaser",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "summary": "Self-directed business owner who hits goals without supervision. Ran a company for six years, built relationships with homeowners, realtors, and executives, and tracked revenue goals weekly in Excel and Google Sheets. Organizes community events with a local church, mentored over 90 students a year as a teacher, and delivered 98% of projects on time.",
+  "jobs": [
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Set revenue goals and tracked expenses week to week using Excel and Google Sheets.",
+     "Built strong relationships with realtors, home developers, and CEOs.",
+     "Generated leads by running Facebook ads and organic media outreach.",
+     "Dominated 5.0-star reviews for over an entire year; delivered 98% of projects on time while directing teams of 5 to 20."
+    ]
+   },
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Led initiatives that drove paid and organic engagement by over 100%.",
+     "Created and led a social content initiative that earned more than 20x the engagement of standard content.",
+     "Brainstormed with high-level executives to plan enrollment initiatives.",
+     "Managed projects in Wrike, Notion, and Google Workspace."
+    ]
+   },
+   {
+    "company": "Arizona State Legislature",
+    "title": "Video Producer",
+    "location": "Phoenix, AZ",
+    "dates": "Feb 2025 - June 2025",
+    "bullets": [
+     "Produced content for the Arizona Legislature during a critical stretch of the year.",
+     "Synchronized with Communications teams across legislative bodies and chambers to execute projects.",
+     "Documented prominent figures including Robert F. Kennedy Jr. and the AZ Speaker of the House."
+    ]
+   },
+   {
+    "company": "American Leadership Academy",
+    "title": "Photography Teacher",
+    "location": "Queen Creek, AZ",
+    "dates": "Aug 2018 - Aug 2020",
+    "bullets": [
+     "Mentored over 90 students per year; raised 80+ beginners to 95% proficiency through hands-on coaching.",
+     "Orchestrated a community art gallery night with student showcases and competition.",
+     "Grew the program's social media accounts, raising enrollment 20% the following year."
+    ]
+   }
+  ],
+  "skills": [
+   "Community Outreach & Relationship Building",
+   "Written and Verbal Communication",
+   "Google Workspace (Docs, Sheets, Drive)",
+   "Social Media (Facebook, Instagram, X)",
+   "Goal Setting & Data Tracking (Excel, Google Sheets)",
+   "Self-Directed Schedule Management",
+   "Team Leadership (5–20 people)",
+   "Coaching & Mentoring",
+   "Valid Driver License and Reliable Transportation"
+  ],
+  "education": [
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   },
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   }
+  ],
+  "certifications": [
+   "Google Digital Marketing & E-Commerce",
+   "HubSpot Inbound Marketing",
+   "Part 107 Drone Operator License"
+  ],
+  "extra_sections": [
+   {
+    "heading": "Community Involvement",
+    "lines": [
+     "Organized and ran community events with a local church congregation."
+    ]
+   }
+  ],
+  "education_heading": "Education & Certifications"
+ },
+ "cover_letter": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "greeting": "Hello Turning Point Action Employee,",
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the Ballot Chaser position at Turning Point Action. I feel I have a lot of immediate value I can bring to your organization.",
+   "This work runs on self-direction, relationships, and daily numbers. I ran my own company for six years, which meant setting my own schedule, hitting my own targets, and tracking revenue goals week to week in Excel and Google Sheets. Relationships were the whole job. I built strong relationships with realtors, home developers, and CEOs, generated my own leads, and held 5.0-star reviews for over an entire year. I also organize community events with my local church, which is the same work at neighborhood scale: getting people to show up and follow through. Before that I taught for two years, where I mentored over 90 students a year and organized a community gallery night that brought families in the door. Most recently I produced content for the Arizona Legislature and coordinated with Communications teams across legislative bodies and chambers, so a political environment is familiar ground. I have a valid driver license, reliable transportation, and a record of delivering 98% of my projects on time.",
+   "I appreciate that you value being self-motivated, punctual and responsive, ethical and responsible, and willing to try new things; these are all values that I strive to emulate.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ }
+}

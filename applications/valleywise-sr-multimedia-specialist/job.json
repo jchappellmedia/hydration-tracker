@@ -1,0 +1,132 @@
+{
+ "company": "Valleywise Health",
+ "company_file": "Valleywise",
+ "role": "Sr Multi Media Specialist",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   },
+   {
+    "label": "Demo Reel",
+    "url": "https://vimeo.com/1103241704"
+   },
+   {
+    "label": "Education Portfolio",
+    "url": "https://gaudy-motorcycle-974.notion.site/Education-Sample-Projects-23b59a1fbab18072a1bcefe76b2dc9a7"
+   }
+  ],
+  "summary": "Multi-media specialist with seven-plus years producing video, photography, and design for education and healthcare audiences. Delivered 200+ videos that reached millions on TV, paid social, and organic channels, including content for healthcare professionals. Advanced across Adobe Creative Suite, DaVinci Resolve, and AI workflows that cut production times in half.",
+  "jobs": [
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Led video and photography initiatives for school enrollment that drove paid and organic engagement by over 100%.",
+     "Increased engagement of all school websites by updating the photo and video across all channels.",
+     "Collaborated with key stakeholders to 7x video inventory while doubling overall quality.",
+     "Built AI content workflows that cut production times in half while keeping stories authentic."
+    ]
+   },
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Crafted cinematic corporate documentaries, interviews, and motion graphics in After Effects.",
+     "Accelerated 2x enrollment for a large charter school over one year by leading a video content initiative.",
+     "Maintained an organized video asset library in Frame.io and Dropbox, cutting search and retrieval time by over 50%.",
+     "Delivered 98% of projects on time and 92% within budget while directing teams of 5 to 20 people."
+    ]
+   },
+   {
+    "company": "Arizona State Legislature",
+    "title": "Video Producer",
+    "location": "Phoenix, AZ",
+    "dates": "Feb 2025 - June 2025",
+    "bullets": [
+     "Deployed RED and Canon cinema cameras daily; operated DJI Mavic 3 drone and gimbal systems.",
+     "Rebuilt color grading workflows to run 3x faster in DaVinci Resolve with Canon Log-3 and RED RGB Wide Gamut."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Produced content for healthcare professionals and the college of theology.",
+     "Delivered 200+ videos over two years that reached millions on TV, paid social, and organic channels.",
+     "Maximized over $1 million of in-house film gear; deployed grip equipment and Aputure lighting systems including 1200d, 600d, 300d, sky panels, and Fresnels.",
+     "Crafted cinematic interviews properly composed and professionally lit within a 15-person media team."
+    ]
+   },
+   {
+    "company": "American Leadership Academy",
+    "title": "Photography Teacher",
+    "location": "Queen Creek, AZ",
+    "dates": "Aug 2018 - Aug 2020",
+    "bullets": [
+     "Elevated 80+ beginner students to 95% camera operation proficiency through hands-on curriculum and assessment.",
+     "Stewarded a $30k inventory of photo equipment."
+    ]
+   }
+  ],
+  "skills": [
+   "Adobe Creative Suite (Premiere Pro, After Effects, Audition, Photoshop, Lightroom)",
+   "DaVinci Resolve",
+   "Final Cut Pro",
+   "Video Production (all stages)",
+   "Still Photography",
+   "Graphic Design (Photoshop, Canva)",
+   "Motion Graphics",
+   "Color Grading",
+   "A/V & Lighting Equipment (Aputure, grip)",
+   "Sony / RED / Canon Cameras",
+   "Budget & Inventory Tracking (Excel, Google Sheets)",
+   "Asset Management (Frame.io, Dropbox)",
+   "AI Production Workflows",
+   "Wrike / Notion / Trello / Microsoft Teams"
+  ],
+  "education": [
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   },
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   }
+  ],
+  "certifications": [
+   "Part 107 Drone Operator License",
+   "Google Digital Marketing & E-Commerce",
+   "HubSpot Inbound Marketing"
+  ],
+  "extra_sections": [],
+  "education_heading": "Education & Certifications"
+ },
+ "cover_letter": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "greeting": "Hello Valleywise Health Employee,",
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the Sr Multi Media Specialist at Valleywise Health. I feel I have a lot of immediate value I can bring to your organization.",
+   "Your team produces media that educates patients, staff, and the public. That is the kind of work I do best. At Grand Canyon Education, I produced content for healthcare professionals and delivered 200+ videos over two years that reached millions on TV, paid social, and organic channels. Today at Charter One, I lead video and photography for a school network, where my work drove engagement up over 100%. I handle every stage of production — filming, lighting, editing, color, photography, and design — and I manage gear, budgets, and asset libraries with care.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ }
+}

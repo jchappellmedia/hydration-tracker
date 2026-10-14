@@ -1,0 +1,107 @@
+{
+ "company": "Rico Roofing",
+ "company_file": "RicoRoofing",
+ "role": "Experienced Roofing Sales Representative",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "summary": "Business owner who sells in person and closes on results. Six years meeting homeowners, realtors, and home developers face to face, presenting work and earning the job. Held 5.0-star reviews for over a full year and delivered 98% of projects on time. Local to Mesa with reliable transportation.",
+  "jobs": [
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Met homeowners on site to film model homes with Blandford Homes and photograph properties for realtors.",
+     "Developed strong relationships with realtors, home developers, and construction companies; partnered with CEOs and executives on projects.",
+     "Dominated 5.0-star reviews on Google Business for over an entire year.",
+     "Generated my own leads, set revenue goals, tracked every number, and delivered 98% of projects on time."
+    ]
+   },
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Brainstormed with high-level executives to plan enrollment initiatives.",
+     "Led initiatives that drove paid and organic engagement by over 100%.",
+     "Created an initiative that raised ad click-through rates by over 200%."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Delivered 200+ projects over two years on tight deadlines within a 15-person team.",
+     "Synchronized with multiple departments with competing interests.",
+     "Crystallized scope of work to meet and exceed stakeholder goals."
+    ]
+   },
+   {
+    "company": "American Leadership Academy",
+    "title": "Photography Teacher",
+    "location": "Queen Creek, AZ",
+    "dates": "Aug 2018 - Aug 2020",
+    "bullets": [
+     "Mentored over 90 students per year; raised 80+ beginners to 95% proficiency through hands-on coaching.",
+     "Orchestrated a community art gallery night with student showcases and competition."
+    ]
+   }
+  ],
+  "skills": [
+   "In-Person Client Presentation",
+   "Relationship Building (Homeowners, Realtors, Developers)",
+   "Residential & Construction Client Experience",
+   "Self-Directed Schedule",
+   "Goal Setting & Weekly Tracking (Excel, Google Sheets)",
+   "Communication & Storytelling",
+   "Coachability",
+   "Reliable Transportation",
+   "Comfortable Working Outdoors"
+  ],
+  "education": [
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing",
+    "date": "Dec 2024"
+   },
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   }
+  ],
+  "certifications": [
+   "Completed a Spartan 5k on the 4th-hardest course in the country: 3,000 vertical feet in 100° heat."
+  ],
+  "extra_sections": [],
+  "education_heading": "Education & Highlights"
+ },
+ "cover_letter": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "greeting": "Hello Rico Roofing Employee,",
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the Experienced Roofing Sales Representative at Rico Roofing. I feel I have a lot of immediate value I can bring to your organization.",
+   "Your model puts a rep in a homeowner's living room with a real appointment. What happens in that room decides the sale, and that room is where I have worked for six years. I met homeowners on site to film model homes with Blandford Homes, photographed properties for realtors, and built lasting relationships with home developers and construction companies. I earned 5.0-star reviews for over a full year and delivered 98% of projects on time. Homeowners buy from someone they trust, and they refer the one who follows through.",
+   "Roofing would be a new product for me. Presenting to homeowners is not. I live in Mesa, so your customers are my neighbors, and I already speak the language of the trades. I also bring a Master's in Marketing and a decade behind a camera, so the reviews, referrals, and content that help a roofing company stand out are work I can contribute beyond my own numbers.",
+   "I appreciate that you value confident closers, professional presentation, and real solutions for homeowners; these are all values that I strive to emulate.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ }
+}

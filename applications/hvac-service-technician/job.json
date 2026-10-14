@@ -1,0 +1,97 @@
+{
+ "company": "HVAC Employer (not named in posting)",
+ "company_file": "HVAC",
+ "role": "HVAC Service Technician",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [],
+  "summary": "Changing careers into the skilled trades after seven years of self-directed field work. Comfortable on construction and industrial job sites from years of working on them, including ladders, attics, and roofs. Brings a 5.0-star customer service record, a clean driving record, and a habit of finishing: 98% of projects delivered on time and 92% within budget.",
+  "jobs": [
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Operator",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Ran every service call start to finish: scheduled the job, drove to the site, handled the customer, and completed the work.",
+     "Worked on construction, trades, and industrial job sites, including ladders, attics, rooftops, and active build environments.",
+     "Dominated 5.0-star reviews for over an entire year by showing up on time and treating customers right.",
+     "Tracked equipment inventory, quotes, and expenses in Excel and Google Sheets; maintained and hauled 50+ lb equipment packages daily."
+    ]
+   },
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Work independently across multiple school sites each week on a set schedule.",
+     "Troubleshoot technical problems on site and solve them without waiting for direction.",
+     "Coordinate daily with staff and leadership to keep projects moving."
+    ]
+   },
+   {
+    "company": "American Leadership Academy",
+    "title": "Photography Teacher",
+    "location": "Queen Creek, AZ",
+    "dates": "Aug 2018 - Aug 2020",
+    "bullets": [
+     "Stewarded a $30,000 equipment inventory, keeping it tracked, maintained, and accounted for.",
+     "Taught 90+ students a year hands-on; raised 80+ beginners to 95% proficiency on technical equipment.",
+     "Kept the shop environment safe, organized, and running day to day."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Operated and maintained over $1 million of technical equipment across daily field assignments.",
+     "Delivered 200+ projects over two years while coordinating with multiple departments."
+    ]
+   }
+  ],
+  "skills": [
+   "Customer Service and Jobsite Professionalism",
+   "Independent Field Work",
+   "Technical Troubleshooting",
+   "Equipment Maintenance and Inventory Control",
+   "Ladders, Attics, Roofs, and Crawl Spaces",
+   "Lifting 50–75 lbs",
+   "Valid Driver License and Clean Driving Record",
+   "Scheduling and Route Planning",
+   "Training and Assisting Teammates",
+   "Excel and Google Sheets"
+  ],
+  "education": [
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing",
+    "date": "Dec 2024"
+   },
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   }
+  ],
+  "certifications": [
+   "FAA Part 107 Remote Pilot License"
+  ],
+  "extra_sections": [],
+  "education_heading": "Education"
+ },
+ "cover_letter": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [],
+  "greeting": "Hello [Company] Employee,",
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the HVAC Service Technician position at [Company]. I am making a career change into the skilled trades, and I want to be straight with you about where I stand.",
+   "I do not have three years of HVAC experience. What I have is seven years of running my own field service business, and the habits that came with it. I scheduled my own jobs, drove to the site, handled the customer at the door, and finished the work. I held 5.0-star reviews for over an entire year and delivered 98% of my projects on time. I have spent years working on construction, trades, and industrial job sites, so ladders, attics, rooftops, and hauling 50 to 75 pounds of gear are normal parts of my day. I stewarded a $30,000 equipment inventory as a teacher and kept $1 million of technical equipment running in the field at Grand Canyon Education. I also spent two years teaching 90+ students a year on technical equipment, which is the same patience your posting asks for when assisting other technicians. I learn technical systems fast, I show up, and I would come in ready to work and earn the certifications this trade requires.",
+   "I appreciate that you value getting the job done right the first time and creating positive experiences for customers; these are all values that I strive to emulate.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ }
+}

@@ -1,0 +1,118 @@
+{
+ "company": "Vertex Education",
+ "company_file": "Vertex",
+ "role": "Director of Marketing",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "summary": "Marketing leader with a Master's in Marketing Analytics and seven years inside education. Built campaigns that doubled charter school enrollment, raised ad click-through rates by over 200%, and drove engagement up 20x. Owns budgets, vendors, and creative teams, and ties every investment to a measured result.",
+  "jobs": [
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Created and led a video initiative that raised click-through rates for running ads by over 200%.",
+     "Led a social media content initiative that drove 20x more engagement than standard content.",
+     "Brainstormed with high-level executives to plan the role video and photography play in enrollment initiatives.",
+     "Increased engagement across all school websites and managed projects in Wrike, Notion, and Google Workspace."
+    ]
+   },
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Accelerated 2x enrollment for a large charter school over one year by leading a video content initiative.",
+     "Set revenue goals and tracked expenses in Excel and Google Sheets; managed budgets and directed teams of 5 to 20 people.",
+     "Generated leads with Facebook ads and organic outreach; integrated call-to-action elements with the Facebook pixel to monitor ad performance.",
+     "Built customer stories for construction and remodeling clients, including content on how a bath remodel company cares for Veterans."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Catalyzed an alumni campaign shown during NCAA basketball games that lifted engagement.",
+     "Delivered 200+ videos over two years that reached millions on TV, paid social, and organic channels.",
+     "Scripted original content with the marketing team at one of the largest marketing agencies in the country.",
+     "Crystallized scope of work to ensure cross-department stakeholder goals were met and exceeded."
+    ]
+   },
+   {
+    "company": "American Leadership Academy",
+    "title": "Photography Teacher",
+    "location": "Queen Creek, AZ",
+    "dates": "Aug 2018 - Aug 2020",
+    "bullets": [
+     "Amplified the program's social media accounts, leading to a 20% increase in enrollment the following year.",
+     "Stewarded a $30k equipment inventory and mentored over 90 students per year."
+    ]
+   }
+  ],
+  "skills": [
+   "Campaign Strategy & Optimization",
+   "Marketing Analytics",
+   "Paid Media (Meta Ads, Facebook Pixel)",
+   "Content Strategy & Customer Stories",
+   "Brand Positioning",
+   "Budget & Vendor Management",
+   "Team Leadership (5–20)",
+   "Inbound Marketing (HubSpot Certified)",
+   "E-Commerce Marketing (Google Certified)",
+   "Video & Creative Production",
+   "Wrike / Notion / Trello / Microsoft Teams / Google Workspace"
+  ],
+  "education": [
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   },
+   {
+    "school": "Grand Canyon University",
+    "degree": "MBA coursework",
+    "date": "2022 – present"
+   },
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   }
+  ],
+  "certifications": [
+   "HubSpot Inbound Marketing",
+   "Google Digital Marketing & E-Commerce",
+   "WGU Marketing Analytics"
+  ],
+  "extra_sections": [],
+  "education_heading": "Education & Certifications"
+ },
+ "cover_letter": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "greeting": "Hello Vertex Education Employee,",
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the Director of Marketing at Vertex Education. I feel I have a lot of immediate value I can bring to your organization.",
+   "You sell services to schools and school systems. I have spent seven years working inside them. At Charter One I sit with executives to plan enrollment strategy, and my work raised ad click-through rates by over 200% and drove 20x the engagement of standard content. Through Lightbox Digital I helped a large charter school double enrollment in a single year. I have also taught in a charter classroom and produced for one of the largest education marketing agencies in the country. I know what school leaders care about, how they buy, and which proof points move them, because I have been on their side of the table.",
+   "I hold a Master's in Marketing with a specialization in Marketing Analytics, and I run campaigns the way this role asks: set the target, measure the result, move the budget toward what works. I also build the customer stories and case studies that make a services brand credible, which is the work I do every week.",
+   "I appreciate that you value diverse thinkers, team players, and smart risk takers who make a difference through education; these are all values that I strive to emulate.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ }
+}

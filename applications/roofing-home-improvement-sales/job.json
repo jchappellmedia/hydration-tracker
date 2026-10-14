@@ -1,0 +1,102 @@
+{
+ "company": "Discount Pro Home",
+ "company_file": "RoofingSales",
+ "role": "Roofing & Home Improvement Sales",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "summary": "Business owner who wins on results and knows the construction world. Generated my own leads for six years, held 5.0-star reviews for over a full year, and built brand presence for construction and home improvement companies. Teachable, competitive, and used to eating only what I kill.",
+  "jobs": [
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Generated leads by running Facebook ads and organic media outreach; closed new business through Google Business.",
+     "Worked with construction companies, home developers, realtors, and a bath remodel company; built strong lasting relationships.",
+     "Dominated 5.0-star reviews on Google Business for over an entire year.",
+     "Set revenue goals, tracked the numbers weekly, and delivered 98% of projects on time."
+    ]
+   },
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Led initiatives that drove paid and organic engagement by over 100%.",
+     "Created an initiative that raised ad click-through rates by over 200%."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Delivered 200+ projects over two years on tight deadlines within a 15-person team.",
+     "Synchronized with multiple departments with competing interests."
+    ]
+   },
+   {
+    "company": "American Leadership Academy",
+    "title": "Photography Teacher",
+    "location": "Queen Creek, AZ",
+    "dates": "Aug 2018 - Aug 2020",
+    "bullets": [
+     "Mentored over 90 students per year; raised 80+ beginners to 95% proficiency through hands-on coaching.",
+     "Orchestrated a community art gallery night with student showcases and competition."
+    ]
+   }
+  ],
+  "skills": [
+   "Door-Opening Communication & Storytelling",
+   "Lead Generation (Facebook Ads, Organic Outreach)",
+   "Client Relationships (Construction, Real Estate, Home Improvement)",
+   "Self-Directed Schedule",
+   "Goal Setting & Weekly Tracking (Excel, Google Sheets)",
+   "Coachability & Mentoring",
+   "Reliable Transportation"
+  ],
+  "education": [
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing",
+    "date": "Dec 2024"
+   },
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   }
+  ],
+  "certifications": [
+   "Completed a Spartan 5k on the 4th-hardest course in the country: 3,000 vertical feet in 100° heat."
+  ],
+  "extra_sections": [],
+  "education_heading": "Education & Highlights"
+ },
+ "cover_letter": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "greeting": "Hello Discount Pro Home Employee,",
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the Roofing & Home Improvement Sales position at Discount Pro Home. I feel I have a lot of immediate value I can bring to your organization.",
+   "Your ad asks for teachable, hungry, and not afraid of work. That is me. I ran my own company for six years on straight results — no salary, no safety net. I generated my own leads, held 5.0-star reviews for over a full year, and worked with construction companies, home developers, and remodelers, so I already speak the language of your customers. I finished a Spartan race climbing 3,000 vertical feet in 100-degree heat. Knocking doors in the Arizona sun does not scare me. I am ready for the one-day challenge.",
+   "I appreciate that you value coachability, commitment, and taking care of your people; these are all values that I strive to emulate.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ }
+}

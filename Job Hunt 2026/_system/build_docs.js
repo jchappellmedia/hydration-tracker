@@ -134,6 +134,7 @@ function resumeHtml(v) {
 </header>
 <p class="summary">${inlineHtml(R.summary)}</p>
 <section><h2>Experience</h2>${jobs}</section>
+${(R.extra_sections || []).map(x => `<section><h2>${esc(x.heading)}</h2>${(x.lines || []).map(l => `<div class="edu-line">${inlineHtml(l)}</div>`).join('')}</section>`).join('')}
 <section class="skills"><h2>Skills</h2><p>${(Array.isArray(R.skills) ? R.skills : [R.skills]).map(esc).join(' &bull; ')}</p></section>
 <section><h2>${esc(R.education_heading || 'Education & Certifications')}</h2>${edu}${certs}</section>
 </body></html>`;
@@ -148,10 +149,11 @@ async function fitResume(page) {
   };
   const SAFE = PAGE_H - 6;
   if (await measure(0) > SAFE) return { status: 'OVERFLOW', t: 0 };
-  let lo = 0, hi = 1;
-  if (await measure(1) <= SAFE) {
-    const h = await measure(1);
-    return { status: h < PAGE_H * 0.9 ? 'UNDERFILL' : 'OK', t: 1, fill: +(h / PAGE_H).toFixed(3) };
+  const TMAX = 1.4; // past 1.0 the type grows a little, which keeps short resumes from looking thin
+  let lo = 0, hi = TMAX;
+  if (await measure(TMAX) <= SAFE) {
+    const h = await measure(TMAX);
+    return { status: h < PAGE_H * 0.9 ? 'UNDERFILL' : 'OK', t: TMAX, fill: +(h / PAGE_H).toFixed(3) };
   }
   for (let k = 0; k < 14; k++) {
     const mid = (lo + hi) / 2;
@@ -205,6 +207,10 @@ function resumeDocx(t) {
       numbering: { reference: 'sq', level: 0 }, spacing: { after: tw(lerp(0.5, 3, t)), line },
       indent: { left: 280, hanging: 280 }, tabStops: [{ type: D.TabStopType.LEFT, position: 280 }],
       children: inlineRuns(b, body) })));
+  });
+  (R.extra_sections || []).forEach(x => {
+    kids.push(H(x.heading));
+    (x.lines || []).forEach(l => kids.push(new D.Paragraph({ spacing: { after: tw(lerp(1, 3, t)) }, children: inlineRuns(l, body) })));
   });
   kids.push(H('Skills'));
   kids.push(new D.Paragraph({ spacing: { line: Math.round(line * 1.05) },
@@ -331,7 +337,7 @@ function referenceHtml() {
 <h1>${esc(job.company)}</h1><p class="sub">${esc(job.role)}</p>
 <a class="apply" href="${esc(F.apply_url)}">Apply for this job &rarr;<span>${esc(F.apply_url)}</span></a>
 <h2>At a glance</h2><table>${facts}</table>
-${(F.why || []).length ? `<h3>Why it made today's top five</h3><ul>${F.why.map(x => `<li>${inlineHtml(x)}</li>`).join('')}</ul>` : ''}
+${(F.why || []).length ? `<h3>${esc(F.why_heading || "Why it made today's top five")}</h3><ul>${F.why.map(x => `<li>${inlineHtml(x)}</li>`).join('')}</ul>` : ''}
 ${(F.gaps || []).length ? `<h3>Gaps to be ready for</h3><ul>${F.gaps.map(x => `<li>${inlineHtml(x)}</li>`).join('')}</ul>` : ''}
 <h2>Job description (word for word)</h2>
 <p class="note">${inlineHtml(F.jd_source || '')}</p>
@@ -378,7 +384,7 @@ function referenceDocx() {
       new D.TableCell({ width: { size: W2, type: D.WidthType.DXA }, borders: { top: { style: D.BorderStyle.NONE }, left: { style: D.BorderStyle.NONE }, right: { style: D.BorderStyle.NONE }, bottom: { style: D.BorderStyle.SINGLE, size: 2, color: 'E3E3E3' } },
         children: [new D.Paragraph({ children: inlineRuns(String(b), body) })] }),
     ] })) }));
-  if ((F.why || []).length) { k.push(H3("Why it made today's top five")); F.why.forEach(x => k.push(LI(inlineRuns(x, body)))); }
+  if ((F.why || []).length) { k.push(H3(F.why_heading || "Why it made today's top five")); F.why.forEach(x => k.push(LI(inlineRuns(x, body)))); }
   if ((F.gaps || []).length) { k.push(H3('Gaps to be ready for')); F.gaps.forEach(x => k.push(LI(inlineRuns(x, body)))); }
   k.push(H2('Job description (word for word)'));
   if (F.jd_source) k.push(P(F.jd_source, { size: 18, color: '555555' }));
@@ -471,11 +477,11 @@ function sofficePages(docxFile) {
       // Carlito (metric-compatible with Calibri) stands in for Calibri, so Word matches.
       const docxFile = path.join(OUT, NAMES.resume + '.docx');
       const tryT = async t => { fs.writeFileSync(docxFile, await D.Packer.toBuffer(resumeDocx(t))); return sofficePages(docxFile); };
-      let tw = 0, wp = await tryT(1.5);
+      let tw = 0, wp = await tryT(1.8);
       if (wp === null) { tw = Math.max(0, fit.t - 0.1); wp = await tryT(tw); }
-      else if (wp <= 1) tw = 1.5;
+      else if (wp <= 1) tw = 1.8;
       else {
-        let lo = 0, hi = 1.5;
+        let lo = 0, hi = 1.8;
         if ((await tryT(0)) > 1) { report.resume_fit.status = 'OVERFLOW'; hi = 0; }
         for (let k = 0; k < 6 && hi > 0; k++) { const mid = (lo + hi) / 2; if ((await tryT(mid)) <= 1) lo = mid; else hi = mid; }
         tw = Math.max(0, lo - 0.03); wp = await tryT(tw);

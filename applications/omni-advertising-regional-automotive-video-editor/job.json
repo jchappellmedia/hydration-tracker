@@ -1,0 +1,136 @@
+{
+ "company": "Omni Advertising",
+ "company_file": "Omni",
+ "role": "Regional Automotive Video Editor",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   },
+   {
+    "label": "Demo Reel",
+    "url": "https://vimeo.com/1103241704"
+   },
+   {
+    "label": "Portfolio",
+    "url": "https://lightbox-digital.com/"
+   }
+  ],
+  "summary": "Video editor with a Master's in Marketing who turns ideas into revenue-driving content. Delivered 200+ broadcast and digital videos that reached millions across TV, paid social, and organic channels. Expert in Adobe Premiere, After Effects, and DaVinci Resolve, with AI workflows that cut production times in half.",
+  "jobs": [
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Led video initiatives that drove paid and organic engagement by over 100%.",
+     "Built AI content workflows that cut production times in half while keeping stories authentic.",
+     "Created a video initiative that raised click-through rates for running ads by over 200%.",
+     "Led a social media content initiative that drove 20x more engagement than standard content."
+    ]
+   },
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Master of DaVinci Resolve, Final Cut Pro, Adobe Premiere, After Effects, Audition, Photoshop, and Lightroom.",
+     "Crafted cinematic corporate documentaries and interviews with motion graphics built in After Effects.",
+     "Slashed creative production times by 30% using AI video tools such as ElevenLabs, Runway, and the built-in Adobe and DaVinci AI tools.",
+     "Delivered 98% of projects on time and 92% within budget while directing teams of 5 to 20 people."
+    ]
+   },
+   {
+    "company": "Arizona State Legislature",
+    "title": "Video Producer",
+    "location": "Phoenix, AZ",
+    "dates": "Feb 2025 - June 2025",
+    "bullets": [
+     "Rebuilt color grading workflows to run 3x faster using DaVinci Resolve with Canon Log-3 and RED RGB Wide Gamut.",
+     "Captured high-end political videos and documented figures such as Robert F. Kennedy Jr. and the AZ Speaker of the House.",
+     "Synchronized with communications teams across legislative chambers to execute projects on tight timelines."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Produced an alumni campaign shown during NCAA basketball games that lifted engagement.",
+     "Delivered 200+ videos over two years that reached millions on TV, paid social, and organic channels.",
+     "Represented one of the largest marketing agencies in the country and directed higher-end brand shoots each quarter.",
+     "Captured content on Sony FX3 and FX6 systems and maximized over $1 million of in-house film gear."
+    ]
+   },
+   {
+    "company": "American Leadership Academy",
+    "title": "Photography Teacher",
+    "location": "Queen Creek, AZ",
+    "dates": "Aug 2018 - Aug 2020",
+    "bullets": [
+     "Elevated 80+ beginner students to 95% camera operation proficiency through hands-on curriculum.",
+     "Grew the program's social media accounts, which raised enrollment 20% the following year."
+    ]
+   }
+  ],
+  "skills": [
+   "Adobe Premiere Pro",
+   "After Effects",
+   "Audition",
+   "Photoshop",
+   "Lightroom",
+   "DaVinci Resolve",
+   "Final Cut Pro",
+   "Motion Graphics",
+   "Color Grading (S-Log3, Canon Log-3, RED)",
+   "Sound Design",
+   "Storytelling",
+   "Cinematography",
+   "AI Workflows (Runway, OpenClaw, Kling, Veo, Midjourney, ElevenLabs, Claude, ChatGPT)",
+   "Sony FX Cameras",
+   "Frame.io",
+   "Wrike / Notion / Trello"
+  ],
+  "education": [
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   },
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   }
+  ],
+  "certifications": [
+   "Google Digital Marketing & E-Commerce",
+   "HubSpot Inbound Marketing",
+   "Part 107 Drone Operator License"
+  ],
+  "extra_sections": [],
+  "education_heading": "Education & Certifications"
+ },
+ "cover_letter": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "greeting": "Hello Omni Advertising Employee,",
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the Regional Automotive Video Editor at Omni Advertising. I feel I have a lot of immediate value I can bring to your organization.",
+   "You drive sales for auto dealers with full-funnel campaigns, and I edit high-quality broadcast and digital content at a fast pace. At Grand Canyon Education, I delivered 200+ videos that reached millions on TV, paid social, and organic channels, including an alumni campaign shown during NCAA basketball games. I am an expert in Adobe Premiere, After Effects, and motion graphics, and I use AI workflows that cut production times in half. I know how to balance strong storytelling with the fast turnarounds your dealer campaigns demand.",
+   "I appreciate that you value creativity and collaboration; these are all values that I strive to emulate.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ }
+}

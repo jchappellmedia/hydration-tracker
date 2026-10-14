@@ -1,0 +1,109 @@
+{
+ "company": "WhyGen Solar",
+ "company_file": "WhyGen",
+ "role": "Solar Sales Representative",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "summary": "Business owner who wins on results. Generated leads with Facebook ads, closed $10k in new business by optimizing Google Business, and held 5.0-star reviews for over a full year. Six years of running my own company built the communication, discipline, and follow-through it takes to close.",
+  "jobs": [
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Generated leads by running Facebook ads and organic media outreach.",
+     "Closed $10k in new business by optimizing Google Business.",
+     "Dominated 5.0-star reviews on Google Business for over an entire year.",
+     "Built strong relationships with realtors, home developers, and CEOs; delivered 98% of projects on time."
+    ]
+   },
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Led initiatives that drove paid and organic engagement by over 100%.",
+     "Created an initiative that raised ad click-through rates by over 200%.",
+     "Brainstormed with high-level executives to plan enrollment initiatives."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Delivered 200+ projects over two years that reached millions on TV, paid social, and organic channels.",
+     "Synchronized with multiple departments with competing interests.",
+     "Crystallized scope of work to meet and exceed stakeholder goals."
+    ]
+   },
+   {
+    "company": "American Leadership Academy",
+    "title": "Photography Teacher",
+    "location": "Queen Creek, AZ",
+    "dates": "Aug 2018 - Aug 2020",
+    "bullets": [
+     "Mentored over 90 students per year; raised 80+ beginners to 95% proficiency through hands-on coaching.",
+     "Grew the program's social media accounts, raising enrollment 20% the following year.",
+     "Orchestrated a community art gallery night with student showcases and competition."
+    ]
+   }
+  ],
+  "skills": [
+   "Lead Generation (Facebook Ads)",
+   "Client Relationships",
+   "Google Business Optimization",
+   "Communication & Storytelling",
+   "Self-Directed Schedule & Project Management",
+   "Revenue Goal Setting & Tracking (Excel, Google Sheets)",
+   "Marketing Analytics",
+   "Coaching & Mentoring",
+   "Wrike / Notion / Google Workspace"
+  ],
+  "education": [
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   },
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   }
+  ],
+  "certifications": [
+   "Google Digital Marketing & E-Commerce",
+   "HubSpot Inbound Marketing",
+   "Part 107 Drone Operator License"
+  ],
+  "extra_sections": [],
+  "education_heading": "Education & Certifications"
+ },
+ "cover_letter": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "greeting": "Hello WhyGen Solar Employee,",
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the Solar Sales Representative at WhyGen Solar. I feel I have a lot of immediate value I can bring to your organization.",
+   "You want people who bet on themselves. I did — I built my own company from zero and ran it for six years. I generated my own leads with Facebook ads, closed $10k in new business by optimizing Google Business, and held 5.0-star reviews for over a full year. Every one of those results came from talking with homeowners, realtors, and executives, earning trust, and following through. I know how to run my own schedule and still hit the numbers, because nobody paid me if I didn't.",
+   "I appreciate that you value coachability, competitiveness, and growth; these are all values that I strive to emulate.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ }
+}

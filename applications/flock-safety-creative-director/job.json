@@ -1,0 +1,129 @@
+{
+ "company": "Flock Safety",
+ "company_file": "FlockSafety",
+ "role": "Creative Director (Brand, Film & Motion)",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "Portfolio",
+    "url": "https://lightbox-digital.com/"
+   },
+   {
+    "label": "Demo Reel",
+    "url": "https://vimeo.com/1103241704"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "summary": "Filmmaker and producer with seven-plus years directing brand films, campaigns, and documentary storytelling from concept through final delivery. Directs teams of 5 to 20 and has delivered 200+ videos that reached millions on TV, paid social, and organic channels. Owns the full post lifecycle, from editing pace and color grading to motion graphics and finishing, and builds the systems that make a creative team faster.",
+  "jobs": [
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Directed cinematic brand documentaries and interviews from concept through final delivery.",
+     "Commanded teams of 5 to 20 and partnered with CEOs and executives on creative direction.",
+     "Built an asset library in Frame.io and Dropbox that cut retrieval time over 50%, and a storyboard process that cut revision back-and-forth over 50%.",
+     "Graded log footage in DaVinci Resolve and cut creative production times 30% with AI-assisted workflows."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Directed cinematography for higher-end brand shoots each quarter within a 15-person media team.",
+     "Delivered 200+ videos over two years that reached millions on TV, paid social, and organic channels.",
+     "Architected an online stock footage library and maximized over $1 million of in-house film gear.",
+     "Catalyzed an alumni campaign shown during NCAA basketball broadcasts, lifting engagement."
+    ]
+   },
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Created and led a social content initiative that earned more than 20x the engagement of standard content.",
+     "Created and led a video initiative that raised click-through rates for running ads by over 200%.",
+     "Built AI content workflows that cut production times in half while keeping stories authentic.",
+     "Worked with executives to turn business goals into content plans across every school channel."
+    ]
+   },
+   {
+    "company": "Arizona State Legislature",
+    "title": "Video Producer",
+    "location": "Phoenix, AZ",
+    "dates": "Feb 2025 - June 2025",
+    "bullets": [
+     "Rebuilt color grading workflows to run 3x faster in DaVinci Resolve.",
+     "Documented prominent figures including Robert F. Kennedy Jr. and the AZ Speaker of the House."
+    ]
+   }
+  ],
+  "skills": [
+   "Creative Direction",
+   "Brand Film & Documentary",
+   "Campaign Development",
+   "Cinematography & Lighting",
+   "Editing & Pacing (Premiere Pro, DaVinci Resolve, Final Cut Pro)",
+   "Color Grading",
+   "Motion Graphics (After Effects)",
+   "Audio Post (Audition)",
+   "Team Leadership (5–20) & Mentoring",
+   "Production Systems & Asset Pipelines (Frame.io)",
+   "AI-Assisted Production"
+  ],
+  "education": [
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   },
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   }
+  ],
+  "certifications": [
+   "Google Digital Marketing & E-Commerce",
+   "HubSpot Inbound Marketing",
+   "Part 107 Drone Operator License"
+  ],
+  "extra_sections": [],
+  "education_heading": "Education & Certifications"
+ },
+ "cover_letter": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "Portfolio",
+    "url": "https://lightbox-digital.com/"
+   },
+   {
+    "label": "Demo Reel",
+    "url": "https://vimeo.com/1103241704"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "greeting": "Hello Flock Safety Employee,",
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the Creative Director position at Flock Safety. I feel I have a lot of immediate value I can bring to your organization.",
+   "Your posting says this is not a hands-off review role. That is the part that interests me. I have spent seven years shaping the concept and then staying in the edit: I direct cinematic brand documentaries and interviews from concept through final delivery, command teams of 5 to 20, and partner with CEOs and executives on creative direction. At Grand Canyon Education I directed cinematography for higher-end brand shoots each quarter inside a 15-person media team and delivered 200+ videos that reached millions on TV, paid social, and organic channels. I also build the systems your posting asks for. I architected an asset library in Frame.io that cut retrieval time over 50%, a storyboard process that cut revision back-and-forth over 50%, a color grading pipeline that runs 3x faster in DaVinci Resolve, and AI-assisted workflows that cut production time in half without making the work feel synthetic. Turning a complicated subject into something a person actually feels is the work I like most, and I have done it for construction crews, a bath remodeler caring for veterans, and a university reaching alumni on national broadcast.",
+   "I appreciate that you value diverse perspectives working together with mutual respect, and building technology that keeps communities safe; these are all values that I strive to emulate.",
+   "Willing to relocate.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ }
+}

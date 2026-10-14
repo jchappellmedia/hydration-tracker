@@ -1,0 +1,115 @@
+{
+ "company": "Tatum Management Group",
+ "company_file": "Tatum",
+ "role": "Marketing Director",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "summary": "Marketing leader with a Master's in Marketing who transforms ideas into revenue-driving campaigns. Helped double enrollment rates with content, drove paid and organic engagement up over 100%, and raised ad click-through rates by 200%. Blends marketing analytics with cutting-edge AI workflows to deliver measurable results.",
+  "jobs": [
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Led video initiatives that drove paid and organic engagement by over 100%.",
+     "Created and led a video initiative that raised click-through rates for running ads by over 200%.",
+     "Led a social media content initiative that drove 20x more engagement than standard content.",
+     "Brainstormed with high-level executives to plan the role video and photography play in enrollment initiatives."
+    ]
+   },
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Accelerated 2x enrollment for a large charter school over one year by leading a video content initiative.",
+     "Amplified the business with organic media outreach and Facebook ads; generated leads and closed $10k by optimizing Google Business.",
+     "Integrated call-to-action elements on site with the Facebook pixel to monitor ad performance.",
+     "Set revenue goals and tracked expenses in Excel, Google Sheets, and AI while directing teams of 5 to 20 people."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Catalyzed an alumni campaign shown during NCAA basketball games, lifting engagement.",
+     "Delivered 200+ videos over two years that reached millions on TV, paid social, and organic channels.",
+     "Scripted original organic content with the marketing team at one of the largest marketing agencies in the country.",
+     "Crystallized scope of work to meet and exceed cross-department stakeholder goals."
+    ]
+   },
+   {
+    "company": "American Leadership Academy",
+    "title": "Photography Teacher",
+    "location": "Queen Creek, AZ",
+    "dates": "Aug 2018 - Aug 2020",
+    "bullets": [
+     "Amplified the program's social media accounts, leading to a 20% increase in enrollment the following year.",
+     "Mentored over 90 students per year and orchestrated a community art gallery night."
+    ]
+   }
+  ],
+  "skills": [
+   "Meta / Facebook Ads",
+   "Facebook Pixel",
+   "Google Business Optimization",
+   "Marketing Analytics",
+   "Inbound Marketing (HubSpot Certified)",
+   "E-Commerce Marketing (Google Certified)",
+   "Excel & Google Sheets",
+   "AI Workflows (Claude, ChatGPT, OpenClaw, Runway, Midjourney, Google Veo)",
+   "Storytelling & Content Strategy",
+   "Video Production",
+   "Adobe Creative Suite",
+   "Canva",
+   "Wrike / Notion / Trello / Google Workspace"
+  ],
+  "education": [
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   },
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   }
+  ],
+  "certifications": [
+   "Google Digital Marketing & E-Commerce",
+   "HubSpot Inbound Marketing",
+   "WGU Marketing Analytics",
+   "Part 107 Drone Operator License"
+  ],
+  "extra_sections": [],
+  "education_heading": "Education & Certifications"
+ },
+ "cover_letter": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "greeting": "Hello Tatum Management Group Employee,",
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the Marketing Director at Tatum Management Group. I feel I have a lot of immediate value I can bring to your organization.",
+   "You run performance-driven campaigns across e-commerce brands and media that reach millions. That is where I work best. I hold a Master's in Marketing with a specialization in Marketing Analytics, plus Google's Digital Marketing and E-Commerce certification. At Charter One, I created a video initiative that raised ad click-through rates by over 200% and a social content initiative that drove 20x more engagement than standard content. As owner of Lightbox Digital, I grew the business with Facebook ads and organic outreach, and I helped double enrollment for a large charter school through a content initiative. I set KPIs, track them in dashboards, and let the data guide creative decisions.",
+   "I appreciate that you value innovation, collaboration, and mission-driven work; these are all values that I strive to emulate.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ }
+}

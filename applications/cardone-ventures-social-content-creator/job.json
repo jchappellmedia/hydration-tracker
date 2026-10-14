@@ -1,0 +1,126 @@
+{
+ "company": "Cardone Ventures",
+ "company_file": "CardoneVentures",
+ "role": "Social Content Creator",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "Intro Video",
+    "url": "https://vimeo.com/1109495649"
+   },
+   {
+    "label": "Portfolio",
+    "url": "https://lightbox-digital.com/"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "summary": "Filmmaker and editor with seven-plus years capturing and cutting content for brands, executives, and campaigns. Delivered 200+ videos that reached millions on TV, paid social, and organic channels, and built social initiatives that raised click-through rates over 200%. Owns projects end to end, from shot list through capture, edit, and final delivery, and delivers 98% of projects on time.",
+  "jobs": [
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Led video initiatives that drove paid and organic engagement by over 100%.",
+     "Created and led a social content initiative that earned more than 20x the engagement of standard content.",
+     "Created and led a video initiative that raised click-through rates for running ads by over 200%.",
+     "Built AI content workflows that cut production times in half while keeping stories authentic."
+    ]
+   },
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Crafted cinematic corporate documentaries and interviews, properly composed and professionally lit.",
+     "Partnered with CEOs and executives on projects while directing teams of 5 to 20.",
+     "Maintained an organized library of video assets in Frame.io and Dropbox, cutting search and retrieval time by over 50%.",
+     "Architected motion graphics in After Effects and cut creative production times 30% with AI editing tools."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Delivered 200+ videos over two years that reached millions on TV, paid social, and organic channels.",
+     "Catalyzed an alumni campaign shown during NCAA basketball broadcasts, lifting engagement.",
+     "Captured on Sony FX3 and FX6 systems; deployed grip and Aputure lighting including 1200d, 600d, 300d, sky panels, and Fresnels.",
+     "Directed cinematography for higher-end brand shoots each quarter and led within a 15-person media team."
+    ]
+   },
+   {
+    "company": "Arizona State Legislature",
+    "title": "Video Producer",
+    "location": "Phoenix, AZ",
+    "dates": "Feb 2025 - June 2025",
+    "bullets": [
+     "Deployed RED and Canon cinema cameras daily; piloted drone and gimbal systems.",
+     "Documented prominent figures including Robert F. Kennedy Jr. and the AZ Speaker of the House.",
+     "Rebuilt color grading workflows to run 3x faster in DaVinci Resolve."
+    ]
+   }
+  ],
+  "skills": [
+   "Videography & Cinematography",
+   "Editing (Premiere Pro, DaVinci Resolve, After Effects, Audition, Final Cut Pro)",
+   "Short-Form & Platform-Native Content",
+   "Lighting & Audio",
+   "Color Grading",
+   "Motion Graphics",
+   "Photography (Photoshop, Lightroom)",
+   "Multi-Camera Systems (Sony FX, Canon, RED)",
+   "Drone & Gimbal (FAA Part 107)",
+   "Asset Management (Frame.io, Dropbox)",
+   "Project Management (Wrike, Notion, Trello, Workamajig)",
+   "AI-Assisted Production"
+  ],
+  "education": [
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   },
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   }
+  ],
+  "certifications": [
+   "Part 107 Drone Operator License",
+   "Google Digital Marketing & E-Commerce",
+   "HubSpot Inbound Marketing"
+  ],
+  "extra_sections": [],
+  "education_heading": "Education & Certifications"
+ },
+ "cover_letter": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   },
+   {
+    "label": "Intro Video",
+    "url": "https://vimeo.com/1109495649"
+   }
+  ],
+  "greeting": "Hello Cardone Ventures Employee,",
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the Social Content Creator position at Cardone Ventures. I feel I have a lot of immediate value I can bring to your organization.",
+   "Your posting asks for someone confident behind the camera and in the edit. That is the work I have done for seven years. At Grand Canyon Education I delivered 200+ videos over two years that reached millions on TV, paid social, and organic channels. At Charter One I created and led a video initiative that raised click-through rates for running ads by over 200%, and a social content initiative that earned more than 20x the engagement of standard content. I shoot with the final edit in mind, then cut the footage myself. I have partnered with CEOs and executives on projects, so filming leadership is familiar ground. I keep assets organized in Frame.io and Dropbox, which cut search and retrieval time by over 50% and let other editors find what they need. I also build AI content workflows that cut production times in half, and that speed matters when same-day event content is due.",
+   "I appreciate that you value being inspirational, accountable, transparent, disciplined, aligned, and results oriented; these are all values that I strive to emulate.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ }
+}

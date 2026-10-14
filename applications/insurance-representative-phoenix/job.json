@@ -1,0 +1,113 @@
+{
+ "company": "Unnamed Employer (Indeed job 406813)",
+ "company_file": "InsuranceRep",
+ "role": "Insurance Representative",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "summary": "Business owner with a Master's in Marketing who builds client relationships on trust and results. Ran my own company for six years: generated my own leads, set revenue goals, tracked finances, and held 5.0-star reviews for over a full year. Goal-driven and self-directed, with the discipline and urgency it takes to hit weekly numbers.",
+  "jobs": [
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Built strong relationships with realtors, home developers, CEOs, and other executives.",
+     "Generated leads through Facebook ads and organic outreach; closed new business by optimizing Google Business.",
+     "Dominated 5.0-star reviews on Google Business for over an entire year.",
+     "Managed company finances with Excel and Google Sheets to set revenue goals and track expenses; delivered 98% of projects on time."
+    ]
+   },
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Brainstormed with high-level executives to plan enrollment initiatives.",
+     "Led initiatives that drove paid and organic engagement by over 100%.",
+     "Created an initiative that raised ad click-through rates by over 200%."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Synchronized with multiple departments with competing interests.",
+     "Crystallized scope of work to ensure cross-department stakeholder goals were met and exceeded.",
+     "Delivered 200+ projects over two years within a 15-person team."
+    ]
+   },
+   {
+    "company": "American Leadership Academy",
+    "title": "Photography Teacher",
+    "location": "Queen Creek, AZ",
+    "dates": "Aug 2018 - Aug 2020",
+    "bullets": [
+     "Mentored over 90 students per year; raised 80+ beginners to 95% proficiency through hands-on coaching and assessment.",
+     "Orchestrated a community art gallery night with student showcases and competition."
+    ]
+   }
+  ],
+  "skills": [
+   "Client Relationship Building",
+   "Lead Generation & Prospecting (Facebook Ads, Organic Outreach)",
+   "Client Service & Retention",
+   "Revenue Goal Setting & Expense Tracking (Excel, Google Sheets)",
+   "Marketing Analytics",
+   "Communication & Storytelling",
+   "Self-Directed Schedule Management",
+   "Coaching & Mentoring",
+   "Community Engagement",
+   "Google Workspace / Notion / Wrike"
+  ],
+  "education": [
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   },
+   {
+    "school": "Grand Canyon University",
+    "degree": "MBA coursework",
+    "date": "2022 – present (on hold)"
+   },
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   }
+  ],
+  "certifications": [
+   "Google Digital Marketing & E-Commerce",
+   "HubSpot Inbound Marketing"
+  ],
+  "extra_sections": [],
+  "education_heading": "Education & Certifications"
+ },
+ "cover_letter": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "greeting": "Hello [Company] Employee,",
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the Insurance Representative at [Company]. I feel I have a lot of immediate value I can bring to your organization.",
+   "This role rewards people who set high goals and work their plan without close supervision. That is how I have worked for six years as the owner of Lightbox Digital. I generated my own leads, built lasting relationships with realtors, home developers, and executives, and held 5.0-star reviews for over a full year. I set revenue goals, tracked my numbers weekly, and followed through. I also hold a Master's in Marketing, so I can build and execute the kind of marketing plan this position calls for.",
+   "I appreciate that you value high goals, persistence, and professional communication; these are all values that I strive to emulate.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ }
+}

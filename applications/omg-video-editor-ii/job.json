@@ -1,0 +1,128 @@
+{
+ "company": "Offensive Marketing Group",
+ "company_file": "OMG",
+ "role": "Video Editor II",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "Reel",
+    "url": "https://vimeo.com/1103241704"
+   },
+   {
+    "label": "Portfolio",
+    "url": "https://lightbox-digital.com/"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "summary": "Editor who takes a project from raw footage to finished delivery without handing it off. Seven-plus years of finding the story in the cut, grading in DaVinci Resolve, cleaning and mixing audio, and building motion graphics. Rebuilt a grading pipeline to run 3x faster, with 98% of projects delivered on time.",
+  "jobs": [
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Editor",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Carried every client project from ingest and organization through grade, mix, revisions, export, and final delivery with no supervision.",
+     "Color graded log footage in DaVinci Resolve; cleaned dialogue and built sound in Adobe Audition; architected motion graphics in After Effects.",
+     "Cut technically detailed product and industrial work, including construction, trades, and a brand documentary on how a remodeler cares for veterans.",
+     "Managed media and versions in Frame.io and Dropbox, cutting retrieval time over 50%, and built a storyboard and review process that halved revision rounds."
+    ]
+   },
+   {
+    "company": "Arizona State Legislature",
+    "title": "Video Producer",
+    "location": "Phoenix, AZ",
+    "dates": "Feb 2025 - June 2025",
+    "bullets": [
+     "Rebuilt color grading workflows to run 3x faster in DaVinci Resolve using log and wide-gamut camera originals.",
+     "Edited and finished political spots in Adobe Premiere Pro under daily deadline, including work featuring the AZ Speaker of the House.",
+     "Coordinated with Communications teams across chambers to hit delivery windows."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer / Editor",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Delivered 200+ finished videos over two years inside one of the largest marketing agencies in the country.",
+     "Cut and exported to multiple delivery specs across broadcast, paid social, and organic channels.",
+     "Architected the online stock footage library and managed assets across a 15-person media team.",
+     "Took direct creative feedback from stakeholders with competing priorities and turned it into approved cuts."
+    ]
+   },
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Run concurrent projects and revision cycles against fixed publish dates across every school channel.",
+     "Cut social content that earned more than 20x the engagement of standard content and raised ad click-through by over 200%."
+    ]
+   }
+  ],
+  "skills": [
+   "DaVinci Resolve (advanced)",
+   "Color Correction and Grading",
+   "Log and Wide-Gamut Workflows",
+   "Adobe Premiere Pro",
+   "After Effects and Motion Graphics",
+   "Audition, Audio Cleanup and Mixing",
+   "Final Cut Pro",
+   "Photoshop and Lightroom",
+   "Pacing, Shot Selection, and Visual Storytelling",
+   "Media Management, Proxies, Codecs, and Delivery Specs",
+   "Frame.io Review and Versioning",
+   "Quality Control and Export to Spec",
+   "Workflow Improvement",
+   "AI-Assisted Post"
+  ],
+  "education": [
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   },
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   }
+  ],
+  "certifications": [
+   "FAA Part 107 Remote Pilot License"
+  ],
+  "extra_sections": [],
+  "education_heading": "Education"
+ },
+ "cover_letter": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "Reel",
+    "url": "https://vimeo.com/1103241704"
+   },
+   {
+    "label": "Portfolio",
+    "url": "https://lightbox-digital.com/"
+   }
+  ],
+  "greeting": "Richard,",
+  "paragraphs": [
+   "I am applying for the Video Editor II position. Resume attached.",
+   "First, the honest part. I grew up around firearms. My dad had them, and some of my best memories are heading out to the desert to shoot. I am not an avid hunter yet. Hunting has been on my bucket list for years, and I have a genuine interest in learning this industry properly rather than pretending I already know it. The closest thing I have done with real passion is paintball. I played a tremendous amount through my teens and into my early twenties, including competitively, and that world runs on a lot of the same things yours does: gear, marksmanship, and time outdoors with people who care about it.",
+   "On the work: for six years I have carried client projects alone, from ingest through grade, mix, revisions, and final delivery. DaVinci Resolve is where I am strongest. At the Arizona Legislature I rebuilt the grading pipeline to run 3x faster on log and wide-gamut originals under daily deadline. I clean dialogue and build sound in Audition, cut motion graphics in After Effects, and QC everything before it leaves my desk. 98% of my projects land on time.",
+   "Your clients sell technically detailed products to audiences who know those products better than the marketer does. I have cut construction, trades, and industrial brand films where getting a spec wrong loses the room, so protecting product accuracy is already how I work.",
+   "Samples, all edited, graded, and mixed by me:",
+   "Reel: [vimeo.com/1103241704](https://vimeo.com/1103241704) Construction into cinema: [vimeo.com/1099054535](https://vimeo.com/1099054535) (shot, edited, graded, and mixed) Trades and industrial: [vimeo.com/1168684272/43a1e5a08d](https://vimeo.com/1168684272/43a1e5a08d)",
+   "On collaborative projects my contribution is post-production: editorial, color, audio, motion graphics, and final delivery.",
+   "I would welcome the chance to talk."
+  ],
+  "closing": "Joshua Chappell"
+ }
+}

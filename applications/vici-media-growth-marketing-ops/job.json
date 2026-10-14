@@ -1,0 +1,112 @@
+{
+ "company": "Vici Media",
+ "company_file": "ViciMedia",
+ "role": "Growth Marketing & Operations Partner",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "summary": "Growth marketer with a Master's in Marketing Analytics who builds AI workflows into the work itself. Cut production times in half with Claude agentic coding, raised ad click-through rates by over 200%, and drove 20x engagement. Six years running my own company taught me to decode a goal, build the system, and deliver without supervision.",
+  "jobs": [
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Used Claude agentic coding to develop content workflows that cut production times in half.",
+     "Created and led a campaign that raised click-through rates for running ads by over 200%.",
+     "Led a social media content initiative that drove 20x more engagement than standard content.",
+     "Brainstormed with high-level executives to turn goals into plans; managed projects in Wrike, Notion, and Google Workspace."
+    ]
+   },
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Slashed creative production times by 30% using AI tools including Claude, ChatGPT, Runway, ElevenLabs, and OpenClaw; enhanced workflows through prompt engineering.",
+     "Ran Facebook ad campaigns and integrated call-to-action elements with the Facebook pixel to monitor ad performance.",
+     "Set revenue goals and tracked expenses in Excel, Google Sheets, and AI; managed budgets, vendors, and teams of 5 to 20.",
+     "Crafted storyboards and systems that slashed back-and-forth communication by over 50%."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Delivered 200+ campaigns over two years that reached millions on TV, paid social, and organic channels.",
+     "Scripted original content with the marketing team at one of the largest marketing agencies in the country.",
+     "Synchronized with multiple departments with competing interests and crystallized scope to exceed stakeholder goals."
+    ]
+   },
+   {
+    "company": "American Leadership Academy",
+    "title": "Photography Teacher",
+    "location": "Queen Creek, AZ",
+    "dates": "Aug 2018 - Aug 2020",
+    "bullets": [
+     "Amplified the program's social media accounts, leading to a 20% increase in enrollment the following year.",
+     "Revolutionized classroom problem-solving systems and stewarded a $30k equipment inventory."
+    ]
+   }
+  ],
+  "skills": [
+   "AI Workflows & Prompt Engineering (Claude agentic coding, ChatGPT, OpenClaw, Runway, ElevenLabs, Midjourney, Veo)",
+   "Campaign Management",
+   "Social Media Strategy",
+   "Paid Media (Meta Ads, Facebook Pixel)",
+   "Marketing Analytics",
+   "Reporting & Goal Tracking (Excel, Google Sheets)",
+   "Brand Consistency",
+   "Workflow Automation & Process Design",
+   "Inbound Marketing (HubSpot Certified)",
+   "E-Commerce Marketing (Google Certified)",
+   "Wrike / Notion / Trello / Google Workspace"
+  ],
+  "education": [
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   },
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   }
+  ],
+  "certifications": [
+   "Google Digital Marketing & E-Commerce",
+   "HubSpot Inbound Marketing",
+   "WGU Marketing Analytics"
+  ],
+  "extra_sections": [],
+  "education_heading": "Education & Certifications"
+ },
+ "cover_letter": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "greeting": "Hello Vici Media Employee,",
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the Growth Marketing & Operations Partner at Vici Media. I feel I have a lot of immediate value I can bring to your organization.",
+   "You want someone who leverages AI workflows daily rather than someone who knows what AI is. That is how I already work. At Charter One I used Claude agentic coding to build content workflows that cut production times in half, and through my own company I slashed creative production by 30% using AI across the pipeline. Those workflows sit next to real campaign results: a 200% lift in ad click-through rates and a social initiative that drove 20x the engagement of standard content.",
+   "The operations half of this role is familiar too. I have run my own company for six years, which means turning a loose goal into a plan, building the system, managing the budget and the vendors, and closing the gap before anyone has to ask. I hold a Master's in Marketing with a specialization in Marketing Analytics, so the numbers guide the decisions rather than decorate them.",
+   "I appreciate that you value autonomy, adaptability, and total ownership of your domains; these are all values that I strive to emulate.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ }
+}

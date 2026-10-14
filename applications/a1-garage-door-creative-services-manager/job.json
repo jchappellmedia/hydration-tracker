@@ -1,0 +1,120 @@
+{
+ "company": "A1 Garage Door Service",
+ "company_file": "A1Garage",
+ "role": "Creative Services Manager",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "Portfolio",
+    "url": "https://lightbox-digital.com/"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "summary": "Creative leader with seven-plus years running multi-channel campaigns across video, social, paid media, and web. Directs teams of 5 to 20, mentors creators, and owns the workflow behind the work: intake, schedules, brand standards, and asset libraries. Delivers on the numbers, with a social initiative that earned more than 20x the engagement of standard content and 98% of projects delivered on time.",
+  "jobs": [
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Directed teams of 5 to 20 and partnered with CEOs and department leaders to turn business goals into creative briefs.",
+     "Provided art direction across video, photography, and motion graphics from concept through final delivery.",
+     "Maintained the brand asset library in Frame.io and Dropbox, cutting retrieval time over 50%, and built a storyboard and approval process that cut revision rounds in half.",
+     "Generated leads through Facebook ad campaigns and tracked performance with pixel data on site."
+    ]
+   },
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Created and led a social content initiative that earned more than 20x the engagement of standard content.",
+     "Created and led a campaign that raised click-through rates for running ads by over 200%, and drove paid and organic engagement by over 100%.",
+     "Own creative intake and scheduling in Wrike, Notion, and Google Workspace across every school channel.",
+     "Refreshed photo and video across all school websites and worked with executives to set content priorities."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Worked inside one of the largest marketing agencies in the country, within a 15-person media team.",
+     "Directed cinematography for higher-end brand shoots each quarter and architected the online stock footage library.",
+     "Delivered 200+ campaign assets over two years across TV, paid social, and organic channels.",
+     "Scripted original content with the marketing team and aligned departments with competing priorities."
+    ]
+   },
+   {
+    "company": "American Leadership Academy",
+    "title": "Photography Teacher",
+    "location": "Queen Creek, AZ",
+    "dates": "Aug 2018 - Aug 2020",
+    "bullets": [
+     "Developed 90+ creators a year, raising 80+ beginners to 95% proficiency through hands-on critique and coaching.",
+     "Grew the program's social accounts, lifting enrollment 20% the following year."
+    ]
+   }
+  ],
+  "skills": [
+   "Creative and Art Direction",
+   "Multi-Channel Campaigns (social, paid, web, video)",
+   "Team Leadership and Mentoring",
+   "Project Intake and Capacity Planning (Wrike, Notion, Trello, Workamajig)",
+   "Adobe Creative Suite (Premiere Pro, After Effects, Photoshop, Lightroom, Audition)",
+   "Brand Standards and Asset Libraries (Frame.io)",
+   "Social Media and Content Calendars",
+   "Performance Reporting and Analytics",
+   "Script and Content Development",
+   "Video and Photography Direction",
+   "AI-Assisted Production"
+  ],
+  "education": [
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   },
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   }
+  ],
+  "certifications": [
+   "Google Digital Marketing & E-Commerce",
+   "HubSpot Inbound Marketing",
+   "FAA Part 107"
+  ],
+  "extra_sections": [],
+  "education_heading": "Education & Certifications"
+ },
+ "cover_letter": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "Portfolio",
+    "url": "https://lightbox-digital.com/"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "greeting": "Hello A1 Garage Door Service Employee,",
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the Creative Services Manager position at A1 Garage Door Service. I feel I have a lot of immediate value I can bring to your organization.",
+   "What you get is a creative lead who runs the team and still does the work. I have directed teams of 5 to 20 for six years and developed 90+ creators a year as a teacher, so assigning work, giving art direction, and holding a standard are familiar ground. I also build the systems behind the output. I maintain a brand asset library in Frame.io that cut retrieval time over 50%, and a storyboard and approval process that cut revision rounds in half. On the campaign side, my social content initiative earned more than 20x the engagement of standard content, and my ad campaign raised click-through rates by over 200%. I run creative intake, scheduling, and capacity in Wrike and Notion today, which is the same job Asana does for your team, and my Master's in Marketing Analytics means I read the performance numbers rather than guess at them. I deliver 98% of projects on time.",
+   "I appreciate that you value strong leadership, brand consistency, and a process-improvement mindset; these are all values that I strive to emulate.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ }
+}

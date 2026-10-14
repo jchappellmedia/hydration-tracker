@@ -1,0 +1,138 @@
+{
+ "company": "Turning Point Action",
+ "company_file": "TurningPointAction_Media",
+ "role": "Media Administrator",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "Portfolio",
+    "url": "https://lightbox-digital.com/"
+   },
+   {
+    "label": "YouTube",
+    "url": "https://www.youtube.com/@JoshChappell"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "summary": "Video editor with seven-plus years cutting long-form and short-form content for brands, campaigns, and social platforms. Delivered 200+ videos that reached millions on TV, paid social, and organic channels, and built a social initiative that earned more than 20x the engagement of standard content. Works fast and organized, with 98% of projects delivered on time and 92% within budget.",
+  "jobs": [
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Created and led a social content initiative that earned more than 20x the engagement of standard content.",
+     "Created and led a video initiative that raised click-through rates for running ads by over 200%.",
+     "Led video initiatives that drove paid and organic engagement by over 100%.",
+     "Built AI content workflows that cut production times in half while keeping stories authentic."
+    ]
+   },
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Edited long-form corporate documentaries and interviews in Premiere Pro, DaVinci Resolve, and Final Cut Pro.",
+     "Reached over a million people on YouTube teaching post-production techniques.",
+     "Maintained an organized asset library in Frame.io and Dropbox, cutting search and retrieval time by over 50%.",
+     "Architected motion graphics in After Effects and edited audio in Adobe Audition."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Delivered 200+ videos over two years that reached millions on TV, paid social, and organic channels.",
+     "Scripted original organic content with the marketing team.",
+     "Catalyzed an alumni campaign shown during NCAA basketball broadcasts, lifting engagement.",
+     "Led within a 15-person media team and synchronized departments with competing interests."
+    ]
+   },
+   {
+    "company": "Arizona State Legislature",
+    "title": "Video Producer",
+    "location": "Phoenix, AZ",
+    "dates": "Feb 2025 - June 2025",
+    "bullets": [
+     "Produced political video for the Arizona Legislature during a critical stretch of the year.",
+     "Documented prominent figures including Robert F. Kennedy Jr. and the AZ Speaker of the House.",
+     "Coordinated with Communications teams across legislative bodies and chambers."
+    ]
+   }
+  ],
+  "skills": [
+   "Long-Form & Short-Form Editing",
+   "Premiere Pro",
+   "DaVinci Resolve",
+   "Final Cut Pro",
+   "After Effects",
+   "Audition",
+   "Photoshop & Lightroom",
+   "Motion Graphics",
+   "Social Platforms (Instagram, X, Facebook, YouTube)",
+   "Content & Engagement Analytics",
+   "Cinematography & Lighting",
+   "Asset Delivery (Frame.io, Dropbox)",
+   "AI-Assisted Production"
+  ],
+  "education": [
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   },
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   }
+  ],
+  "certifications": [
+   "Google Digital Marketing & E-Commerce",
+   "HubSpot Inbound Marketing",
+   "Part 107 Drone Operator License"
+  ],
+  "extra_sections": [
+   {
+    "heading": "Community Involvement",
+    "lines": [
+     "Organizes and runs community events with a local church congregation."
+    ]
+   }
+  ],
+  "education_heading": "Education & Certifications"
+ },
+ "cover_letter": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "Portfolio",
+    "url": "https://lightbox-digital.com/"
+   },
+   {
+    "label": "YouTube",
+    "url": "https://www.youtube.com/@JoshChappell"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "greeting": "Hello Turning Point Action Employee,",
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the Media Administrator position at Turning Point Action. I feel I have a lot of immediate value I can bring to your organization.",
+   "Your posting asks for long-form editing and social media experience. That is the center of my work. At Grand Canyon Education I delivered 200+ videos over two years that reached millions on TV, paid social, and organic channels. At Charter One I created and led a social content initiative that earned more than 20x the engagement of standard content, and a video initiative that raised click-through rates for running ads by over 200%. I cut long-form documentaries and interviews in Premiere Pro, DaVinci Resolve, and Final Cut Pro, build motion graphics in After Effects, and edit audio in Audition. I have reached over a million people on my own YouTube channel teaching post-production, so I know how long-form performs on that platform from both sides. I also produced video for the Arizona Legislature this year and coordinated with Communications teams across chambers, which means a political newsroom pace is familiar. On the events side of the role, I organize community events with my local church.",
+   "I appreciate that you value organization, strong communication, self-starting, and applying feedback to improve; these are all values that I strive to emulate.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ }
+}
