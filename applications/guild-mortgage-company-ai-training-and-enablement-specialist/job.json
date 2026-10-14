@@ -1,0 +1,129 @@
+{
+ "company": "Guild Mortgage Company",
+ "company_file": "GuildMortgage",
+ "role": "AI Training & Enablement Specialist",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "YouTube Tutorials",
+    "url": "https://www.youtube.com/@JoshChappell"
+   },
+   {
+    "label": "Education Projects",
+    "url": "https://gaudy-motorcycle-974.notion.site/Education-Sample-Projects-23b59a1fbab18072a1bcefe76b2dc9a7"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "summary": "Educator and AI practitioner who turns technical tools into skills people use. Elevated 80+ beginner students to 95% camera operation proficiency and reached over a million people on YouTube teaching post-production techniques. Built content workflows with Claude agentic coding that cut production times in half, and holds a Master's in Marketing Analytics.",
+  "jobs": [
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Used Claude agentic coding to build content workflows that cut production times in half while keeping stories authentic and real.",
+     "Brainstormed with high-level executives to plan the role video and photography play in enrollment initiatives.",
+     "Led video initiatives that drove paid and organic engagement up over 100% and ad click-through rates up over 200%.",
+     "Created and led a social media content initiative that drove more than 20x the engagement of standard content."
+    ]
+   },
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Reached over a million people on YouTube teaching cutting-edge post-production techniques.",
+     "Slashed creative production times by 30% with AI tools (Claude, ChatGPT, ElevenLabs, Runway ML); built a complete AI video workflow in Kling, Midjourney, and Google Veo.",
+     "Maintained an organized library of video assets in Frame.io and Dropbox, reducing search and retrieval time by over 50%.",
+     "Crafted storyboards that slashed back-and-forth communication by over 50%; commanded teams of 5 to 20 and delivered 98% of projects on time and 92% within budget."
+    ]
+   },
+   {
+    "company": "American Leadership Academy",
+    "title": "Photography Teacher",
+    "location": "Queen Creek, AZ",
+    "dates": "Aug 2018 - Aug 2020",
+    "bullets": [
+     "Elevated 80+ beginner students to 95% camera operation proficiency through hands-on curriculum and assessment.",
+     "Mentored over 90 students per year; revolutionized classroom problem-solving systems to keep learning engaging, fun, and safe.",
+     "Amplified the program's social media accounts, leading to a 20% increase in enrollment the following year.",
+     "Orchestrated a community art gallery night showcasing student photos and competition."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Delivered 200+ videos over two years reaching millions on TV, paid social, and organic channels.",
+     "Scripted original content with the marketing team and produced content for healthcare professionals and the college of theology.",
+     "Crystallized scope of work across departments with competing interests so stakeholder goals were met and exceeded.",
+     "Architected a vast online stock footage library; ran projects in Workamajig, Trello, and Microsoft Teams within a 15-person media team."
+    ]
+   }
+  ],
+  "skills": [
+   "Hands-On Training & Curriculum Design",
+   "Skills Assessment & Mentoring",
+   "Tutorial & Video Content",
+   "AI Workflows & Prompt Engineering (Claude, ChatGPT, OpenClaw, Runway, Kling, Veo, ElevenLabs, Midjourney)",
+   "Storyboarding & Scriptwriting",
+   "Stakeholder & Executive Collaboration",
+   "Asset Library Organization (Frame.io, Dropbox)",
+   "Engagement & Performance Analytics",
+   "Project Management (Wrike, Notion, Trello, Microsoft Teams)",
+   "Excel, Google Workspace, Canva",
+   "Video Editing (Premiere Pro, DaVinci Resolve, After Effects)"
+  ],
+  "education": [
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   },
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   }
+  ],
+  "certifications": [
+   "Google Digital Marketing & E-Commerce",
+   "HubSpot Inbound Marketing (2024)"
+  ],
+  "education_heading": "Education & Certifications"
+ },
+ "cover_letter": {
+  "email": "jchappellmedia@gmail.com",
+  "greeting": "Hello Guild Mortgage Employee,",
+  "links": [
+   {
+    "label": "YouTube Tutorials",
+    "url": "https://www.youtube.com/@JoshChappell"
+   },
+   {
+    "label": "Education Projects",
+    "url": "https://gaudy-motorcycle-974.notion.site/Education-Sample-Projects-23b59a1fbab18072a1bcefe76b2dc9a7"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the AI Training & Enablement Specialist position at Guild Mortgage. I feel I have a lot of immediate value I can bring to your organization.",
+   "Your posting asks for someone who can translate technical AI capabilities into practical skills for different teams and skill levels. That is the work I have done for years. As a teacher, I elevated 80+ beginner students to 95% camera operation proficiency through hands-on curriculum and assessment. On YouTube, I reached over a million people teaching cutting-edge post-production techniques. I know how to break a complex tool into steps a beginner can follow, and how to check that the lesson stuck.",
+   "I bring hands-on AI depth to your rollouts. At Charter One, I used Claude agentic coding to build content workflows that cut production times in half. I work in ChatGPT, Runway, Kling, Veo, and ElevenLabs, so your teams get real use cases, not theory. I maintained an organized library of video assets in Frame.io and Dropbox, reducing search and retrieval time by over 50%, and I will hold your knowledge base to the same standard: accurate, current, and easy to find. My Master's in Marketing Analytics supports the measurement side of the role, from adoption and proficiency to what the feedback says to fix next.",
+   "I appreciate that you value customer service, integrity, respect, collaboration, learning, and excellence; these are all values that I strive to emulate.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ }
+}
