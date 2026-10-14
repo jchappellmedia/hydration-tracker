@@ -152,163 +152,196 @@
   "jd_source": "The original posting was not saved when this application was built on 2026-08-21, and no detailed record of it was kept at the time. Below is what could be pieced together on 2026-10-14 from a job-aggregator summary and Agility's own emails. It is not the posting's wording. The live posting may have changed or closed.",
   "jd_text": "# Posting Record: AI Cinematographer, Agility\n\nNo copy of the posting was saved when this application was built on 2026-08-21, and this folder never had a 1-job-reference.md. The notes below were pieced together on 2026-10-14. They are not the posting's own wording.\n\n## Role and Company\n- **Role:** AI Cinematographer. Agility's own calendar invites used \"AI Cinematographer\" (cultural interview, 2026-09-11) and \"AI Producer\" (technical interview, 2026-08-25). A job-aggregator listing on jobright.ai carries the title \"AI Video Producer/Cinematographer.\"\n- **Company:** Agility (agilityads.com), a precision brand advertising company. It runs targeted ads across connected TV (CTV), online video, mobile, display and other channels.\n- **Office:** 1557 West Innovation Way, Ste 500, Lehi, UT 84043 (from the hiring manager's email signature).\n- **Hiring contact:** Eric Wood, Head of Performance Creative.\n- **Pay:** Not recorded anywhere.\n- **Work mode:** Not recorded. Every interview so far was held over Google Meet.\n\n## Duties\nTaken from a search-engine summary of the jobright.ai listing, not from the posting text:\n- Produce AI-generated video ads, applying cinematography fundamentals.\n- Turn briefs, scripts and shot lists into finished sequences with generative AI tools.\n- Build character reference sheets and style guides to keep visuals consistent.\n- Handle post-production through final delivery: editing, color, sound and voiceover.\n- Adapt work for CTV, online video (OLV) and social, and meet deadlines within the company's SLA framework.\n\n## Requirements\nSame source as the duties:\n- 3+ years of professional video or cinematography experience.\n- A reel or portfolio.\n- Experience with AI creative tools. Claude, Higgsfield and other generative platforms are named.\n\n## Where It Was Listed\n- jobright.ai (aggregator): https://jobright.ai/jobs/info/6a5a7529856af468ab0089d7. The page could not be opened from this environment, so the summary above came from search results.",
   "research": {
-   "overview": "Agility (agilityads.com, also listed as Agility Ads or Agility Digital, Inc.) is a small Utah ad-tech company that sells what it calls precision brand advertising. Its platform runs targeted ads across connected TV, mobile, display and the open web. The hiring manager's email signature gives the office as 1557 West Innovation Way, Ste 500, Lehi, UT. Some company profiles list Draper, UT instead. CEO Matt Behrend calls the product 'the first brand advertising operating system'. The company began as a small geofencing agency that he bought about four and a half years before a September 2025 profile. Clinch became its main ad-serving and dynamic-creative partner in June 2024. Headcount is about 51 to 100 (Built In lists 68). Funding figures conflict: one profile says $3.7M in total, another says $15.7M. This is not the same company as Agility the Kuwait logistics firm, Agility Robotics, Agility CMS or Agility Recovery, and most 'Agility' review pages online belong to those companies.",
+   "overview": "Agility (agilityads.com) is a small U.S. ad tech company based in Lehi, Utah (some directories list Draper, Utah). It sells what CEO Matt Behrend calls a \"brand advertising operating system\", one platform covering CTV, display, native, audio, mobile and digital out-of-home ads. Basic facts differ between sources. The founding year is listed as anywhere from 2014 to 2018, headcount as 51-100 or 51-200, and total funding as $3.7M (one profile) or $15.7M (CB Insights). In 2024 it picked Clinch as its main ad-serving and dynamic creative partner. A September 2025 TechBuzz profile describes the company leaning into generative AI. The company's Creative Director posting says its Performance Creative team made 1,100+ creatives for 15+ active brands last year. The AI Video Producer/Cinematographer posting (jobright.ai) describes producing AI-generated video ads for several brands from briefs, scripts and shot lists. It asks for 3+ years of video production and a reel, names tools such as Claude and Higgsfield, and says the hire will help build the AI video practice from the ground up. The posting is tagged \"United States\" and gives no salary and no clear remote policy. That matters for an applicant in Mesa, AZ. All employee feedback found is company-wide, mostly from 2025, and small in number. None of it is specific to the creative or video team. The searches covered Glassdoor, Indeed, CareerBliss/Comparably/Kununu, news, and layoffs/lawsuit/culture 2026. The Indeed connector failed to connect, so no Indeed company data was pulled.",
    "website": "https://agilityads.com",
    "glassdoor": {
     "found": true,
-    "rating": "4.5",
-    "review_count": "33",
-    "url": "https://www.glassdoor.com/Reviews/Agility-Reviews-E2942214.htm",
-    "summary": "Company-wide reviews, not team-specific. The sample is small, and many reviews come from Lehi employees around March 2025, about 19 months old now. Search snippets show 85% would recommend, 92% CEO approval and a 4.4 compensation and benefits score. People, transparency and leadership that listens to feedback get the most praise. Complaints are about growing pains, slow decisions ('analysis paralysis') and constant change. One former employee wrote that the product 'isn't real. Just the trade desk with lipstick.' One review mentions a DSV buyout, which matches the unrelated logistics company, so a few reviews on this page may be misfiled. Glassdoor could not be opened directly, so these figures come from search results. Do not use the larger 'Agility' page (E39227, 727 reviews), which is the logistics company."
+    "rating": "4.5 out of 5 (one later snapshot shows 4.6); 85% would recommend to a friend (another snapshot says 84%). The U.S.-only filter shows 4.5 or 4.7 depending on the snapshot. Compensation and benefits are rated 4.4, down 2% over 12 months.",
+    "review_count": "33 company reviews (later snapshot: 34). The U.S.-only filter shows 19.",
+    "summary": "Glassdoor employer ID E2942214: 'Agility', Advertising & PR, headquartered in Lehi, UT. This is the match for agilityads.com. Do not confuse it with E39227, the logistics Agility with 727 reviews and a 3.8 rating. The reviews are company-wide, not team-specific, and the sample is small, mostly from 2025. Current employees praise leadership that listens and cares about individual goals, a talented and collaborative team, a performance-based startup feel, and pay (one calls the residual-based pay structure unusual but strong, which likely applies to sales roles). The criticisms come mostly from former employees. They cite layoffs during a 'major pivot', demanding work with heavy coordination across departments, shifting focus as the product changes, unclear leadership, little feedback or recognition, and doubts about execution. One former employee is quoted in search snippets saying 'Shady leadership and the product isn't real.' One 2.0-rated review from a former Salt Lake City leadership employee is dated May 2025. No reviews from creative or video staff were found. These figures come from search snippets of the pages, not from opening the live pages.",
+    "url": "https://www.glassdoor.com/Reviews/Agility-Reviews-E2942214.htm"
    },
    "indeed": {
     "found": false,
-    "summary": "No Indeed company page tied to agilityads.com came up. The Indeed 'Agility' page (3.6 stars, 109 reviews) belongs to the Kuwait logistics company, not this employer. The Indeed connector failed to connect today, so get_company_data could not be run.",
-    "url": "https://indeed.com/cmp/Agility"
+    "summary": "No Indeed company page was found for the agilityads.com company. The Indeed 'Agility' page (3.6 from 109 reviews) appears to belong to a logistics firm (its reviews mention carriers), so it is not counted here. Other Indeed results (Agility PR Solutions, Agility Recovery, Agility 360, Agility Retail Group) are different companies. The Indeed connector failed to connect, so get_company_data could not be run."
    },
    "reddit": {
     "found": false,
-    "summary": "Two searches, one general and one limited to site:reddit.com, found no Reddit threads about Agility Ads or agilityads.com.",
-    "threads": []
+    "summary": "Reddit blocks automated search; not checked."
    },
    "pros": [
     {
-     "point": "Reviewers most often praise the people. They describe a culture of transparency and say leadership genuinely listens to feedback.",
-     "sources": [
-      "https://www.glassdoor.com/Reviews/Agility-Reviews-E2942214.htm",
-      "https://www.glassdoor.com/Reviews/Agility-people-Reviews-EI_IE2942214.0,7_KH8,14.htm"
-     ]
-    },
-    {
-     "point": "Ratings are strong for a small company: 4.5 overall from 33 reviews, 85% would recommend, and compensation and benefits rated 4.4. These are company-wide reviews from a small sample.",
-     "sources": [
-      "https://www.glassdoor.com/Reviews/Agility-Reviews-E2942214.htm"
-     ]
-    },
-    {
-     "point": "Creative is central to the product. The 2024 Clinch partnership was set up to run dynamic, persona-tailored ads across display, mobile, CTV, audio and digital out-of-home. That makes an AI video and cinematography role core work, not a side function.",
-     "sources": [
-      "https://clinch.co/news/agility-chooses-clinch-as-ad-serving-and-dco-partner",
-      "https://www.exchangewire.com/blog/2024/06/28/agility-selects-clinch-as-their-ad-serving-dco-technology-partner/"
-     ]
-    },
-    {
-     "point": "Leadership is openly betting on generative AI. The CEO says generative AI will speed up the need for the brand-advertising tools Agility sells, which fits a role built around AI-generated ads.",
-     "sources": [
-      "https://www.techbuzznews.com/matt-behrends-agility-bets-big-on-brand-advertising/"
-     ]
-    },
-    {
-     "point": "The work is measured. One reviewer points to large brand-advertising budgets to win and calls the tracking 'second to none'. A content marketing reviewer in Lehi says it is a fun place with a real chance to make an impact.",
+     "point": "Glassdoor rating is high for a small company: 4.5 of 5 from 33 reviews, with 85% recommending it to a friend. The sample is small and company-wide, mostly from 2025.",
      "sources": [
       "https://www.glassdoor.com/Reviews/Agility-Reviews-E2942214.htm",
       "https://www.glassdoor.co.uk/Reviews/Agility-Reviews-E2942214.htm"
      ]
     },
     {
-     "point": "At roughly 51 to 100 people (Built In lists 68), one person's work is visible, and the head of performance creative did his interviews himself.",
+     "point": "The most common praise is for leadership. Reviewers say leaders care about people's individual goals and change things based on feedback. One review is titled 'Great culture and leadership you can trust.'",
      "sources": [
-      "https://builtin.com/company/agility-agilityadscom",
-      "https://www.crunchbase.com/organization/agility-de85"
+      "https://www.glassdoor.com/Reviews/Agility-people-Reviews-EI_IE2942214.0,7_KH8,14.htm",
+      "https://www.glassdoor.com/Reviews/Employee-Review-Agility-E2942214-RVW95900307.htm"
+     ]
+    },
+    {
+     "point": "Reviewers describe coworkers as talented, supportive and collaborative.",
+     "sources": [
+      "https://www.glassdoor.co.uk/Reviews/Agility-Reviews-E2942214.htm",
+      "https://www.glassdoor.com/Reviews/Agility-people-Reviews-EI_IE2942214.0,7_KH8,14.htm"
+     ]
+    },
+    {
+     "point": "Startup setting with room to make an impact. One review calls it a 'start up vibe, performance based', and a Lehi reviewer cites the chance to make an impact on digital advertising. The South Jordan filter has only 2 reviews.",
+     "sources": [
+      "https://www.glassdoor.com/Reviews/Agility-South-Jordan-Reviews-EI_IE2942214.0,7_IL.8,20_IC1128291.htm",
+      "https://www.glassdoor.com/Reviews/Agility-Reviews-E2942214.htm"
+     ]
+    },
+    {
+     "point": "The company backs AI-driven creative. The AI Video Producer/Cinematographer role helps build an AI video practice from the ground up with tools like Claude and Higgsfield. The Creative Director posting asks for a forward-leaning attitude toward AI. The CEO talks about generative AI in public.",
+     "sources": [
+      "https://jobright.ai/jobs/info/6a5a7529856af468ab0089d7",
+      "https://startup.jobs/creative-director-agility-digital-open-opportu-8769973",
+      "https://www.techbuzznews.com/matt-behrends-agility-bets-big-on-brand-advertising/"
+     ]
+    },
+    {
+     "point": "Steady creative volume across many brands. The Performance Creative team made 1,100+ creatives for 15+ active brands last year, covering display, social, video, audio and DOOH. That suggests a varied workload for a video role.",
+     "sources": [
+      "https://startup.jobs/creative-director-agility-digital-open-opportu-8769973"
+     ]
+    },
+    {
+     "point": "Pay and benefits rate well on Glassdoor: 4.4 of 5 for compensation and benefits, with 30 salaries reported for 27 Utah jobs. One reviewer praises the residual-based pay structure, which likely applies to sales roles.",
+     "sources": [
+      "https://www.glassdoor.com/Salary/Agility-Utah-Salaries-EI_IE2942214.0,7_IL.8,12_IS255.htm",
+      "https://www.glassdoor.co.uk/Reviews/Agility-Reviews-E2942214.htm"
      ]
     }
    ],
    "cons": [
     {
-     "point": "The review base is thin and dated: 33 reviews in total, many from around March 2025. At least one review (mentioning a DSV buyout) looks misfiled from the logistics company of the same name.",
+     "point": "Layoffs: a Glassdoor reviewer says the company laid off some employees during a 'major pivot' and calls it necessary but painful.",
      "sources": [
-      "https://www.glassdoor.com/Reviews/Agility-Reviews-E2942214.htm"
+      "https://www.glassdoor.com/Reviews/Agility-United-States-Reviews-EI_IE2942214.0,7_IL.8,21_IN1.htm"
      ]
     },
     {
-     "point": "Growing pains show up in several reviews: trouble adopting new processes, 'analysis paralysis' on decisions, and constant change that takes comfort with continuous learning.",
-     "sources": [
-      "https://www.glassdoor.com/Reviews/Agility-Reviews-E2942214.htm"
-     ]
-    },
-    {
-     "point": "There is sharp criticism among the negative reviews. One former employee wrote that the product 'isn't real. Just the trade desk with lipstick,' and other negative reviews point to problems with leadership and feedback in a startup-style setting.",
+     "point": "Some former employees criticize leadership. They cite unclear direction, feedback that never came when requested, and no recognition. One is quoted in search snippets saying 'Shady leadership and the product isn't real.'",
      "sources": [
       "https://www.glassdoor.com/Reviews/Agility-Reviews-E2942214.htm",
-      "https://www.glassdoor.com.au/Reviews/Agility-Reviews-E2942214.htm"
+      "https://www.glassdoor.co.in/Reviews/Agility-Reviews-E2942214.htm"
      ]
     },
     {
-     "point": "Customer-side reviews are mixed: 3.6 stars from 14 reviews on Birdeye. One customer called the communication one of the worst they had seen in the ad space, while another praised the service team. These are customer reviews, not employee reviews.",
+     "point": "The work is described as demanding, with heavy coordination between departments and focus that changes as the product develops.",
      "sources": [
-      "https://reviews.birdeye.com/agility-digital-inc-164305008071783"
+      "https://www.glassdoor.co.uk/Reviews/Agility-Reviews-E2942214.htm",
+      "https://www.glassdoor.com/Reviews/Agility-United-States-Reviews-EI_IE2942214.0,7_IL.8,21_IN1.htm"
      ]
     },
     {
-     "point": "Little reliable public information exists about the company's finances. Funding is reported as $3.7M by one profile and $15.7M by another, the founding year ranges from 2014 to 2018, and headquarters is listed as both Draper and Lehi.",
+     "point": "Doubts about execution: a reviewer says the company has potential but still needs to figure out how to execute. The one CareerBliss review (2.8, a former VP of Sales, undated) says it lacks direction and runs a 30-person company like a 5-person one.",
      "sources": [
-      "https://www.vcbacked.co/company/agility",
-      "https://www.cbinsights.com/company/agility-holdings/"
+      "https://www.glassdoor.com/Reviews/Agility-Reviews-E2942214.htm",
+      "https://www.careerbliss.com/agility-digital/reviews"
+     ]
+    },
+    {
+     "point": "Small, early company with inconsistent public data. Founding year (2014-2018), HQ (Draper vs Lehi), headcount and funding ($3.7M vs $15.7M) all differ between sources, so stability is hard to judge from outside.",
+     "sources": [
+      "https://www.cbinsights.com/company/agility-holdings/",
+      "https://prospeo.io/c/agility",
+      "https://the-web-radar.com/companies/agilityads.com"
+     ]
+    },
+    {
+     "point": "The job listing shows no salary and no clear remote policy. It is tagged 'United States', and the company is based in Utah while the applicant is in Mesa, AZ.",
+     "sources": [
+      "https://jobright.ai/jobs/info/6a5a7529856af468ab0089d7"
+     ]
+    },
+    {
+     "point": "The Glassdoor compensation and benefits rating fell 2% over the last 12 months.",
+     "sources": [
+      "https://www.glassdoor.com/Salary/Agility-Utah-Salaries-EI_IE2942214.0,7_IL.8,12_IS255.htm"
      ]
     }
    ],
    "red_flags": [
-    "Same-name confusion: most 'Agility' review pages (Glassdoor E39227 with 727 reviews, Indeed 3.6 with 109 reviews) are the Kuwait logistics company. Use only Glassdoor E2942214 for this employer.",
-    "No reply from Agility to Joshua's 2026-09-24 follow-up to Eric Wood (cc Kayla), checked in Gmail on 2026-10-14. The last contact from Agility was the 2026-09-11 cultural interview.",
-    "Pay and remote policy for this role do not appear in anything saved. The office is in Lehi, Utah, about 630 driving miles from Mesa."
+    "A Glassdoor reviewer reports layoffs during a 'major pivot' (2025-era reviews). Ask what changed, which teams were cut, and how much runway the company has.",
+    "One former employee review (quoted in search snippets) says 'Shady leadership and the product isn't real.' It is a single review, but it is a strong claim.",
+    "The posting shows no salary and no clear remote or on-site policy, and the company is in Utah while the applicant is in Mesa, AZ. Confirm both before investing time.",
+    "No employee reviews from 2026 and none from creative or video staff were found. The evidence is company-wide, small (33 Glassdoor reviews) and mostly from 2025.",
+    "Many unrelated employers share the name (Agility logistics E39227, Agility PR Solutions, Agility Recovery, Agility Robotics). Their reviews, including layoffs, the DSV acquisition and 'below market salary' comments, do not apply to agilityads.com.",
+    "The AI video practice is new ('from the ground up'). Expect to define processes yourself, with little existing structure or senior video mentorship."
    ],
-   "bottom_line": "Small Utah ad-tech company (about 50 to 100 people) with good but thin and dated Glassdoor reviews: 4.5 from 33, mostly from early 2025. People and transparency get praise. Growing pains and constant change are the usual complaints, plus one sharp critique of the product. The role fits the company's direction, since creative and generative AI are central to what it sells. Three things are still open: pay, whether the job can be done remotely from Mesa, and where the process stands after three rounds and an unanswered follow-up.",
+   "bottom_line": "Agility (agilityads.com) is a small Lehi, Utah ad tech startup. Its Glassdoor rating is good (4.5 from 33 reviews) but the sample is small, company-wide and mostly from 2025, and none of the reviews come from the creative or video team. Current staff praise leadership that listens and a talented team. Former staff point to layoffs during a pivot, demanding cross-team work, changing priorities and doubts about execution. For an AI Cinematographer, the main draw is a chance to shape a new AI video practice at a company that backs generative AI and produces creative for 15+ brands. The trade-off is startup instability and little existing structure. Before going further, confirm pay (none listed), whether the role can be remote from Mesa, AZ, who the role reports to, what the recent pivot and layoffs changed, and how the company is funded now.",
    "sources": [
     {
-     "label": "Glassdoor: Agility (agilityads), 33 reviews",
+     "label": "Glassdoor - Agility (E2942214) reviews, Lehi UT, Advertising & PR",
      "url": "https://www.glassdoor.com/Reviews/Agility-Reviews-E2942214.htm"
     },
     {
-     "label": "Glassdoor UK: Agility E2942214",
+     "label": "Glassdoor UK - Agility (E2942214) reviews",
      "url": "https://www.glassdoor.co.uk/Reviews/Agility-Reviews-E2942214.htm"
     },
     {
-     "label": "Glassdoor AU: Agility E2942214",
-     "url": "https://www.glassdoor.com.au/Reviews/Agility-Reviews-E2942214.htm"
+     "label": "Glassdoor India - Agility (E2942214) reviews",
+     "url": "https://www.glassdoor.co.in/Reviews/Agility-Reviews-E2942214.htm"
     },
     {
-     "label": "Glassdoor: Agility 'people' reviews",
+     "label": "Glassdoor - Agility United States reviews",
+     "url": "https://www.glassdoor.com/Reviews/Agility-United-States-Reviews-EI_IE2942214.0,7_IL.8,21_IN1.htm"
+    },
+    {
+     "label": "Glassdoor - Agility 'people' reviews",
      "url": "https://www.glassdoor.com/Reviews/Agility-people-Reviews-EI_IE2942214.0,7_KH8,14.htm"
     },
     {
-     "label": "Built In: Agility (agilityads.com)",
-     "url": "https://builtin.com/company/agility-agilityadscom"
+     "label": "Glassdoor - Agility South Jordan reviews",
+     "url": "https://www.glassdoor.com/Reviews/Agility-South-Jordan-Reviews-EI_IE2942214.0,7_IL.8,20_IC1128291.htm"
     },
     {
-     "label": "Crunchbase: Agility",
-     "url": "https://www.crunchbase.com/organization/agility-de85"
+     "label": "Glassdoor - 'Great culture and leadership you can trust' review",
+     "url": "https://www.glassdoor.com/Reviews/Employee-Review-Agility-E2942214-RVW95900307.htm"
     },
     {
-     "label": "Birdeye: Agility Digital, Inc customer reviews",
-     "url": "https://reviews.birdeye.com/agility-digital-inc-164305008071783"
+     "label": "Glassdoor - Agility salaries in Utah",
+     "url": "https://www.glassdoor.com/Salary/Agility-Utah-Salaries-EI_IE2942214.0,7_IL.8,12_IS255.htm"
     },
     {
-     "label": "TechBuzz: Matt Behrend's Agility bets big on brand advertising (Sep 2025)",
+     "label": "CareerBliss - Agility Digital reviews (1 review)",
+     "url": "https://www.careerbliss.com/agility-digital/reviews"
+    },
+    {
+     "label": "jobright.ai - Agility AI Video Producer/Cinematographer listing",
+     "url": "https://jobright.ai/jobs/info/6a5a7529856af468ab0089d7"
+    },
+    {
+     "label": "startup.jobs - Agility Creative Director listing",
+     "url": "https://startup.jobs/creative-director-agility-digital-open-opportu-8769973"
+    },
+    {
+     "label": "TechBuzz News - Matt Behrend's Agility bets big on brand advertising (Sept 29, 2025)",
      "url": "https://www.techbuzznews.com/matt-behrends-agility-bets-big-on-brand-advertising/"
     },
     {
-     "label": "Clinch: Agility chooses Clinch as ad serving and DCO partner",
-     "url": "https://clinch.co/news/agility-chooses-clinch-as-ad-serving-and-dco-partner"
-    },
-    {
-     "label": "ExchangeWire: Agility selects Clinch (Jun 2024)",
-     "url": "https://www.exchangewire.com/blog/2024/06/28/agility-selects-clinch-as-their-ad-serving-dco-technology-partner/"
-    },
-    {
-     "label": "VCBacked: Agility funding",
-     "url": "https://www.vcbacked.co/company/agility"
-    },
-    {
-     "label": "CB Insights: Agility",
+     "label": "CB Insights - Agility Holdings profile",
      "url": "https://www.cbinsights.com/company/agility-holdings/"
     },
     {
-     "label": "Indeed: 'Agility' (logistics company, not this employer)",
-     "url": "https://indeed.com/cmp/Agility"
+     "label": "Prospeo - Agility company profile",
+     "url": "https://prospeo.io/c/agility"
     },
     {
-     "label": "jobright.ai: AI Video Producer/Cinematographer at Agility",
-     "url": "https://jobright.ai/jobs/info/6a5a7529856af468ab0089d7"
+     "label": "The Web Radar - agilityads.com profile",
+     "url": "https://the-web-radar.com/companies/agilityads.com"
+    },
+    {
+     "label": "Clinch - Agility chooses Clinch as ad serving and DCO partner",
+     "url": "https://clinch.co/news/agility-chooses-clinch-as-ad-serving-and-dco-partner"
     }
    ]
   }

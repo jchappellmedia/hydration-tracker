@@ -1,0 +1,136 @@
+{
+ "company": "Muck Rack",
+ "company_file": "MuckRack",
+ "role": "Social Media Manager",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "Demo Reel",
+    "url": "https://vimeo.com/1103241704"
+   },
+   {
+    "label": "YouTube",
+    "url": "https://www.youtube.com/@JoshChappell"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "summary": "Marketer and video producer with seven-plus years of social, paid, and organic content for schools, businesses, and public institutions. Created and led a social media content initiative that drove more than 20x the engagement of standard content, and a video initiative that raised click-through rates for running ads by over 200%. Scripts, shoots, and edits video in-house, runs Meta ads with pixel tracking, builds AI workflows that cut production times in half, and holds a Master's in Marketing with a Marketing Analytics specialization.",
+  "jobs": [
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Created and led a social media content initiative that drove more than 20x the engagement of standard content.",
+     "Led video initiatives that drove paid and organic engagement by over 100%, and planned the role of video and photo in enrollment initiatives with high-level executives.",
+     "Created and led a video initiative that raised click-through rates for running ads by over 200%.",
+     "Used Claude agentic coding to build content workflows that cut production times in half while keeping stories authentic."
+    ]
+   },
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Reached over a million people on YouTube teaching cutting-edge post-production techniques.",
+     "Generated leads with Facebook ads and integrated on-site call-to-action elements with the Facebook pixel to monitor ad performance.",
+     "Accelerated 2x enrollment for a large charter school over one year by leading a video content creation initiative.",
+     "Delivered 98% of projects on time and 92% within budget while commanding teams of 5 to 20 people per project."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Delivered 200+ videos over two years reaching millions on TV, paid social, and organic channels.",
+     "Scripted original organic content with the marketing team and synchronized with multiple departments with competing interests.",
+     "Catalyzed an alumni campaign shown during NCAA basketball games, leading to a noticeable increase in engagement.",
+     "Directed cinematography for higher-end brand shoots every quarter while leading within a 15-person media team."
+    ]
+   },
+   {
+    "company": "Arizona State Legislature",
+    "title": "Video Producer",
+    "location": "Phoenix, AZ",
+    "dates": "Feb 2025 - June 2025",
+    "bullets": [
+     "Synchronized with Communications teams across legislative bodies and chambers to execute projects.",
+     "Documented prominent figures such as Robert F. Kennedy Jr. and the AZ Speaker of the House during a critical time in the year."
+    ]
+   },
+   {
+    "company": "American Leadership Academy",
+    "title": "Photography Teacher",
+    "location": "Queen Creek, AZ",
+    "dates": "Aug 2018 - Aug 2020",
+    "bullets": [
+     "Amplified the program's social media accounts, leading to a 20% increase in enrollment the following year."
+    ]
+   }
+  ],
+  "skills": [
+   "Social Media Content Strategy",
+   "Paid Social (Meta Ads, Facebook Pixel)",
+   "Video Production, Scripting & Editing",
+   "Short-Form Video (Reels, Shorts)",
+   "Marketing Analytics",
+   "Editing (Premiere Pro, DaVinci Resolve, After Effects, Audition, Final Cut Pro)",
+   "Photoshop, Lightroom, Canva",
+   "Motion Graphics",
+   "Photography",
+   "AI Workflows (Claude, ChatGPT, ElevenLabs, Runway)",
+   "Project Management (Wrike, Notion, Google Workspace)",
+   "Asset Management (Frame.io, Dropbox)",
+   "Inbound Marketing (HubSpot)"
+  ],
+  "education": [
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   },
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   }
+  ],
+  "certifications": [
+   "Google Digital Marketing & E-Commerce",
+   "WGU Marketing Analytics",
+   "HubSpot Inbound Marketing (2024)"
+  ]
+ },
+ "cover_letter": {
+  "greeting": "Hello Muck Rack Employee,",
+  "links": [
+   {
+    "label": "Demo Reel",
+    "url": "https://vimeo.com/1103241704"
+   },
+   {
+    "label": "YouTube",
+    "url": "https://www.youtube.com/@JoshChappell"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the Social Media Manager position at Muck Rack. I feel I have a lot of immediate value I can bring to your organization.",
+   "Your posting asks for someone creative, organized and metrics-driven who can carry video production across LinkedIn, Instagram, TikTok, and X. Video is the core of my work. At Charter One I created and led a social media content initiative that drove more than 20x the engagement of standard content, and I led video initiatives that drove paid and organic engagement by over 100%. At Grand Canyon Education I scripted original organic content with the marketing team and delivered 200+ videos over two years reaching millions on TV, paid social, and organic channels. I script, shoot, and edit in-house, so your social calendar does not wait on an outside crew.",
+   "On the paid side, I generated leads with Facebook ads for my own company and integrated on-site call-to-action elements with the Facebook pixel to monitor ad performance. At Charter One I created and led a video initiative that raised click-through rates for running ads by over 200%. I hold a Master's in Marketing with a Marketing Analytics specialization. You also ask for AI tools in day-to-day work: I used Claude agentic coding to build content workflows that cut production times in half. Your customers are PR and communications professionals. At the Arizona State Legislature I synchronized with Communications teams across legislative bodies and chambers, so I have worked alongside the people your platform serves.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ }
+}
