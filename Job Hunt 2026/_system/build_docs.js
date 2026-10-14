@@ -318,6 +318,12 @@ function mdBlocks(md) {
 }
 const src = arr => (arr || []).map((u, i) => `<a href="${esc(u)}">[${i + 1}]</a>`).join(' ');
 
+function redditFallback() {
+  const q = encodeURIComponent(`"${job.company.replace(/\s*\(.*?\)\s*/g, ' ').trim()}" work OR culture OR interview`);
+  return { url: `https://www.reddit.com/search/?q=${q}`,
+    text: 'Reddit could not be searched for this sheet: Reddit blocks the automated search Claude uses. Open the link to read what people say there.' };
+}
+
 function referenceHtml() {
   const r = F.research || {};
   const facts = (F.facts || []).map(([k, v]) => `<tr><th>${esc(k)}</th><td>${inlineHtml(v)}</td></tr>`).join('');
@@ -356,7 +362,7 @@ ${(F.gaps || []).length ? `<h3>Gaps to be ready for</h3>${F.gaps_note ? `<p clas
 ${r.overview ? `<p>${inlineHtml(r.overview)}</p>` : ''}
 <h3>Glassdoor</h3><p>${g.found ? `${g.rating ? `<strong>${esc(g.rating)}</strong>` : ''}${g.review_count ? ` (${esc(g.review_count)})` : ''} ${inlineHtml(g.summary || '')} ${g.url ? `<a href="${esc(g.url)}">Source</a>` : ''}` : inlineHtml(g.summary || 'No Glassdoor page found for this employer.')}</p>
 <h3>Indeed reviews</h3><p>${ind.found ? `${ind.rating ? `<strong>${esc(ind.rating)}</strong> ` : ''}${inlineHtml(ind.summary || '')} ${ind.url ? `<a href="${esc(ind.url)}">Source</a>` : ''}` : inlineHtml(ind.summary || 'No Indeed company reviews found.')}</p>
-<h3>Reddit</h3>${rd.found && (rd.threads || []).length ? `<ul>${rd.threads.map(x => `<li><a href="${esc(x.url)}">${esc(x.title)}</a>${x.subreddit ? ` (${esc(x.subreddit)})` : ''}: ${inlineHtml(x.gist)}</li>`).join('')}</ul>` : `<p>${inlineHtml(rd.summary || 'No relevant Reddit discussion found.')}</p>`}
+<h3>Reddit</h3>${rd.found && (rd.threads || []).length ? `<ul>${rd.threads.map(x => `<li><a href="${esc(x.url)}">${esc(x.title)}</a>${x.subreddit ? ` (${esc(x.subreddit)})` : ''}: ${inlineHtml(x.gist)}</li>`).join('')}</ul>` : `<p>${esc(redditFallback().text)} <a href="${esc(redditFallback().url)}">Search Reddit for ${esc(job.company)}</a></p>`}
 <h2>What employees say: pros and cons</h2>
 <div class="cols"><div class="pros"><h3>Pros</h3><ul>${pc(r.pros)}</ul></div><div class="cons"><h3>Cons</h3><ul>${pc(r.cons)}</ul></div></div>
 ${(r.red_flags || []).length ? `<h3>Watch for</h3><ul>${r.red_flags.map(x => `<li>${inlineHtml(x)}</li>`).join('')}</ul>` : ''}
@@ -424,7 +430,7 @@ function referenceDocx() {
   k.push(H3('Reddit'));
   if (rd.found && (rd.threads || []).length) rd.threads.forEach(x => k.push(LI([link(x.title, x.url),
     new D.TextRun({ text: `${x.subreddit ? ` (${x.subreddit})` : ''}: `, ...body }), ...inlineRuns(x.gist || '', body)])));
-  else k.push(P(rd.summary || 'No relevant Reddit discussion found.'));
+  else k.push(new D.Paragraph({ spacing: { after: 100 }, children: [new D.TextRun({ text: redditFallback().text + ' ', ...body }), link(`Search Reddit for ${job.company}`, redditFallback().url)] }));
   k.push(H2('What employees say: pros and cons'));
   k.push(H3('Pros', '1D6B35'));
   ((r.pros || []).length ? r.pros : [{ point: 'Nothing reliable found.' }]).forEach(x => k.push(LI([...inlineRuns(x.point, body), ...cite(x.sources)])));

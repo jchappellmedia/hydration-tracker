@@ -173,6 +173,14 @@ leaves the sheet as Markdown, HTML, or Word only is not finished.
   company reviews when available). Fill `overview`, the `glassdoor`, `indeed`, and `reddit` blocks,
   4 to 7 `pros` and 4 to 7 `cons` (each with `sources` URLs), `red_flags`, `bottom_line`, and
   `sources`. **Every pro and con cites a real URL a tool returned.** Never invent ratings, review counts, quotes, or threads.
+  - **Reddit:** Anthropic's web search cannot see reddit.com (Reddit blocks it), so search alone always
+    comes back empty for Reddit. On the Mac, use a browser tool (Claude in Chrome or the built-in browser)
+    to search Reddit for "<Company>" plus "work", "culture", "interview", or "layoffs", and read the
+    threads directly. If no browser tool is available, say so in the Reddit section rather than leaving it blank.
+  - **Glassdoor:** pages often block automated reading. Use a browser tool if one is available; otherwise
+    use the ratings and review themes that web search returns, and cite those URLs.
+  - **Web search has a per-turn limit** (about 200 searches shared by everything running). Research the five
+    picks one at a time and keep each to roughly 10 to 15 searches, so the last company still gets researched.
 
 Then build everything:
 
