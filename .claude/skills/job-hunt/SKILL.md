@@ -54,6 +54,15 @@ The profile file mirrors a **living Google Doc**. Re-read the live doc at the st
 `https://docs.google.com/document/d/12ejSK4KqGYDSxFD8F6Ab1uZIQr-vafTE_cNElmBIhxc/edit`
 (Google Drive MCP → `read_file_content` with fileId `12ejSK4KqGYDSxFD8F6Ab1uZIQr-vafTE_cNElmBIhxc`.) If the doc is unreachable, fall back to the profile reference and say so in the report.
 
+## Daily top five → `Job Hunt 2026` folder
+
+As of 2026-10-14 the daily run delivers **five new jobs a day** into a `Job Hunt 2026` folder (iCloud
+Drive on Joshua's Mac; mirrored in this repo). Each job gets its own folder with the resume, cover
+letter, and a job-description-plus-company-research sheet as both PDF and Word, plus an apply link.
+Nothing is auto-submitted. The procedure, criteria, and document builder live in
+`Job Hunt 2026/_system/` (`DAILY-RUN.md`, `build_docs.js`, `seen-jobs.csv`). For a scheduled run,
+follow that file instead of the Scheduled section below.
+
 ## Ad-hoc: a job lands in chat
 
 1. Get the full posting text. If given a link, try the Indeed MCP (`search_jobs` by title+location, then `get_job_details`) — direct page fetches of Indeed/LinkedIn/ZipRecruiter return 403. If you cannot retrieve it, ask for the pasted text rather than guessing at requirements.

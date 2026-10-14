@@ -4,10 +4,13 @@
 
 A job must clear **all** of these to reach the auto-apply path.
 
-### 1. Pay: $75,000/year or better
+### 1. Pay: $76,000/year or better
 
-- Hourly postings: **$36.06/hr** is the equivalent. Round to ≥ $36/hr.
-- Posted range: qualifies if the **midpoint** ≥ $75k. A range of $68k–$109k has a midpoint of $88.5k → qualifies.
+*Raised from $75k by Joshua on 2026-10-14: "make sure the salary is no lower than $76,000."*
+
+- Hourly postings: **$36.54/hr** is the equivalent.
+- Prefer postings whose **minimum** is at least $76k. A range that starts lower qualifies only if its
+  **midpoint** is at least $76k, and the report flags that the bottom of the range is under his floor.
 - No pay listed: research it. Levels.fyi, Glassdoor, or comparable postings from the same employer. If you still cannot establish it, mark `queued` with a note rather than guessing — an unlisted salary is not the same as a low one.
 - **Commission-only "$100k–$300k" ads do not qualify.** See exclusions.
 
