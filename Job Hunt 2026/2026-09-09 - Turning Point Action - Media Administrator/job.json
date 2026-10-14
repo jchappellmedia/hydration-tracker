@@ -1,0 +1,318 @@
+{
+ "company": "Turning Point Action",
+ "company_file": "TurningPointAction_Media",
+ "role": "Media Administrator",
+ "resume": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "Portfolio",
+    "url": "https://lightbox-digital.com/"
+   },
+   {
+    "label": "YouTube",
+    "url": "https://www.youtube.com/@JoshChappell"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "summary": "Video editor with seven-plus years cutting long-form and short-form content for brands, campaigns, and social platforms. Delivered 200+ videos that reached millions on TV, paid social, and organic channels, and built a social initiative that earned more than 20x the engagement of standard content. Works fast and organized, with 98% of projects delivered on time and 92% within budget.",
+  "jobs": [
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
+     "Created and led a social content initiative that earned more than 20x the engagement of standard content.",
+     "Created and led a video initiative that raised click-through rates for running ads by over 200%.",
+     "Led video initiatives that drove paid and organic engagement by over 100%.",
+     "Built AI content workflows that cut production times in half while keeping stories authentic."
+    ]
+   },
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Edited long-form corporate documentaries and interviews in Premiere Pro, DaVinci Resolve, and Final Cut Pro.",
+     "Reached over a million people on YouTube teaching post-production techniques.",
+     "Maintained an organized asset library in Frame.io and Dropbox, cutting search and retrieval time by over 50%.",
+     "Architected motion graphics in After Effects and edited audio in Adobe Audition."
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Delivered 200+ videos over two years that reached millions on TV, paid social, and organic channels.",
+     "Scripted original organic content with the marketing team.",
+     "Catalyzed an alumni campaign shown during NCAA basketball broadcasts, lifting engagement.",
+     "Led within a 15-person media team and synchronized departments with competing interests."
+    ]
+   },
+   {
+    "company": "Arizona State Legislature",
+    "title": "Video Producer",
+    "location": "Phoenix, AZ",
+    "dates": "Feb 2025 - June 2025",
+    "bullets": [
+     "Produced political video for the Arizona Legislature during a critical stretch of the year.",
+     "Documented prominent figures including Robert F. Kennedy Jr. and the AZ Speaker of the House.",
+     "Coordinated with Communications teams across legislative bodies and chambers."
+    ]
+   }
+  ],
+  "skills": [
+   "Long-Form & Short-Form Editing",
+   "Premiere Pro",
+   "DaVinci Resolve",
+   "Final Cut Pro",
+   "After Effects",
+   "Audition",
+   "Photoshop & Lightroom",
+   "Motion Graphics",
+   "Social Platforms (Instagram, X, Facebook, YouTube)",
+   "Content & Engagement Analytics",
+   "Cinematography & Lighting",
+   "Asset Delivery (Frame.io, Dropbox)",
+   "AI-Assisted Production"
+  ],
+  "education": [
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   },
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   }
+  ],
+  "certifications": [
+   "Google Digital Marketing & E-Commerce",
+   "HubSpot Inbound Marketing",
+   "Part 107 Drone Operator License"
+  ],
+  "extra_sections": [
+   {
+    "heading": "Community Involvement",
+    "lines": [
+     "Organizes and runs community events with a local church congregation."
+    ]
+   }
+  ],
+  "education_heading": "Education & Certifications"
+ },
+ "cover_letter": {
+  "email": "jchappellmedia@gmail.com",
+  "links": [
+   {
+    "label": "Portfolio",
+    "url": "https://lightbox-digital.com/"
+   },
+   {
+    "label": "YouTube",
+    "url": "https://www.youtube.com/@JoshChappell"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
+  ],
+  "greeting": "Hello Turning Point Action Employee,",
+  "paragraphs": [
+   "By way of introduction, my name is Joshua Chappell. My intent is to apply for the Media Administrator position at Turning Point Action. I feel I have a lot of immediate value I can bring to your organization.",
+   "Your posting asks for long-form editing and social media experience. That is the center of my work. At Grand Canyon Education I delivered 200+ videos over two years that reached millions on TV, paid social, and organic channels. At Charter One I created and led a social content initiative that earned more than 20x the engagement of standard content, and a video initiative that raised click-through rates for running ads by over 200%. I cut long-form documentaries and interviews in Premiere Pro, DaVinci Resolve, and Final Cut Pro, build motion graphics in After Effects, and edit audio in Audition. I have reached over a million people on my own YouTube channel teaching post-production, so I know how long-form performs on that platform from both sides. I also produced video for the Arizona Legislature this year and coordinated with Communications teams across chambers, which means a political newsroom pace is familiar. On the events side of the role, I organize community events with my local church.",
+   "I appreciate that you value organization, strong communication, self-starting, and applying feedback to improve; these are all values that I strive to emulate.",
+   "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
+  ],
+  "closing": "Sincerely,"
+ },
+ "reference": {
+  "apply_url": "https://www.ziprecruiter.com/job-redirect?match_token=CpMBChZpSjF4aWNldHc3b0VtRDIycnBUdUNBEiQwMWExM2I5MC1mNGU1LTc2Y2ItYmNmNy1kZGI1OGVlYjA5ZTkaT0FBSDVHdDlPNzRZU1hqRnBoS1piRUFWdnRzTVh5dVBzUi1mZGcwRy1oeGI4OGMxb29QaUdjaWVjSTcySFl0Y1hLMEdVeTBzR3pEeGtFT1Ugya0FEAEYya0F&tsid=100000502",
+  "facts": [
+   [
+    "Pay",
+    "Not listed in the posting he pasted. The current ZipRecruiter listing shows $42,000 to $64,500 a year, which may be a ZipRecruiter estimate. Below his $75,000 floor."
+   ],
+   [
+    "Location",
+    "Phoenix, AZ, at Turning Point Action headquarters"
+   ],
+   [
+    "Work mode / commute",
+    "Full-time, on site at the Phoenix headquarters, not remote. A daily drive across the Valley from Mesa 85206. The exact headquarters address is not in the posting."
+   ],
+   [
+    "Fit",
+    "Strong"
+   ],
+   [
+    "First handled",
+    "2026-09-09"
+   ],
+   [
+    "Status",
+    "queued"
+   ],
+   [
+    "Found on",
+    "Pasted into chat by Joshua on 2026-09-09 (no link saved). Live listing found on ZipRecruiter on 2026-10-14."
+   ],
+   [
+    "How to apply",
+    "Apply through the ZipRecruiter listing (Turning Point Action, Media Administrator, Phoenix, full-time, on site). It was posted about 7 days before 2026-10-14 and looks open. It may be a repost of the September posting he pasted."
+   ]
+  ],
+  "why_heading": "Why it fit",
+  "why": [
+   "The posting says the ideal candidate has long-form editing and social media experience, which is the center of his record: 200+ videos at Grand Canyon Education, plus long-form documentaries and interviews at Lightbox.",
+   "His short-form social work has numbers: an initiative with 20x the engagement of standard content, and a 200%+ click-through lift at Charter One.",
+   "He has reached 1M+ people on his own YouTube channel, and the posting names YouTube and Rumble as places the work goes.",
+   "His Arizona State Legislature video work counts partly toward the 'political organizations' WOW skill. His asset delivery in Frame.io and Dropbox (search and retrieval time cut by over 50%) covers the admin half of the job."
+  ],
+  "gaps": [
+   "No podcast editing. His answer: \"I haven't cut a podcast, but a podcast is a multicam interview with sustained audio. I've cut interviews and edited audio in Audition for years.\"",
+   "No TikTok or Rumble. His answer: \"Those are delivery platforms. My short-form work for Instagram and X and long-form work for YouTube carry over directly, and I learn platform specs quickly.\"",
+   "No documented copywriting, and the posting asks for strong, efficient writing. His answer: \"I script and storyboard, and I wrote original organic content with the Grand Canyon Education marketing team. I'm happy to do a writing sample.\"",
+   "No prior involvement with Turning Point Action. His answer: \"Not with TPAction, but I produced video for the Arizona Legislature in 2025 and worked with communications teams across both chambers.\"",
+   "'Passion for conservative ideas and principles' is a stated minimum qualification. Only he can answer it, in his own words. Claude deliberately left it out of the cover letter."
+  ],
+  "gaps_note": "Suggested answers carried over from the original analysis. Some assume a course or certification is under way; say those only if they are true when you interview.",
+  "jd_source": "Copied word for word from the posting Joshua pasted into Claude on 2026-09-09.",
+  "jd_text": "Turning Point Action is a 501(c)(4) organization founded in 2019 by Charlie Kirk. The organization’s mission is to embolden the conservative base through grassroots activism and provide voters with the necessary resources to elect true conservative leaders. Turning Point Action has emerged as the country’s leading grassroots organization, giving individuals the opportunity and platform to run for office at the local level, providing voters with critical information surrounding their district’s candidates and elections, allowing them unparalleled access to some of the most impactful figures in the movement. Turning Point Action is on a mission to save America, one precinct at a time.\n\n\n\nJob Description: Turning Point Action is looking for a Media Administrator who has a strong passion for creative marketing. This person will play a key role in marketing projects, video editing, social media, messaging, and events that support our mission to save America. The ideal candidate would have long form editing and social media experience!\n\nPRIMARY RESPONSIBILITIES:\n\nDevelop high-quality short-form videos tailored for social media platforms such as Instagram, TikTok, and X.\nEdit long-form video and audio content for podcast platforms, Youtube, and Rumble.\nStay up to date on relevant news, trends, and media.\nTrack social media and podcast engagement and insights.\nDeliver assets to marketing channels.\nBrainstorm and research ideas for original content.\nPerform administrative tasks related to media.\nMINIMUM QUALIFICATIONS:\n\nHighly organized and able to work in a fast-paced environment.\nHas experience in editing long and short-form content.\nExcellent oral and written communication skills\nStrong organizational and time management skills.\nGood problem-solving abilities and exceptional communication skills.\nMust be able to work in the office at our Headquarters in Phoenix, Arizona.\nStrong and efficient writing skills.\nPassion for conservative ideas and principles.\nA self-starter and has a goal-oriented mindset.\nApplies feedback constructively to improve performance.\n“WOW” SKILLS:\n\nHas experience working on political campaigns or organizations.\nPrior involvement with Turning Point Action, its affiliates, and/or political campaigns\nAnother job",
+  "research": {
+   "overview": "Turning Point Action (TPAction) is a 501(c)(4) political advocacy group. Charlie Kirk founded it in 2019 as the sister organization of Turning Point USA. Its field program, Chase the Vote, hires ballot chasers in assigned zip-code territories. Its media and marketing staff work on site at the Phoenix headquarters. Charlie Kirk was assassinated in September 2025, and Erika Kirk now leads Turning Point USA. TPAction activists were still campaigning in 2026. No employee reviews of TPAction itself turned up on Glassdoor, Indeed or Reddit. All the Glassdoor and Indeed results were for unrelated employers named \"Turning Point\". This research is thin: the web-search budget shared by every agent in this run ran out after four searches, so no searches for layoffs, lawsuits, culture or reviews of the sister organization were run.",
+   "website": "https://tpaction.com",
+   "glassdoor": {
+    "found": false,
+    "summary": "No Glassdoor profile for Turning Point Action came up, not even in the company-wide results. Every Glassdoor result was for an unrelated employer named \"Turning Point\", mainly a UK health and social care charity, rated about 3.1 to 3.3 out of 5. Those ratings do not apply to TPAction and should not be quoted as if they do."
+   },
+   "indeed": {
+    "found": false,
+    "summary": "No Indeed reviews for Turning Point Action came up. The Indeed results were for unrelated \"Turning Point\" employers in the UK, Australia, India and Sacramento. The Indeed connector failed to connect in this session (rate-limited), so get_company_data could not be called."
+   },
+   "reddit": {
+    "found": false,
+    "summary": "A site:reddit.com search returned no Reddit pages, only Wikipedia and news sites. No employee or applicant threads were found.",
+    "threads": []
+   },
+   "pros": [
+    {
+     "point": "It is hiring in the Phoenix area right now. On ZipRecruiter: a Media Administrator posted about 7 days ago, ballot chase representative jobs in Mesa and Scottsdale posted 15 to 22 days ago, and an intern job posted 13 days ago.",
+     "sources": [
+      "https://www.ziprecruiter.com/jobs-search?search=Media+Administrator&location=Phoenix%2C+AZ&tsid=100000502",
+      "https://www.ziprecruiter.com/jobs-search?search=Turning+Point+Action+ballot+chase&location=Mesa%2C+AZ&radius=25&tsid=100000502"
+     ]
+    },
+    {
+     "point": "The headquarters job is local. The Media Administrator listing is full-time and on site in Phoenix: a drive across the Valley from Mesa, with no move needed.",
+     "sources": [
+      "https://www.ziprecruiter.com/jobs-search?search=Media+Administrator&location=Phoenix%2C+AZ&tsid=100000502"
+     ]
+    },
+    {
+     "point": "It is a large, active operation with national reach. Fortune says Turning Point and Turning Point Action played a crucial role in the 2024 election, and TPAction activists were still campaigning in 2026 (Iowa State Fair). Media made there gets a big audience.",
+     "sources": [
+      "https://www.fortune.com/2025/09/18/kirk-assassination-erica-kirk-turning-point",
+      "https://www.telegraphherald.com/news/national_world/article_a33c5e36-ba0c-5aa8-ae92-a3517c0dda22.html"
+     ]
+    },
+    {
+     "point": "The sister organization, Turning Point USA, is also hiring for related media jobs in Phoenix: a Marketing Copywriter ($54,600 to $80,900 on ZipRecruiter) and a FRONTLINES Social Media Administrator. That gives him a second way in at the same headquarters group.",
+     "sources": [
+      "https://www.ziprecruiter.com/jobs-search?search=Turning+Point+Action+ballot+chase&location=Mesa%2C+AZ&radius=25&tsid=100000502",
+      "https://www.ziprecruiter.com/jobs-search?search=Media+Administrator+Turning+Point+Action&location=Phoenix%2C+AZ&tsid=100000502"
+     ]
+    }
+   ],
+   "cons": [
+    {
+     "point": "There are no employee reviews for TPAction itself. The Glassdoor and Indeed results were all for unrelated \"Turning Point\" employers, so there is no outside view of management, hours, turnover or culture.",
+     "sources": [
+      "https://www.glassdoor.com/Reviews/Turning-Point-Reviews-E436918.htm",
+      "https://www.indeed.com/cmp/Turning-Point"
+     ]
+    },
+    {
+     "point": "Pay is well below his $75,000 floor. ZipRecruiter shows the Media Administrator at $42,000 to $64,500, the ballot chase jobs at $27,000 to $33,000 (Scottsdale) and $41,000 to $60,500 (Mesa), and the intern at $34,000 to $38,000. These may be ZipRecruiter's own estimates, since the postings he pasted listed no pay.",
+     "sources": [
+      "https://www.ziprecruiter.com/jobs-search?search=Media+Administrator&location=Phoenix%2C+AZ&tsid=100000502",
+      "https://www.ziprecruiter.com/jobs-search?search=Turning+Point+Action+ballot+chase&location=Mesa%2C+AZ&radius=25&tsid=100000502"
+     ]
+    },
+    {
+     "point": "Ballot chase jobs are tied to set zip codes and to the election calendar. Each listing names its zip codes in the title, and the November 3, 2026 general election is three weeks away, so these jobs likely end soon after.",
+     "sources": [
+      "https://www.ziprecruiter.com/jobs-search?search=Turning+Point+Action+ballot+chase&location=Mesa%2C+AZ&radius=25&tsid=100000502"
+     ]
+    },
+    {
+     "point": "Leadership changed suddenly. Founder Charlie Kirk was assassinated in September 2025, and Erika Kirk now leads Turning Point USA. None of the sources found say how this changed TPAction's staffing or direction.",
+     "sources": [
+      "https://www.fortune.com/2025/09/18/kirk-assassination-erica-kirk-turning-point",
+      "https://www.telemundo51.com/noticias/eeuu/arizona-erika-kirk-turning-point-usa-asesinato-charlie-kirk-ceo/2700009/?amp=1"
+     ]
+    },
+    {
+     "point": "The work is public and partisan. TPAction is a 501(c)(4) political advocacy group, so working there ties his name to it publicly, in a way that corporate media work does not.",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Turning_Point_Action"
+     ]
+    }
+   ],
+   "red_flags": [
+    "Do not quote the 3.1 to 3.4 \"Turning Point\" ratings on Glassdoor or Indeed. They belong to unrelated organizations, mainly a UK care charity.",
+    "Ballot Chaser: the territory zip code on his posting is unknown, and the job likely ends at the November 3, 2026 election, three weeks away.",
+    "Media Administrator: the duties are an editor's job but the title says administrator, and the ZipRecruiter range ($42,000 to $64,500) supports that worry. Ask for the pay band and who the job reports to.",
+    "This research did not check for layoffs, lawsuits or culture news, because the web-search budget ran out."
+   ],
+   "bottom_line": "There is no public record of employee reviews for Turning Point Action, so nothing outside says what day-to-day work there is like. He will need to ask directly in interviews. What can be checked: TPAction is hiring around Phoenix now, the Media Administrator job is the real fit, and the listed pay ($42,000 to $64,500 on ZipRecruiter) is well under his $75,000 floor. The ballot chase jobs pay less, are tied to set zip codes, and likely end with the November 3 election. Get the pay band and the reporting line before putting in more time.",
+   "sources": [
+    {
+     "label": "Wikipedia: Turning Point Action",
+     "url": "https://en.wikipedia.org/wiki/Turning_Point_Action"
+    },
+    {
+     "label": "Fortune: Kirk assassination, Erika Kirk and Turning Point (Sept 18, 2025)",
+     "url": "https://www.fortune.com/2025/09/18/kirk-assassination-erica-kirk-turning-point"
+    },
+    {
+     "label": "Telemundo 51: Erika Kirk named CEO of Turning Point USA",
+     "url": "https://www.telemundo51.com/noticias/eeuu/arizona-erika-kirk-turning-point-usa-asesinato-charlie-kirk-ceo/2700009/?amp=1"
+    },
+    {
+     "label": "Telegraph Herald: TPAction activists at the Iowa State Fair (2026)",
+     "url": "https://www.telegraphherald.com/news/national_world/article_a33c5e36-ba0c-5aa8-ae92-a3517c0dda22.html"
+    },
+    {
+     "label": "ZipRecruiter: Media Administrator search, Phoenix (TPAction listing, $42,000 to $64,500)",
+     "url": "https://www.ziprecruiter.com/jobs-search?search=Media+Administrator&location=Phoenix%2C+AZ&tsid=100000502"
+    },
+    {
+     "label": "ZipRecruiter: TPAction ballot chase search, Mesa within 25 miles",
+     "url": "https://www.ziprecruiter.com/jobs-search?search=Turning+Point+Action+ballot+chase&location=Mesa%2C+AZ&radius=25&tsid=100000502"
+    },
+    {
+     "label": "ZipRecruiter: TPAction and TPUSA listings, Phoenix",
+     "url": "https://www.ziprecruiter.com/jobs-search?search=Media+Administrator+Turning+Point+Action&location=Phoenix%2C+AZ&tsid=100000502"
+    },
+    {
+     "label": "Glassdoor: \"Turning Point\" (unrelated UK charity, not TPAction)",
+     "url": "https://www.glassdoor.com/Reviews/Turning-Point-Reviews-E436918.htm"
+    },
+    {
+     "label": "Indeed: \"Turning Point\" (unrelated employer, not TPAction)",
+     "url": "https://www.indeed.com/cmp/Turning-Point"
+    }
+   ]
+  }
+ }
+}

@@ -98,5 +98,214 @@
    "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
   ],
   "closing": "Sincerely,"
+ },
+ "reference": {
+  "apply_url": "sms:+14807886086",
+  "facts": [
+   [
+    "Pay",
+    "100% commission, no base. The ad claims $100K-$300K/yr and \"$3,000-$9,000 per week\" (unverified recruiting copy)."
+   ],
+   [
+    "Location",
+    "Tempe, AZ (the company site lists an office at 1834 E Baseline Rd). Field work door to door around the Phoenix metro."
+   ],
+   [
+    "Work mode / commute",
+    "In person, in the field every day. A reliable car is required. The Tempe office is roughly 15-20 miles (about 25 min via US-60) from Mesa 85206; daily neighborhoods vary."
+   ],
+   [
+    "Fit",
+    "Strong for what they screen for (coachable, hungry, reliable transportation), but high-risk: read the flags first"
+   ],
+   [
+    "First handled",
+    "2026-07-18"
+   ],
+   [
+    "Status",
+    "skipped-excluded (commission-only door-to-door; tracker note: verify ROC license before pursuing)"
+   ],
+   [
+    "Found on",
+    "Indeed"
+   ],
+   [
+    "How to apply",
+    "The ad gives two ways to apply: text \"MONDAY\" plus your name to 480-788-6086, or apply on Indeed with a resume. No Indeed link was saved. No live posting turned up on Dice, ZipRecruiter or web search on 2026-10-14, so whether it is still open is unknown. A backup contact is info@discountprohome.com."
+   ]
+  ],
+  "why_heading": "Why it fit",
+  "why": [
+   "He already knows the trades world: he has filmed and marketed for construction companies, home developers and a bath remodel company, so he can talk roofs and remodels with homeowners.",
+   "Six years running his own business on results alone. He generated his own leads with no salary, the same eat-what-you-kill model as the ad.",
+   "He clears their stated screens easily: coachable, hungry, reliable transportation, no resume required. His Spartan race in 100-degree heat answers the knocking-in-the-heat question.",
+   "The ad offers a one-day no-commitment shadow, a cheap way to see the real pitch and real rep pay before committing."
+  ],
+  "gaps": [
+   "No door-to-door or roofing sales track record. Answer: \"I haven't knocked doors for a roofer yet, but I've generated my own leads for six years and worked with construction and remodel clients, so I know the product world. I'll learn your system on the shadow day.\"",
+   "Commission-only pay with no safety net (likely 1099). Ask: \"Is this W-2 or 1099, what's the commission percentage, when do I get paid, and what happens if a customer cancels?\"",
+   "The company still needs checking. The original ad did not name the company. Its site now lists ROC #362872 and #366068, but the licenses look new. Ask: \"Can you confirm the legal company name and ROC license I'd be selling under?\" Then check it at roc.az.gov.",
+   "The income claims can't be verified. Ask a rep who has been there 6+ months, not a top closer: \"What did your last three months actually pay?\"",
+   "He already works as a Media Specialist at Charter One (2025-present). Answer: \"I can do the shadow day on my day off,\" which the ad itself suggests. He shouldn't quit anything until he has seen typical rep earnings."
+  ],
+  "gaps_note": "Suggested answers carried over from the original analysis. Some assume a course or certification is under way; say those only if they are true when you interview.",
+  "jd_source": "The original posting was not saved word for word when this application was built on 2026-07-18. Below is the detailed record of the posting saved at the time. The live posting may have changed or closed.",
+  "jd_text": "# Job Description Reference — Roofing & Home Improvement Sales, Discount Pro Home (Tempe, AZ)\n\n## Application Details\n- **Company:** Discount Pro Home — Tempe, AZ. Apply via Indeed with resume, or text \"MONDAY\" with your name to 480-788-6086. Indeed notes they respond to 75%+ of applications, typically within 1 day.\n- **Role:** Door-to-door canvassing and cold calling — roofing, windows, doors, HVAC, exteriors\n- **Pay:** 100% commission. Ad claims $100K–$300K/year, \"$3,000–$9,000 per week,\" \"$150K is our low end.\"\n- **Location:** On the road (Phoenix metro implied by the 480 number)\n- **Requirements:** 18+, reliable transportation (non-negotiable), coachable, committed, thick skin\n- **Offer in ad:** A no-commitment one-day shadow (\"come spend one day with us on your day off\")\n\n## What They Expect\n- Knock doors and make cold calls daily, in the heat.\n- Be teachable and follow the system exactly.\n- Full commitment; they cut people quickly who don't produce.\n- Reliable transportation.\n- Upbeat team culture; celebrate wins loudly.\n\n## Notable Ad Language (for tone-matching)\n\"Teachable, moldable\" · \"The doors are the price. The income is the prize.\" · \"You eat what you kill\" · \"Choose the room\" · One-day no-risk challenge.",
+  "research": {
+   "overview": "Discount Pro Home is a small Tempe, AZ contractor that sells roofing, HVAC and exterior work to homeowners, landlords and property managers. Its website lists a Tempe office (1834 E Baseline Rd) and Arizona ROC license numbers #362872 and #366068. A sister brand, Discount Pro Roofing (discountproroofing.com, a GAF-listed contractor), uses the same Tempe address and appears to share the phone line. It looks like a young business: an Arizona ROC new-licenses list dated Feb 12, 2026 appears to include license 362872, and a Layers profile for Discount Pro Roofing shows it joined in Dec 2025. I found no employee reviews anywhere: not on Glassdoor, Indeed or Reddit. The only reviews online are from customers, and they are thin and inconsistent. The company's own site claims 5.0 stars on Google. The GAF listing shows no verified reviews. One directory lists 4.4 stars from 96 Google reviews, but under a Mesa address and described as a solar business. None of this says what it is like to work there as a rep.",
+   "glassdoor": {
+    "found": false,
+    "summary": "No Glassdoor page for Discount Pro Home or Discount Pro Roofing came up. Searches only returned companies with similar names (Discounto, Discount Tire, Choice Discount), none of which is this employer."
+   },
+   "indeed": {
+    "found": false,
+    "summary": "No Indeed company page or employee reviews for Discount Pro Home were found by web search, and the Indeed connector failed to connect today, so get_company_data could not be called. The closest Indeed pages belong to other companies, such as Home Pro, US Home Pro and Roof Pro, and say nothing about this employer."
+   },
+   "reddit": {
+    "found": false,
+    "summary": "No Reddit threads mention Discount Pro Home or Discount Pro Roofing. A site:reddit.com search returned no Reddit pages at all."
+   },
+   "pros": [
+    {
+     "point": "It looks like a real local contractor, not a shell. The website lists a Tempe office and two Arizona ROC license numbers (#362872 and #366068), and the state's Feb 2026 new-license list appears to include 362872. Joshua can check both at roc.az.gov before investing time.",
+     "sources": [
+      "https://discountprohome.com/",
+      "https://roc.az.gov/sites/default/files/ROC_New-Licenses-List_2026-02-12.csv"
+     ]
+    },
+    {
+     "point": "Wide product line: roofing, HVAC (including furnaces and heat pumps) and exteriors. A rep has more than one thing to offer at each door. The company also courts landlords and property managers with bundled volume pricing, which can mean larger jobs.",
+     "sources": [
+      "https://discountprohome.com/",
+      "https://discountprohome.com/property-portfolios/"
+     ]
+    },
+    {
+     "point": "The roofing side, Discount Pro Roofing at the same Tempe address, is listed in GAF's residential contractor directory. That is a basic sign of a working roofing operation.",
+     "sources": [
+      "https://www.gaf.com/en-us/roofing-contractors/residential/usa/az/tempe/discount-pro-roofing-1162085",
+      "https://discountproroofing.com/"
+     ]
+    },
+    {
+     "point": "The customer-side reputation looks positive where it is visible. The site claims 5.0 stars on Google, and a third-party directory shows 4.4 stars from 96 Google reviews for Discount Pro Roofing. These are customer reviews, not employee reviews, and the company publishes its own.",
+     "sources": [
+      "https://discountprohome.com/",
+      "https://serviceagent.ai/directory/arizona/mesa/solar/discount-pro-roofing/"
+     ]
+    },
+    {
+     "point": "The Tempe office is a reasonable drive from Mesa, and Phoenix-area roofing sales is an active market with many similar openings. Door-to-door experience gained here would carry over to other local roofers.",
+     "sources": [
+      "https://www.ziprecruiter.com/Jobs/Roofing-Sales/-in-Tempe,AZ",
+      "https://www.indeed.com/q-roofing-sale-l-phoenix,-az-jobs.html"
+     ]
+    }
+   ],
+   "cons": [
+    {
+     "point": "There are no employee reviews on any platform, so there is no outside check on how reps are trained, paid or treated. Everything known about the job comes from the company's own recruiting ad.",
+     "sources": [
+      "https://discountprohome.com/",
+      "https://www.gaf.com/en-us/roofing-contractors/residential/usa/az/tempe/discount-pro-roofing-1162085"
+     ]
+    },
+    {
+     "point": "It is a very young business. License 362872 appears on the ROC's Feb 12, 2026 new-license list, and the Discount Pro Roofing Layers profile shows Dec 2025. The search snippet of the ROC list was misaligned and showed a CR-2 excavating classification near that row, so Joshua should check the license type and status himself.",
+     "sources": [
+      "https://roc.az.gov/sites/default/files/ROC_New-Licenses-List_2026-02-12.csv",
+      "https://layers.to/discountproroof"
+     ]
+    },
+    {
+     "point": "The website looks unfinished. Its project and review counters read \"0+\" and \"0%\", and its testimonials and \"5.0 stars\" claim are self-published.",
+     "sources": [
+      "https://discountprohome.com/"
+     ]
+    },
+    {
+     "point": "The branding is confusing, which makes it hard to check who he would actually work for. Discount Pro Home and Discount Pro Roofing share an address. One directory lists \"discount pro roofing\" in Mesa as a solar business with what looks like the same phone number. The GAF listing shows no Google reviews while that directory shows 96.",
+     "sources": [
+      "https://serviceagent.ai/directory/arizona/mesa/solar/discount-pro-roofing/",
+      "https://www.gaf.com/en-us/roofing-contractors/residential/usa/az/tempe/discount-pro-roofing-1162085",
+      "https://discountproroofing.com/"
+     ]
+    },
+    {
+     "point": "The pay is 100% commission, and the ad's income claims ($150K \"low end\", $3,000-$9,000 per week) are far above the public ranges. ZipRecruiter's Tempe roofing sales page shows $56k-$120k. A reviewer at a different roofing company (Roof Pro, on Indeed) wrote that 100% commission is hard when you don't sell many roofs.",
+     "sources": [
+      "https://www.ziprecruiter.com/Jobs/Roofing-Sales/-in-Tempe,AZ",
+      "https://www.indeed.com/cmp/Roof-Pro/reviews"
+     ]
+    },
+    {
+     "point": "Door-to-door roofing in Arizona has a storm-chasing reputation. A local consumer column warns homeowners about unsolicited door knocks after monsoon storms and pressure to sign on the spot. The company's sister site markets storm-damage and insurance-claim roofing. Reps can run into homeowner distrust, and he should watch how this company's reps pitch.",
+     "sources": [
+      "https://www.dcourier.com/eedition/page-a10/page_22d10bcb-23d9-51c4-970b-8cc82dd82b5a.html",
+      "https://discountproroofing.com/emergency/roof-storm-damage/"
+     ]
+    }
+   ],
+   "red_flags": [
+    "Zero employee reviews on Glassdoor, Indeed or Reddit, so nobody outside the company backs up the rep income claims.",
+    "The ad's income claims ($100K-$300K/yr, \"$150K is our low end\", $3,000-$9,000/week) are recruiting copy. Public Tempe roofing sales ranges are about $56k-$120k.",
+    "The licenses look new (2026). Joshua should check both ROC numbers (#362872, #366068), their classification (roofing should be CR-42 or similar) and their status at roc.az.gov.",
+    "Two brand names at one address, plus a directory listing it as a solar business in Mesa. He should confirm the legal entity that would pay him.",
+    "100% commission almost certainly means 1099: no base, no benefits, self-employment tax, and possible chargebacks on cancellations. Ask before the shadow day."
+   ],
+   "bottom_line": "There is not enough public evidence to judge Discount Pro Home as an employer. It appears to be a real but very young Tempe roofing, HVAC and exterior contractor with ROC numbers on its site, but no employee reviews exist anywhere and the rep income claims cannot be checked. The tracker marked this job skipped-excluded because it is commission-only. If Joshua revisits it, treat the one-day shadow as a test only: first verify both ROC licenses, then ask whether the role is W-2 or 1099, the commission percentage, how chargebacks work, and what a rep with 6+ months in the middle of the pack actually earned in the last three months. He should not give up other options for it.",
+   "sources": [
+    {
+     "label": "Discount Pro Home website (homepage)",
+     "url": "https://discountprohome.com/"
+    },
+    {
+     "label": "Discount Pro Home - Property Portfolios page",
+     "url": "https://discountprohome.com/property-portfolios/"
+    },
+    {
+     "label": "Discount Pro Roofing website (Tempe)",
+     "url": "https://discountproroofing.com/"
+    },
+    {
+     "label": "Discount Pro Roofing - storm damage page",
+     "url": "https://discountproroofing.com/emergency/roof-storm-damage/"
+    },
+    {
+     "label": "GAF contractor directory - Discount Pro Roofing, Tempe",
+     "url": "https://www.gaf.com/en-us/roofing-contractors/residential/usa/az/tempe/discount-pro-roofing-1162085"
+    },
+    {
+     "label": "Arizona ROC new licenses list, Feb 12 2026 (CSV)",
+     "url": "https://roc.az.gov/sites/default/files/ROC_New-Licenses-List_2026-02-12.csv"
+    },
+    {
+     "label": "Layers profile - Discount Pro Roofing",
+     "url": "https://layers.to/discountproroof"
+    },
+    {
+     "label": "ServiceAgent directory - discount pro roofing (Mesa)",
+     "url": "https://serviceagent.ai/directory/arizona/mesa/solar/discount-pro-roofing/"
+    },
+    {
+     "label": "ZipRecruiter - Roofing Sales jobs in Tempe, AZ",
+     "url": "https://www.ziprecruiter.com/Jobs/Roofing-Sales/-in-Tempe,AZ"
+    },
+    {
+     "label": "Indeed - Roofing sales jobs in Phoenix, AZ",
+     "url": "https://www.indeed.com/q-roofing-sale-l-phoenix,-az-jobs.html"
+    },
+    {
+     "label": "Indeed - Roof Pro employee reviews (different company, commission context)",
+     "url": "https://www.indeed.com/cmp/Roof-Pro/reviews"
+    },
+    {
+     "label": "Daily Courier - Ask the Contractor: Storm-chasing contractors",
+     "url": "https://www.dcourier.com/eedition/page-a10/page_22d10bcb-23d9-51c4-970b-8cc82dd82b5a.html"
+    }
+   ],
+   "website": "https://discountprohome.com/"
+  }
  }
 }

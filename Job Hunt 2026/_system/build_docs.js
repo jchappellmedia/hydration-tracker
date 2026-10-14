@@ -344,7 +344,8 @@ function referenceHtml() {
   .pros h3 { color: #1d6b35; } .cons h3 { color: #9a2a1d; }
 </style></head><body>
 <h1>${esc(job.company)}</h1><p class="sub">${esc(job.role)}</p>
-<a class="apply" href="${esc(F.apply_url)}">Apply for this job &rarr;<span>${esc(F.apply_url)}</span></a>
+${F.apply_url ? `<a class="apply" href="${esc(F.apply_url)}">Apply for this job &rarr;<span>${esc(F.apply_url)}</span></a>`
+  : `<div class="apply" style="background:#777">No apply link was saved for this job<span>${esc(F.apply_missing_note || 'See "How to apply" below.')}</span></div>`}
 <h2>At a glance</h2><table>${facts}</table>
 ${(F.why || []).length ? `<h3>${esc(F.why_heading || "Why it made today's top five")}</h3><ul>${F.why.map(x => `<li>${inlineHtml(x)}</li>`).join('')}</ul>` : ''}
 ${(F.gaps || []).length ? `<h3>Gaps to be ready for</h3>${F.gaps_note ? `<p class="note">${inlineHtml(F.gaps_note)}</p>` : ''}<ul>${F.gaps.map(x => `<li>${inlineHtml(x)}</li>`).join('')}</ul>` : ''}
@@ -381,9 +382,14 @@ function referenceDocx() {
   const k = [];
   k.push(new D.Paragraph({ children: [new D.TextRun({ text: job.company, bold: true, font: 'Calibri', size: 38 })] }));
   k.push(new D.Paragraph({ spacing: { after: 200 }, children: [new D.TextRun({ text: job.role, font: 'Calibri', size: 25, color: '555555' })] }));
-  k.push(new D.Paragraph({ shading: { type: D.ShadingType.CLEAR, color: 'auto', fill: 'E8EFF8' }, spacing: { after: 60 },
-    children: [new D.TextRun({ text: 'APPLY:  ', bold: true, ...body, color: BLUE }), link('Apply for this job', F.apply_url, { bold: true })] }));
-  k.push(new D.Paragraph({ spacing: { after: 120 }, children: [new D.TextRun({ text: F.apply_url, ...body, size: 17, color: '555555' })] }));
+  if (F.apply_url) {
+    k.push(new D.Paragraph({ shading: { type: D.ShadingType.CLEAR, color: 'auto', fill: 'E8EFF8' }, spacing: { after: 60 },
+      children: [new D.TextRun({ text: 'APPLY:  ', bold: true, ...body, color: BLUE }), link('Apply for this job', F.apply_url, { bold: true })] }));
+    k.push(new D.Paragraph({ spacing: { after: 120 }, children: [new D.TextRun({ text: F.apply_url, ...body, size: 17, color: '555555' })] }));
+  } else {
+    k.push(new D.Paragraph({ shading: { type: D.ShadingType.CLEAR, color: 'auto', fill: 'EEEEEE' }, spacing: { after: 120 },
+      children: [new D.TextRun({ text: 'No apply link was saved for this job. ', bold: true, ...body }), new D.TextRun({ text: F.apply_missing_note || 'See "How to apply" below.', ...body })] }));
+  }
   k.push(H2('At a glance'));
   const W1 = 2700, W2 = 7380;
   k.push(new D.Table({ width: { size: W1 + W2, type: D.WidthType.DXA }, columnWidths: [W1, W2],
@@ -508,9 +514,9 @@ function sofficePages(docxFile) {
       report.reference_pages = await pdf(referenceHtml(), path.join(OUT, NAMES.reference + '.pdf'));
       report.reference_docx_pages = await save(referenceDocx(), path.join(OUT, NAMES.reference + '.docx'));
       const u = esc(F.apply_url);
-      fs.writeFileSync(path.join(OUT, NAMES.webloc),
+      if (F.apply_url) fs.writeFileSync(path.join(OUT, NAMES.webloc),
         `<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n<plist version="1.0">\n<dict>\n\t<key>URL</key>\n\t<string>${u}</string>\n</dict>\n</plist>\n`);
-      report.files.push({ file: NAMES.webloc });
+      if (F.apply_url) report.files.push({ file: NAMES.webloc });
     }
   } finally { await browser.close(); }
   console.log(JSON.stringify(report, null, 2));

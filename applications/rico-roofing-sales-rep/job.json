@@ -103,5 +103,228 @@
    "Thank you for taking the time out of your busy day to read my letter. I look forward to the opportunity of doing an interview with you."
   ],
   "closing": "Sincerely,"
+ },
+ "reference": {
+  "apply_url": "https://to.indeed.com/aa2vv98r78b9",
+  "facts": [
+   [
+    "Pay",
+    "100% commission, uncapped, with no base and most likely 1099. The posting lists $100,000-$300,000/year, which is a commission projection, not a salary."
+   ],
+   [
+    "Location",
+    "Mesa, AZ, in person. The company office is listed at 8010 E Broadway Rd, Mesa, AZ 85208."
+   ],
+   [
+    "Work mode / commute",
+    "Field sales: you drive to homeowners' homes for pre-scheduled appointments, so a reliable vehicle is required. The office is roughly 10-15 minutes from Mesa 85206 (estimate). The appointment territory is not stated."
+   ],
+   [
+    "Fit",
+    "Partial"
+   ],
+   [
+    "First handled",
+    "2026-08-11"
+   ],
+   [
+    "Status",
+    "queued"
+   ],
+   [
+    "Found on",
+    "Indeed (posting pasted into Claude by Joshua)"
+   ],
+   [
+    "How to apply",
+    "Apply through the Indeed link saved in the tracker. Whether the posting is still open is unknown: it is dated July 27, 2026 (about 11 weeks ago) and could not be found on Dice, ZipRecruiter or web search on 2026-10-14. As a backup, the company website lists a Mesa office phone of 480-434-7072."
+   ]
+  ],
+  "why_heading": "Why it fit",
+  "why": [
+   "The company books pre-qualified appointments, with no door knocking, cold calling or lead generation. Pay depends on closing rate rather than months of building a pipeline, a better setup than the other commission roles in the tracker.",
+   "Six years of selling his own services face to face, including inside homes: filming Blandford model homes, shooting properties for realtors, and working with home developers and construction companies.",
+   "Held 5.0-star Google reviews for over a year and delivered 98% of projects on time, the kind of trust and follow-through that wins homeowners and referrals.",
+   "Lives in Mesa, where the appointments are, and the posting openly welcomes home improvement and in-home sales backgrounds, not only roofers."
+  ],
+  "gaps": [
+   "No roofing sales experience, and the title says \"Experienced.\" Answer: 'No, I haven't sold roofs. I've spent six years closing my own deals face to face with homeowners, realtors and developers. What does your ramp look like for a strong closer from an adjacent field?'",
+   "No documented one-call-close or in-home retail sales record. Answer: 'My income has always depended on closing my own clients in person. I'd like to ride along on an appointment to learn your presentation before I run my own.'",
+   "Roofing is a new product, with no roof-inspection or estimating background. Answer: 'Roofing is new to me, but job sites aren't. I've worked alongside builders and construction crews for years, I'm comfortable outdoors and on site, and your posting says you provide training. I learn a product fast.'",
+   "Commission-only pay with appointment volume unknown (a risk to settle before saying yes). Answer, phrased as his questions: 'How many pre-qualified appointments does a new rep get per week, what is a typical closing rate and commission per job, what did the median rep earn last year, and is this W-2 or 1099?'"
+  ],
+  "gaps_note": "Suggested answers carried over from the original analysis. Some assume a course or certification is under way; say those only if they are true when you interview.",
+  "jd_source": "The original posting was not saved word for word when this application was built on 2026-08-11. Below is the detailed record of the posting saved at the time. The live posting may have changed or closed.",
+  "jd_text": "# Job Description Reference — Experienced Roofing Sales Representative, Rico Roofing\n\n## Application Details\n- **Company:** Rico Roofing LLC\n- **Location:** Mesa, AZ — in person\n- **Type:** Full-time\n- **Pay:** 100% commission, uncapped. Listed range $100,000 – $300,000/year.\n- **Posted:** July 27, 2026\n- **Apply link:** https://to.indeed.com/aa2vv98r78b9\n\n## Responsibilities\n- Meet homeowners at pre-scheduled appointments.\n- Perform roof inspections and assess customer needs.\n- Present roofing solutions and provide accurate estimates.\n- Build rapport, answer questions, deliver a professional presentation.\n- Close during the initial appointment where possible.\n- Maintain communication and service through the sale.\n- Consistently meet or exceed sales goals.\n\n## Qualifications\n- Roofing sales experience preferred; home improvement or in-home sales considered.\n- Proven ability to close in a one-call close environment.\n- Strong communication, presentation, negotiation.\n- Self-motivated, dependable, goal-oriented.\n- Valid driver's license and reliable transportation.\n- Able to safely inspect roofs and work outdoors.\n\n## What They Offer\n- 100% commission, uncapped.\n- Company-provided, pre-qualified appointments.\n- Sales support and ongoing training.\n- Growth with an expanding company.",
+  "research": {
+   "overview": "Rico Roofing LLC is a small, family-owned roofing contractor in east Mesa. Its listed office is at 8010 E Broadway Rd, Mesa, AZ 85208. Its own website (branded \"Rico Roofing Az\") says it has more than 7 years of experience doing roof repairs, replacements and inspections on homes and commercial buildings. A third-party contractor directory (ZeroFi) lists Arizona contractor license #365925 as active and adds storm and hail damage work. Almost everything known about the company comes from its own site or from directory listings. No employee reviews turned up on Glassdoor, Indeed or Reddit, and no independent customer reviews turned up either, so nothing written from the outside says what it is like to work there. Searches also return several unrelated companies with similar names (Rico Roofing in Garland TX and Fanny Bay BC, Rico's Roofing in MN, OR and the Chicago area), plus a separate Mesa roofer, RDR Roofing LLC, whose BBB profile names an owner called Jose Rico. Whether RDR is connected to Rico Roofing LLC is unknown, so its reviews should not be counted as Rico's. The Indeed company-data tool could not be used (the Indeed connector failed to connect today), and the company website itself could not be fetched directly.",
+   "website": "https://ricoroofingllc.com/",
+   "glassdoor": {
+    "found": false,
+    "summary": "No Glassdoor page or employee reviews for Rico Roofing (Mesa, AZ) were found. Glassdoor searches only returned other roofing companies (for example Roofing Ranger, Roofing Solutions and River Roofing), and those are not related."
+   },
+   "indeed": {
+    "found": false,
+    "summary": "No Indeed company page or employee reviews for Rico Roofing were found through web search. The Indeed connector (get_company_data) failed to connect, so Indeed's own data could not be checked. Results only showed Indeed pages for other roofers (Rt Roofing, All Rite Roofing, Integrity Roofing, Clean Roofing)."
+   },
+   "reddit": {
+    "found": false,
+    "summary": "No Reddit threads mention Rico Roofing. Both a general search and a site:reddit.com search came back with nothing relevant.",
+    "threads": []
+   },
+   "pros": [
+    {
+     "point": "Local to Joshua. The listed office is at 8010 E Broadway Rd, Mesa 85208, roughly 10-15 minutes from 85206 (an estimate, not measured), and the posting says the work is in Mesa.",
+     "sources": [
+      "https://www.mapquest.com/us/arizona/rico-roofing-825555928",
+      "https://ricoroofingllc.com/"
+     ]
+    },
+    {
+     "point": "Not a brand-new outfit. The company describes itself as family-owned with more than 7 years of experience. This is the company's own claim, not an independent source.",
+     "sources": [
+      "https://ricoroofingllc.com/"
+     ]
+    },
+    {
+     "point": "Passes a first legitimacy check. A contractor directory lists Arizona ROC license #365925 as active. That listing is second-hand, so confirm it on the official ROC lookup.",
+     "sources": [
+      "https://www.zerofi.ai/pro/rico-roofing-llc-mesa-az-c47fc3e9-9326-4141-920a-a27c73895913"
+     ]
+    },
+    {
+     "point": "A wide range of work to sell at an appointment: repairs, replacements and inspections for homes and commercial properties, plus storm and hail damage work. That gives more than one way to close a homeowner.",
+     "sources": [
+      "https://ricoroofingllc.com/",
+      "https://www.zerofi.ai/pro/rico-roofing-llc-mesa-az-c47fc3e9-9326-4141-920a-a27c73895913"
+     ]
+    },
+    {
+     "point": "Small shop where the owner is probably reachable. The \"Rico Roofing AZ\" Facebook page lists an email under the first name Ricardo (ricardo@ricoroofingaz.com). That suggests the owner or decision-maker can be contacted directly, but it is not confirmed that this page belongs to the same LLC.",
+     "sources": [
+      "https://www.facebook.com/ricoroofingaz"
+     ]
+    },
+    {
+     "point": "The skills carry over to other employers. ZipRecruiter showed 84 roofing sales listings within 15 miles of Mesa, so in-home roofing sales experience gained here would be useful at many local companies if this one does not work out.",
+     "sources": [
+      "https://www.ziprecruiter.com/jobs-search?search=Roofing+Sales+Representative+Rico+Roofing&location=Mesa%2C+AZ&radius=15&tsid=100000502"
+     ]
+    }
+   ],
+   "cons": [
+    {
+     "point": "There are no employee reviews anywhere (Glassdoor, Indeed, Reddit). Nothing outside the company shows real rep earnings, turnover, how reps are treated or how good the appointments are. The only way to learn this is to talk to a current rep or ride along.",
+     "sources": [
+      "https://www.mapquest.com/us/arizona/rico-roofing-825555928",
+      "https://www.zerofi.ai/pro/rico-roofing-llc-mesa-az-c47fc3e9-9326-4141-920a-a27c73895913"
+     ]
+    },
+    {
+     "point": "No independent customer reviews turned up either. The ZeroFi listing says no rating is on file but also shows a 5.0 badge, which contradicts itself. Joshua would be selling workmanship he cannot check from the outside, to his own neighbors.",
+     "sources": [
+      "https://www.zerofi.ai/pro/rico-roofing-llc-mesa-az-c47fc3e9-9326-4141-920a-a27c73895913"
+     ]
+    },
+    {
+     "point": "The company's online identity is inconsistent. One site (ricoroofingllc.com) says Mesa, while a second site (ricoroofingaz.com) uses the same brand but describes a Phoenix company. Phone numbers and locations differ across sources. A separate Mesa roofer, RDR Roofing LLC (owner Jose Rico per BBB), may or may not be related. This makes it harder to check reputation, and homeowners may be confused too.",
+     "sources": [
+      "https://ricoroofingllc.com/",
+      "https://ricoroofingaz.com/",
+      "https://www.bbb.org/us/az/mesa/profile/roofing-contractors/rdr-roofing-llc-1126-1000133647"
+     ]
+    },
+    {
+     "point": "The license status comes only from a third-party aggregator, not the official Arizona ROC record, and the aggregator's \"verified active\" status may be out of date. Other businesses with similar names (for example Rico Roofing in Garland, TX) show expired licenses, so make sure you look up the right entity.",
+     "sources": [
+      "https://www.zerofi.ai/pro/rico-roofing-llc-mesa-az-c47fc3e9-9326-4141-920a-a27c73895913",
+      "https://www.buildzoom.com/contractor/rico-roofing"
+     ]
+    },
+    {
+     "point": "Pay is all commission with no base, and the job is almost certainly 1099. Other commission-only roofing sales jobs in Mesa are advertised as 1099. Roofing reps typically earn about 10-20% of project cost, and advertised ranges like $100k-$300k are targets, not guarantees.",
+     "sources": [
+      "https://www.indeed.com/q-high-commission-sales-l-mesa,-az-jobs.html",
+      "https://www.indeed.com/q-commission-only-roofing-sales-representative-jobs.html",
+      "https://www.roofingtalentamerica.com/job/2677"
+     ]
+    },
+    {
+     "point": "Nearby roofers advertise base pay and benefits for similar sales roles. On ZipRecruiter, Classic Roofing (Phoenix) lists $70k-$90k with medical, dental, vision and retirement, Global Roofing Group (commercial, Phoenix) lists $55.3k-$89.5k with benefits, and Weather-Tite Roofing (Gilbert) lists from $90,195. Rico's posting offers commission only.",
+     "sources": [
+      "https://www.ziprecruiter.com/jobs-search?search=Roofing+Sales+Representative+Rico+Roofing&location=Mesa%2C+AZ&radius=15&tsid=100000502",
+      "https://www.ziprecruiter.com/Jobs/Roofing-Sales/-in-Mesa,AZ"
+     ]
+    },
+    {
+     "point": "There is no public information on team size, how many reps they run, who manages sales or what the training involves. The posting also never says how many appointments a rep gets per week, and that number drives income more than anything else.",
+     "sources": [
+      "https://ricoroofingllc.com/"
+     ]
+    }
+   ],
+   "red_flags": [
+    "No employee reviews and no independent customer reviews could be found anywhere, so the company is an unknown from the outside.",
+    "The posting does not say how many pre-qualified appointments a rep gets per week, or whether the job is W-2 or 1099. Get both answers before committing.",
+    "The online identity is inconsistent: two domains (Mesa vs. Phoenix), different phone numbers across listings, and a possible but unconfirmed link to RDR Roofing LLC.",
+    "License #365925 is confirmed only by a third-party aggregator. Look it up on roc.az.gov and check for complaints before investing time.",
+    "The posting is dated July 27, 2026 (about 11 weeks ago) and could not be found live on Dice, ZipRecruiter or web search, so it may be filled or closed."
+   ],
+   "bottom_line": "Rico Roofing looks like a real, small, family-owned Mesa roofer: it has a street address, a website, and a license listed as active. But there is no employee feedback anywhere and almost no customer feedback, so nobody outside the company can say what working there is like. Treat it as an unknown. Confirm license #365925 on roc.az.gov and read its Google reviews, then ask a current rep how many appointments they get each week and what they actually earn, and ask to ride along on an appointment before saying yes. This is a commission-only job, so keep it as a parallel option rather than a replacement for salaried applications.",
+   "sources": [
+    {
+     "label": "Rico Roofing Az (company website)",
+     "url": "https://ricoroofingllc.com/"
+    },
+    {
+     "label": "MapQuest listing: Rico Roofing, 8010 E Broadway Rd, Mesa AZ 85208",
+     "url": "https://www.mapquest.com/us/arizona/rico-roofing-825555928"
+    },
+    {
+     "label": "ZeroFi contractor profile: Rico Roofing LLC, Mesa AZ (license #365925)",
+     "url": "https://www.zerofi.ai/pro/rico-roofing-llc-mesa-az-c47fc3e9-9326-4141-920a-a27c73895913"
+    },
+    {
+     "label": "Rico Roofing AZ Facebook page",
+     "url": "https://www.facebook.com/ricoroofingaz"
+    },
+    {
+     "label": "Rico Roofing AZ second domain (Phoenix branding)",
+     "url": "https://ricoroofingaz.com/"
+    },
+    {
+     "label": "BBB: RDR Roofing LLC, Mesa (possible but unconfirmed relation)",
+     "url": "https://www.bbb.org/us/az/mesa/profile/roofing-contractors/rdr-roofing-llc-1126-1000133647"
+    },
+    {
+     "label": "HomeAdvisor: RDR Roofing LLC reviews, Mesa (not confirmed as Rico Roofing)",
+     "url": "https://www.homeadvisor.com/rated.RDRRoofing.148696432.html"
+    },
+    {
+     "label": "BuildZoom: Rico Roofing (unrelated Texas entity, expired license)",
+     "url": "https://www.buildzoom.com/contractor/rico-roofing"
+    },
+    {
+     "label": "ZipRecruiter search: roofing sales near Mesa AZ (15 mi)",
+     "url": "https://www.ziprecruiter.com/jobs-search?search=Roofing+Sales+Representative+Rico+Roofing&location=Mesa%2C+AZ&radius=15&tsid=100000502"
+    },
+    {
+     "label": "ZipRecruiter: Roofing Sales jobs in Mesa, AZ",
+     "url": "https://www.ziprecruiter.com/Jobs/Roofing-Sales/-in-Mesa,AZ"
+    },
+    {
+     "label": "Indeed: High commission sales jobs in Mesa, AZ",
+     "url": "https://www.indeed.com/q-high-commission-sales-l-mesa,-az-jobs.html"
+    },
+    {
+     "label": "Indeed: Commission-only roofing sales rep jobs",
+     "url": "https://www.indeed.com/q-commission-only-roofing-sales-representative-jobs.html"
+    },
+    {
+     "label": "Roofing Talent America: Roofing Sales Representative (uncapped commission)",
+     "url": "https://www.roofingtalentamerica.com/job/2677"
+    }
+   ]
+  }
  }
 }
