@@ -27,10 +27,11 @@ def inline(el):
         elif c.name == "a" and c.get("href", "").startswith("http"):
             out.append(f"[{c.get_text(' ', strip=True)}]({c['href']})")
         elif c.name == "br":
-            out.append(" ")
+            out.append("\u2028")
         else:
             out.append(inline(c))
-    return re.sub(r"\s+", " ", "".join(out)).strip()
+    text = re.sub(r"[ \t\r\n\f\v]+", " ", "".join(out))
+    return re.sub(r" ?\u2028 ?", "\n", text).strip()
 
 
 def links_and_email(contact):
@@ -99,6 +100,8 @@ if os.path.exists(cl):
     closing = "Sincerely,"
     if sign:
         closing = sign[0].get_text("\n", strip=True).split("\n")[0]
+        if closing.lower().startswith("joshua"):
+            closing = ""  # signature only, no sign-off line
     job["cover_letter"] = {"email": email or R["email"], "links": links,
                            "greeting": inline(body[0]), "paragraphs": [inline(p) for p in body[1:]],
                            "closing": closing}

@@ -60,9 +60,17 @@ const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').re
 function inlineHtml(s) {
   return esc(s)
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, (_, l, u) => `<a href="${u.replace(/&amp;/g, '&amp;')}">${l}</a>`);
+    .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, (_, l, u) => `<a href="${u.replace(/&amp;/g, '&amp;')}">${l}</a>`)
+    .replace(/\n/g, '<br>');
 }
 function inlineRuns(s, base = {}) {
+  if (String(s).includes('\n')) {
+    return String(s).split('\n').flatMap((part, i) => {
+      const runs = inlineRuns(part, base);
+      if (i) runs.unshift(new D.TextRun({ text: '', break: 1, ...base }));
+      return runs;
+    });
+  }
   const out = [];
   const re = /\*\*(.+?)\*\*|\[([^\]]+)\]\((https?:[^)\s]+)\)/g;
   let i = 0, m;
@@ -256,7 +264,7 @@ function coverHtml() {
 <a href="mailto:${esc(C.email || 'jchappellmedia@gmail.com')}">${esc(C.email || 'jchappellmedia@gmail.com')}</a>${links ? ' &nbsp;&bull;&nbsp; ' + links : ''}</div></div>
 <p>${esc(C.greeting)}</p>
 ${C.paragraphs.map(p => `<p>${inlineHtml(p)}</p>`).join('\n')}
-<p class="sign">${esc(C.closing || 'Sincerely,')}<br>Joshua Chappell</p>
+<p class="sign">${C.closing === '' ? '' : esc(C.closing || 'Sincerely,') + '<br>'}Joshua Chappell</p>
 </body></html>`;
 }
 function coverDocx() {
@@ -275,7 +283,8 @@ function coverDocx() {
     new D.Paragraph({ spacing: { after: 400 }, children: contact }),
     P([new D.TextRun({ text: C.greeting, ...body })]),
     ...C.paragraphs.map(p => P(inlineRuns(p, body))),
-    P([new D.TextRun({ text: C.closing || 'Sincerely,', ...body }), new D.TextRun({ text: 'Joshua Chappell', ...body, break: 1 })]),
+    P(C.closing === '' ? [new D.TextRun({ text: 'Joshua Chappell', ...body })]
+      : [new D.TextRun({ text: C.closing || 'Sincerely,', ...body }), new D.TextRun({ text: 'Joshua Chappell', ...body, break: 1 })]),
   ];
   return new D.Document({ creator: 'Joshua Chappell', title: `Cover Letter - ${job.company}`,
     styles: { default: { document: { run: { font: 'Calibri', size: 22 } } } },
