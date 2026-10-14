@@ -110,6 +110,12 @@ Rank the survivors and take the **five best**. Weigh these three questions:
 2. How well does it match what he asked for: management, media/marketing, remote, and pay tier A?
 3. How safe and high-quality is it: the employer, the pay clarity, the commute, how fresh the post is, and whether the posting text is available?
 
+**Check remote claims before building.** Job boards often mislabel location. A job counts as remote only
+when the posting text itself says so, or at least two sources agree and none contradict them. If one board
+says remote and another puts it on-site somewhere outside the East Valley, treat it as on-site. A job that
+fails this after it has been built goes to `$JH/_set-aside/` with a line in its README, and the next-ranked
+job takes its place.
+
 Allow at most one or two "surprise" picks. Prefer jobs whose posting text can be captured word for
 word. If fewer than five qualify, deliver fewer and say why. **Never pad with weak jobs.**
 

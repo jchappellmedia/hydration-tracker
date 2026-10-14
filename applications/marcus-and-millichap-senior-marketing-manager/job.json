@@ -167,6 +167,10 @@
    [
     "Found on",
     "WebSearch (earlier search results summarizing Indeed listings, recorded during screening on 2026-10-14) + mcp__ZipRecruiter__search_jobs (listing metadata only) (job ID ZipRecruiter listing_key b80tJng1LngMQxPKvbxDgw)"
+   ],
+   [
+    "Location check",
+    "The role is remote, and Joshua is in Mesa, AZ. Corporate marketing has posted fully remote roles in December 2025 and June 2026, so remote work fits how this team hires. The company also has employees in the Phoenix area: Glassdoor has a Phoenix reviews page. HQ is in Calabasas, CA. Arizona does not change its clocks, so it matches Pacific time in summer and is one hour ahead in winter. Searches found no company-wide remote or return-to-office policy for corporate staff. Some corporate roles are posted as in-office, such as an Associate Operations Manager in Irvine and an older Senior Marketing Project Manager in Calabasas. Joshua should get the remote arrangement and any travel expectations in writing."
    ]
   ],
   "why": [
@@ -186,76 +190,237 @@
   "jd_source": "A word-for-word copy could not be captured from the job board on October 14, 2026. This is the fullest text available. Open the apply link to read the live posting.",
   "jd_text": "# NOT THE FULL POSTING: search-engine excerpts only\n\nThe full job description could not be retrieved. ZipRecruiter returns no description text, Dice has no listing for this employer, Indeed failed to connect, ziprecruiter.com and Indeed pages cannot be fetched from this environment, and the WebSearch budget for this run was used up. The text below is copied exactly from earlier WebSearch results (2026-10-14). It is the search engine's summary of Indeed listings, NOT Marcus & Millichap's wording. The posting's own headings, full responsibilities, requirements, qualifications and benefits text are missing. Get the real posting through the apply link before tailoring materials.\n\n## ZipRecruiter listing data (mcp__ZipRecruiter__search_jobs, listing b80tJng1LngMQxPKvbxDgw)\n\n- Title: Senior Marketing Manager\n- Company: Marcus & Millichap\n- Location: Phoenix, Arizona\n- Remote: true\n- Salary: $85,000 - $100,000 per year\n- Job type: Full-time · Remote\n- Benefits: Medical, Vision, Dental, Paid time off, Life insurance, Retirement\n- Posted: 21 days ago\n\n## WebSearch excerpt 1 (query: Marcus & Millichap \"Senior Marketing Manager\" remote 2026 agent experience job description)\n\nIt turned up several Indeed listings for a remote Senior Marketing Manager role at Marcus & Millichap, but none had a posting date, so I can't confirm they're from 2026. The results also don't show a requirement for agent experience specifically.\n\n**What the listings describe:**\n- The role focuses on strategy, planning, and project management for the firm's Corporate Marketing group, and includes developing campaigns and working with a design team. The position involves developing marketing campaigns, working with internal stakeholders to define project scope and goals, managing cross-functional projects, and partnering with the design team.\n- Requirements: one listing asks for 10+ years of marketing or communications experience, strong project management and people leadership skills. Another asks for 8+ years in brand, integrated, or communications marketing, but that appears to be a different employer's listing that shares the page.\n- Preferred extras: Commercial real estate experience and familiarity with Asana are strong pluses.\n- Pay: The base salary range for this role is $85,000 – $100,000 per year.\n\n## WebSearch excerpt 2 (query: \"Marcus & Millichap\" \"Senior Marketing Manager\" \"Corporate Marketing\" \"$85,000\" remote Asana commercial real estate)\n\nThis excerpt describes a December 2025 Marcus & Millichap listing titled \"Marketing Manager\". It is not confirmed to be this posting.\n\n- **Marketing Manager, remote, Corporate Marketing:** A Marcus & Millichap listing dated December 2025 describes a role focused on strategy and project management for the firm's corporate marketing, and it is fully remote. The listing says the role sits in a cross-functional team and focuses on strategy, planning and project management for Corporate Marketing. It is a fully remote position. That listing gives no pay information. A separate Remotive posting for a remote Marketing Manager lists salary as unspecified, with a USA-only location.\n- **Asana:** The December 2025 Phoenix-based Marketing Manager listing says experience with Asana is a strong plus. It also asks for 7+ years of experience in a Marketing or Communications role. That is a seniority level above the Marketing Manager title but may fit a senior-level search.",
   "research": {
-   "overview": "Marcus & Millichap is a commercial real estate investment brokerage. From general background knowledge, not a source retrieved in this run: it is publicly traded (NYSE: MMI), headquartered in Calabasas, CA, and its revenue depends on commercial property sales volume. The role is \"Senior Marketing Manager,\" listed on ZipRecruiter as Phoenix, Arizona, full-time and remote. The posted base pay is $85,000-$100,000. ZipRecruiter tags these benefits: medical, vision, dental, paid time off, life insurance and retirement. The listing was 21 days old on 2026-10-14. ZipRecruiter results include no description text, and the job does not appear on Dice, which returned zero Marcus & Millichap listings. That leaves the duties, reporting line and bonus eligibility unknown. This run gathered no employee review data. The shared web search budget was used up before any review search ran, and the Indeed connector failed to connect (rate-limited). Nothing here comes from Glassdoor, Indeed or Reddit. The points below rest on the job listing alone and say nothing about culture, whether company-wide or within marketing.",
+   "overview": "Marcus & Millichap (NYSE: MMI) is a commercial real estate investment brokerage and financing firm. Its headquarters are in Calabasas, CA. It has 80+ offices and about 1,700 sales and financing professionals, who are mostly 100% commission agents and independent contractors. A smaller salaried corporate staff supports them. Andrew Strockis has been SVP / Chief Marketing Officer since November 2021. He came from Charles Schwab and oversees all corporate marketing and branding staff, and the company leadership page still lists him. Corporate marketing has posted fully remote roles recently: a Marketing Manager in Corporate Marketing (posted around December 2025, 5-10 years of experience, no pay listed) and a Senior Manager, Marketing Platforms & Production Solutions (around June 2026, $100k-$110k base). Finances: net loss of $12.4M in 2024, $1.9M in 2025 and $3.1M in Q1 2026. Q1 2026 revenue was $171.5M, and adjusted EBITDA turned positive. Most public employee reviews come from commission agents and brokers, not salaried corporate marketing staff. Marketing-specific evidence is limited to a Glassdoor Marketing Coordinator page (52 reviews, many likely from coordinators on broker teams), one 2016 Glassdoor Marketing Manager review, and one Indeed Marketing Manager review. The Indeed MCP tool failed to connect, so Indeed data comes from search results only.",
    "website": "https://www.marcusmillichap.com",
    "glassdoor": {
-    "found": false,
-    "summary": "Not retrieved. The web search budget for this session was used up before any Glassdoor query ran, and Glassdoor cannot be opened directly from this environment. No rating or review count is available, and none is given here."
+    "found": true,
+    "rating": "3.7 out of 5 (company-wide)",
+    "review_count": "About 1,100. Snapshots seen in search results show 1,079, 1,099 and 1,102.",
+    "summary": "This is a company-wide score, and agents and brokers on commission dominate the reviews. 66-70% would recommend the company (the figure varies by snapshot), and 59% have a positive business outlook. Category scores: work-life balance 3.2, culture and values 3.5, career opportunities 3.7, compensation and benefits 2.9. The most common pro is training and hard-working colleagues (121 mentions). Common cons are 'management is terrible' (32 mentions) and 'no benefits package' (31), the second mostly from commission agents. Broker and agent sub-pages score far lower on work-life balance (1.7 and 2.4). For marketing staff, the Marketing Coordinator page shows 3.3 from 52 reviews, with only 23% recommending and compensation and benefits at 2.1. Reviewers there cite low pay, hourly pay and no advancement, and they praise training and culture. Many of these coordinators may sit on individual broker teams, not in corporate marketing. The only Marketing Manager review found is from 2016: it gave 3.0 and cited a lack of organization at the management level. That sample is old and very small. Search summaries say some snapshots are a year or more old.",
+    "url": "https://www.glassdoor.com/Reviews/Marcus-and-Millichap-Reviews-E14534.htm"
    },
    "indeed": {
-    "found": false,
-    "summary": "Not retrieved. The Indeed connector failed to connect (rate-limited, error -32429), so get_company_data could not run. The web search budget ran out before an Indeed reviews query could run. No rating is available."
+    "found": true,
+    "rating": "3.4 out of 5 from about 267-268 reviews (company-wide)",
+    "summary": "These are company-wide reviews, mostly from sales agents. The work wellbeing score is 69, from 115 survey responses. Stress-free scored below average and happiness above average. Reviewers describe two tracks: commission-only agents, and salaried staff employed by corporate or by individual top agents. One reviewer said agents get frequent training but analysts get less structured support. Reviewers also say each office is run by a regional manager and that pace and environment differ by office. One Marketing Manager in Los Angeles said the culture was good but the work became repetitive after a year, with not much room for growth. That is a single review. The Indeed MCP connector failed to connect, so these figures come from search result snippets, not the official data tool.",
+    "url": "https://www.indeed.com/cmp/Marcus-&-Millichap/reviews"
    },
    "reddit": {
     "found": false,
-    "summary": "Not retrieved. The web search budget ran out before any Reddit query ran, and Reddit cannot be opened directly from this environment. No threads were found, and none are listed.",
+    "summary": "Four searches (site:reddit.com, r/CommercialRealEstate, and 'reddit' combined with working, marketing and corporate terms) returned no Reddit threads about working at Marcus & Millichap. No Reddit evidence is used in this report.",
     "threads": []
    },
    "pros": [
     {
-     "point": "The listing is marked fully remote ('Full-time · Remote'), though the location is shown as Phoenix, Arizona.",
+     "point": "Corporate marketing hires remote roles. A Marketing Manager role in Corporate Marketing (around December 2025) was fully remote. A Senior Manager, Marketing Platforms & Production Solutions role (around June 2026) was also remote, with a posted base of $100k-$110k. That range is a useful comparison for the $85k-$100k band.",
      "sources": [
-      "https://www.ziprecruiter.com/jobs-search?search=Senior+Marketing+Manager+Marcus+%26+Millichap&location=Phoenix%2C+AZ&tsid=100000502"
+      "https://swooped.co/job-postings/marketing-manager-remote-marcus-millichap-47a2b",
+      "https://swooped.co/job-postings/senior-manager-marketing-platforms-production-solutions-remote-marcus-amp-millichap-real-estate-investment-services-inc-4300a",
+      "https://dailyremote.com/remote-job/senior-manager-marketing-platforms-production-solutions-5191812"
      ]
     },
     {
-     "point": "The pay range is posted: $85,000-$100,000 a year. You know the band before you apply.",
+     "point": "Marketing leadership has been stable. CMO Andrew Strockis joined in November 2021 from Charles Schwab, oversees all corporate marketing and branding, and is still listed on the leadership page. Searches found no reports of a CMO departure.",
      "sources": [
-      "https://www.ziprecruiter.com/jobs-search?search=Senior+Marketing+Manager+Marcus+%26+Millichap&location=Phoenix%2C+AZ&tsid=100000502"
+      "https://www.businesswire.com/news/home/20211116006192/en/Marcus-Millichap-Announces-Chief-Marketing-Officer-as-Part-of-Leadership-Team",
+      "https://www.marcusmillichap.com/about-us/leadership/andrew-strockis"
      ]
     },
     {
-     "point": "ZipRecruiter tags a standard full-time benefits package: medical, vision, dental, paid time off, life insurance and retirement. These are aggregator tags, not text from the posting, so confirm the details with the recruiter.",
+     "point": "Training and coworkers are the most-praised items. 'Training was great' appears in 121 Glassdoor reviews, and Indeed reviewers mention frequent training. These are mostly agent reviews.",
      "sources": [
-      "https://www.ziprecruiter.com/jobs-search?search=Senior+Marketing+Manager+Marcus+%26+Millichap&location=Phoenix%2C+AZ&tsid=100000502"
+      "https://www.glassdoor.com/Reviews/Marcus-and-Millichap-Reviews-E14534.htm",
+      "https://www.indeed.com/cmp/Marcus-&-Millichap"
+     ]
+    },
+    {
+     "point": "Some marketing staff describe a good culture. An Indeed Marketing Manager in LA called the culture good. Glassdoor Marketing Coordinator reviewers praised culture and the team's use of Asana. A small CareerBliss sample from the Calabasas HQ (2 reviews) described a relaxed setting with a casual dress code.",
+     "sources": [
+      "https://www.indeed.com/cmp/Marcus-&-Millichap/reviews",
+      "https://www.glassdoor.com/Reviews/Marcus-and-Millichap-Marketing-Coordinator-Reviews-EI_IE14534.0,20_KO21,42.htm",
+      "https://www.careerbliss.com/marcus-millichap/reviews/?l=Calabasas%2C+CA"
+     ]
+    },
+    {
+     "point": "Salaried staff get standard benefits. Built In lists performance bonuses, health and dental insurance, and a 401(k). The 'no benefits' complaints on Glassdoor come mostly from commission agents.",
+     "sources": [
+      "https://www.builtinchicago.org/company/marcus-millichap",
+      "https://www.glassdoor.com/Reviews/Marcus-and-Millichap-Reviews-E14534.htm"
+     ]
+    },
+    {
+     "point": "Results are improving. The net loss fell from $12.4M (2024) to $1.9M (2025). In Q1 2026 revenue rose to $171.5M and adjusted EBITDA turned positive. The firm also won a GlobeSt Best Place to Work award two years in a row (per a 2024 release).",
+     "sources": [
+      "https://seekingalpha.com/pr/20399154",
+      "https://seekingalpha.com/pr/20505484",
+      "https://www.businesswire.com/news/home/20240411374061/en"
      ]
     }
    ],
    "cons": [
     {
-     "point": "The pay may be low for a senior title. The $100,000 ceiling is below the $105,000 ceiling on a non-senior, on-site 'Manager, Channel Marketing' role at Simplicity Group in the same Phoenix search ($90,000-$105,000). It is close to a remote 'Senior Product Marketing Manager' listing from Inner Circle Agency ($75,000-$95,000). This compares against two listings, so treat it as a rough signal.",
+     "point": "Pay gets the lowest scores. Glassdoor compensation and benefits is 2.9 company-wide and 2.1 on the Marketing Coordinator page. RepVue rates base pay 1.8 out of 47 ratings, mostly from sales roles. Payscale estimates for a Marketing Manager in New York run $39k-$69k. These are estimates, not verified pay.",
      "sources": [
-      "https://www.ziprecruiter.com/jobs-search?search=Senior+Marketing+Manager+Marcus+%26+Millichap&location=Phoenix%2C+AZ&tsid=100000502"
+      "https://www.glassdoor.com/Reviews/Marcus-and-Millichap-Marketing-Coordinator-Reviews-EI_IE14534.0,20_KO21,42.htm",
+      "https://www.repvue.com/companies/MarcusMillichap",
+      "https://www.payscale.com/research/US/Employer=Marcus_and_Millichap/City/New-York-NY"
      ]
     },
     {
-     "point": "The full job description could not be retrieved. The role is on ZipRecruiter only, and ZipRecruiter returns no description text. Scope, team size, reporting line, bonus or incentive eligibility, and travel are all unknown.",
+     "point": "Marketing staff report limited growth. The Glassdoor Marketing Coordinator page scores 3.3 from 52 reviews, with 23% recommending and complaints of no advancement. An Indeed Marketing Manager said the work became repetitive after a year. CareerBliss rates growth opportunities 3.2.",
      "sources": [
-      "https://www.ziprecruiter.com/jobs-search?search=Marcus+%26+Millichap+marketing&location=Phoenix%2C+AZ&tsid=100000502"
+      "https://www.glassdoor.com/Reviews/Marcus-and-Millichap-Marketing-Coordinator-Reviews-EI_IE14534.0,20_KO21,42.htm",
+      "https://www.indeed.com/cmp/Marcus-&-Millichap/reviews",
+      "https://www.careerbliss.com/marcus-millichap/reviews"
+     ]
+    },
+    {
+     "point": "Corporate staff, not brokers, have taken past cuts. In 2020 the firm cut about 20% of its salaried workforce. In December 2023 it reduced headcount again, and a spokesperson said the cuts were limited to corporate staff while the firm kept hiring agents.",
+     "sources": [
+      "https://therealdeal.com/2020/05/27/marcus-millichap-lays-off-20-of-workforce",
+      "https://www.bisnow.com/news/national/commercial-real-estate/cushman-wakefield-marcus-millichap-quietly-cut-jobs-last-year-as-business-slowed-117832"
+     ]
+    },
+    {
+     "point": "Work-life balance and stress scores are below average. Glassdoor work-life balance is 3.2. Indeed rates stress-free below average. 'The management is terrible' appears in 32 Glassdoor reviews. The one Marketing Manager review (2016) cited a lack of organization at the management level.",
+     "sources": [
+      "https://www.glassdoor.com/Reviews/Marcus-and-Millichap-Reviews-E14534.htm",
+      "https://www.indeed.com/cmp/Marcus-&-Millichap",
+      "https://www.glassdoor.com/Reviews/Employee-Review-Marcus-and-Millichap-E14534-RVW12362817.htm"
+     ]
+    },
+    {
+     "point": "The company is still losing money in a slow deal market. It posted a net loss in 2024, 2025 and Q1 2026. In the Q2 2026 call, the CEO said deal timelines remain long and that headcount growth will come more slowly, through internships and fellowships.",
+     "sources": [
+      "https://seekingalpha.com/pr/20505484",
+      "https://earningswhispers.com/transcript/MMI/Q22026"
+     ]
+    },
+    {
+     "point": "The culture centers on brokers and varies by office. Indeed reviewers say each office is run by its own regional manager. Job postings describe a commission-driven, 'work hard, play hard' setting. Corporate marketing serves about 1,700 agents, which can mean many internal stakeholders with sales-first priorities.",
+     "sources": [
+      "https://www.indeed.com/cmp/Marcus-&-Millichap",
+      "https://www.builtinchicago.org/company/marcus-millichap"
      ]
     }
    ],
    "red_flags": [
-    "This run found no employee reviews, so there is no evidence either way on culture, management, layoffs or pay complaints. Before an interview, check Glassdoor, Indeed and Reddit (for example r/CommercialRealEstate) by hand.",
-    "Ask how marketing headcount and budget changed during the recent commercial real estate sales slowdown, and whether the marketing team has had layoffs or restructuring. A brokerage's revenue moves with deal volume. This run did not verify any layoffs.",
-    "Ask what 'remote' means here. Must you live in Arizona? Are there required visits to the Phoenix office or headquarters? Is any return-to-office plan in progress?",
-    "Ask whether the $85,000-$100,000 range is base pay alone, and whether a bonus is part of the package.",
-    "Ask who the internal clients are, such as individual brokers, regional offices or corporate. Ask how marketing requests are prioritized and how many producers the role supports.",
-    "Ask about turnover in marketing leadership and why this position is open (new role or backfill). The listing was 21 days old on 2026-10-14."
+    "Past layoffs fell on salaried corporate staff: about 20% of salaried staff in 2020, and corporate-only cuts in December 2023. A corporate marketing role sits in that group.",
+    "Net losses continued through Q1 2026, although they are narrowing.",
+    "The Glassdoor Marketing Coordinator page shows only 23% would recommend (52 reviews, mixed and partly old, and many likely from coordinators on broker teams).",
+    "No company-wide remote or return-to-office policy was found, and some corporate roles are posted as in-office. Get the remote arrangement for this role in writing.",
+    "SEC filings flag a pending case (TwinRock Holdings v. Southside Ventures) with possible effects on the brokerage business. Searches did not confirm details or status.",
+    "Marketing-specific evidence is thin: one 2016 Marketing Manager review, one Indeed Marketing Manager review, and no Reddit discussion."
    ],
-   "bottom_line": "The listing itself looks reasonable: remote, posted pay of $85,000-$100,000 and a standard benefits package. The pay ceiling is modest for a senior title. This run has no employee review evidence. The shared web search limit was reached before any Glassdoor, Indeed or Reddit search ran, and the Indeed connector failed to connect. Do not read the lack of red flags here as a clean record. Send a follow-up to continue the search, or raise CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION, or check the review sites yourself. Use the interview to ask about marketing headcount stability, remote terms, bonus eligibility and who the role serves.",
+   "bottom_line": "Company-wide ratings are average: Glassdoor 3.7 (about 1,100 reviews) and Indeed 3.4 (about 267 reviews). Both are driven mostly by commission agents, so they say little about salaried corporate marketing. The marketing-specific signals are weaker. They point to low pay scores, limited growth, and a history of corporate staff being the ones cut when deals slow down. On the plus side, the corporate marketing team hires remote, the CMO has been in place since 2021, and losses are shrinking. The $85k-$100k band sits below the $100k-$110k posted for a Senior Manager role on the same team in June 2026, so Joshua should aim for the top of the band or higher. In interviews, he should ask about team size and reporting line (does the role report to the CMO?), whether remote is permanent, how marketing fared in the December 2023 cuts, and how the team handles requests from about 1,700 brokers. It is worth pursuing with clear eyes, but not a standout employer on the available evidence.",
    "sources": [
     {
-     "label": "ZipRecruiter search: Senior Marketing Manager, Marcus & Millichap, Phoenix AZ (remote, $85K-$100K, benefits tags, plus comparison listings)",
-     "url": "https://www.ziprecruiter.com/jobs-search?search=Senior+Marketing+Manager+Marcus+%26+Millichap&location=Phoenix%2C+AZ&tsid=100000502"
+     "label": "Glassdoor - Marcus & Millichap Reviews",
+     "url": "https://www.glassdoor.com/Reviews/Marcus-and-Millichap-Reviews-E14534.htm"
     },
     {
-     "label": "ZipRecruiter search: Marcus & Millichap marketing, Phoenix AZ (single result, same listing)",
-     "url": "https://www.ziprecruiter.com/jobs-search?search=Marcus+%26+Millichap+marketing&location=Phoenix%2C+AZ&tsid=100000502"
+     "label": "Glassdoor - Marketing Coordinator Reviews",
+     "url": "https://www.glassdoor.com/Reviews/Marcus-and-Millichap-Marketing-Coordinator-Reviews-EI_IE14534.0,20_KO21,42.htm"
     },
     {
-     "label": "ZipRecruiter job redirect: Senior Marketing Manager at Marcus & Millichap",
-     "url": "https://www.ziprecruiter.com/job-redirect?match_token=CpQBChZiODB0Sm5nMUxuZ01ReFBLdmJ4RGd3EiQwMWExM2JiZi00MzhkLTdiZGYtYjM5NS0wOTU4MWYxODk0NmQaUEFBRzhZZHR3clAzZFppV1JvcjVncFJabi10UTdoa0pJVGJGdUd0ZUowdTg0T2p4QlZlVm5taGZaT3dxTGo0YnBuT0ttakhFZVJRQVNWYXN3IMmtBRABGMmtBQ%3D%3D&tsid=100000502"
+     "label": "Glassdoor - Marketing Manager review (2016)",
+     "url": "https://www.glassdoor.com/Reviews/Employee-Review-Marcus-and-Millichap-E14534-RVW12362817.htm"
+    },
+    {
+     "label": "Glassdoor - Phoenix Reviews",
+     "url": "https://www.glassdoor.com/Reviews/Marcus-and-Millichap-Phoenix-Reviews-EI_IE14534.0,20_IL.21,28_IM678.htm"
+    },
+    {
+     "label": "Glassdoor - Broker Reviews",
+     "url": "https://www.glassdoor.com/Reviews/Marcus-and-Millichap-Broker-Reviews-EI_IE14534.0,20_KO21,27.htm"
+    },
+    {
+     "label": "Glassdoor - Agent Reviews",
+     "url": "https://www.glassdoor.com/Reviews/Marcus-and-Millichap-Agent-Reviews-EI_IE14534.0,20_KO21,26.htm"
+    },
+    {
+     "label": "Indeed - Company page",
+     "url": "https://www.indeed.com/cmp/Marcus-&-Millichap"
+    },
+    {
+     "label": "Indeed - Reviews",
+     "url": "https://www.indeed.com/cmp/Marcus-&-Millichap/reviews"
+    },
+    {
+     "label": "RepVue - Marcus & Millichap",
+     "url": "https://www.repvue.com/companies/MarcusMillichap"
+    },
+    {
+     "label": "CareerBliss - Reviews",
+     "url": "https://www.careerbliss.com/marcus-millichap/reviews"
+    },
+    {
+     "label": "CareerBliss - Calabasas Reviews",
+     "url": "https://www.careerbliss.com/marcus-millichap/reviews/?l=Calabasas%2C+CA"
+    },
+    {
+     "label": "Payscale - Marcus & Millichap New York",
+     "url": "https://www.payscale.com/research/US/Employer=Marcus_and_Millichap/City/New-York-NY"
+    },
+    {
+     "label": "Built In Chicago - Company profile",
+     "url": "https://www.builtinchicago.org/company/marcus-millichap"
+    },
+    {
+     "label": "Swooped - Marketing Manager (Remote, Corporate Marketing)",
+     "url": "https://swooped.co/job-postings/marketing-manager-remote-marcus-millichap-47a2b"
+    },
+    {
+     "label": "Swooped - Senior Manager, Marketing Platforms & Production Solutions (Remote)",
+     "url": "https://swooped.co/job-postings/senior-manager-marketing-platforms-production-solutions-remote-marcus-amp-millichap-real-estate-investment-services-inc-4300a"
+    },
+    {
+     "label": "DailyRemote - Senior Manager, Marketing Platforms & Production Solutions",
+     "url": "https://dailyremote.com/remote-job/senior-manager-marketing-platforms-production-solutions-5191812"
+    },
+    {
+     "label": "Business Wire - CMO announcement (2021)",
+     "url": "https://www.businesswire.com/news/home/20211116006192/en/Marcus-Millichap-Announces-Chief-Marketing-Officer-as-Part-of-Leadership-Team"
+    },
+    {
+     "label": "Marcus & Millichap - Andrew Strockis leadership page",
+     "url": "https://www.marcusmillichap.com/about-us/leadership/andrew-strockis"
+    },
+    {
+     "label": "Business Wire - Best Place to Work award (2024)",
+     "url": "https://www.businesswire.com/news/home/20240411374061/en"
+    },
+    {
+     "label": "The Real Deal - Marcus & Millichap lays off 20% of workforce (2020)",
+     "url": "https://therealdeal.com/2020/05/27/marcus-millichap-lays-off-20-of-workforce"
+    },
+    {
+     "label": "Bisnow - Cushman & Wakefield, Marcus & Millichap quietly cut jobs",
+     "url": "https://www.bisnow.com/news/national/commercial-real-estate/cushman-wakefield-marcus-millichap-quietly-cut-jobs-last-year-as-business-slowed-117832"
+    },
+    {
+     "label": "Seeking Alpha - Q4 and FY2025 results",
+     "url": "https://seekingalpha.com/pr/20399154"
+    },
+    {
+     "label": "Seeking Alpha - Q1 2026 results",
+     "url": "https://seekingalpha.com/pr/20505484"
+    },
+    {
+     "label": "Earnings Whispers - Q2 2026 call transcript",
+     "url": "https://earningswhispers.com/transcript/MMI/Q22026"
+    },
+    {
+     "label": "PolicyRisk - MMI litigation listing",
+     "url": "https://policyrisk.com/world/company/MMI"
+    },
+    {
+     "label": "Built In - Associate Operations Manager (in-office, Irvine)",
+     "url": "https://builtin.com/job/associate-operations-manager/3556155"
+    },
+    {
+     "label": "RemoteOK - Senior Marketing Project Manager (older posting)",
+     "url": "https://remoteOK.io/remote-jobs/106629-remote-senior-marketing-project-manager-marcus-millichap"
     }
    ]
   }

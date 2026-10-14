@@ -156,6 +156,10 @@
    [
     "Found on",
     "mcp__Dice__get_job_details (job ID 998f65cb-a76c-43cd-b316-b800a5d76b05)"
+   ],
+   [
+    "Location check",
+    "NOT CONFIRMED AS REMOTE. The evidence points to a Boca Raton-based job (on-site or hybrid). Do not count on remote until the firm says so in writing.\n\nEvidence for on-site or Boca Raton:\n(1) The ZipRecruiter search tool returned this exact listing (Director Of Marketing Strategy, Robinson and Casey, PLLC, Boca Raton, Florida) with is_remote=false and job_type \"Full-time · On-site\", posted 16 days ago.\n(2) The firm's own WizeHire posting puts the job in Boca Raton (URL slug \".../director-of-marketing-strategy-in-boca-raton-fl-us-...\"). The firm's WizeHire postings that are remote put \"in-remote\" in the slug instead: executive-assistant-in-remote, intake-specialist-in-remote, legal-assistant-in-remote, paralegal-in-remote. So the firm marks remote roles as remote on WizeHire, and it did not mark this one.\n(3) A sister posting with the same $75K-$95K pay, \"Director of Growth Marketing\" (digitalhire), is listed as Boca Raton, FL, Hybrid. A \"Growth Marketing Manager\" version (kardow) is \"hybrid-optional\".\n(4) Talent.com lists the job as full-time in Boca Raton, FL 33428.\n\nEvidence for remote:\n(1) A JobMESH aggregator listing tags the role as full-time, telecommute, with applicant location US.\n(2) A copy on kosmetikstudio-regina.com (a scraper site) tags it as both \"Work at office\" and \"Remote work\".\n(3) A search summary of robinsoncasey.com/careers/ said the firm calls itself remote-friendly and says many roles are remote or hybrid-optional, with each posting stating its own terms. A second search of that page did not repeat this wording, so treat it as unverified.\n(4) The job asks for \"experience working independently with remote teams\". In context this likely means outside vendors, not that the role itself is remote.\n\nDice: I pulled the full text of both Dice listings (7615a64b... and 998f65cb...) with the Dice tool. Neither text says remote, hybrid or on-site. The Dice search tool would not return the listing, so I could not read Dice's workplace tag myself. The remote label on Dice is unverified on my end.\n\nWhat to do: the posting says anyone who contacts the firm is disqualified, so Joshua cannot ask before applying. If he applies, he should state in the application (\"Mesa, AZ – remote only; not relocating\") and settle location at the first screen. Note the time difference: Arizona is 2 hours behind Eastern time in winter and 3 hours behind in summer.\n\nKey URLs: https://www.ziprecruiter.com/jobs-search?search=Director+of+Marketing+Strategy+Robinson+and+Casey&location=Boca+Raton%2C+FL&tsid=100000502 ; https://jobs.wizehire.com/job/director-of-marketing-strategy-in-boca-raton-fl-us-8ed1fef8a0b9b3d2 ; https://jobmesh.io/job/873fcfbd-3d41-4f3e-a97b-0f0574c1a1f8 ; https://jobs.digitalhire.com/job-listing/opening/4gM9ooXBmql6ZBP5Vk65FR ; https://eugene.kardow.com/companies/robinson-and-casey-pllc/jobs/growth-marketing-manager-c5b739a9939c49bd9bec2321d1e7d799 ; https://robinsoncasey.com/careers/ ; https://www.dice.com/job-detail/7615a64b-fa6c-4abb-a115-b1b1decf72da ; https://www.dice.com/job-detail/998f65cb-a76c-43cd-b316-b800a5d76b05 ; https://jobs.wizehire.com/job/executive-assistant-in-remote-36fd312f5ece148d"
    ]
   ],
   "why": [
@@ -178,71 +182,262 @@
   "jd_source": "Copied word for word from the mcp__Dice__get_job_details listing (job ID 998f65cb-a76c-43cd-b316-b800a5d76b05) on October 14, 2026. Check the live posting before applying in case it has changed.",
   "jd_text": "Robinson & Casey is seeking a hands-on Marketing Director to lead the firm's marketing strategy, brand development, digital presence, and lead generation initiatives. This role will be responsible for translating the firm's business goals into actionable marketing plans while building systems, processes, and accountability across all marketing functions.\n\nThis is not a business development or referral-generation role. The ideal candidate will focus on marketing strategy, website optimization, digital advertising, branding, content creation, vendor management, and marketing performance analysis.\n\nThe Marketing Director will work closely with the Chief Relationship Officer and CEO to develop and execute marketing initiatives that strengthen the firm's brand, increase qualified leads, and support long-term growth objectives.\n\n**Who We Are**\n\nAt Robinson & Casey, we believe that compassion and doing things the right way go hand in hand. We specialize in Behavioral Health Law - the Marchman Act and Guardianship - which means we walk alongside families in the hardest moments of their lives, guiding them down proven legal paths to lifesaving treatment for their loved ones.\n\nWe're not just in the business of law. We're in the business of helping families rebuild, recover, and move forward - through systems that work, processes we trust, and a team that shows up for every family we serve.\n\nOur values - Honesty, Courage, Integrity, Empathy, Perseverance, and Service - guide everything we do.\n\n**Out of respect for our office and hiring process, please apply via the online application. Applicants who reach out to the Firm will automatically be disqualified.**\n\n**Compensation:**\n\n$75,000 - $95,000 USD yearly\n\n**Responsibilities:**\n\n**Strategic Marketing Planning**\n\n* Develop annual and quarterly marketing plans aligned with firm growth objectives\n* Create and implement marketing systems, processes, and reporting structures\n* Translate business plans into actionable marketing initiatives\n* Monitor and report on key marketing metrics and ROI\n\n**Brand & Digital Presence**\n\n* Oversee brand strategy and market positioning\n* Manage website strategy, content updates, and user experience improvements\n* Ensure consistent messaging across all marketing channels\n* Identify opportunities to improve visibility and awareness\n\n**Lead Generation & Campaign Management**\n\n* Develop and oversee digital marketing campaigns\n* Manage Google Ads, PPC, SEO, social media, and content marketing strategies\n* Monitor lead quality and campaign performance\n* Recommend optimization strategies to improve conversions\n\n**Vendor Management**\n\n* Manage relationships with website, SEO, PPC, social media, and creative vendors\n* Hold vendors accountable for performance and deliverables\n* Evaluate new marketing tools and technologies\n\n**Content & Creative Development**\n\n* Write and review marketing copy for digital advertising, social media, website content, and email campaigns\n* Assist with creative direction and graphic design initiatives\n* Ensure all marketing materials align with the firm's brand and mission\n\n**Qualifications:**\n\n* Bachelor's degree in Marketing ( or  related field  or  at least 5 years of relevant experience)\n* 4+ years driving marketing strategy and/or marketing campaigns\n* Proficiency in data analytics (including SEO/SEM)\n* Strong understanding of referral-based & B2B marketing\n* Excellent written and verbal communication skills\n* Experience working independently with remote teams\n\n**Preferred Qualifications**\n\n* Previous marketing experience within: law firm, professional services, healthcare, or behavioral health organizations\n* Experience with HubSpot\n* Videography/Photography experience\n* Graphic Design experience preferred\n\n**About Company**\n\n**What We Offer**\n\n* Competitive compensation\n* A structured, growth-focused environment with clear expectations\n* Purpose-driven work\n* The opportunity to contribute to something meaningful and well-run\n\nAt Robinson & Casey, we believe there is a right way to serve families in crisis - through proven systems, clear roles, and consistent execution. We hire thoughtfully and with intention because the families who come to us cannot afford anything less.\n\nWe seek individuals who combine professional excellence with empathy and accountability - people who take ownership of their role, follow the processes we've built, welcome feedback, and look for ways to make good systems even better. Our hiring process is designed to ensure alignment on expectations, values, and long-term fit before someone joins the team. Above all, we look for people who care deeply about the families we serve and who understand that doing things the right way is how we save lives.\n\n#WHLAW2\n\n**Compensation details:** 75000-95000 Yearly Salary\n\nPI66dc0910e559-9",
   "research": {
-   "overview": "I could not research employee reviews for Robinson and Casey, PLLC in this run. The shared web search budget for this turn (200 searches across all agents) ran out before my first query, and the Indeed connector failed to connect (rate-limited, error -32429). Because of that, Glassdoor, Indeed, and Reddit were never searched. The \"found=false\" values below mean \"not checked,\" not \"confirmed to have no reviews.\" The one thing I could confirm is the job listing itself. ZipRecruiter shows \"Director Of Marketing Strategy\" at Robinson and Casey, PLLC in Boca Raton, Florida. It was posted 16 days ago, lists a pay range of $67,900 to $124,800 a year, and is labeled \"Full-time · On-site.\" ZipRecruiter gives no description text, and the same job did not appear on Dice, so I have no full posting. \"PLLC\" means professional limited liability company. Florida uses that structure for licensed professional practices such as law and accounting firms. I could not confirm which kind of practice this firm is, how big it is, or what its marketing team looks like.",
+   "website": "https://robinsoncasey.com/",
+   "overview": "Robinson & Casey, PLLC is a small Florida law firm that practices behavioral health law: Marchman Act (court-ordered addiction treatment) and guardianship cases. Its listed office is 4400 N Federal Hwy, Suite 210, Boca Raton, FL 33431 (Yelp, Avvo). Its site also has location pages for West Palm Beach and Pinellas County, and Birdeye lists a Jacksonville address. Partner Craig Robinson is listed on Justia as Owner, Attorney and Chief Relationship Officer. He hosts the podcast \"A Way Forward\" and teaches CLE webinars on the Marchman Act. Richard J. Casey III is the other named partner. The firm hires through WizeHire and has many remote postings, some based in South Africa. The Director of Marketing Strategy role pays $75,000-$95,000 and reports to the Chief Relationship Officer and the CEO. It covers marketing plans, brand, website, Google Ads/PPC, SEO, social media, content and vendor management. The posting says it is not a business development role, and HubSpot experience is preferred. No employee reviews turned up on Glassdoor, Indeed or Reddit. The searches found no layoffs, lawsuits, return-to-office mandates or leadership churn; the hits for those terms were unrelated firms with similar names. All review data found is client reviews, not employee reviews, and those samples are small or old.",
    "glassdoor": {
     "found": false,
-    "summary": "Not searched. The web search budget for this turn was used up before any query ran, and glassdoor.com cannot be opened directly from here. There is no rating or review count to report. This does not show that the firm has no Glassdoor page."
+    "summary": "No Glassdoor review page or employee reviews for Robinson and Casey, PLLC turned up. The Glassdoor review hits were for unrelated companies (Robinson (WI), CaseyGerry, Casey's). Glassdoor does carry at least one job listing from the firm (Billing Specialist - Administrative Coordinator, marked work-from-home): https://www.glassdoor.com/job-listing/billing-specialist-administrative-coordinator-robinson-and-casey-pllc-JV_KO0,45_KE46,69.htm?jl=1009828025568. No rating or review count is available."
    },
    "indeed": {
     "found": false,
-    "summary": "Not checked. The Indeed connector failed to connect (rate-limited, -32429), so get_company_data could not run, and web search was also used up. There is no rating to report."
+    "summary": "No Indeed employee reviews or company rating found. The Indeed MCP tool failed to connect this session, so get_company_data could not be called. Web search turned up only Indeed job pages listing the firm's home-based roles (South Africa Indeed, e.g. Legal Assistant - Home Based), with no reviews."
    },
    "reddit": {
     "found": false,
-    "summary": "Not searched because the web search budget ran out, and reddit.com cannot be opened directly from here. No threads were found or reviewed. Small professional practices often have no Reddit discussion at all, but that was not confirmed in this run.",
+    "summary": "No Reddit threads about working at Robinson and Casey, PLLC, or about the firm at all. A site:reddit.com search returned only non-Reddit pages (Wikipedia on the Marchman Act, the firm's podcast, Justia webinars).",
     "threads": []
    },
    "pros": [
     {
-     "point": "The listing posts a pay range ($67,900 to $124,800 a year) and says the job is full-time. That gives a starting number for salary talks. Firms this size often post no pay range at all.",
+     "point": "Pay is posted: $75,000-$95,000 a year on the firm's Dice/WizeHire listing. ZipRecruiter shows $67,900-$124,800, which may be ZipRecruiter's own estimate. Payscale puts the average experienced marketing director base in Boca Raton at about $85,187, so the band is near the local market.",
      "sources": [
-      "https://www.ziprecruiter.com/job-redirect?match_token=CpQBChZ3NHhNS29mbWFPRFZ0WTM1RGN0TXpBEiQwMWExM2JjMC01MTY2LTc0MWMtYjljZi03OThhOTYyYTZiMWIaUEFBR2tsNE91TjRXQ2toLUFIblcxcE9XRXlLMEZvZE9LZ0l3Zi1LTGc1UkFwZ1VYMXVxRVZzMEVMbThxaXd1Wk91bkc3bTZzT3ZKNUpTclNGIMmtBRABGMmtBQ%3D%3D&tsid=100000502"
+      "https://www.dice.com/job-detail/7615a64b-fa6c-4abb-a115-b1b1decf72da",
+      "https://www.ziprecruiter.com/jobs-search?search=Director+of+Marketing+Strategy+Robinson+and+Casey&location=Boca+Raton%2C+FL&tsid=100000502",
+      "https://www.payscale.com/research/US/Job=Marketing_Director/Salary/25e76f8a/Experienced-Boca-Raton-FL"
      ]
     },
     {
-     "point": "The posting is recent (16 days old as of 2026-10-14), so the role is probably still open.",
+     "point": "Full ownership of marketing with a direct line to leadership. The role reports to the Chief Relationship Officer and CEO and covers annual and quarterly plans, brand, website, Google Ads/PPC, SEO, social, content, reporting and vendor accountability. It fits a strategist who wants to build the function.",
      "sources": [
-      "https://www.ziprecruiter.com/job-redirect?match_token=CpQBChZ3NHhNS29mbWFPRFZ0WTM1RGN0TXpBEiQwMWExM2JjMC01MTY2LTc0MWMtYjljZi03OThhOTYyYTZiMWIaUEFBR2tsNE91TjRXQ2toLUFIblcxcE9XRXlLMEZvZE9LZ0l3Zi1LTGc1UkFwZ1VYMXVxRVZzMEVMbThxaXd1Wk91bkc3bTZzT3ZKNUpTclNGIMmtBRABGMmtBQ%3D%3D&tsid=100000502"
+      "https://www.dice.com/job-detail/7615a64b-fa6c-4abb-a115-b1b1decf72da"
+     ]
+    },
+    {
+     "point": "The firm runs a large remote workforce. WizeHire has remote postings for Executive Assistant, Intake Specialist, Legal Assistant and Paralegal, and a search summary of its careers page described it as remote-friendly. Remote work is normal there, even if this role's status is unclear.",
+     "sources": [
+      "https://jobs.wizehire.com/job/executive-assistant-in-remote-36fd312f5ece148d",
+      "https://jobs.wizehire.com/job/intake-specialist-in-remote-40a94fb0cb9a9ca5",
+      "https://jobs.wizehire.com/job/legal-assistant-in-remote-68e47d332c2d5155",
+      "https://robinsoncasey.com/careers/"
+     ]
+    },
+    {
+     "point": "CLIENT reviews (not employee reviews) are positive where they exist. Birdeye shows 5.0 from 16 reviews praising compassionate, helpful attorneys, but the reviews are about two years old and the profile is unclaimed. Legalrank, a directory, lists 4.9 from 91 ratings. These help with marketing but say nothing about working there.",
+     "sources": [
+      "https://reviews.birdeye.com/robinson-and-casey-pllc-177748250804240",
+      "https://legalrank.co/l/attorney/florida/boca-raton/"
+     ]
+    },
+    {
+     "point": "The firm already has content to work with. Partner Craig Robinson hosts the podcast \"A Way Forward\" (episodes in 2026), teaches Justia CLE webinars on the Marchman Act and has spoken at TPN.health law and behavioral health summits. Leadership invests in visibility.",
+     "sources": [
+      "https://wayforward.podbean.com/",
+      "https://connect.justia.com/webinars/speakers/craig-robinson",
+      "https://app.tpn.health/education/bridging-the-gap-a-law-behavioral-health-summit-173d3623"
+     ]
+    },
+    {
+     "point": "Mission-driven niche with stated values (Honesty, Courage, Integrity, Empathy, Perseverance, Service). The firm describes a structured environment with clear roles and expectations. This is the employer's own description, not employee testimony.",
+     "sources": [
+      "https://www.dice.com/job-detail/7615a64b-fa6c-4abb-a115-b1b1decf72da",
+      "https://robinsoncasey.com/careers/"
      ]
     }
    ],
    "cons": [
     {
-     "point": "ZipRecruiter labels the job \"Full-time · On-site\" in Boca Raton, with is_remote set to false. That conflicts with the \"remote\" label in Joshua's target listing. Confirm the work arrangement before putting time into this application.",
+     "point": "No employee reviews anywhere: none on Glassdoor, Indeed or Reddit. Nothing tells you about management style, turnover, workload or how the CEO and CRO treat marketing staff. Every review found is from clients.",
      "sources": [
-      "https://www.ziprecruiter.com/job-redirect?match_token=CpQBChZ3NHhNS29mbWFPRFZ0WTM1RGN0TXpBEiQwMWExM2JjMC01MTY2LTc0MWMtYjljZi03OThhOTYyYTZiMWIaUEFBR2tsNE91TjRXQ2toLUFIblcxcE9XRXlLMEZvZE9LZ0l3Zi1LTGc1UkFwZ1VYMXVxRVZzMEVMbThxaXd1Wk91bkc3bTZzT3ZKNUpTclNGIMmtBRABGMmtBQ%3D%3D&tsid=100000502"
+      "https://reviews.birdeye.com/robinson-and-casey-pllc-177748250804240",
+      "https://www.glassdoor.com/job-listing/billing-specialist-administrative-coordinator-robinson-and-casey-pllc-JV_KO0,45_KE46,69.htm?jl=1009828025568"
      ]
     },
     {
-     "point": "The bottom of the pay range ($67,900) is low for a director title. The range is also wide (about $57,000 from bottom to top). The firm may not have settled on the level of the role, or the title may be bigger than the actual job.",
+     "point": "The listings disagree on location. ZipRecruiter says Full-time, On-site, Boca Raton. The firm's WizeHire posting is set to Boca Raton, while its remote roles are set to \"remote\". A same-pay sister posting says Hybrid, Boca Raton. Only aggregators (JobMESH, a scraper site) tag it remote. For someone who will not relocate from Mesa, AZ, this decides whether the job works.",
      "sources": [
-      "https://www.ziprecruiter.com/job-redirect?match_token=CpQBChZ3NHhNS29mbWFPRFZ0WTM1RGN0TXpBEiQwMWExM2JjMC01MTY2LTc0MWMtYjljZi03OThhOTYyYTZiMWIaUEFBR2tsNE91TjRXQ2toLUFIblcxcE9XRXlLMEZvZE9LZ0l3Zi1LTGc1UkFwZ1VYMXVxRVZzMEVMbThxaXd1Wk91bkc3bTZzT3ZKNUpTclNGIMmtBRABGMmtBQ%3D%3D&tsid=100000502"
+      "https://www.ziprecruiter.com/jobs-search?search=Director+of+Marketing+Strategy+Robinson+and+Casey&location=Boca+Raton%2C+FL&tsid=100000502",
+      "https://jobs.wizehire.com/job/director-of-marketing-strategy-in-boca-raton-fl-us-8ed1fef8a0b9b3d2",
+      "https://jobs.digitalhire.com/job-listing/opening/4gM9ooXBmql6ZBP5Vk65FR",
+      "https://jobmesh.io/job/873fcfbd-3d41-4f3e-a97b-0f0574c1a1f8"
      ]
     },
     {
-     "point": "No full job description was available. ZipRecruiter results carry no description text, and the same job did not come up in a Dice search filtered to this company. Scope, reporting line, team size, and benefits are unknown. ZipRecruiter's benefits field for this listing is empty (null).",
+     "point": "Applicants who contact the firm are disqualified, so you cannot confirm remote status, scope or team before applying. You have to apply first and raise the question at the first screen.",
      "sources": [
-      "https://www.ziprecruiter.com/jobs-search?search=Director+of+Marketing+Strategy+Robinson+and+Casey&location=Boca+Raton%2C+FL&tsid=100000502"
+      "https://www.dice.com/job-detail/7615a64b-fa6c-4abb-a115-b1b1decf72da",
+      "https://jobs.wizehire.com/job/client-concierge-in-boca-raton-fl-us-5cb02a00b33335ea"
+     ]
+    },
+    {
+     "point": "The pay and scope are low for a Director title. The same $75K-$95K band is posted as \"Director of Growth Marketing\", and a \"Growth Marketing Manager\" version pays $68,500-$72,500. No direct reports are mentioned. The work runs through outside vendors (web, SEO, PPC, social, creative), and the posting also asks for hands-on copywriting, design and video. Expect a hands-on manager role with a director title.",
+     "sources": [
+      "https://www.dice.com/job-detail/7615a64b-fa6c-4abb-a115-b1b1decf72da",
+      "https://jobs.digitalhire.com/job-listing/opening/4gM9ooXBmql6ZBP5Vk65FR",
+      "https://eugene.kardow.com/companies/robinson-and-casey-pllc/jobs/growth-marketing-manager-c5b739a9939c49bd9bec2321d1e7d799"
+     ]
+    },
+    {
+     "point": "Much of the support staff is offshore and low-paid. WizeHire shows Executive Assistant and Intake Specialist roles \"remote in South Africa\". Search results show pay of about $12K-$15K a year for a remote Legal Assistant, $15K-$25K USD for an Executive Assistant and $18,000 for a fully remote Billing Specialist. Any remote teammates may be 9+ hours ahead of Arizona, and the pattern points to a cost-focused employer.",
+     "sources": [
+      "https://jobs.wizehire.com/job/executive-assistant-in-remote-36fd312f5ece148d",
+      "https://jobs.wizehire.com/job/intake-specialist-in-remote-40a94fb0cb9a9ca5",
+      "https://za.simplyhired.com/job/vw_q2JRJ8uR4VUMoKFFLkfSdX9DEmvZWLnzNSzwhq-yrRvoXYpVTtg",
+      "https://www.glassdoor.com/job-listing/billing-specialist-administrative-coordinator-robinson-and-casey-pllc-JV_KO0,45_KE46,69.htm?jl=1009828025568"
+     ]
+    },
+    {
+     "point": "The marketing role has been posted under at least three titles and pay bands (Director of Marketing Strategy, Director of Growth Marketing, Growth Marketing Manager), and one WizeHire copy was flagged as posted months ago. The role may be hard to fill or its definition may keep changing. Ask why the role is open and whether anyone held it before.",
+     "sources": [
+      "https://jobs.wizehire.com/job/director-of-marketing-strategy-in-boca-raton-fl-us-8ed1fef8a0b9b3d2",
+      "https://jobs.digitalhire.com/job-listing/opening/4gM9ooXBmql6ZBP5Vk65FR",
+      "https://eugene.kardow.com/companies/robinson-and-casey-pllc/jobs/growth-marketing-manager-c5b739a9939c49bd9bec2321d1e7d799"
+     ]
+    },
+    {
+     "point": "The culture language stresses following existing process: \"follow the processes we've built\", \"clear roles\", \"consistent execution\". You would answer to two leaders (CRO and CEO). A strategist may have less room to change how things work than the title suggests. This reading comes from the employer's own text, not employee reports.",
+     "sources": [
+      "https://www.dice.com/job-detail/7615a64b-fa6c-4abb-a115-b1b1decf72da"
      ]
     }
    ],
    "red_flags": [
-    "Remote versus on-site: ZipRecruiter lists this job as on-site in Boca Raton, not remote. Ask the recruiter directly whether it is remote, hybrid, or in-office, and get the answer in writing.",
-    "Employee reviews were not checked because web search ran out and the Indeed connector was down. Before an interview, search Glassdoor, Indeed company reviews, and Reddit for the firm. A small firm may have few or no reviews, so treat a handful of reviews as a small sample.",
-    "Pay range of $67,900 to $124,800 for a director title: ask where the budget sits for this role, and whether there is a bonus or a tie to the firm's revenue.",
-    "Ask whether this is the firm's first marketing hire or a replacement. If it is a replacement, ask why the last person left. That speaks to churn, which could not be checked here.",
-    "Ask who the role reports to (managing partner or an operations lead), how big the marketing budget is, and whether there is any staff or agency support. A director title at a small practice is often a one-person department.",
-    "Confirm the firm's legal status and principals on the Florida Division of Corporations site (sunbiz.org), since no outside source verified the company in this run."
+    "The role is not confirmed as remote. ZipRecruiter says On-site, Boca Raton. The firm's WizeHire posting is set to Boca Raton, while its remote roles are labeled remote. A same-pay sister posting says Hybrid, Boca Raton. Joshua will not relocate, so this decides the job.",
+    "Contacting the firm before applying gets you disqualified, so the location question cannot be settled ahead of time.",
+    "No employee reviews exist on Glassdoor, Indeed or Reddit. All review signals are client reviews (Birdeye 5.0/16, about two years old and unclaimed; Yelp 3.7/3; Legalrank 4.9/91 directory rating). No BBB profile was found.",
+    "Director title with $75K-$95K pay, no listed direct reports and hands-on production work. The same band appears under a 'Director of Growth Marketing' title, and a 'Growth Marketing Manager' version pays $68.5K-$72.5K.",
+    "Offshore staffing at very low pay (South Africa roles at about $12K-$25K USD a year). This shows a cost-focused employer and means teammates may be in far time zones.",
+    "The role has been reposted under several titles. The cause is unknown (hard to fill, changing scope or turnover); ask at the screen.",
+    "No layoffs, lawsuits, return-to-office mandates or leadership churn were found, but the firm is small and has little coverage, so finding nothing proves little."
    ],
-   "bottom_line": "There was not enough evidence to judge what it is like to work here. Web search ran out and Indeed was down, so Glassdoor, Indeed, and Reddit went unchecked. Only the ZipRecruiter listing was confirmed. It says the job is on-site in Boca Raton, not remote, and pays $67,900 to $124,800. Before applying, Joshua should confirm the remote status, because the listing contradicts it. He should also ask what the role really covers, given the director title and low pay floor. To finish the review research, send a follow-up message so the search can run again with a fresh search budget.",
+   "bottom_line": "This job only works for Joshua if it is remote, and the evidence leans the other way. ZipRecruiter tags it on-site in Boca Raton, the firm's own WizeHire posting puts it in Boca Raton (its remote jobs say \"remote\"), and a same-pay twin posting says hybrid in Boca Raton. Only aggregator copies call it remote. No employee reviews exist, so there is nothing to show what working there is like. The firm's public face is positive client reviews (small, older samples), a mission-driven niche and a partner who produces a lot of content. The pay ($75K-$95K) and the hands-on scope fit a manager more than a director. The firm also relies on low-cost offshore staff. If Joshua applies, he should state \"Mesa, AZ – remote only, not relocating\" in the application and confirm it at the first call. He should not contact the firm beforehand, because that disqualifies applicants. If remote is not confirmed in writing, he should drop it.",
    "sources": [
     {
-     "label": "ZipRecruiter - Director Of Marketing Strategy, Robinson and Casey, PLLC (Boca Raton, FL) listing",
-     "url": "https://www.ziprecruiter.com/job-redirect?match_token=CpQBChZ3NHhNS29mbWFPRFZ0WTM1RGN0TXpBEiQwMWExM2JjMC01MTY2LTc0MWMtYjljZi03OThhOTYyYTZiMWIaUEFBR2tsNE91TjRXQ2toLUFIblcxcE9XRXlLMEZvZE9LZ0l3Zi1LTGc1UkFwZ1VYMXVxRVZzMEVMbThxaXd1Wk91bkc3bTZzT3ZKNUpTclNGIMmtBRABGMmtBQ%3D%3D&tsid=100000502"
+     "label": "Dice - Director Of Marketing Strategy, Robinson & Casey (listing 1, full text via Dice tool)",
+     "url": "https://www.dice.com/job-detail/7615a64b-fa6c-4abb-a115-b1b1decf72da"
     },
     {
-     "label": "ZipRecruiter search results - Director of Marketing Strategy Robinson and Casey, Boca Raton FL",
+     "label": "Dice - Director Of Marketing Strategy, Robinson & Casey (listing 2, full text via Dice tool)",
+     "url": "https://www.dice.com/job-detail/998f65cb-a76c-43cd-b316-b800a5d76b05"
+    },
+    {
+     "label": "ZipRecruiter search result - Director Of Marketing Strategy, Boca Raton, Full-time On-site",
      "url": "https://www.ziprecruiter.com/jobs-search?search=Director+of+Marketing+Strategy+Robinson+and+Casey&location=Boca+Raton%2C+FL&tsid=100000502"
+    },
+    {
+     "label": "WizeHire - Director Of Marketing Strategy, Boca Raton, FL",
+     "url": "https://jobs.wizehire.com/job/director-of-marketing-strategy-in-boca-raton-fl-us-8ed1fef8a0b9b3d2"
+    },
+    {
+     "label": "WizeHire - Robinson and Casey career page",
+     "url": "https://wizehire.com/cmp/robinson-and-casey-pllc"
+    },
+    {
+     "label": "JobMESH - remote/telecommute tag on the Director listing (aggregator)",
+     "url": "https://jobmesh.io/job/873fcfbd-3d41-4f3e-a97b-0f0574c1a1f8"
+    },
+    {
+     "label": "Scraper copy of Director listing (office + remote tags)",
+     "url": "https://kosmetikstudio-regina.com/job-listing/job/director-of-marketing-strategy-at-robinson-and-casey-pllc-boca-raton-fl-cVZzUmwyYmRyRWhKS21tNTNCYTEzNkZZ"
+    },
+    {
+     "label": "Talent.com - Boca Raton listing (aggregator)",
+     "url": "https://www.talent.com/jobs/k-marketing-specialist-l-coral-springs-fl"
+    },
+    {
+     "label": "DigitalHire - Director of Growth Marketing, Boca Raton, Hybrid",
+     "url": "https://jobs.digitalhire.com/job-listing/opening/4gM9ooXBmql6ZBP5Vk65FR"
+    },
+    {
+     "label": "Kardow - Growth Marketing Manager, hybrid-optional",
+     "url": "https://eugene.kardow.com/companies/robinson-and-casey-pllc/jobs/growth-marketing-manager-c5b739a9939c49bd9bec2321d1e7d799"
+    },
+    {
+     "label": "Robinson & Casey careers page",
+     "url": "https://robinsoncasey.com/careers/"
+    },
+    {
+     "label": "Robinson & Casey homepage",
+     "url": "https://robinsoncasey.com/"
+    },
+    {
+     "label": "Robinson & Casey West Palm Beach location page",
+     "url": "https://robinsoncasey.com/boca-raton-marchman-act-attorneys/"
+    },
+    {
+     "label": "Robinson & Casey Pinellas County location page",
+     "url": "https://robinsoncasey.com/st-petersburg-guardianship-attorneys/"
+    },
+    {
+     "label": "WizeHire - Executive Assistant (remote, South Africa)",
+     "url": "https://jobs.wizehire.com/job/executive-assistant-in-remote-36fd312f5ece148d"
+    },
+    {
+     "label": "WizeHire - Intake Specialist (remote, South Africa)",
+     "url": "https://jobs.wizehire.com/job/intake-specialist-in-remote-40a94fb0cb9a9ca5"
+    },
+    {
+     "label": "WizeHire - Legal Assistant (remote)",
+     "url": "https://jobs.wizehire.com/job/legal-assistant-in-remote-68e47d332c2d5155"
+    },
+    {
+     "label": "WizeHire - Paralegal (remote)",
+     "url": "https://jobs.wizehire.com/job/paralegal-in-remote-2d01a8a25cc96064"
+    },
+    {
+     "label": "WizeHire - Client Concierge, Boca Raton (no-contact rule)",
+     "url": "https://jobs.wizehire.com/job/client-concierge-in-boca-raton-fl-us-5cb02a00b33335ea"
+    },
+    {
+     "label": "SimplyHired (South Africa) - Executive Assistant, Robinson and Casey",
+     "url": "https://za.simplyhired.com/job/vw_q2JRJ8uR4VUMoKFFLkfSdX9DEmvZWLnzNSzwhq-yrRvoXYpVTtg"
+    },
+    {
+     "label": "SimplyHired - Client Concierge listing",
+     "url": "https://www.simplyhired.com/job/uDI24erAHQuKrtMcRgVk4wHES7HKBtoEE5bXFs8UFXbpk9dpECOdlQ"
+    },
+    {
+     "label": "Glassdoor job listing - Billing Specialist (work from home), Robinson and Casey",
+     "url": "https://www.glassdoor.com/job-listing/billing-specialist-administrative-coordinator-robinson-and-casey-pllc-JV_KO0,45_KE46,69.htm?jl=1009828025568"
+    },
+    {
+     "label": "WayUp - Intake Specialist",
+     "url": "https://www.wayup.com/i-j-Intake-Specialist-Robinson-and-Casey-PLLC-933071122086591/"
+    },
+    {
+     "label": "WayUp - Client Concierge",
+     "url": "https://www.wayup.com/i-j-Client-Concierge-Robinson-and-Casey-PLLC-785368666592925/"
+    },
+    {
+     "label": "Birdeye - client reviews (5.0, 16 reviews, unclaimed)",
+     "url": "https://reviews.birdeye.com/robinson-and-casey-pllc-177748250804240"
+    },
+    {
+     "label": "Yelp - Robinson & Casey, Boca Raton (3.7, 3 reviews)",
+     "url": "https://www.yelp.com/biz/robinson-and-casey-boca-raton"
+    },
+    {
+     "label": "Legalrank directory - Boca Raton attorneys",
+     "url": "https://legalrank.co/l/attorney/florida/boca-raton/"
+    },
+    {
+     "label": "Avvo - Craig Matthew Robinson",
+     "url": "https://www.avvo.com/attorneys/33431-fl-craig-robinson-1935776.html"
+    },
+    {
+     "label": "Justia - Craig Robinson speaker profile (Owner, Attorney, CRO)",
+     "url": "https://connect.justia.com/webinars/speakers/craig-robinson"
+    },
+    {
+     "label": "A Way Forward podcast",
+     "url": "https://wayforward.podbean.com/"
+    },
+    {
+     "label": "TPN.health - Law and Behavioral Health Summit",
+     "url": "https://app.tpn.health/education/bridging-the-gap-a-law-behavioral-health-summit-173d3623"
+    },
+    {
+     "label": "Payscale - Experienced Marketing Director salary, Boca Raton",
+     "url": "https://www.payscale.com/research/US/Job=Marketing_Director/Salary/25e76f8a/Experienced-Boca-Raton-FL"
     }
    ]
   }
