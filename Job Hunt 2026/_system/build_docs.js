@@ -97,18 +97,18 @@ function resumeVars(t) {
 }
 
 function resumeHtml(v) {
-  const contact2 = (R.links || []).map(l => `<a href="${esc(l.url)}">${esc(l.label)}</a>`).join(' &nbsp;&bull;&nbsp; ');
+  const contact2 = (R.links || []).map(l => `<a href="${esc(l.url)}">${esc(l.label)}</a>`).join(' &bull; ');
   const jobs = R.jobs.map(j => `
   <div class="job">
     <div class="job-head"><span><span class="job-company">${esc(j.company)}</span>, ${esc(j.title)}</span>
-      <span class="job-meta">${esc(j.location)} &nbsp;|&nbsp; ${esc(j.dates)}</span></div>
+      <span class="job-meta">${esc(j.location)} | ${esc(j.dates)}</span></div>
     <ul>${j.bullets.map(b => `<li>${inlineHtml(b)}</li>`).join('')}</ul>
   </div>`).join('');
   const edu = (R.education || []).map(e =>
     `<div class="edu-line"><strong>${esc(e.school)}</strong>, ${esc(e.degree)} <span>| ${esc(e.date)}</span></div>`).join('');
   const certs = (R.certifications || []).length
     ? `<div class="edu-line"><span>${R.certifications.map(esc).join(' &bull; ')}</span></div>` : '';
-  return `<!doctype html><html><head><meta charset="utf-8"><title>Resume</title><style>
+  return `<!doctype html><html><head><meta charset="utf-8"><title>Joshua Chappell Resume</title><style>
   @page { size: letter; margin: 0.5in; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: Calibri, Carlito, "Segoe UI", Arial, sans-serif; font-size: ${v.font}px; line-height: ${v.lh};
@@ -128,9 +128,9 @@ function resumeHtml(v) {
   .job-company { font-weight: bold; }
   .job-meta { font-size: ${(v.font - 1).toFixed(2)}px; color: #555; white-space: nowrap; }
   ul { list-style: none; margin: 3px 0 0; }
-  li { position: relative; padding-left: 14px; margin-bottom: ${v.li}px; }
+  li { padding-left: 14px; text-indent: -14px; margin-bottom: ${v.li}px; }
   li:last-child { margin-bottom: 0; }
-  li::before { content: "\\25AA"; position: absolute; left: 0; color: #1a4d8f; font-size: 9px; top: 2px; }
+  li::before { content: "\\2022"; display: inline-block; width: 14px; text-indent: 0; color: #1a4d8f; }
   .skills p { line-height: ${(v.lh + 0.06).toFixed(2)}; }
   .edu-line { margin-bottom: ${v.edu}px; }
   .edu-line span { color: #555; }
@@ -138,13 +138,15 @@ function resumeHtml(v) {
 </style></head><body>
 <header>
   <h1>JOSHUA CHAPPELL</h1>${R.headline ? `<div class="headline">${esc(R.headline)}</div>` : ''}
-  <div class="contact">Mesa, AZ &nbsp;&bull;&nbsp; 480-586-7959 &nbsp;&bull;&nbsp;
+  <div class="contact">Mesa, AZ &bull; 480-586-7959 &bull;
     <a href="mailto:${esc(R.email || 'jchappellmedia@gmail.com')}">${esc(R.email || 'jchappellmedia@gmail.com')}</a>${contact2 ? '<br>' + contact2 : ''}</div>
 </header>
 <p class="summary">${inlineHtml(R.summary)}</p>
 <section><h2>Experience</h2>${jobs}</section>
 ${(R.extra_sections || []).map(x => `<section><h2>${esc(x.heading)}</h2>${(x.lines || []).map(l => `<div class="edu-line">${inlineHtml(l)}</div>`).join('')}</section>`).join('')}
-<section class="skills"><h2>Skills</h2><p>${(Array.isArray(R.skills) ? R.skills : [R.skills]).map(esc).join(' &bull; ')}</p></section>
+<section class="skills"><h2>Skills</h2>${(R.skills_groups || []).length
+  ? R.skills_groups.map(g => `<p><strong>${esc(g.label)}:</strong> ${g.items.map(esc).join(', ')}</p>`).join('')
+  : `<p>${(Array.isArray(R.skills) ? R.skills : [R.skills]).map(esc).join(' &bull; ')}</p>`}</section>
 <section><h2>${esc(R.education_heading || 'Education & Certifications')}</h2>${edu}${certs}</section>
 </body></html>`;
 }
@@ -191,13 +193,13 @@ function resumeDocx(t) {
     children: [new D.TextRun({ text: R.headline, bold: true, font: 'Calibri', size: half(sz + 0.5), color: BLUE })] }));
   const email = R.email || 'jchappellmedia@gmail.com';
   kids.push(new D.Paragraph({ alignment: D.AlignmentType.CENTER, spacing: { after: 0 }, children: [
-    new D.TextRun({ text: 'Mesa, AZ  •  480-586-7959  •  ', ...body, color: '333333' }),
+    new D.TextRun({ text: 'Mesa, AZ • 480-586-7959 • ', ...body, color: '333333' }),
     new D.ExternalHyperlink({ link: `mailto:${email}`, children: [new D.TextRun({ text: email, ...body, color: BLUE })] }),
   ] }));
   if ((R.links || []).length) {
     const runs = [];
     R.links.forEach((l, i) => {
-      if (i) runs.push(new D.TextRun({ text: '  •  ', ...body, color: '333333' }));
+      if (i) runs.push(new D.TextRun({ text: ' • ', ...body, color: '333333' }));
       runs.push(new D.ExternalHyperlink({ link: l.url, children: [new D.TextRun({ text: l.label, ...body, color: BLUE })] }));
     });
     kids.push(new D.Paragraph({ alignment: D.AlignmentType.CENTER, children: runs }));
@@ -212,7 +214,7 @@ function resumeDocx(t) {
       children: [
         new D.TextRun({ text: j.company, bold: true, ...body }),
         new D.TextRun({ text: `, ${j.title}`, ...body }),
-        new D.TextRun({ text: `\t${j.location}  |  ${j.dates}`, ...body, size: half(sz - 0.7), color: '555555' }),
+        new D.TextRun({ text: `\t${j.location} | ${j.dates}`, ...body, size: half(sz - 0.7), color: '555555' }),
       ] }));
     j.bullets.forEach(b => kids.push(new D.Paragraph({
       numbering: { reference: 'sq', level: 0 }, spacing: { after: tw(lerp(0.5, 3, t)), line },
@@ -224,8 +226,10 @@ function resumeDocx(t) {
     (x.lines || []).forEach(l => kids.push(new D.Paragraph({ spacing: { after: tw(lerp(1, 3, t)) }, children: inlineRuns(l, body) })));
   });
   kids.push(H('Skills'));
-  kids.push(new D.Paragraph({ spacing: { line: Math.round(line * 1.05) },
-    children: [new D.TextRun({ text: (Array.isArray(R.skills) ? R.skills : [R.skills]).join('  •  '), ...body })] }));
+  if ((R.skills_groups || []).length) R.skills_groups.forEach(g => kids.push(new D.Paragraph({ spacing: { line: Math.round(line * 1.05), after: tw(lerp(0.5, 2, t)) },
+    children: [new D.TextRun({ text: `${g.label}: `, bold: true, ...body }), new D.TextRun({ text: g.items.join(', '), ...body })] })));
+  else kids.push(new D.Paragraph({ spacing: { line: Math.round(line * 1.05) },
+    children: [new D.TextRun({ text: (Array.isArray(R.skills) ? R.skills : [R.skills]).join(' • '), ...body })] }));
   kids.push(H(R.education_heading || 'Education & Certifications'));
   (R.education || []).forEach(e => kids.push(new D.Paragraph({ spacing: { after: tw(lerp(1, 3, t)) }, children: [
     new D.TextRun({ text: e.school, bold: true, ...body }),
@@ -233,12 +237,12 @@ function resumeDocx(t) {
     new D.TextRun({ text: `| ${e.date}`, ...body, color: '555555' }),
   ] })));
   if ((R.certifications || []).length) kids.push(new D.Paragraph({ children: [
-    new D.TextRun({ text: R.certifications.join('  •  '), ...body, color: '555555' })] }));
+    new D.TextRun({ text: R.certifications.join(' • '), ...body, color: '555555' })] }));
 
   return new D.Document({
-    creator: 'Joshua Chappell', title: `Resume - ${job.company}`,
+    creator: 'Joshua Chappell', lastModifiedBy: 'Joshua Chappell', title: 'Joshua Chappell Resume',
     styles: { default: { document: { run: { font: 'Calibri', size: half(sz) } } } },
-    numbering: { config: [{ reference: 'sq', levels: [{ level: 0, format: D.LevelFormat.BULLET, text: '▪',
+    numbering: { config: [{ reference: 'sq', levels: [{ level: 0, format: D.LevelFormat.BULLET, text: '•',
       alignment: D.AlignmentType.LEFT, style: { paragraph: { indent: { left: 280, hanging: 280 } }, run: { color: BLUE, size: 16 } } }] }] },
     sections: [{ properties: { page: { size: { width: 12240, height: 15840 },
       margin: { top: 720, bottom: 720, left: 720, right: 720 } } }, children: kids }],
@@ -249,8 +253,8 @@ function resumeDocx(t) {
 
 const C = job.cover_letter;
 function coverHtml() {
-  const links = (C.links || []).map(l => `<a href="${esc(l.url)}">${esc(l.label)}</a>`).join(' &nbsp;&bull;&nbsp; ');
-  return `<!doctype html><html><head><meta charset="utf-8"><title>Cover Letter</title><style>
+  const links = (C.links || []).map(l => `<a href="${esc(l.url)}">${esc(l.label)}</a>`).join(' &bull; ');
+  return `<!doctype html><html><head><meta charset="utf-8"><title>Joshua Chappell Cover Letter</title><style>
   @page { size: letter; margin: 0.75in; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: Calibri, Carlito, "Segoe UI", Arial, sans-serif; font-size: 13px; line-height: 1.58; color: #1a1a1a; width: 7in; margin: 0 auto; }
@@ -263,8 +267,8 @@ function coverHtml() {
   .sign { margin-top: 8px; }
 </style></head><body>
 <div class="head"><div class="name">Joshua Chappell</div>
-<div class="contact">Mesa, AZ &nbsp;&bull;&nbsp; 480-586-7959 &nbsp;&bull;&nbsp;
-<a href="mailto:${esc(C.email || 'jchappellmedia@gmail.com')}">${esc(C.email || 'jchappellmedia@gmail.com')}</a>${links ? ' &nbsp;&bull;&nbsp; ' + links : ''}</div></div>
+<div class="contact">Mesa, AZ &bull; 480-586-7959 &bull;
+<a href="mailto:${esc(C.email || 'jchappellmedia@gmail.com')}">${esc(C.email || 'jchappellmedia@gmail.com')}</a>${links ? ' &bull; ' + links : ''}</div></div>
 <p>${esc(C.greeting)}</p>
 ${C.paragraphs.map(p => `<p>${inlineHtml(p)}</p>`).join('\n')}
 <p class="sign">${C.closing === '' ? '' : esc(C.closing || 'Sincerely,') + '<br>'}Joshua Chappell</p>
@@ -274,10 +278,10 @@ function coverDocx() {
   const body = { font: 'Calibri', size: 22, color: '1A1A1A' };
   const BLUE = '1A4D8F';
   const email = C.email || 'jchappellmedia@gmail.com';
-  const contact = [new D.TextRun({ text: 'Mesa, AZ  •  480-586-7959  •  ', font: 'Calibri', size: 19, color: '444444' }),
+  const contact = [new D.TextRun({ text: 'Mesa, AZ • 480-586-7959 • ', font: 'Calibri', size: 19, color: '444444' }),
     new D.ExternalHyperlink({ link: `mailto:${email}`, children: [new D.TextRun({ text: email, font: 'Calibri', size: 19, color: BLUE })] })];
   (C.links || []).forEach(l => {
-    contact.push(new D.TextRun({ text: '  •  ', font: 'Calibri', size: 19, color: '444444' }));
+    contact.push(new D.TextRun({ text: ' • ', font: 'Calibri', size: 19, color: '444444' }));
     contact.push(new D.ExternalHyperlink({ link: l.url, children: [new D.TextRun({ text: l.label, font: 'Calibri', size: 19, color: BLUE })] }));
   });
   const P = (children, after = 220) => new D.Paragraph({ spacing: { after, line: 276 }, children });
@@ -289,7 +293,7 @@ function coverDocx() {
     P(C.closing === '' ? [new D.TextRun({ text: 'Joshua Chappell', ...body })]
       : [new D.TextRun({ text: C.closing || 'Sincerely,', ...body }), new D.TextRun({ text: 'Joshua Chappell', ...body, break: 1 })]),
   ];
-  return new D.Document({ creator: 'Joshua Chappell', title: `Cover Letter - ${job.company}`,
+  return new D.Document({ creator: 'Joshua Chappell', lastModifiedBy: 'Joshua Chappell', title: 'Joshua Chappell Cover Letter',
     styles: { default: { document: { run: { font: 'Calibri', size: 22 } } } },
     sections: [{ properties: { page: { size: { width: 12240, height: 15840 },
       margin: { top: 1080, bottom: 1080, left: 1080, right: 1080 } } }, children: kids }] });

@@ -28,8 +28,11 @@
   .job-company { font-weight: bold; }
   .job-meta { font-size: 12px; color: #555; white-space: nowrap; }
   ul { list-style: none; margin: 5px 0 0; }
-  li { position: relative; padding-left: 14px; margin-bottom: 4px; }
-  li::before { content: "\25AA"; position: absolute; left: 0; color: #1a4d8f; font-size: 9px; top: 2px; }
+  li { padding-left: 14px; text-indent: -14px; margin-bottom: 4px; }
+  li::before { content: "\2022"; display: inline-block; width: 14px; text-indent: 0; color: #1a4d8f; }
+  /* Bullets stay inline (not absolutely positioned) so the PDF stores each bullet's text
+     right after its job. Absolute positioning made Chrome write every bullet at the
+     end of the PDF, which job-board parsers misread. */
   .skills p { line-height: 1.65; }
   .edu-line { margin-bottom: 5px; }
   .edu-line span { color: #555; }
@@ -50,7 +53,7 @@
 <header>
   <h1>JOSHUA CHAPPELL</h1>
   <div class="contact">
-    Mesa, AZ &nbsp;&bull;&nbsp; 480-586-7959 &nbsp;&bull;&nbsp;
+    Mesa, AZ &bull; 480-586-7959 &bull;
     <a href="mailto:jchappellmedia@gmail.com">jchappellmedia@gmail.com</a><br>
     <a href="https://www.linkedin.com/in/joshua-chappell/">LinkedIn</a>
     <!-- creative roles only: &bull; Demo Reel &bull; Portfolio -->
@@ -69,7 +72,7 @@
   <div class="job">
     <div class="job-head">
       <span><span class="job-company">[Company]</span>, [Title]</span>
-      <span class="job-meta">[City, ST] &nbsp;|&nbsp; [Start] &ndash; [End]</span>
+      <span class="job-meta">[City, ST] | [Start] &ndash; [End]</span>
     </div>
     <ul>
       <li>[Bullet from the profile, 1&ndash;2 lines. Max 4 per job.]</li>

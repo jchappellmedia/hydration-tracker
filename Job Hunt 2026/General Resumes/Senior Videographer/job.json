@@ -3,65 +3,161 @@
  "company_file": "SeniorVideographer",
  "role": "Senior Videographer",
  "resume": {
-  "headline": "Senior Videographer & Video Producer",
+  "headline": "Senior Videographer & Video Producer | Filmmaker | FAA Part 107 Drone Pilot",
   "email": "jchappellmedia@gmail.com",
   "links": [
-   {"label": "Intro Video", "url": "https://vimeo.com/1109495649"},
-   {"label": "Demo Reel", "url": "https://vimeo.com/1103241704"},
-   {"label": "Portfolio", "url": "https://lightbox-digital.com/"},
-   {"label": "LinkedIn", "url": "https://www.linkedin.com/in/joshua-chappell/"}
+   {
+    "label": "Intro Video: vimeo.com/1109495649",
+    "url": "https://vimeo.com/1109495649"
+   },
+   {
+    "label": "Demo Reel: vimeo.com/1103241704",
+    "url": "https://vimeo.com/1103241704"
+   },
+   {
+    "label": "Portfolio: lightbox-digital.com",
+    "url": "https://lightbox-digital.com/"
+   },
+   {
+    "label": "linkedin.com/in/joshua-chappell",
+    "url": "https://www.linkedin.com/in/joshua-chappell/"
+   }
   ],
-  "summary": "Senior videographer with seven-plus years shooting, lighting, and editing brand films, documentaries, interviews, and social video. Delivered 200+ videos at Grand Canyon Education that reached millions on TV, paid social, and organic channels, including an alumni campaign that ran during NCAA basketball broadcasts. Commands crews of 5 to 20, owns the full pipeline from storyboard to final color grade, and delivers 98% of projects on time.",
+  "summary": "Senior videographer and video producer with seven-plus years shooting, lighting, and editing brand films, documentaries, interviews, and social video. Runs productions end to end, from storyboards, scripts, and budgets to Sony FX, RED, and Canon cameras, FAA Part 107 drone work, Adobe Premiere Pro edits, and DaVinci Resolve color. Commands crews of 5 to 20 and delivers 98% of projects on time.",
   "jobs": [
-   {"company": "Lightbox Digital", "title": "Owner / Producer", "location": "Glendale, AZ", "dates": "Sep 2019 - Present", "bullets": [
-     "Crafted cinematic corporate documentaries and interviews, and increased brand presence for construction companies by turning construction into cinema.",
-     "Commanded crews of 5 to 20 and partnered with CEOs and executives, delivering 98% of projects on time and 92% within budget.",
-     "Shot on Sony FX cameras, sculpted light with Aputure, and color graded Sony S-Log3 in DaVinci Resolve; built motion graphics in After Effects.",
-     "Reached over a million people on YouTube teaching cutting-edge post-production techniques."
-   ]},
-   {"company": "Charter One", "title": "Media Specialist", "location": "Mesa, AZ", "dates": "2025 - Present", "bullets": [
+   {
+    "company": "Lightbox Digital",
+    "title": "Owner / Producer",
+    "location": "Glendale, AZ",
+    "dates": "Sep 2019 - Present",
+    "bullets": [
+     "Commanded crews of 5 to 20, partnered with CEOs and executives, and managed quotes and budgets; delivered 98% of projects on time and 92% within budget.",
+     "Accelerated enrollment 2x for a large charter school over one year by leading a video content creation initiative.",
+     "Crafted cinematic documentaries, interviews, and brand films for construction, trades, and remodeling clients; storyboards cut back-and-forth by over 50%.",
+     "Shot on Sony FX cameras, lit with Aputure, and graded S-Log3 in DaVinci Resolve; reached over a million people on YouTube teaching post-production."
+    ]
+   },
+   {
+    "company": "Charter One",
+    "title": "Media Specialist",
+    "location": "Mesa, AZ",
+    "dates": "2025 - Present",
+    "bullets": [
      "Created and led a video initiative that raised click-through rates for running ads by over 200%.",
-     "Created and led a social media content initiative that earned more than 20x the engagement of standard content.",
-     "Built AI content workflows with Claude that cut production times in half while keeping stories authentic and real.",
-     "Grew the video library 7x with key stakeholders and planned the role of video and photography in enrollment with executives."
-   ]},
-   {"company": "Arizona State Legislature", "title": "Video Producer (Part Time)", "location": "Phoenix, AZ", "dates": "Feb 2025 - Jun 2025", "bullets": [
-     "Deployed RED and Canon cameras daily to capture high-end political video during a critical stretch of the session.",
+     "Led a social media content initiative that earned more than 20x the engagement of standard content.",
+     "Grew the video library 7x and refreshed photo and video on every school website, lifting site engagement.",
+     "Built AI content workflows with Claude that cut production time in half; planned the role of video in enrollment with executives."
+    ]
+   },
+   {
+    "company": "Arizona State Legislature",
+    "title": "Video Producer (Part Time)",
+    "location": "Phoenix, AZ",
+    "dates": "Feb 2025 - Jun 2025",
+    "bullets": [
+     "Deployed RED and Canon cameras daily and piloted a DJI Mavic 3 drone, working with Communications teams across both chambers.",
      "Rebuilt color grading workflows to run 3x faster in DaVinci Resolve with Canon Log-3 and RED Wide Gamut footage.",
      "Documented prominent figures including Robert F. Kennedy Jr. and the AZ Speaker of the House."
-   ]},
-   {"company": "Grand Canyon Education", "title": "Videographer", "location": "Phoenix, AZ", "dates": "Oct 2021 - Oct 2023", "bullets": [
-     "Delivered 200+ videos over two years that reached millions on TV, paid social, and organic channels.",
-     "Catalyzed an alumni campaign shown during NCAA basketball games, leading to a noticeable increase in engagement.",
-     "Directed cinematography for higher-end brand shoots every quarter inside a 15-person media team.",
-     "Maximized over $1 million of in-house gear, including Sony FX3 and FX6 systems, Aputure lighting, and DJI Inspire 2 drones."
-   ]},
-   {"company": "American Leadership Academy", "title": "Photography Teacher", "location": "Queen Creek, AZ", "dates": "Aug 2018 - Aug 2020", "bullets": [
-     "Mentored 90+ students a year, stewarded a $30k equipment inventory, and grew the program's social media to lift enrollment 20%."
-   ]}
-  ],
-  "skills": [
-   "Cinematography & Videography",
-   "Documentary & Interview Production",
-   "Lighting & Grip (Aputure, Sky Panels, Fresnels)",
-   "Cameras (Sony FX3, FX6, RED, Canon)",
-   "Drone (FAA Part 107, DJI Inspire 2, Mavic 3)",
-   "Gimbal (DJI, 150+ shoots)",
-   "Editing (Premiere Pro, DaVinci Resolve, Final Cut Pro)",
-   "Color Grading (S-Log3, Canon Log-3, RED Wide Gamut)",
-   "Motion Graphics (After Effects)",
-   "Audio (Audition)",
-   "Photography (Lightroom, Photoshop)",
-   "Storyboarding & Scripting",
-   "Crew Leadership",
-   "Frame.io",
-   "AI Video (Runway, Kling, Google Veo, Midjourney, ElevenLabs)"
+    ]
+   },
+   {
+    "company": "Grand Canyon Education",
+    "title": "Videographer",
+    "location": "Phoenix, AZ",
+    "dates": "Oct 2021 - Oct 2023",
+    "bullets": [
+     "Delivered 200+ videos over two years that reached millions on TV, paid social, and organic channels, including an alumni campaign shown during NCAA basketball games.",
+     "Directed cinematography for higher-end brand shoots every quarter and architected the team's online stock footage library.",
+     "Scripted original organic content with the marketing team and crafted professionally lit interviews for healthcare and theology audiences.",
+     "Ran over $1 million of in-house gear, including Sony FX3 and FX6 systems, Aputure lighting and grip, and DJI Inspire 2 drones."
+    ]
+   },
+   {
+    "company": "American Leadership Academy",
+    "title": "Photography Teacher",
+    "location": "Queen Creek, AZ",
+    "dates": "Aug 2018 - Aug 2020",
+    "bullets": [
+     "Trained 80+ beginners to 95% camera operation proficiency and stewarded a $30k equipment inventory."
+    ]
+   }
   ],
   "education_heading": "Education & Certifications",
   "education": [
-   {"school": "Brigham Young University", "degree": "Bachelor's in Media Arts", "date": "2016"},
-   {"school": "Western Governors University", "degree": "Master's in Marketing, Marketing Analytics Specialization", "date": "Dec 2024"}
+   {
+    "school": "Brigham Young University",
+    "degree": "Bachelor's in Media Arts",
+    "date": "2016"
+   },
+   {
+    "school": "Western Governors University",
+    "degree": "Master's in Marketing, Marketing Analytics Specialization",
+    "date": "Dec 2024"
+   }
   ],
-  "certifications": ["FAA Part 107 Drone License", "Google Digital Marketing & E-Commerce", "HubSpot Inbound Marketing"]
+  "certifications": [
+   "FAA Part 107 Drone License",
+   "Google Digital Marketing & E-Commerce"
+  ],
+  "skills_groups": [
+   {
+    "label": "Production",
+    "items": [
+     "Cinematography",
+     "Videography",
+     "Camera Operation",
+     "Lighting & Grip",
+     "Documentary & Interview Production",
+     "Visual Storytelling",
+     "Pre-Production (Storyboards, Scripts)",
+     "Crew Leadership",
+     "Budgets"
+    ]
+   },
+   {
+    "label": "Cameras & Aerial",
+    "items": [
+     "Sony FX3",
+     "Sony FX6",
+     "RED",
+     "Canon cinema cameras",
+     "Aputure",
+     "Sky Panels",
+     "Fresnels",
+     "DJI gimbals (150+ shoots)",
+     "DJI Inspire 2",
+     "DJI Mavic 3",
+     "FAA Part 107"
+    ]
+   },
+   {
+    "label": "Post",
+    "items": [
+     "Video Editing",
+     "Adobe Premiere Pro",
+     "DaVinci Resolve",
+     "Final Cut Pro",
+     "Adobe After Effects (Motion Graphics)",
+     "Adobe Audition",
+     "Photoshop",
+     "Lightroom",
+     "Color Correction & Grading (S-Log3, Canon Log-3, RED Wide Gamut)",
+     "Frame.io"
+    ]
+   },
+   {
+    "label": "AI & Social",
+    "items": [
+     "Social Video (Instagram Reels)",
+     "Runway",
+     "Kling",
+     "Google Veo",
+     "Midjourney",
+     "ElevenLabs",
+     "Claude",
+     "OpenClaw"
+    ]
+   }
+  ]
  }
 }
