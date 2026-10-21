@@ -115,6 +115,7 @@ function resumeHtml(v) {
          color: #1a1a1a; width: 7.5in; margin: 0 auto; }
   header { text-align: center; margin-bottom: ${v.hdr}px; }
   h1 { font-size: ${lerp(16, 18, (v.font - 12.2) / 1.2)}px; letter-spacing: 1px; margin-bottom: 3px; }
+  .headline { font-size: ${(v.font + 0.6).toFixed(2)}px; color: #1a4d8f; font-weight: 600; letter-spacing: 0.4px; margin-bottom: 3px; }
   .contact { font-size: ${(v.font - 0.4).toFixed(2)}px; color: #333; line-height: 1.6; }
   .contact a { color: #1a4d8f; text-decoration: none; }
   .summary { margin: ${v.sum}px 0 ${v.sum}px; text-align: justify; }
@@ -136,7 +137,7 @@ function resumeHtml(v) {
   a { color: #1a4d8f; }
 </style></head><body>
 <header>
-  <h1>JOSHUA CHAPPELL</h1>
+  <h1>JOSHUA CHAPPELL</h1>${R.headline ? `<div class="headline">${esc(R.headline)}</div>` : ''}
   <div class="contact">Mesa, AZ &nbsp;&bull;&nbsp; 480-586-7959 &nbsp;&bull;&nbsp;
     <a href="mailto:${esc(R.email || 'jchappellmedia@gmail.com')}">${esc(R.email || 'jchappellmedia@gmail.com')}</a>${contact2 ? '<br>' + contact2 : ''}</div>
 </header>
@@ -186,6 +187,8 @@ function resumeDocx(t) {
   const kids = [];
   kids.push(new D.Paragraph({ alignment: D.AlignmentType.CENTER, spacing: { after: 20 },
     children: [new D.TextRun({ text: 'JOSHUA CHAPPELL', bold: true, font: 'Calibri', size: half(sz + 3), characterSpacing: 20 })] }));
+  if (R.headline) kids.push(new D.Paragraph({ alignment: D.AlignmentType.CENTER, spacing: { after: 20 },
+    children: [new D.TextRun({ text: R.headline, bold: true, font: 'Calibri', size: half(sz + 0.5), color: BLUE })] }));
   const email = R.email || 'jchappellmedia@gmail.com';
   kids.push(new D.Paragraph({ alignment: D.AlignmentType.CENTER, spacing: { after: 0 }, children: [
     new D.TextRun({ text: 'Mesa, AZ  •  480-586-7959  •  ', ...body, color: '333333' }),
