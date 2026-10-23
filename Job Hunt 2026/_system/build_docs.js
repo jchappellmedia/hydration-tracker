@@ -266,9 +266,9 @@ function coverHtml() {
   a { color: #1a4d8f; }
   .sign { margin-top: 8px; }
 </style></head><body>
-<div class="head"><div class="name">Joshua Chappell</div>
+${C.header === false ? '' : `<div class="head"><div class="name">Joshua Chappell</div>
 <div class="contact">Mesa, AZ &bull; 480-586-7959 &bull;
-<a href="mailto:${esc(C.email || 'jchappellmedia@gmail.com')}">${esc(C.email || 'jchappellmedia@gmail.com')}</a>${links ? ' &bull; ' + links : ''}</div></div>
+<a href="mailto:${esc(C.email || 'jchappellmedia@gmail.com')}">${esc(C.email || 'jchappellmedia@gmail.com')}</a>${links ? ' &bull; ' + links : ''}</div></div>`}
 <p>${esc(C.greeting)}</p>
 ${C.paragraphs.map(p => `<p>${inlineHtml(p)}</p>`).join('\n')}
 <p class="sign">${C.closing === '' ? '' : esc(C.closing || 'Sincerely,') + '<br>'}Joshua Chappell</p>
@@ -286,8 +286,9 @@ function coverDocx() {
   });
   const P = (children, after = 220) => new D.Paragraph({ spacing: { after, line: 276 }, children });
   const kids = [
-    new D.Paragraph({ children: [new D.TextRun({ text: 'Joshua Chappell', bold: true, font: 'Calibri', size: 30 })] }),
-    new D.Paragraph({ spacing: { after: 400 }, children: contact }),
+    ...(C.header === false ? [] : [
+      new D.Paragraph({ children: [new D.TextRun({ text: 'Joshua Chappell', bold: true, font: 'Calibri', size: 30 })] }),
+      new D.Paragraph({ spacing: { after: 400 }, children: contact })]),
     P([new D.TextRun({ text: C.greeting, ...body })]),
     ...C.paragraphs.map(p => P(inlineRuns(p, body))),
     P(C.closing === '' ? [new D.TextRun({ text: 'Joshua Chappell', ...body })]
