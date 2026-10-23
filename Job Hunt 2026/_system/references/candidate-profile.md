@@ -46,6 +46,10 @@ Mesa, AZ · 2025 – Present · Full time
 - Managed projects in Wrike, Notion, and Google Workspace
 - Created and led a video initiative that led to an over 200% increase in click-through rates for running ads
 - Created and led a social media content initiative that led to >20x more engagement than normal content initiatives
+- Experienced with the Adobe Creative Suite, including Premiere, After Effects, Photoshop, and Illustrator
+- Designed end title graphics for videos
+  *(Both told to Claude directly on 2026-10-23; not yet in the living Google Doc. Illustrator is new to the
+  record: it can now be listed. InDesign is still not in the record.)*
 
 ### Lightbox Digital — Owner / Producer
 Glendale, AZ · Sep 2019 – Present · Full time, hybrid
