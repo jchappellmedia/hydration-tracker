@@ -302,6 +302,7 @@ function coverDocx() {
 
 // --------------------------------------------------------- REFERENCE SHEET ---
 // job.reference = { apply_url, facts: [[label, value]...], why: [..], gaps: [..],
+//   extra_sections: [{heading, items: [..]}] (optional, shown after the gaps),
 //   jd_text: "<verbatim posting text, markdown allowed>", jd_source: "...",
 //   research: { overview, glassdoor:{found,rating,review_count,url,summary}, indeed:{...},
 //               reddit:{found,threads:[{title,url,subreddit,gist}]}, pros:[{point,sources:[url]}],
@@ -363,6 +364,7 @@ ${F.apply_url ? `<a class="apply" href="${esc(F.apply_url)}">Apply for this job 
 <h2>At a glance</h2><table>${facts}</table>
 ${(F.why || []).length ? `<h3>${esc(F.why_heading || "Why it made today's top five")}</h3><ul>${F.why.map(x => `<li>${inlineHtml(x)}</li>`).join('')}</ul>` : ''}
 ${(F.gaps || []).length ? `<h3>Gaps to be ready for</h3>${F.gaps_note ? `<p class="note">${inlineHtml(F.gaps_note)}</p>` : ''}<ul>${F.gaps.map(x => `<li>${inlineHtml(x)}</li>`).join('')}</ul>` : ''}
+${(F.extra_sections || []).map(s => `<h3>${esc(s.heading)}</h3><ul>${s.items.map(x => `<li>${inlineHtml(x)}</li>`).join('')}</ul>`).join('')}
 <h2>Job description (word for word)</h2>
 <p class="note">${inlineHtml(F.jd_source || '')}</p>
 <div class="jd">${jd}</div>
@@ -415,6 +417,7 @@ function referenceDocx() {
     ] })) }));
   if ((F.why || []).length) { k.push(H3(F.why_heading || "Why it made today's top five")); F.why.forEach(x => k.push(LI(inlineRuns(x, body)))); }
   if ((F.gaps || []).length) { k.push(H3('Gaps to be ready for')); if (F.gaps_note) k.push(P(F.gaps_note, { size: 18, color: '555555', italics: true })); F.gaps.forEach(x => k.push(LI(inlineRuns(x, body)))); }
+  (F.extra_sections || []).forEach(s => { k.push(H3(s.heading)); s.items.forEach(x => k.push(LI(inlineRuns(x, body)))); });
   k.push(H2('Job description (word for word)'));
   if (F.jd_source) k.push(P(F.jd_source, { size: 18, color: '555555' }));
   mdBlocks(F.jd_text).forEach(b => {
